@@ -1,5 +1,6 @@
 const mongoose = require('mongoose');
-const URI = 'mongodb+srv://admin:admin@test-qlzr0.mongodb.net/test?retryWrites=true&w=majority'
+const keys = require('./config/keys');
+const URI = keys.mongoURI ;
 
 const connectDB = async()=>{
     try {

@@ -5,6 +5,12 @@ const FeedbackSchema = new mongoose.Schema({
         type:mongoose.Schema.Types.ObjectId,
         ref: 'user'
     },
+    room:[
+        {
+            type:mongoose.Schema.Types.ObjectId,
+            ref: 'room'
+        }
+    ],
     emoticon:{
         type: String,
         required: true

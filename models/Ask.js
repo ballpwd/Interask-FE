@@ -5,6 +5,12 @@ const AskSchema = new mongoose.Schema({
         type:mongoose.Schema.Types.ObjectId,
         ref: 'user'
     },
+    room:[
+        {
+            type:mongoose.Schema.Types.ObjectId,
+            ref: 'room'
+        }
+    ],
     text:{
         type: String,
         required: true

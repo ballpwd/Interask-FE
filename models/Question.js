@@ -1,9 +1,23 @@
 const mongoose = require('mongoose')
 
-const QuizSchema = new mongoose.Schema({
-    question: {
+const Question = new mongoose.Schema({
+    questionDetail: {
         type: String,
         required: true
+    },
+    room:[
+        {
+            type:mongoose.Schema.Types.ObjectId,
+            ref: 'room'
+        }
+    ],
+    questionStatus:{
+        type: Boolean,
+        default: true
+    },
+    date:{
+        type: String,
+        default: Date.now
     },
     anwser:[
         {
@@ -21,4 +35,4 @@ const QuizSchema = new mongoose.Schema({
         }
     ]    
 })
-module.export = Quiz = mongoose.model(quiz,FeedbackSchema);
+module.export = Question = mongoose.model(question,FeedbackSchema);

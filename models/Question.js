@@ -34,4 +34,4 @@ const Question = new mongoose.Schema({
         }
     ]    
 })
-module.export = Question = mongoose.model('question',FeedbackSchema);
+module.exports = Question = mongoose.model('question',FeedbackSchema);

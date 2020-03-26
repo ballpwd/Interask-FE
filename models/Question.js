@@ -5,12 +5,11 @@ const Question = new mongoose.Schema({
         type: String,
         required: true
     },
-    room:[
-        {
-            type:mongoose.Schema.Types.ObjectId,
-            ref: 'room'
-        }
-    ],
+    room:{
+        type:mongoose.Schema.Types.ObjectId,
+        ref: 'room'
+    }
+    ,
     questionStatus:{
         type: Boolean,
         default: true
@@ -35,4 +34,4 @@ const Question = new mongoose.Schema({
         }
     ]    
 })
-module.export = Question = mongoose.model(question,FeedbackSchema);
+module.export = Question = mongoose.model('question',FeedbackSchema);

@@ -1,10 +1,13 @@
 const express = require('express');
 const connectDB = require('./config/db');
 
+const app = express();
+
 // Connect Database
 connectDB();
 
-const app = express();
+// Init Middleware
+app.use(express.json());
 
 // Define Routes
 
@@ -14,6 +17,8 @@ app.use('/api/room', require('./routes/api/room'));
 app.use('/api/ask', require('./routes/api/ask'));
 app.use('/api/feedback', require('./routes/api/feedback'));
 app.use('/api/question', require('./routes/api/question'));
+
+
 
 
 const PORT = process.env.PORT || 5000;

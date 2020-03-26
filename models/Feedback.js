@@ -5,12 +5,11 @@ const FeedbackSchema = new mongoose.Schema({
         type:mongoose.Schema.Types.ObjectId,
         ref: 'user'
     },
-    room:[
-        {
-            type:mongoose.Schema.Types.ObjectId,
-            ref: 'room'
-        }
-    ],
+    room:{
+        type:mongoose.Schema.Types.ObjectId,
+        ref: 'room'
+    }
+    ,
     emoticon:{
         type: String,
         required: true
@@ -24,4 +23,4 @@ const FeedbackSchema = new mongoose.Schema({
     }
     
 })
-module.export = Feedback = mongoose.model(feedback,FeedbackSchema);
+module.export = Feedback = mongoose.model('feedback',FeedbackSchema);

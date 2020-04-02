@@ -1,6 +1,5 @@
 const express = require('express');
 const connectDB = require('./config/db');
-
 const app = express();
 
 // Connect Database
@@ -11,7 +10,7 @@ app.use(express.json());
 
 // Define Routes
 
-app.use('/api/users', require('./routes/api/users'));
+app.use('/api/user', require('./routes/api/user'));
 app.use('/api/auth', require('./routes/api/auth'));
 app.use('/api/room', require('./routes/api/room'));
 app.use('/api/ask', require('./routes/api/ask'));

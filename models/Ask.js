@@ -16,7 +16,7 @@ const AskSchema = new mongoose.Schema({
         required: true
     },
     date:{
-        type: String,
+        type: Date,
         default: Date.now
     }
     

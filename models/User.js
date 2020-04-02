@@ -13,7 +13,8 @@ const UserSchema = new mongoose.Schema({
     joinRoom:[
         {
             type:mongoose.Schema.Types.ObjectId,
-            ref: 'room'
+            ref: 'room',
+            default: []
         }
     ]
   

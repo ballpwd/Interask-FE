@@ -1,17 +1,16 @@
 const express = require('express');
 const router = express.Router();
-const Room = require('../../models/Room')
+const User = require('../../models/User')
 
-// @route  POST /api/room
-// @desc   Create a room
+// @route  POST /api/user
+// @desc   Create a user
 router.post('/', async (req, res) => {
-    
     try {
-        const room = new Room({
-            owner: req.body.userId,
-            roomName: req.body.roomName
+        const user = new User({
+            email: req.body.email,
+            userName: req.body.userName
         });
-        await room.save()
+        await user.save()
         res.status(201).end()
     } catch (err) {
         console.error(err.message);
@@ -20,16 +19,17 @@ router.post('/', async (req, res) => {
     
 });
 
-// @route  GET /api/room
-// @desc   Get all room
+// @route  GET /api/user
+// @desc   Get all user
 router.get('/', async (req, res) => {
     try {
-        const room = await Room.find();
-        res.json(room)
+        const user = await User.find();
+        res.json(user)
     } catch (err) {
         console.error(err.message);
         res.status(500).send('Server Error');
       }
 });
+
 
 module.exports = router;

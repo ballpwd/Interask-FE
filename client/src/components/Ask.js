@@ -12,7 +12,6 @@ const Ask = ({getAsk,ask}) => {
 
   return (
 		<div>
-      {console.log({ask})}
       <div className='container-fluid' >
         <h1 className='text-center'>Ask</h1>
       </div>

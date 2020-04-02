@@ -1,14 +1,13 @@
 import React from 'react';
 
-// const AskQuestion =({askQ:{_id,text,date}})=>{
-    const AskQuestion =({askQ})=>{
+const AskQuestion =({askQ:{_id,user,text,date}})=>{
     return(
         
         <div>
              <div className="container-fuild">
-                <p className='text-center'>{askQ.user.userName}</p>
-                <p className='text-center'>{askQ.text}</p>
-                <p className='text-center'>{askQ.date}</p>
+                <p className='text-center'>{user.userName}</p>
+                <p className='text-center'>{text}</p>
+                <p className='text-center'>{date}</p>
                 <hr />
             </div>
         </div>

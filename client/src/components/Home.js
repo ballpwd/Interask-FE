@@ -7,9 +7,17 @@ const Home = () => {
 		<div>
             <h1>Home Page</h1>
             <div className='buttons'>
-                <Link to='/ask'>
-                    Go to Ask
-                </Link>
+                <div className='buttons'>
+                    <Link to='/ask'>
+                        Go to Ask
+                    </Link>
+                </div>
+                <div className='buttons'>
+                    <Link to='/askpresent'>
+                        Go to AskPresent
+                    </Link>
+                </div>
+               
             </div>
 		</div>
 	);

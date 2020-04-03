@@ -1,5 +1,6 @@
 import {
-    GET_ASK
+    GET_ASK,
+    ADD_ASK
   } from '../actions/types';
 
 
@@ -8,7 +9,9 @@ import {
     const { type, payload } = action;
     switch (type) {
 		case GET_ASK:
-			return payload ;
+      return payload ;
+    case ADD_ASK:
+      return payload ;
 		default:
 			return state;
 	}

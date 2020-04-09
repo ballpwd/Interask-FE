@@ -1,0 +1,16 @@
+/* Present ask */
+
+body {
+  position: relative;
+
+  font-family: Kanit;
+  font-style: normal;
+  font-weight: bold;
+
+  align-items: center;
+  text-align: center;
+
+  /* BG */
+
+  background: linear-gradient(300.81deg, #f0a3ac 15.33%, #b493e0 101.47%);
+}

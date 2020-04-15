@@ -6,14 +6,14 @@ import Home from "./components/Home";
 import Ask from "./components/Ask";
 import AskPresent from "./components/AskPresent";
 import Room from "./components/Room";
+import CreateRoom from "./components/CreateRoom";
 import NotFound from "./components/error/NotFound";
 
 //Redux
 import { Provider } from "react-redux";
 import store from "./store";
-import AskQuestion from "./components/AskQuestion";
-import { createRoom } from "./actions/roomActions";
-import CreateRoom from "./components/CreateRoom";
+
+
 
 const App = () => {
   return (

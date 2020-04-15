@@ -6,7 +6,7 @@ import { createRoom } from "../actions/roomActions";
 const CreateRoom = ({ createRoom }) => {
   const [roomName, setRoomName] = useState("");
   const userId = "5e85403922192a21e87fbbaa";
-  //const roomId = "5e85457618a87c3a58dfffb8";
+
   return (
     <div>
       <div>

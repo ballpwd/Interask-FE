@@ -6,20 +6,18 @@ const User = require('../../models/User')
 // @route  POST /api/ask
 // @desc   Create a ask
 router.post('/', async (req, res) => {
-    
     try {
-        const ask = new Ask({
+        const newAsk = new Ask({
             user: req.body.userId,
             room: req.body.roomId,
             text: req.body.text
           });
-        await ask.save()
-        res.status(201).end()
+        const ask = await newAsk.save()
+        res.json(ask);
     } catch (err) {
         console.error(err.message);
         res.status(500).send('Server Error');
       }
-
 
 });
 
@@ -35,18 +33,56 @@ router.get('/', async (req, res) => {
       }
 });
 
-// @route  GET /api/ask:id
-// @desc   Get ask by id
+// @route  GET /api/ask/:ask_id
+// @desc   Get ask by ask_id
 
-router.get('/ask/:id', async (req, res) => {
+router.get('/:ask_id', async (req, res) => {
     try{
-        const {id} = req.params
-        const ask = await Ask.findById(id)
+        const {ask_id} = req.params
+        const ask = await Ask.findById(ask_id)
 
         if (!req.params.id.match(/^[0-9a-fA-F]{24}$/) || !ask) {
             return res.status(404).json({ msg: 'Ask not found' });
         }
+        
+        res.json(ask) 
+    } catch (err) {
+        console.error(err.message);
+        res.status(500).send('Server Error');
+      }
+})
 
+// @route  GET /api/ask/room/:room_id'
+// @desc   Get ask by room_id
+
+router.get('/room/:room_id', async (req, res) => {
+    try{
+        const {room_id} = req.params
+        const ask = await Ask.find({room: room_id})
+
+        if (!ask) {
+            return res.status(404).json({ msg: 'Ask not found' });
+        }
+        
+        res.json(ask) 
+    } catch (err) {
+        console.error(err.message);
+        res.status(500).send('Server Error');
+      }
+})
+
+// @route  GET /api/ask/room/:room_id/:user_id'
+// @desc   Get ask by roomId and user_id
+
+router.get('/room/:room_id/:user_id', async (req, res) => {
+    try{
+        const {room_id,user_id} = req.params
+        const ask = await Ask.find({room: room_id,user: user_id})
+
+        if (!ask) {
+            return res.status(404).json({ msg: 'Ask not found' });
+        }
+        
         res.json(ask) 
     } catch (err) {
         console.error(err.message);

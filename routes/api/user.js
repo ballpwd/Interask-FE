@@ -19,6 +19,7 @@ router.post('/', async (req, res) => {
     
 });
 
+
 // @route  GET /api/user
 // @desc   Get all user
 router.get('/', async (req, res) => {

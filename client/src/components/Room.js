@@ -1,25 +1,26 @@
 import React, { useEffect } from "react";
 import { Link } from "react-router-dom";
 import { connect } from "react-redux";
-import { getRoom } from "../actions/roomActions";
+import { getAllRoom } from "../actions/roomActions";
 import SelectRoom from "./SelectRoom";
 
-const Room = ({ getRoom, room }) => {
+const Room = ({ getAllRoom, room: {roomList} }) => {
   useEffect(() => {
-    getRoom();
-  }, [getRoom]);
+    getAllRoom();
+  }, [getAllRoom]);
 
-  const roomList =
-    room &&
-    Array.isArray(room) &&
-    room.map((roomQ) => <SelectRoom key={roomQ._id} roomQ={roomQ} />);
+  const showRoom =
+    roomList &&
+    Array.isArray(roomList) &&
+    roomList.map((room) => <SelectRoom key={room._id} room={room} />);
+
   return (
     <div>
       <div className="container-fluid">
         <h1 className="text-center">Select Room</h1>
       </div>
 
-      <div>{roomList}</div>
+      <div>{showRoom}</div>
 
       <div>
         <Link to="/createroom" className="btn btn-primary">
@@ -36,7 +37,14 @@ const Room = ({ getRoom, room }) => {
 };
 
 const mapStateToProps = (state) => ({
-  ask: state.room,
+  room: state.room,
 });
 
-export default connect(mapStateToProps, { getRoom })(Room);
+export default connect(mapStateToProps, { getAllRoom })(Room);
+
+
+
+
+
+
+

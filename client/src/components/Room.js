@@ -8,6 +8,8 @@ const Room = ({ getAllRoom, room: {roomList} }) => {
   useEffect(() => {
     getAllRoom();
   }, [getAllRoom]);
+  
+  console.log(roomList)
 
   const showRoom =
     roomList &&

@@ -9,8 +9,9 @@ import {
 
 const initialState = {
   roomList: [],
-  room: null,
-  error: {}
+  room: {},
+  error: {},
+  loading: true
 };
 
 export default function (state = initialState, action) {
@@ -19,28 +20,33 @@ export default function (state = initialState, action) {
     case GET_ROOMLIST:
       return {
         ...state,
-        roomList: payload    
+        roomList: payload,
+        loading: false    
       } ;
     case EDIT_ROOM:
     case GET_ROOM:
       return {
         ...state,
-        room: payload    
+        room: payload,
+        loading: false    
       } ; 
     case CREATE_ROOM:
       return {
         ...state,
-        roomList: [...state.posts,payload], 
+        roomList: [...state.posts,payload],
+        loading: false 
       };
     case DELETE_ROOM:
       return {
         ...state,
         roomList: state.roomList.filter(room => room._id !== payload),
+        loading: false
       };
     case ROOM_ERROR:
       return {
         ...state,
-        error: payload
+        error: payload,
+        loading: false
       };  
     default:
       return state;

@@ -8,7 +8,8 @@ import {
   const initialState = {
     askList: [],
     ask: null,
-    error: {}
+    error: {},
+    loading: true
   };
 
 export default function(state = initialState, action) {
@@ -17,22 +18,26 @@ export default function(state = initialState, action) {
     case GET_ASKLIST:
       return {
         ...state,
-        askList: payload    
+        askList: payload,
+        loading: false   
       } ;
     case GET_ASK:
         return {
           ...state,
-          ask: payload    
+          ask: payload,
+          loading: false       
         } ;      
     case ADD_ASK:
       return {
         ...state,
-        askList: [...state.posts,payload], 
+        askList: [...state.posts,payload],
+        loading: false 
       };
     case ASK_ERROR:
       return {
         ...state,
-        error: payload
+        error: payload,
+        loading: false 
       };
     default:
       return state;

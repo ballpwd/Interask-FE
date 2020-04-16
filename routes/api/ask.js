@@ -39,7 +39,7 @@ router.get('/', async (req, res) => {
 router.get('/:ask_id', async (req, res) => {
     try{
         const {ask_id} = req.params
-        const ask = await Ask.findById(ask_id)
+        const ask = await Ask.findById(ask_id).populate('user', ['userName'])
 
         if (!req.params.id.match(/^[0-9a-fA-F]{24}$/) || !ask) {
             return res.status(404).json({ msg: 'Ask not found' });
@@ -58,7 +58,7 @@ router.get('/:ask_id', async (req, res) => {
 router.get('/room/:room_id', async (req, res) => {
     try{
         const {room_id} = req.params
-        const ask = await Ask.find({room: room_id})
+        const ask = await Ask.find({room: room_id}).populate('user', ['userName'])
 
         if (!ask) {
             return res.status(404).json({ msg: 'Ask not found' });
@@ -77,7 +77,7 @@ router.get('/room/:room_id', async (req, res) => {
 router.get('/room/:room_id/:user_id', async (req, res) => {
     try{
         const {room_id,user_id} = req.params
-        const ask = await Ask.find({room: room_id,user: user_id})
+        const ask = await Ask.find({room: room_id,user: user_id}).populate('user', ['userName'])
 
         if (!ask) {
             return res.status(404).json({ msg: 'Ask not found' });

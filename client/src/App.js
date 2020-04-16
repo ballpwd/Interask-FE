@@ -7,6 +7,7 @@ import Ask from "./components/Ask";
 import AskPresent from "./components/AskPresent";
 import Room from "./components/Room";
 import CreateRoom from "./components/CreateRoom";
+import OrganizerAsk from "./components/OrganizerAsk";
 import NotFound from "./components/error/NotFound";
 
 //Redux
@@ -25,6 +26,7 @@ const App = () => {
           <Route exact path="/askpresent" component={AskPresent} />
           <Route exact path="/room" component={Room} />
           <Route exact path="/createroom" component={CreateRoom} />
+          <Route exact path="/organizer/ask/:id" component={OrganizerAsk} />
           <Route component={NotFound} />
         </Switch>
       </Router>

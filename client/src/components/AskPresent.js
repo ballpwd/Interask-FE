@@ -5,6 +5,7 @@ import { getAllAsk } from "../actions/askActions";
 import AskQuestion from "./AskQuestion";
 
 const AskPresent = ({ getAllAsk, ask: {askList} }) => {
+  
   useEffect(() => {
     getAllAsk();
   }, [getAllAsk]);

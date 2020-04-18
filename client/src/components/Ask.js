@@ -1,38 +1,45 @@
-import React, { useState } from "react";
+import React, { useEffect } from "react";
 import { Link } from "react-router-dom";
 import { connect } from "react-redux";
-import { addAsk } from "../actions/askActions";
+import { getAskByRoomIdUserId } from "../actions/askActions";
+import { getRoomById } from '../actions/roomActions';
+import AskHistory from './AskHistory';
+import AskForm from './AskForm';
 
-const Ask = ({ addAsk }) => {
-  const [text, setText] = useState("");
-  const userId = "5e85403922192a21e87fbbaa";
-  const roomId = "5e85457618a87c3a58dfffb8";
+
+const Ask = ({ getRoomById, getAskByRoomIdUserId, ask: { askList }, room: { room }, match }) => {
+
+  useEffect(() => {
+    getRoomById(match.params.id);
+  }, [getRoomById, match.params.id])
+
+  useEffect(() => {
+    getAskByRoomIdUserId(match.params.id, '5e85403922192a21e87fbbaa');
+  }, [getAskByRoomIdUserId, match.params.id])
+
   return (
     <div>
-      <div>
-        <h3>Leave a Text</h3>
+      <div class="container">
+        <h1 class='text-center font-weight-bold text-white'>ASK</h1>
+
+
+        <div class="bg-white rounded">
+          <h3 class="text-center font-weight-normal">{room.roomName}</h3>
+
+
+          <div>
+            {askList && <AskHistory askList={askList} />}
+          </div>
+        </div>
+        <div>
+          {room && <AskForm room={room} />}
+        </div>
       </div>
-      <form
-        onSubmit={(e) => {
-          e.preventDefault();
-          addAsk({ userId, roomId, text });
-          setText("");
-        }}
-      >
-        <textarea
-          name="text"
-          cols="30"
-          rows="5"
-          placeholder="Ask Question"
-          value={text}
-          onChange={(e) => setText(e.target.value)}
-          required
-        />
-        <input type="submit" value="Submit" />
-      </form>
+
+
 
       <div>
-        <Link to="/" className="btn btn-primary">
+        <Link to="/" className="text-center btn btn-primary">
           Go to Home
         </Link>
       </div>
@@ -40,4 +47,12 @@ const Ask = ({ addAsk }) => {
   );
 };
 
-export default connect(null, { addAsk })(Ask);
+const mapStateToProps = state => ({
+  room: state.room,
+  ask: state.ask
+})
+
+export default connect(mapStateToProps, { getRoomById, getAskByRoomIdUserId })(Ask);
+
+
+

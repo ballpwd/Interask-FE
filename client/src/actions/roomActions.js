@@ -2,13 +2,10 @@ import axios from 'axios';
 import { 
   ROOM_REQUEST,
   GET_ROOMLIST,
-  GET_ROOM, 
-  CREATE_ROOM, 
-  DELETE_ROOM, 
-  EDIT_ROOM,
-  ROOM_ERROR,
+  GET_ROOM,
   JOIN_ROOM,
-  LEAVE_ROOM
+  LEAVE_ROOM,
+  ROOM_ERROR
 } from './types';
 
 //Get all room
@@ -28,7 +25,7 @@ export const getAllRoom = () => async (dispatch) => {
   }
 };
 
-//Get room by room_id
+//Get room by room_id (User) 
 export const getRoomById = roomId => async (dispatch) => {
   try {
     dispatch({type: ROOM_REQUEST});
@@ -46,25 +43,7 @@ export const getRoomById = roomId => async (dispatch) => {
   }
 };
 
-//Get room by user_id(owner)
-export const getRoomByOwnerId = userId => async (dispatch) => {
-  try {
-    dispatch({type: ROOM_REQUEST});
-    const res = await axios.get(`/api/room/owner/${userId}`);
-    
-    dispatch({
-      type: GET_ROOMLIST,
-      payload: res.data,
-    });
-  } catch (err) {
-    dispatch({
-      type: ROOM_ERROR,
-      payload: { msg: err.message }
-    });    
-  }
-};
-
-//Get room by user_id(owner)
+//Get room by user_id(user)
 export const getRoomByUserId = userId => async (dispatch) => {
   try {
     dispatch({type: ROOM_REQUEST});
@@ -73,42 +52,6 @@ export const getRoomByUserId = userId => async (dispatch) => {
     dispatch({
       type: GET_ROOMLIST,
       payload: res.data,
-    });
-  } catch (err) {
-    dispatch({
-      type: ROOM_ERROR,
-      payload: { msg: err.message }
-    });    
-  }
-};
-
-// Create room
-export const createRoom = formData => async (dispatch) => {
-  try {
-    dispatch({type: ROOM_REQUEST});
-    const res = await axios.post('/api/room', formData);
-
-    dispatch({
-      type: CREATE_ROOM,
-      payload: res.data,
-    });
-  } catch (err) {
-    dispatch({
-      type: ROOM_ERROR,
-      payload: { msg: err.message }
-    });    
-  }
-};
-
-//Delete room
-export const deleteRoom = roomId => async (dispatch) => {
-  try {
-    dispatch({type: ROOM_REQUEST});
-    await axios.delete(`/api/room/${roomId}`);
-
-    dispatch({
-      type: DELETE_ROOM,
-      payload: roomId,
     });
   } catch (err) {
     dispatch({
@@ -140,7 +83,7 @@ export const joinRoom = (roomId,userId)=> async (dispatch) => {
 export const leaveRoom = (roomId,userId) => async (dispatch) => {
   try {
     dispatch({type: ROOM_REQUEST});
-    const res = await axios.delete(`/api/room/leave/${roomId}`,userId);
+    await axios.delete(`/api/room/leave/${roomId}`,userId);
 
     dispatch({
       type: LEAVE_ROOM,
@@ -154,20 +97,3 @@ export const leaveRoom = (roomId,userId) => async (dispatch) => {
   }
 };
 
-//Edit room name 
-export const editRoomName = (roomId, formData) => async (dispatch) => {
-  try {
-    dispatch({type: ROOM_REQUEST});
-    const res = await axios.put(`/api/room/editname/${roomId}`, formData);
-
-    dispatch({
-      type: EDIT_ROOM,
-      payload: res.data,
-    });
-  } catch (err) {
-    dispatch({
-      type: ROOM_ERROR,
-      payload: { msg: err.message }
-    });    
-  }
-};

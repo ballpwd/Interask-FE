@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import { connect } from "react-redux";
-import { createRoom } from "../actions/roomActions";
+import { createRoom } from "../actions/orgRoomActions";
 
 const CreateRoom = ({ createRoom }) => {
   const [roomName, setRoomName] = useState("");

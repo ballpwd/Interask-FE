@@ -1,13 +1,13 @@
 import React, { useEffect } from "react";
 import { Link } from "react-router-dom";
 import { connect } from "react-redux";
-import { getAllRoom } from "../actions/roomActions";
+import { getAllOrgRoom } from "../actions/orgRoomActions";
 import SelectRoom from "./SelectRoom";
 
-const Room = ({ getAllRoom, room: {roomList} }) => {
+const Room = ({ getAllOrgRoom, orgRoom: {roomList} }) => {
   useEffect(() => {
-    getAllRoom();
-  }, [getAllRoom]);
+    getAllOrgRoom();
+  }, [getAllOrgRoom]);
   
   console.log(roomList)
 
@@ -39,10 +39,10 @@ const Room = ({ getAllRoom, room: {roomList} }) => {
 };
 
 const mapStateToProps = (state) => ({
-  room: state.room,
+  orgRoom: state.orgRoom,
 });
 
-export default connect(mapStateToProps, { getAllRoom })(Room);
+export default connect(mapStateToProps, { getAllOrgRoom })(Room);
 
 
 

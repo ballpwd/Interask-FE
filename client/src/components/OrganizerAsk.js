@@ -1,29 +1,29 @@
 import React, {Fragment , useEffect} from 'react' ;
 import {connect} from 'react-redux';
 import { Link } from "react-router-dom";
-import {getRoomById} from '../actions/roomActions' ;
-import {getAskByRoomId} from '../actions/askActions' ;
+import {getOrgRoomById} from '../actions/orgRoomActions' ;
+import {getOrgAskByRoomId} from '../actions/orgAskActions' ;
 import OrganizerAskList from './OrganizerAskList' ;
 import OrganizerAskAnalyze from './OrganizerAskAnalyze' ;
 const OrganizerAsk = props =>{
 
-    const { getRoomById,
-        getAskByRoomId,
-        room:{room},
-        ask:{askList,loading},
+    const { getOrgRoomById,
+        getOrgAskByRoomId,
+        orgRoom:{room},
+        orgAsk:{askList,loading},
         match 
     } = props ;
 
 
     useEffect(() => {
-        getRoomById(match.params.id);
-    } ,[getRoomById, match.params.id])
+        getOrgRoomById(match.params.id);
+    } ,[getOrgRoomById, match.params.id])
     
     // http://localhost:3000/organizer/ask/5e85457618a87c3a58dfffb8
    
     useEffect(() => {
-        getAskByRoomId(match.params.id);
-    } ,[getAskByRoomId, match.params.id])
+        getOrgAskByRoomId(match.params.id);
+    } ,[getOrgAskByRoomId, match.params.id])
     
     console.log(room)
     console.log(askList)
@@ -68,8 +68,8 @@ const OrganizerAsk = props =>{
 }
 
 const mapStateToProps = state => ({
-    room: state.room,
-    ask: state.ask
+    orgRoom: state.orgRoom,
+    orgAsk: state.orgAsk
 })
 
-export default connect(mapStateToProps,{getRoomById,getAskByRoomId})(OrganizerAsk) ;
+export default connect(mapStateToProps,{getOrgRoomById,getOrgAskByRoomId})(OrganizerAsk) ;

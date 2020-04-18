@@ -1,9 +1,8 @@
 import {
-    ASK_REQUEST,
-    GET_ASKLIST,
-    GET_ASK,
-    ADD_ASK,
-    ASK_ERROR
+    ORG_ASK_REQUEST,
+    GET_ORG_ASKLIST,
+    GET_ORG_ASK,
+    ORG_ASK_ERROR
   } from '../actions/types';
 
   const initialState = {
@@ -16,30 +15,24 @@ import {
 export default function(state = initialState, action) {
   const { type, payload } = action;
   switch (type) {
-    case ASK_REQUEST:
+    case ORG_ASK_REQUEST:
       return {
         ...state,
         loading: true   
       } ;
-    case GET_ASKLIST:
+    case GET_ORG_ASKLIST:
       return {
         ...state,
         askList: payload,
         loading: false   
       } ;
-    case GET_ASK:
+    case GET_ORG_ASK:
         return {
           ...state,
           ask: payload,
           loading: false       
         } ;      
-    case ADD_ASK:
-      return {
-        ...state,
-        askList: [...state.posts,payload],
-        loading: false 
-      };
-    case ASK_ERROR:
+    case ORG_ASK_ERROR:
       return {
         ...state,
         error: payload,

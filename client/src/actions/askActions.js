@@ -1,10 +1,10 @@
 import axios from 'axios';
 import { 
+    ASK_REQUEST,
     GET_ASKLIST,
     GET_ASK,
     ADD_ASK,
-    ASK_ERROR,
-    ASK_REQUEST
+    ASK_ERROR
 } from './types';
 
 //Get all ask
@@ -32,24 +32,6 @@ export const getAskById = askId => async dispatch => {
 
         dispatch({
             type: GET_ASK,
-            payload: res.data
-        });
-    } catch (err) {
-        dispatch({
-            type: ASK_ERROR,
-            payload: { msg: err.message }
-        });    
-    }
-};
-
-//Get ask by room_id
-export const getAskByRoomId = roomId => async dispatch => {
-    try {
-        dispatch({type: ASK_REQUEST});
-        const res = await axios.get(`/api/ask/room/${roomId}`)
-    
-        dispatch({
-            type: GET_ASKLIST,
             payload: res.data
         });
     } catch (err) {

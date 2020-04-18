@@ -2,18 +2,16 @@ import {
   ROOM_REQUEST,
   GET_ROOMLIST,
   GET_ROOM,
-  CREATE_ROOM,
-  DELETE_ROOM,
-  EDIT_ROOM,
-  ROOM_ERROR,
   JOIN_ROOM,
-  LEAVE_ROOM
+  LEAVE_ROOM,
+  ROOM_ERROR
 } from '../actions/types';
 
 const initialState = {
   roomList: [],
   room: {},
   error: {},
+  loading: true 
 };
 
 export default function (state = initialState, action) {
@@ -30,29 +28,16 @@ export default function (state = initialState, action) {
         roomList: payload,
         loading: false    
       } ;
-    case EDIT_ROOM:
     case GET_ROOM:
       return {
         ...state,
         room: payload,
         loading: false    
       } ; 
-    case CREATE_ROOM:
-      return {
-        ...state,
-        roomList: [...state.posts,payload],
-        loading: false 
-      };
-    case DELETE_ROOM:
-      return {
-        ...state,
-        roomList: state.roomList.filter(room => room._id !== payload),
-        loading: false
-      };
     case JOIN_ROOM:
         return {
           ...state,
-          roomList: [...state.posts,payload],
+          roomList: [...state,payload],
           loading: false    
     } 
     case LEAVE_ROOM:

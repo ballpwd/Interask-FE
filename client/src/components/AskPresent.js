@@ -1,14 +1,14 @@
 import React, { useEffect } from "react";
 import { Link } from "react-router-dom";
 import { connect } from "react-redux";
-import { getAllAsk } from "../actions/askActions";
+import { getAllOrgAsk } from "../actions/orgAskActions";
 import AskQuestion from "./AskQuestion";
 
-const AskPresent = ({ getAllAsk, ask: {askList} }) => {
+const AskPresent = ({ getAllOrgAsk, orgAsk: {askList} }) => {
   
   useEffect(() => {
-    getAllAsk();
-  }, [getAllAsk]);
+    getAllOrgAsk();
+  }, [getAllOrgAsk]);
 
   const showAsk =
     askList &&
@@ -34,7 +34,7 @@ const AskPresent = ({ getAllAsk, ask: {askList} }) => {
 };
 
 const mapStateToProps = (state) => ({
-  ask: state.ask
+  orgAsk: state.orgAsk
 });
 
-export default connect(mapStateToProps, { getAllAsk })(AskPresent);
+export default connect(mapStateToProps, { getAllOrgAsk })(AskPresent);

@@ -1,6 +1,7 @@
 import React  from 'react' ;
 
-const OrganizerAskAnalyze = ({askList}) =>{
+const OrganizerAskAnalyze = props =>{
+    const {askList} = props
 
     const countAsker = () =>{
         const distinctId = [...new Set(askList.map(ask => ask.user._id))]

@@ -5,7 +5,16 @@ import {getRoomById} from '../actions/roomActions' ;
 import {getAskByRoomId} from '../actions/askActions' ;
 import OrganizerAskList from './OrganizerAskList' ;
 import OrganizerAskAnalyze from './OrganizerAskAnalyze' ;
-const OrganizerAsk = ({ getRoomById,getAskByRoomId,room:{room},ask:{askList,loading},match })=>{
+const OrganizerAsk = props =>{
+
+    const { getRoomById,
+        getAskByRoomId,
+        room:{room},
+        ask:{askList,loading},
+        match 
+    } = props ;
+
+
     useEffect(() => {
         getRoomById(match.params.id);
     } ,[getRoomById, match.params.id])

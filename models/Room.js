@@ -18,6 +18,13 @@ const RoomSchema = new mongoose.Schema({
     feedbackStatus:{
         type: Boolean,
         default: true
-    }
+    },
+    user:[
+        {
+            type:mongoose.Schema.Types.ObjectId,
+            ref: 'user',
+            default: []
+        }
+    ]
 })
 module.exports = Room = mongoose.model('room',RoomSchema);

@@ -71,12 +71,13 @@ router.get('/room/:room_id', async (req, res) => {
       }
 })
 
-// @route  GET /api/ask/room/:room_id/:user_id'
+// @route  GET /api/ask/user/room/:room_id'
 // @desc   Get ask by roomId and user_id
 
 router.get('/room/:room_id/:user_id', async (req, res) => {
     try{
         const {room_id,user_id} = req.params
+
         const ask = await Ask.find({room: room_id,user: user_id}).populate('user', ['userName'])
 
         if (!ask) {

@@ -9,14 +9,7 @@ const UserSchema = new mongoose.Schema({
     userName:{
         type: String,
         required: true
-    },
-    joinRoom:[
-        {
-            type:mongoose.Schema.Types.ObjectId,
-            ref: 'room',
-            default: []
-        }
-    ]
+    }
   
 })
 module.exports = User = mongoose.model('user',UserSchema);

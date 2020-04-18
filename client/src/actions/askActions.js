@@ -3,29 +3,31 @@ import {
     GET_ASKLIST,
     GET_ASK,
     ADD_ASK,
-    ASK_ERROR
+    ASK_ERROR,
+    ASK_REQUEST
 } from './types';
 
 //Get all ask
 export const getAllAsk = () => async dispatch => {
-    // try {
+    try {
+        dispatch({type: ASK_REQUEST});
         const res = await axios.get('/api/ask')
-    
         dispatch({
             type: GET_ASKLIST,
             payload: res.data
         });
-    // } catch (err) {
-    //     dispatch({
-    //         type: ASK_ERROR,
-    //         payload: { msg: err.message }
-    //     });    
-    // }
+    } catch (err) {
+        dispatch({
+            type: ASK_ERROR,
+            payload: { msg: err.message }
+        });    
+    }
 };
 
 //Get ask by ask_id
 export const getAskById = askId => async dispatch => {
     try {
+        dispatch({type: ASK_REQUEST});
         const res = await axios.get(`/api/ask/${askId}`)
 
         dispatch({
@@ -43,6 +45,7 @@ export const getAskById = askId => async dispatch => {
 //Get ask by room_id
 export const getAskByRoomId = roomId => async dispatch => {
     try {
+        dispatch({type: ASK_REQUEST});
         const res = await axios.get(`/api/ask/room/${roomId}`)
     
         dispatch({
@@ -60,6 +63,7 @@ export const getAskByRoomId = roomId => async dispatch => {
 //Get ask by room_id and user_id
 export const getAskByRoomIdUserId = (roomId,userId) => async dispatch => {
     try {
+        dispatch({type: ASK_REQUEST});
         const res = await axios.get(`/api/ask/room/${roomId}/${userId}`)
     
         dispatch({
@@ -77,6 +81,7 @@ export const getAskByRoomIdUserId = (roomId,userId) => async dispatch => {
 // Add ask
 export const addAsk = formData => async dispatch => {
     try {
+        dispatch({type: ASK_REQUEST});
         const res = await axios.post('/api/ask', formData);
 
         dispatch({

@@ -2,19 +2,25 @@ import {
     GET_ASKLIST,
     GET_ASK,
     ADD_ASK,
-    ASK_ERROR
+    ASK_ERROR,
+    ASK_REQUEST
   } from '../actions/types';
 
   const initialState = {
     askList: [],
     ask: null,
     error: {},
-    loading: true
+    // loading: true
   };
 
 export default function(state = initialState, action) {
   const { type, payload } = action;
   switch (type) {
+    case ASK_REQUEST:
+      return {
+        ...state,
+        loading: true   
+      } ;
     case GET_ASKLIST:
       return {
         ...state,

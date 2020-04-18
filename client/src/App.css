@@ -9,8 +9,17 @@ body {
 
   align-items: center;
   text-align: center;
+  padding: 3rem;
 
   /* BG */
 
   background: linear-gradient(300.81deg, #f0a3ac 15.33%, #b493e0 101.47%);
+}
+
+.card-block {
+  height: 70px;
+  text-align: center;
+  align-items: center;
+  background: #e5e5e5;
+  border-radius: 10px;
 }

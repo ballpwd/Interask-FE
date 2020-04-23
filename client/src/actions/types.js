@@ -24,3 +24,8 @@ export const CREATE_ROOM = "CREATE_ROOM";
 export const DELETE_ROOM = "DELETE_ROOM";
 export const EDIT_ROOM = "EDIT_ROOM";
 export const ORG_ROOM_ERROR = "ORG_ROOM_ERROR";
+//Auth
+export const AUTH_REQUEST = "AUTH_REQUEST";
+export const USER_LOADED = "USER_LOADED";
+export const AUTH_ERROR = "AUTH_ERROR";
+export const TOKEN_LOADED = "TOKEN_LOADED";

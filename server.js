@@ -1,12 +1,28 @@
 const express = require('express');
 const connectDB = require('./config/db');
 const app = express();
+const passport = require('passport');
+const cookieSession = require('cookie-session');
 
 // Connect Database
 connectDB();
 
 // Init Middleware
 app.use(express.json());
+
+//Passport
+
+// app.use(
+//     cookieSession({
+//       maxAge: 30 * 24 * 60 * 60 * 1000,
+//       keys: ['fwfeeadajksdkjasdkakwkfwe']
+//     })
+//   );
+app.use(passport.initialize());
+// app.use(passport.session());
+require("./config/passport");
+
+
 
 // Define Routes
 

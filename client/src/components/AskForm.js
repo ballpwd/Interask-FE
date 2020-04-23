@@ -8,7 +8,7 @@ const AskForm = ({ room,addAsk }) => {
     const roomId = '5e8546ad7db02d2b70f38d78' ;
 
     return(
-        <div class = "text-center container">
+        <div className = "text-center container">
         <form
             onSubmit={(e) => {
                 e.preventDefault();
@@ -16,8 +16,8 @@ const AskForm = ({ room,addAsk }) => {
                 setText("");
             }}
         >
-            <div class="form-group">
-            <textarea class="form-control"
+            <div className="form-group">
+            <textarea className="form-control"
                 name="text"
                 placeholder="Write the question"
                 value={text}
@@ -26,7 +26,7 @@ const AskForm = ({ room,addAsk }) => {
             />
             </div>
 
-            <input type="submit" value="Submit" class="btn btn-secondary float-right" />
+            <input type="submit" value="Submit" className="btn btn-secondary float-right" />
         </form>
         </div>
     )

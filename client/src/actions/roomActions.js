@@ -15,7 +15,7 @@ export const getAllRoom = () => async (dispatch) => {
     const res = await axios.get('/api/room');
     dispatch({
       type: GET_ROOMLIST,
-      payload: res.data,
+      payload: res.data
     });
   } catch (err) {
     dispatch({
@@ -30,10 +30,9 @@ export const getRoomById = roomId => async (dispatch) => {
   try {
     dispatch({type: ROOM_REQUEST});
     const res = await axios.get(`/api/room/${roomId}`);
-
     dispatch({
       type: GET_ROOM,
-      payload: res.data,
+      payload: res.data
     });
   } catch (err) {
     dispatch({

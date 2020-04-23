@@ -5,6 +5,7 @@ import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import Home from "./components/Home";
 import Ask from "./components/Ask";
 import Room from "./components/Room";
+import OrganizerRoom from "./components/OrganizerRoom";
 import CreateRoom from "./components/CreateRoom";
 import OrganizerAsk from "./components/OrganizerAsk";
 import OrganizerPresent from "./components/OrganizerPresent";
@@ -35,6 +36,7 @@ const App = () => {
           <Route exact path="/ask/:id" component={Ask} />
           <Route exact path="/askpresent/:id" component={OrganizerPresent} />
           <Route exact path="/room" component={Room} />
+          <Route exact path="/organizer/room" component={OrganizerRoom} />
           <Route exact path="/createroom" component={CreateRoom} />
           <Route exact path="/organizer/ask/:id" component={OrganizerAsk} />
           <Route

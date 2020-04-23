@@ -1,52 +1,55 @@
-import React, { useEffect } from "react";
+import React, {Fragment , useEffect} from 'react' ;
+import {connect} from 'react-redux';
 import { Link } from "react-router-dom";
-import { connect } from "react-redux";
-import { getAllOrgRoom } from "../actions/orgRoomActions";
-import SelectRoom from "./SelectRoom";
-
-const Room = ({ getAllOrgRoom, orgRoom: {roomList} }) => {
-  useEffect(() => {
-    getAllOrgRoom();
-  }, [getAllOrgRoom]);
-  
-  console.log(roomList)
-
-  const showRoom =
-    roomList &&
-    Array.isArray(roomList) &&
-    roomList.map((room) => <SelectRoom key={room._id} room={room} />);
-
-  return (
-    <div>
-      <div className="container-fluid">
-        <h1 className="text-center">Select Room</h1>
-      </div>
-
-      <div>{showRoom}</div>
-
-      <div>
-        <Link to="/createroom" className="btn btn-primary">
-          Create Room
-        </Link>
-      </div>
-      <div>
-        <Link to="/" className="btn btn-primary">
-          Go to Home
-        </Link>
-      </div>
-    </div>
-  );
-};
-
-const mapStateToProps = (state) => ({
-  orgRoom: state.orgRoom,
-});
-
-export default connect(mapStateToProps, { getAllOrgRoom })(Room);
+import {getRoomByUserId} from '../actions/roomActions' ;
+import RoomList from './RoomList' ;
+const Room = props =>{
+    //mockup user
+    const user = {
+        _id: '5e85403922192a21e87fbbaa',
+        email: 'ballpwd5@gmail.com',
+        userName: 'ballpwd5'
+    }
+    
+    const { 
+        getRoomByUserId,
+        room:{roomList,loading}
+    } = props ;
 
 
+    useEffect(() => {
+        getRoomByUserId(user._id);
+    } ,[getRoomByUserId])
+    
+    console.log(roomList)
+    
+    return loading ? (
+        <h1>Loading</h1>
+    ) : (
+        <Fragment>
+             <div className='container-fluid'>   
+                <h1 className='text-center font-weight-bold'>
+                   Hi "{user.userName}" 
+                </h1>
+                <p className='text-danger text-center'> // Mockup Room for User ballpwd5 </p>
+            </div> 
+            <div className='container-fluid'>
+                <div>
+                    {<RoomList roomList={roomList}/>}
+                </div>    
+            </div>
 
+            <div className='mt-5'> 
+                <Link to="/" className="btn btn-primary">
+                    Go to Home
+                </Link>
+            </div>
+        </Fragment>
+    )
+}
 
+const mapStateToProps = state => ({
+    room: state.room
+})
 
-
-
+export default connect(mapStateToProps,{getRoomByUserId})(Room) ;

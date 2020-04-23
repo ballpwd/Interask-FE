@@ -57,6 +57,12 @@ const OrganizerAsk = props =>{
             </div>
 
             <div className='mt-5'> 
+                <Link to={`/askpresent/${room._id}`} className="btn btn-primary">
+                    Presentaion
+                </Link>
+            </div>
+
+            <div className='mt-5'> 
                 <Link to="/" className="btn btn-primary">
                     Go to Home
                 </Link>

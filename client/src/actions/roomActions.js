@@ -47,7 +47,7 @@ export const getRoomByUserId = userId => async (dispatch) => {
   try {
     dispatch({type: ROOM_REQUEST});
     const res = await axios.get(`/api/room/user/${userId}`);
-    
+    console.log(res.data)
     dispatch({
       type: GET_ROOMLIST,
       payload: res.data,

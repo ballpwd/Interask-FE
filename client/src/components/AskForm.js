@@ -5,14 +5,14 @@ import { connect } from "react-redux";
 const AskForm = ({ room,addAsk }) => {
     const [text, setText] = useState("");
     const userId = '5e85403922192a21e87fbbaa' ;
-    const roomId = '5e8546ad7db02d2b70f38d78' ;
 
     return(
         <div className = "text-center container">
         <form
             onSubmit={(e) => {
                 e.preventDefault();
-                addAsk({ userId, roomId, text });
+                const roomId = room._id ;
+                addAsk({ userId, roomId , text });
                 setText("");
             }}
         >

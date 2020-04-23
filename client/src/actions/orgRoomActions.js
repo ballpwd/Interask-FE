@@ -49,7 +49,7 @@ export const getRoomByOwnerId = userId => async (dispatch) => {
   try {
     dispatch({type: ORG_ROOM_REQUEST});
     const res = await axios.get(`/api/room/owner/${userId}`);
-    
+    console.log(res.data)
     dispatch({
       type: GET_ORG_ROOMLIST,
       payload: res.data,

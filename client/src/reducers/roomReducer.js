@@ -4,12 +4,14 @@ import {
   GET_ROOM,
   JOIN_ROOM,
   LEAVE_ROOM,
-  ROOM_ERROR
+  ROOM_ERROR,
+  ROOM_UNLOADED,
+  ROOMLIST_UNLOADED
 } from '../actions/types';
 
 const initialState = {
   roomList: [],
-  room: {},
+  room: null,
   error: {},
   loading: true 
 };
@@ -51,7 +53,19 @@ export default function (state = initialState, action) {
         ...state,
         error: payload,
         loading: false
-      };  
+      };
+    case ROOM_UNLOADED:
+       return {
+        ...state,
+        room: null,
+        loading: true 
+      };
+    case ROOMLIST_UNLOADED:
+      return {
+        ...state,
+        roomList: [],
+        loading: true 
+      };     
     default:
       return state;
   }

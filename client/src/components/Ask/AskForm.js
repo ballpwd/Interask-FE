@@ -1,5 +1,5 @@
 import React,{useState} from  'react';
-import { addAsk } from "../actions/askActions";
+import { addAsk } from "../../actions/askActions";
 import { connect } from "react-redux";
 
 const AskForm = ({ room,addAsk }) => {

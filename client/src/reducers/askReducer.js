@@ -3,7 +3,9 @@ import {
   GET_ASKLIST,
   GET_ASK,
   ADD_ASK,
-  ASK_ERROR
+  ASK_ERROR,
+  ASK_UNLOADED,
+  ASKLIST_UNLOADED
 } from '../actions/types';
 
 const initialState = {
@@ -36,7 +38,7 @@ switch (type) {
   case ADD_ASK:
     return {
       ...state,
-      askList: [...state.posts,payload],
+      askList: [...state.askList,payload],
       loading: false 
     };
   case ASK_ERROR:
@@ -45,6 +47,18 @@ switch (type) {
       error: payload,
       loading: false 
     };
+  case ASK_UNLOADED:
+    return {
+      ...state,
+      ask: null,
+      loading: true 
+    };
+  case ASKLIST_UNLOADED:
+    return {
+      ...state,
+      askList: [],
+      loading: true 
+    }; 
   default:
     return state;
   

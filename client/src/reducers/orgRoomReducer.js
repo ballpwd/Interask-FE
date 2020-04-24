@@ -5,12 +5,14 @@ import {
     CREATE_ROOM,
     DELETE_ROOM,
     EDIT_ROOM,
-    ORG_ROOM_ERROR
+    ORG_ROOM_ERROR,
+    ORG_ROOM_UNLOADED,
+    ORG_ROOMLIST_UNLOADED
   } from '../actions/types';
   
   const initialState = {
     roomList: [],
-    room: {},
+    room: null,
     error: {},
     loading: true 
   };
@@ -53,7 +55,19 @@ import {
           ...state,
           error: payload,
           loading: false
-        };  
+        };
+      case ORG_ROOM_UNLOADED:
+        return {
+          ...state,
+          room: null,
+          loading: true 
+        };
+      case ORG_ROOMLIST_UNLOADED:
+        return {
+          ...state,
+          roomList: [],
+          loading: true 
+        }; 
       default:
         return state;
     }

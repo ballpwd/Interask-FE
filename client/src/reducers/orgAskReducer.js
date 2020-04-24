@@ -2,7 +2,9 @@ import {
     ORG_ASK_REQUEST,
     GET_ORG_ASKLIST,
     GET_ORG_ASK,
-    ORG_ASK_ERROR
+    ORG_ASK_ERROR,
+    ORG_ASK_UNLOADED,
+    ORG_ASKLIST_UNLOADED
   } from '../actions/types';
 
   const initialState = {
@@ -38,6 +40,18 @@ export default function(state = initialState, action) {
         error: payload,
         loading: false 
       };
+    case ORG_ASK_UNLOADED:
+      return {
+        ...state,
+        ask: null,
+        loading: true 
+      };
+   case ORG_ASKLIST_UNLOADED:
+      return {
+        ...state,
+        askList: [],
+        loading: true 
+      }; 
     default:
       return state;
     

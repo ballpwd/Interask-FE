@@ -3,7 +3,9 @@ import {
     ORG_ASK_REQUEST,
     GET_ORG_ASKLIST,
     GET_ORG_ASK,
-    ORG_ASK_ERROR
+    ORG_ASK_ERROR,
+    ORG_ASK_UNLOADED,
+    ORG_ASKLIST_UNLOADED
 } from './types';
 
 //Get all ask (Organizer)
@@ -18,7 +20,7 @@ export const getAllOrgAsk = () => async dispatch => {
     } catch (err) {
         dispatch({
             type: ORG_ASK_ERROR,
-            payload: { msg: err.message }
+            payload: err
         });    
     }
 };
@@ -36,7 +38,7 @@ export const getOrgAskById = askId => async dispatch => {
     } catch (err) {
         dispatch({
             type: ORG_ASK_ERROR,
-            payload: { msg: err.message }
+            payload: err
         });    
     }
 };
@@ -54,8 +56,31 @@ export const getOrgAskByRoomId = roomId => async dispatch => {
     } catch (err) {
         dispatch({
             type: ORG_ASK_ERROR,
-            payload: { msg: err.message }
+            payload: err
         });    
     }
 };
 
+//Organizer ask Unload
+export const orgAskUnload = () => async dispatch => {
+    try {
+        dispatch({type: ORG_ASK_UNLOADED});
+    } catch (err) {
+        dispatch({
+            type: ORG_ASK_ERROR,
+            payload: err
+        });    
+    }
+};
+
+//Organizer askList Unload
+export const orgAskListUnload = () => async dispatch => {
+    try {
+        dispatch({type: ORG_ASKLIST_UNLOADED});
+    } catch (err) {
+        dispatch({
+            type: ORG_ASK_ERROR,
+            payload: err
+        });    
+    }
+};

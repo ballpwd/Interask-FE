@@ -21,7 +21,8 @@ export const loadUser = () => async dispatch => {
       });
     } catch (err) {
       dispatch({
-        type: AUTH_ERROR
+        type: AUTH_ERROR,
+        payload: err
       });
     }
   };
@@ -36,7 +37,8 @@ export const loadToken = token => async dispatch => {
     });
   } catch (err) {
     dispatch({
-      type: AUTH_ERROR
+      type: AUTH_ERROR,
+      payload: err
     });
   }
 };

@@ -4,7 +4,9 @@ import {
     GET_ASKLIST,
     GET_ASK,
     ADD_ASK,
-    ASK_ERROR
+    ASK_ERROR,
+    ASK_UNLOADED,
+    ASKLIST_UNLOADED
 } from './types';
 
 //Get all ask
@@ -19,7 +21,7 @@ export const getAllAsk = () => async dispatch => {
     } catch (err) {
         dispatch({
             type: ASK_ERROR,
-            payload: { msg: err.message }
+            payload: err
         });    
     }
 };
@@ -37,7 +39,7 @@ export const getAskById = askId => async dispatch => {
     } catch (err) {
         dispatch({
             type: ASK_ERROR,
-            payload: { msg: err.message }
+            payload: err
         });    
     }
 };
@@ -55,7 +57,7 @@ export const getAskByRoomIdUserId = (roomId,userId) => async dispatch => {
     } catch (err) {
         dispatch({
             type: ASK_ERROR,
-            payload: { msg: err.message }
+            payload: err
         });    
     }
 };
@@ -73,7 +75,31 @@ export const addAsk = formData => async dispatch => {
     } catch (err) {
         dispatch({
             type: ASK_ERROR,
-            payload: { msg: err.message }
+            payload: err
+        });    
+    }
+};
+
+//ask Unload
+export const askUnload = () => async dispatch => {
+    try {
+        dispatch({type: ASK_UNLOADED});
+    } catch (err) {
+        dispatch({
+            type: ASK_ERROR,
+            payload: err
+        });    
+    }
+};
+
+//askList Unload
+export const askListUnload = () => async dispatch => {
+    try {
+        dispatch({type: ASKLIST_UNLOADED});
+    } catch (err) {
+        dispatch({
+            type: ASK_ERROR,
+            payload: err
         });    
     }
 };

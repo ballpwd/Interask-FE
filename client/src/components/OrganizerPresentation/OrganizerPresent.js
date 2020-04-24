@@ -2,23 +2,27 @@ import React, { useEffect, Fragment } from "react";
 import { Link } from "react-router-dom";
 import { connect } from "react-redux";
 import OrganizerPresentList from "./OrganizerPresentList";
-import { getOrgAskByRoomId } from "../actions/orgAskActions";
-import { getOrgRoomById } from "../actions/orgRoomActions";
+import { getOrgAskByRoomId, orgAskListUnload} from "../../actions/orgAskActions";
+import { getOrgRoomById, orgRoomUnload } from "../../actions/orgRoomActions";
 
 const OrganizerPresent = ({
   getOrgRoomById,
+  orgRoomUnload,
   getOrgAskByRoomId,
+  orgAskListUnload,
   orgRoom: { room },
   orgAsk: { askList, loading },
   match,
 }) => {
   useEffect(() => {
     getOrgRoomById(match.params.id);
-  }, [getOrgRoomById, match.params.id]);
+    return () => { orgRoomUnload() }
+  }, [getOrgRoomById, match.params.id, orgRoomUnload]);
 
   useEffect(() => {
     getOrgAskByRoomId(match.params.id);
-  }, [getOrgAskByRoomId, match.params.id]);
+    return () => { orgAskListUnload() }
+  }, [getOrgAskByRoomId, match.params.id, orgAskListUnload]);
 
   return loading ? (
     <h1>Loading</h1>
@@ -51,6 +55,6 @@ const mapStateToProps = (state) => ({
   orgAsk: state.orgAsk,
 });
 
-export default connect(mapStateToProps, { getOrgRoomById, getOrgAskByRoomId })(
+export default connect(mapStateToProps, { getOrgRoomById, getOrgAskByRoomId, orgRoomUnload, orgAskListUnload })(
   OrganizerPresent
 );

@@ -1,14 +1,17 @@
 import React, {Fragment , useEffect} from 'react' ;
 import {connect} from 'react-redux';
 import { Link } from "react-router-dom";
-import {getOrgRoomById} from '../actions/orgRoomActions' ;
-import {getOrgAskByRoomId} from '../actions/orgAskActions' ;
+import {getOrgRoomById,orgRoomUnload} from '../../actions/orgRoomActions' ;
+import {getOrgAskByRoomId,orgAskListUnload} from '../../actions/orgAskActions' ;
 import OrganizerAskList from './OrganizerAskList' ;
 import OrganizerAskAnalyze from './OrganizerAskAnalyze' ;
 const OrganizerAsk = props =>{
 
-    const { getOrgRoomById,
+    const { 
+        getOrgRoomById,
+        orgRoomUnload,
         getOrgAskByRoomId,
+        orgAskListUnload,
         orgRoom:{room},
         orgAsk:{askList,loading},
         match 
@@ -17,13 +20,15 @@ const OrganizerAsk = props =>{
 
     useEffect(() => {
         getOrgRoomById(match.params.id);
-    } ,[getOrgRoomById, match.params.id])
+        return () => { orgRoomUnload() }
+    } ,[getOrgRoomById, match.params.id,orgRoomUnload])
     
     // http://localhost:3000/organizer/ask/5e85457618a87c3a58dfffb8
    
     useEffect(() => {
         getOrgAskByRoomId(match.params.id);
-    } ,[getOrgAskByRoomId, match.params.id])
+        return () => { orgAskListUnload() }
+    } ,[getOrgAskByRoomId, match.params.id,orgAskListUnload])
     
     console.log(room)
     console.log(askList)
@@ -78,4 +83,4 @@ const mapStateToProps = state => ({
     orgAsk: state.orgAsk
 })
 
-export default connect(mapStateToProps,{getOrgRoomById,getOrgAskByRoomId})(OrganizerAsk) ;
+export default connect(mapStateToProps,{getOrgRoomById,getOrgAskByRoomId,orgRoomUnload,orgAskListUnload})(OrganizerAsk) ;

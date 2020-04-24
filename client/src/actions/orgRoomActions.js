@@ -6,7 +6,9 @@ import {
     CREATE_ROOM,
     DELETE_ROOM,
     EDIT_ROOM,
-    ORG_ROOM_ERROR
+    ORG_ROOM_ERROR,
+    ORG_ROOM_UNLOADED,
+    ORG_ROOMLIST_UNLOADED
 } from './types';
 
 //Get all room
@@ -39,7 +41,7 @@ export const getOrgRoomById = roomId => async (dispatch) => {
   } catch (err) {
     dispatch({
       type: ORG_ROOM_ERROR,
-      payload: { msg: err.message }
+      payload: err
     });    
   }
 };
@@ -57,7 +59,7 @@ export const getRoomByOwnerId = userId => async (dispatch) => {
   } catch (err) {
     dispatch({
       type: ORG_ROOM_ERROR,
-      payload: { msg: err.message }
+      payload: err
     });    
   }
 };
@@ -75,7 +77,7 @@ export const createRoom = formData => async (dispatch) => {
   } catch (err) {
     dispatch({
       type: ORG_ROOM_ERROR,
-      payload: { msg: err.message }
+      payload: err
     });    
   }
 };
@@ -93,7 +95,7 @@ export const deleteRoom = roomId => async (dispatch) => {
   } catch (err) {
     dispatch({
       type: ORG_ROOM_ERROR,
-      payload: { msg: err.message }
+      payload: err
     });    
   }
 };
@@ -111,7 +113,31 @@ export const editRoomName = (roomId, formData) => async (dispatch) => {
   } catch (err) {
     dispatch({
       type: ORG_ROOM_ERROR,
-      payload: { msg: err.message }
+      payload: err
     });    
+  }
+};
+
+//Organizer room Unload
+export const orgRoomUnload = () => async dispatch => {
+  try {
+      dispatch({type: ORG_ROOM_UNLOADED});
+  } catch (err) {
+      dispatch({
+          type: ORG_ROOM_ERROR,
+          payload: err
+      });    
+  }
+};
+
+//Organizer roomList Unload
+export const orgRoomListUnload = () => async dispatch => {
+  try {
+      dispatch({type: ORG_ROOMLIST_UNLOADED});
+  } catch (err) {
+      dispatch({
+          type: ORG_ROOM_ERROR,
+          payload: err
+      });    
   }
 };

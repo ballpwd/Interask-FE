@@ -1,9 +1,9 @@
 import React, {Fragment , useEffect} from 'react' ;
 import {connect} from 'react-redux';
 import { Link } from "react-router-dom";
-import {getRoomByOwnerId} from '../actions/orgRoomActions' ;
-import OrganizerRoomList from './OrganizerRoomList' ;
-const OrganizerRoom = props =>{
+import {getRoomByUserId,roomListUnload} from '../../actions/roomActions' ;
+import RoomList from './RoomList' ;
+const Room = props =>{
     //mockup user
     const user = {
         _id: '5e85403922192a21e87fbbaa',
@@ -12,14 +12,16 @@ const OrganizerRoom = props =>{
     }
     
     const { 
-        getRoomByOwnerId,
-        orgRoom:{roomList,loading}
+        getRoomByUserId,
+        roomListUnload,
+        room:{roomList,loading}
     } = props ;
 
 
     useEffect(() => {
-        getRoomByOwnerId(user._id);
-    } ,[getRoomByOwnerId])
+        getRoomByUserId(user._id);
+        return () => { roomListUnload() }
+    } ,[getRoomByUserId,roomListUnload,user._id])
     
     console.log(roomList)
     
@@ -31,11 +33,11 @@ const OrganizerRoom = props =>{
                 <h1 className='text-center font-weight-bold'>
                    Hi "{user.userName}" 
                 </h1>
-                <p className='text-danger text-center'> // Mockup Organizer Room for User ballpwd5 </p>
+                <p className='text-danger text-center'> Mockup Room for User ballpwd5 </p>
             </div> 
             <div className='container-fluid'>
                 <div>
-                    {<OrganizerRoomList roomList={roomList}/>}
+                    {<RoomList roomList={roomList}/>}
                 </div>    
             </div>
 
@@ -49,7 +51,7 @@ const OrganizerRoom = props =>{
 }
 
 const mapStateToProps = state => ({
-    orgRoom: state.orgRoom
+    room: state.room
 })
 
-export default connect(mapStateToProps,{getRoomByOwnerId})(OrganizerRoom) ;
+export default connect(mapStateToProps,{getRoomByUserId,roomListUnload})(Room) ;

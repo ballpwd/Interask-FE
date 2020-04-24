@@ -5,7 +5,9 @@ import {
   GET_ROOM,
   JOIN_ROOM,
   LEAVE_ROOM,
-  ROOM_ERROR
+  ROOM_ERROR,
+  ROOM_UNLOADED,
+  ROOMLIST_UNLOADED
 } from './types';
 
 //Get all room
@@ -20,7 +22,7 @@ export const getAllRoom = () => async (dispatch) => {
   } catch (err) {
     dispatch({
       type: ROOM_ERROR,
-      payload: { msg: err.message }
+      payload: err
     });    
   }
 };
@@ -37,7 +39,7 @@ export const getRoomById = roomId => async (dispatch) => {
   } catch (err) {
     dispatch({
       type: ROOM_ERROR,
-      payload: { msg: err.message }
+      payload: err
     });    
   }
 };
@@ -55,7 +57,7 @@ export const getRoomByUserId = userId => async (dispatch) => {
   } catch (err) {
     dispatch({
       type: ROOM_ERROR,
-      payload: { msg: err.message }
+      payload: err
     });    
   }
 };
@@ -73,7 +75,7 @@ export const joinRoom = (roomId,userId)=> async (dispatch) => {
   } catch (err) {
     dispatch({
       type: ROOM_ERROR,
-      payload: { msg: err.message }
+      payload: err
     });    
   }
 };
@@ -91,8 +93,31 @@ export const leaveRoom = (roomId,userId) => async (dispatch) => {
   } catch (err) {
     dispatch({
       type: ROOM_ERROR,
-      payload: { msg: err.message }
+      payload: err
     });    
   }
 };
 
+//room Unload
+export const roomUnload = () => async dispatch => {
+  try {
+      dispatch({type: ROOM_UNLOADED});
+  } catch (err) {
+      dispatch({
+          type: ROOM_ERROR,
+          payload: err
+      });    
+  }
+};
+
+//roomList Unload
+export const roomListUnload = () => async dispatch => {
+  try {
+      dispatch({type: ROOMLIST_UNLOADED});
+  } catch (err) {
+      dispatch({
+          type: ROOM_ERROR,
+          payload: err
+      });    
+  }
+};

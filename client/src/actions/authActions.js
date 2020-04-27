@@ -10,10 +10,9 @@ import {
 export const loadUser = () => async dispatch => {
     try {
       dispatch({type: AUTH_REQUEST});
+      
       const res = await axios.get('/api/auth/current_user');
-      // const user = {_id: '5e85403922192a21e87fbbaa',
-      //               email: 'ballpwd5@gmail.com',   //mockup user
-      //               userName: 'ballpwd5'}
+      
       console.log(res.data)
       dispatch({
         type: USER_LOADED,

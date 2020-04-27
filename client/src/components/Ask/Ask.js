@@ -61,7 +61,7 @@ const Ask = props => {
 
 const mapStateToProps = state => ({
   room: state.room,
-  ask: state.ask,
+  ask: state.ask
 })
 
 export default connect(mapStateToProps, { getRoomById, getAskByRoomIdUserId, roomUnload, askUnload})(Ask);

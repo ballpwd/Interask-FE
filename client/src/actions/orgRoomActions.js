@@ -23,7 +23,7 @@ export const getAllOrgRoom = () => async (dispatch) => {
   } catch (err) {
     dispatch({
       type: ORG_ROOM_ERROR,
-      payload: { msg: err.message }
+      payload: err
     });    
   }
 };

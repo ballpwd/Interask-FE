@@ -2,7 +2,6 @@ import React from 'react' ;
 
 const AskHistoryItem = ({ask:{text,date}}) =>{
     return(
-
         <div className ="container">
             <p >{date}</p>
             <p className='h6 p-2

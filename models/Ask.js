@@ -18,6 +18,10 @@ const AskSchema = new mongoose.Schema({
     date:{
         type: Date,
         default: Date.now
+    },
+    anonymous:{
+        type: Boolean,
+        default: false
     }
     
 })

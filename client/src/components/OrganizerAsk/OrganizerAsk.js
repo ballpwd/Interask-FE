@@ -35,6 +35,7 @@ const OrganizerAsk = props =>{
     
     return loading ? (
         <h1>Loading</h1>
+        
     ) : (
         <Fragment>
             <div className='container-fluid'>   
@@ -49,7 +50,7 @@ const OrganizerAsk = props =>{
                                 ROOMID: {room._id}
                 </h5>
                 <div className='row'>
-                    <div className='col-md'>
+                    <div className='col-md-8'>
                         
                         {<OrganizerAskList askList={askList}/>}
                         

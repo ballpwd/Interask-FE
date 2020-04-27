@@ -10,15 +10,15 @@ router.post('/', async (req, res) => {
         const newAsk = new Ask({
             user: req.body.userId,
             room: req.body.roomId,
-            text: req.body.text
+            text: req.body.text,
+            anonymous: req.body.anonymous
           });
         const ask = await newAsk.save()
         res.json(ask);
     } catch (err) {
         console.error(err.message);
         res.status(500).send('Server Error');
-      }
-
+    }
 });
 
 // @route  GET /api/ask
@@ -60,7 +60,7 @@ router.get('/room/:room_id', async (req, res) => {
         const {room_id} = req.params
         const ask = await Ask.find({room: room_id}).populate('user', ['userName'])
 
-        if (ask.length<1) {
+        if (!req.params.room_id.match(/^[0-9a-fA-F]{24}$/) || !ask) {
             return res.status(404).json({ msg: 'Ask not found' });
         }
         
@@ -68,7 +68,7 @@ router.get('/room/:room_id', async (req, res) => {
     } catch (err) {
         console.error(err.message);
         res.status(500).send('Server Error');
-      }
+    }    
 })
 
 // @route  GET /api/ask/user/room/:room_id'

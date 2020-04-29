@@ -9,17 +9,105 @@ body {
 
   align-items: center;
   text-align: center;
-  padding: 3rem;
+  /* padding: 3rem; */
 
   /* BG */
 
   background: linear-gradient(300.81deg, #f0a3ac 15.33%, #b493e0 101.47%);
 }
-
+h1 {
+  font-family: Kanit;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 46px;
+}
+header {
+  font-family: Kanit;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 46px;
+  line-height: 54px;
+}
 .card-block {
   height: 70px;
   text-align: center;
   align-items: center;
   background: #e5e5e5;
   border-radius: 10px;
+}
+
+.org-h1 {
+  font-family: Kanit;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 46px;
+  line-height: 54px;
+}
+
+.org-h2 {
+  font-family: Kanit;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 38px;
+  line-height: 46px;
+}
+
+.org-h3 {
+  font-family: Kanit;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 30px;
+  line-height: 38px;
+}
+
+.org-h4 {
+  font-family: Kanit;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 24px;
+  line-height: 32px;
+}
+
+.org-h5 {
+  font-family: Kanit;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 20px;
+  line-height: 28px;
+}
+
+.org-p {
+  font-family: Kanit;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 16x;
+  line-height: 24px;
+}
+
+.org-box {
+  background: #E5E5E5;
+  border-radius: 10px; 
+  margin-bottom: 50px;
+  /* overflow: auto ; */
+}
+
+.org-boxlist {
+  height: 600px;
+  overflow: auto ;
+}
+
+.boxitem {
+  background: #FFFFFF;
+  border-radius: 10px;
+  margin: 10px 20px;
+  box-shadow: rgba(0, 0, 0, 0.5) 0px 1px 0.4rem;
+}
+
+.org-btn { 
+  width: 200px ;
+  font-family: Kanit;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 16x;
+  line-height: 24px;
 }

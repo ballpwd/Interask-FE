@@ -5,6 +5,7 @@ import {getOrgRoomById,orgRoomUnload} from '../../actions/orgRoomActions' ;
 import {getOrgAskByRoomId,orgAskListUnload} from '../../actions/orgAskActions' ;
 import OrganizerAskList from './OrganizerAskList' ;
 import OrganizerAskAnalyze from './OrganizerAskAnalyze' ;
+import { Container, Row, Col, Button } from 'reactstrap';
 const OrganizerAsk = props =>{
 
     const { 
@@ -34,47 +35,50 @@ const OrganizerAsk = props =>{
     console.log(askList)
     
     return loading ? (
-        <h1>Loading</h1>
-        
+        <h1>Loading</h1> 
     ) : (
         <Fragment>
-            <div className='container-fluid'>   
-                <h1 className='text-center font-weight-bold'>
+            <Container fluid>
+                <h1 className='org-h1 text-center'>
                     ASK
                 </h1>
-            </div> 
-            <div className='container-fluid'>
-                <h5 className='text-left'>
-                                ROOM: {room.roomName}
-                                <br/>
-                                ROOMID: {room._id}
-                </h5>
-                <div className='row'>
-                    <div className='col-md-8'>
-                        
+            </Container>
+            <Container fluid >
+                <Row className='justify-content-center align-items-center'>
+                    <Col md='5' xs='12' className='mt-4'>
+                        <h5 className='org-h5'>
+                            ROOM: {room.roomName}
+                            <br/>
+                            ROOMID: {room._id}
+                        </h5>
                         {<OrganizerAskList askList={askList}/>}
-                        
-                    </div>
-                    <div className='col-md'>
+                    </Col>    
+                    <Col md='5' xs='12' className='mt-4'>
                         {<OrganizerAskAnalyze askList={askList}/>}
-                        
-                    </div>
-                </div>    
-            </div>
+                        <Row>
+                            <Col md='6' xs='12' className='text-center mt-5'>
+                                <Button className="btn btn-dark org-btn">
+                                    Export
+                                </Button>
+                            </Col>
+                            <Col md='6' xs='12' className='text-center mt-5'>
+                                <Link to={`/askpresent/${room._id}`} className="btn btn-dark org-btn">
+                                    Presentaion
+                                </Link>
+                            </Col>
+                        </Row>
+                    </Col>
+                </Row>   
+            </Container>
 
-            <div className='mt-5'> 
-                <Link to={`/askpresent/${room._id}`} className="btn btn-primary">
-                    Presentaion
-                </Link>
-            </div>
-
-            <div className='mt-5'> 
+            <div className='mt-3'> 
                 <Link to="/" className="btn btn-primary">
                     Go to Home
                 </Link>
             </div>
-
+           
         </Fragment>
+      
     )
 
 }

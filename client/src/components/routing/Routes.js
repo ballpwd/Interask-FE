@@ -11,7 +11,6 @@ import NotFound from '../layout/NotFound';
 
 const Routes = () => {
   return (
-    <section className='container'>
       <Switch>
         <Route exact path="/ask/:id" component={Ask} />
         <Route exact path="/askpresent/:id" component={OrganizerPresent} />
@@ -22,7 +21,6 @@ const Routes = () => {
         <Route exact path="/organizer/present/:id" component={OrganizerPresent}/>
         <Route component={NotFound} />
       </Switch>
-    </section>
   );
 };
 

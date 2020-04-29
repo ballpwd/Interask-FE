@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Modal, ModalBody, Button, ModalHeader } from "reactstrap";
+import { Modal, ModalBody, Button, ModalHeader, Card } from "reactstrap";
 
 const OrganizerPresentItem = ({ ask }) => {
   const [modal, setModal] = useState(false);
@@ -14,26 +14,31 @@ const OrganizerPresentItem = ({ ask }) => {
   return (
     <div>
       <div className="container-fuild">
-        <div className="card-block">
-          <Button color="#e5e5e5" onClick={toggle} className="card-block">
+        <Card>
+          <Button
+            color="#e5e5e5"
+            onClick={toggle}
+            size="lg"
+            className="pre-box"
+          >
             <div>{ask.text}</div>
           </Button>
-        </div>
-        <br />
-
-        <Modal isOpen={modal} toggle={toggle} className="card-block">
-          <ModalHeader close={closeBtn}></ModalHeader>
-          <ModalBody>
-            <br />
-            <br />
-            <br />
-            <h2 className="text-center">{ask.text}</h2>
-            <br />
-            <br />
-            <br />
-          </ModalBody>
-        </Modal>
+        </Card>
       </div>
+      <br />
+
+      <Modal isOpen={modal} toggle={toggle}>
+        <ModalHeader close={closeBtn}></ModalHeader>
+        <ModalBody>
+          <br />
+          <br />
+          <br />
+          <h1 className="text-center">{ask.text}</h1>
+          <br />
+          <br />
+          <br />
+        </ModalBody>
+      </Modal>
     </div>
   );
 };

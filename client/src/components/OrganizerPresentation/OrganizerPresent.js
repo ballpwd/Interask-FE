@@ -2,8 +2,12 @@ import React, { useEffect, Fragment } from "react";
 import { Link } from "react-router-dom";
 import { connect } from "react-redux";
 import OrganizerPresentList from "./OrganizerPresentList";
-import { getOrgAskByRoomId, orgAskListUnload} from "../../actions/orgAskActions";
+import {
+  getOrgAskByRoomId,
+  orgAskListUnload,
+} from "../../actions/orgAskActions";
 import { getOrgRoomById, orgRoomUnload } from "../../actions/orgRoomActions";
+import { Container } from "reactstrap";
 
 const OrganizerPresent = ({
   getOrgRoomById,
@@ -16,12 +20,16 @@ const OrganizerPresent = ({
 }) => {
   useEffect(() => {
     getOrgRoomById(match.params.id);
-    return () => { orgRoomUnload() }
+    return () => {
+      orgRoomUnload();
+    };
   }, [getOrgRoomById, match.params.id, orgRoomUnload]);
 
   useEffect(() => {
     getOrgAskByRoomId(match.params.id);
-    return () => { orgAskListUnload() }
+    return () => {
+      orgAskListUnload();
+    };
   }, [getOrgAskByRoomId, match.params.id, orgAskListUnload]);
 
   return loading ? (
@@ -29,17 +37,18 @@ const OrganizerPresent = ({
   ) : (
     <Fragment>
       <div>
-        <div className="container-fluid">
-          <h1 className="text-center font-weight-bold">Ask Presentation</h1>
-          <div className="container-fluid">
-            <h5 className="text-center">
-              ROOM: {room.roomName}
-              <br />
-              ROOMID: {room._id}
-            </h5>
-          </div>
-          <div>{<OrganizerPresentList askList={askList} />}</div>
-        </div>
+        <Container fluid>
+          <h1 className="org-h1 text-center">Ask Presentation</h1>
+        </Container>
+        <Container fluid>
+          <h5 className="org-h5 text-center">
+            ROOM: {room.roomName}
+            <br />
+            ROOMID: {room._id}
+          </h5>
+
+          {<OrganizerPresentList askList={askList} />}
+        </Container>
         <div>
           <Link to="/" className="btn btn-primary">
             Go to Home
@@ -55,6 +64,9 @@ const mapStateToProps = (state) => ({
   orgAsk: state.orgAsk,
 });
 
-export default connect(mapStateToProps, { getOrgRoomById, getOrgAskByRoomId, orgRoomUnload, orgAskListUnload })(
-  OrganizerPresent
-);
+export default connect(mapStateToProps, {
+  getOrgRoomById,
+  getOrgAskByRoomId,
+  orgRoomUnload,
+  orgAskListUnload,
+})(OrganizerPresent);

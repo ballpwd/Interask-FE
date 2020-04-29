@@ -1,5 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Kanit:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800&display=swap');
-/* Present ask */
+@import url("https://fonts.googleapis.com/css2?family=Kanit:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800&display=swap");
 
 body {
   background: linear-gradient(300.81deg, #f0a3ac 15.33%, #b493e0 101.47%);
@@ -11,6 +10,7 @@ h1 {
   font-weight: 700;
   font-size: 46px;
 }
+
 header {
   font-family: Kanit;
   font-style: normal;
@@ -18,12 +18,17 @@ header {
   font-size: 46px;
   line-height: 54px;
 }
-.card-block {
-  height: 70px;
+
+/* organizer Room */
+.room-box {
+  font-family: Kanit;
+  font-style: normal;
   text-align: center;
   align-items: center;
-  background: #e5e5e5;
+  height: 160px;
+  width: 160px;
   border-radius: 10px;
+  box-shadow: rgba(109, 99, 99, 0.5) 0px 1px 0.4rem;
 }
 
 /* organizer Ask */
@@ -76,29 +81,39 @@ header {
 }
 
 .org-box {
-  background: #E5E5E5;
-  border-radius: 10px; 
+  background: #e5e5e5;
+  border-radius: 10px;
   margin-bottom: 80px;
 }
 
 .org-boxlist {
   height: 600px;
   scrollbar-3dlight-color: aqua;
-  overflow: auto ;
+  overflow: auto;
 }
 
 .boxitem {
-  background: #FFFFFF;
+  background: #ffffff;
   border-radius: 10px;
   margin: 10px 20px;
   box-shadow: rgba(0, 0, 0, 0.5) 0px 1px 0.4rem;
 }
 
-.org-btn { 
-  width: 200px ;
+.org-btn {
+  width: 200px;
   font-family: Kanit;
   font-style: normal;
   font-weight: 400;
   font-size: 16x;
   line-height: 24px;
+}
+/* Present ask */
+.pre-box {
+  height: 70px;
+  font-family: Kanit;
+  font-style: normal;
+  text-align: center;
+  align-items: center;
+  background: #e5e5e5;
+  border-radius: 10px;
 }

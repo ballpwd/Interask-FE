@@ -5,7 +5,7 @@ import AskHistoryItem from "./AskHistoryItem";
 const AskHistory = ({ askList }) => {
     return (
 
-        <div class="container">
+        <div >
         {console.log(askList)}
             {askList && askList.map((ask) => (<AskHistoryItem key={ask._id} ask={ask} />))}
         </div>

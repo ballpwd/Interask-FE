@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Fragment } from 'react';
 import { Container, Row, Col } from 'reactstrap';
 
 const AskHistoryItem = ({ ask: { text, date } }) => {
@@ -28,7 +28,7 @@ const AskHistoryItem = ({ ask: { text, date } }) => {
     const timeHistory = day + ' ' + monthName + ' ' + year + ', ' + hours + ' : ' + minutes;
     
     return (
-        <Container>
+       <Fragment>
             <div className="question-time">
                 <p>{timeHistory}</p>
             </div>
@@ -36,9 +36,9 @@ const AskHistoryItem = ({ ask: { text, date } }) => {
                 <p className='question-text '>
                     {text}</p>
             </div>
+</Fragment>
 
-
-        </Container>
+  
     )
 
 }

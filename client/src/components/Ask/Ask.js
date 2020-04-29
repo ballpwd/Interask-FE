@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, Fragment } from "react";
 import { Link } from "react-router-dom";
 import { connect } from "react-redux";
 import { getAskByRoomIdUserId, askUnload } from "../../actions/askActions";
@@ -53,22 +53,27 @@ const Ask = props => {
   return loading ? (
     <h1>Loading</h1>
   ) : (
-      <Container fluid>
-        <h1>ASK</h1>
-
+      <Fragment>
+        <Container fluid className="topic">
+          <h1>ASK</h1>
+        </Container>
         <h4 className="text-center font-weight-normal">{room.roomName}</h4>
         <div className="todayTime">{timeString}</div>
         <hr />
 
+
         <Container>
           <Row>
-            <Col className="question-column">
+            <Col className="question-column mx-2">
               {askList && <AskHistory askList={askList} />}
             </Col>
           </Row>
-          <Row>
-            <Col sm="12"> {room && <AskForm room={room} />}</Col>
-          </Row>
+        </Container>
+
+        <Container>
+    
+           {room && <AskForm room={room} />}
+         
         </Container>
 
 
@@ -77,8 +82,9 @@ const Ask = props => {
             Go to Home
                 </Link>
         </div>
+      </Fragment>
 
-      </Container >
+
     );
 };
 

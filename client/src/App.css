@@ -128,22 +128,26 @@ header {
 .question-column {
 
   background: #ffffff;
-  height: 464px;
+  height: 420px;
   width: auto;
   overflow: auto;
   border-radius: 10px;
   border: none;
 }
 
-.container-fluid h1 {
+.topic{
   text-align: center;
   font-size: 28px;
   line-height: 32px;
   font-weight: bold;
   color: #fff;
+  font-family: Kanit;
+  font-style: normal;
+  font-weight: 700;
+ 
 }
 
-.container-fluid .todayTime {
+.todayTime {
   text-align: center;
   font-size: 12px;
   line-height: 24px;
@@ -182,35 +186,35 @@ header {
 
 /*--------------------------------- ASK FORM -----------------------*/
 
-.box input {
-  position: auto;
-  margin-top: 30px;
-  display: inline-block;
-  font-size: 20px;
-  box-sizing: border-box;
-  margin-left: 10px;
-}
-
-.box input[type="text"] {
+.askText {
   background: #ffffff;
-
+  font-size: 18px;
   border: none;
-  height: auto;
+  height: 56px;
   padding: 0 25px;
-  border-radius: 25px;
-
+  border-radius: 10px;
+  width: 100%;
+ 
 }
 
-.box input[type="submit"] {
-  
-  border-radius: 25px;
+.anonymous{
+  font-size: 14px;
+}
+
+.btnAdvance{
+  border-radius: 15px;
   border: none;
+  width: 120px;
   cursor: pointer;
-  background: #572A92;
+  background-color: rgb(75, 35, 128);
+  height: 46px;
   color: #ffffff;
+ 
 
 }
 
-.box input[type="submit"]:hover {
+input[type="submit"]:hover {
   background: rgb(138, 66, 231);
 }
+
+

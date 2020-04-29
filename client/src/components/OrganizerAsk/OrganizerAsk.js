@@ -23,8 +23,6 @@ const OrganizerAsk = props =>{
         getOrgRoomById(match.params.id);
         return () => { orgRoomUnload() }
     } ,[getOrgRoomById, match.params.id,orgRoomUnload])
-    
-    // http://localhost:3000/organizer/ask/5e85457618a87c3a58dfffb8
    
     useEffect(() => {
         getOrgAskByRoomId(match.params.id);
@@ -37,7 +35,7 @@ const OrganizerAsk = props =>{
     return loading ? (
         <h1>Loading</h1> 
     ) : (
-        <Fragment>
+        <Fragment >
             <Container fluid>
                 <h1 className='org-h1 text-center'>
                     ASK
@@ -70,13 +68,6 @@ const OrganizerAsk = props =>{
                     </Col>
                 </Row>   
             </Container>
-
-            <div className='mt-3'> 
-                <Link to="/" className="btn btn-primary">
-                    Go to Home
-                </Link>
-            </div>
-           
         </Fragment>
       
     )
@@ -89,3 +80,5 @@ const mapStateToProps = state => ({
 })
 
 export default connect(mapStateToProps,{getOrgRoomById,getOrgAskByRoomId,orgRoomUnload,orgAskListUnload})(OrganizerAsk) ;
+
+

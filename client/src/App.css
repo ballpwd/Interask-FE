@@ -1,24 +1,14 @@
+@import url('https://fonts.googleapis.com/css2?family=Kanit:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800&display=swap');
 /* Present ask */
 
 body {
-  position: relative;
-
-  font-family: Kanit;
-  font-style: normal;
-  font-weight: bold;
-
-  align-items: center;
-  text-align: center;
-  /* padding: 3rem; */
-
-  /* BG */
-
   background: linear-gradient(300.81deg, #f0a3ac 15.33%, #b493e0 101.47%);
 }
+
 h1 {
   font-family: Kanit;
   font-style: normal;
-  font-weight: bold;
+  font-weight: 700;
   font-size: 46px;
 }
 header {
@@ -36,10 +26,11 @@ header {
   border-radius: 10px;
 }
 
+/* organizer Ask */
 .org-h1 {
   font-family: Kanit;
   font-style: normal;
-  font-weight: bold;
+  font-weight: 700;
   font-size: 46px;
   line-height: 54px;
 }
@@ -47,7 +38,7 @@ header {
 .org-h2 {
   font-family: Kanit;
   font-style: normal;
-  font-weight: bold;
+  font-weight: 700;
   font-size: 38px;
   line-height: 46px;
 }
@@ -55,7 +46,7 @@ header {
 .org-h3 {
   font-family: Kanit;
   font-style: normal;
-  font-weight: normal;
+  font-weight: 700;
   font-size: 30px;
   line-height: 38px;
 }
@@ -63,7 +54,7 @@ header {
 .org-h4 {
   font-family: Kanit;
   font-style: normal;
-  font-weight: normal;
+  font-weight: 600;
   font-size: 24px;
   line-height: 32px;
 }
@@ -71,7 +62,7 @@ header {
 .org-h5 {
   font-family: Kanit;
   font-style: normal;
-  font-weight: normal;
+  font-weight: 500;
   font-size: 20px;
   line-height: 28px;
 }
@@ -79,7 +70,7 @@ header {
 .org-p {
   font-family: Kanit;
   font-style: normal;
-  font-weight: normal;
+  font-weight: 400;
   font-size: 16x;
   line-height: 24px;
 }
@@ -87,12 +78,12 @@ header {
 .org-box {
   background: #E5E5E5;
   border-radius: 10px; 
-  margin-bottom: 50px;
-  /* overflow: auto ; */
+  margin-bottom: 80px;
 }
 
 .org-boxlist {
   height: 600px;
+  scrollbar-3dlight-color: aqua;
   overflow: auto ;
 }
 
@@ -107,7 +98,7 @@ header {
   width: 200px ;
   font-family: Kanit;
   font-style: normal;
-  font-weight: normal;
+  font-weight: 400;
   font-size: 16x;
   line-height: 24px;
 }

@@ -5,7 +5,7 @@ const OrganizerAskItem = props =>{
     const time = new Date(date)
     return(
         <div className='boxitem'>
-            <div className='org-p p-2 text-break '> 
+            <div className='org-p p-2 text-break'> 
                 {text} <br/>
                 - {anonymous ? 'Question from: Anonymous' : `Question from: ${userName}` }  at  {time.toUTCString()}
             </div>
@@ -15,3 +15,7 @@ const OrganizerAskItem = props =>{
 }
 
 export default OrganizerAskItem ;
+
+
+
+

@@ -1,42 +1,49 @@
-import React,{useState} from  'react';
+import React, { useState } from 'react';
 import { addAsk } from "../../actions/askActions";
 import { connect } from "react-redux";
+import { Container, Row, Col, InputGroup, InputGroupAddon, Button, Input } from 'reactstrap';
 
-const AskForm = ({ room,addAsk }) => {
+
+
+const AskForm = ({ room, addAsk }) => {
     const [text, setText] = useState("");
     const [anonymous, setAnonymous] = useState(false);
-    const userId = '5e85403922192a21e87fbbaa' ;
+    const userId = '5e85403922192a21e87fbbaa';
 
-    return(
-        <div className = "text-center container">
+    return (
+        <Container fluid>
             <form
                 onSubmit={(e) => {
                     e.preventDefault();
-                    const roomId = room._id ;
+                    const roomId = room._id;
                     addAsk({ userId, roomId, text, anonymous });
                     setText("");
                 }}
             >
-                <div className="form-group">
-                    <textarea className="form-control"
-                        name="text"
-                        placeholder="Write the question"
-                        value={text}
-                        onChange={(e) => setText(e.target.value)}
-                        required
-                    />               
-                    <div className="custom-control custom-switch">
-                        <input type="checkbox" className="custom-control-input" id="anonymousSwitch" value={anonymous} onChange={()=>setAnonymous(!anonymous)} />
-                        <label className="custom-control-label" htmlFor="anonymousSwitch">Send as Anonymous</label>
-                    </div>
+                <div className="box">
+                    <Row>
+                        <Col xs="6" className ="textarea" >
+                            <input type="text"
+                                name="text"
+                                placeholder="Write the question"
+                                value={text}
+                                onChange={(e) => setText(e.target.value)}
+                                required
+                            />
+                        </Col>
+                        <Col xs="6"> <input type="submit" value="Submit" className="button" /></Col>
+                    </Row>
                 </div>
-        
 
-                <input type="submit" value="Submit" className="btn btn-secondary float-right" />
+
+                <div className="custom-control custom-switch text-center">
+                    <input type="checkbox" className="custom-control-input" id="anonymousSwitch" value={anonymous} onChange={() => setAnonymous(!anonymous)} />
+                    <label className="custom-control-label" htmlFor="anonymousSwitch">Send as Anonymous</label>
+                </div>
             </form>
-        </div>
+        </Container>
     )
 
 }
 
-export default connect(null,{addAsk})(AskForm);
+export default connect(null, { addAsk })(AskForm);

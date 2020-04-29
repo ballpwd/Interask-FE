@@ -5,18 +5,38 @@ import { getAskByRoomIdUserId, askUnload } from "../../actions/askActions";
 import { getRoomById, roomUnload } from '../../actions/roomActions';
 import AskHistory from './AskHistory';
 import AskForm from './AskForm';
-
+import { Container, Row, Col } from 'reactstrap';
 
 const Ask = props => {
-  const { 
+  const {
     getRoomById,
-    roomUnload, 
+    roomUnload,
     getAskByRoomIdUserId,
-    askUnload, 
-    ask: { askList,loading }, 
-    room: { room }, 
+    askUnload,
+    ask: { askList, loading },
+    room: { room },
     match
   } = props
+
+
+  const d = new Date();
+  const day = d.getDate();
+  const month = d.getMonth();
+  const year = d.getFullYear();
+
+  const days = [
+    'Sun',
+    'Mon',
+    'Tue',
+    'Wed',
+    'Thu',
+    'Fri',
+    'Sat'
+  ]
+  const dayIndex = d.getDay()
+  const dayName = days[dayIndex]
+  const timeString = dayName + ' ' + day + '-' + month + '-' + year;
+
 
 
   useEffect(() => {
@@ -33,30 +53,33 @@ const Ask = props => {
   return loading ? (
     <h1>Loading</h1>
   ) : (
-    <div>
-      <div className="container">
-        <h1 className='text-center font-weight-bold text-white'>ASK</h1>
+      <Container fluid>
+        <h1>ASK</h1>
 
-        <div className="bg-white rounded">
-          <h3 className="text-center font-weight-normal">{room.roomName}</h3>
+        <h4 className="text-center font-weight-normal">{room.roomName}</h4>
+        <div className="todayTime">{timeString}</div>
+        <hr />
+
+        <Container>
+          <Row>
+            <Col className="question-column">
+              {askList && <AskHistory askList={askList} />}
+            </Col>
+          </Row>
+          <Row>
+            <Col sm="12"> {room && <AskForm room={room} />}</Col>
+          </Row>
+        </Container>
 
 
-          <div>
-            {askList && <AskHistory askList={askList} />}
-          </div>
+        <div className='mt-3 text-center'>
+          <Link to="/" className="btn btn-primary">
+            Go to Home
+                </Link>
         </div>
-        <div>
-          {room && <AskForm room={room} />}
-        </div>
-      </div>
 
-      <div>
-        <Link to="/" className="text-center btn btn-primary">
-          Go to Home
-        </Link>
-      </div>
-    </div>
-  );
+      </Container >
+    );
 };
 
 const mapStateToProps = state => ({
@@ -64,7 +87,7 @@ const mapStateToProps = state => ({
   ask: state.ask
 })
 
-export default connect(mapStateToProps, { getRoomById, getAskByRoomIdUserId, roomUnload, askUnload})(Ask);
+export default connect(mapStateToProps, { getRoomById, getAskByRoomIdUserId, roomUnload, askUnload })(Ask);
 
 
 

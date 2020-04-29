@@ -29,9 +29,13 @@ header {
   width: 160px;
   border-radius: 10px;
   box-shadow: rgba(109, 99, 99, 0.5) 0px 1px 0.4rem;
+  background: #e5e5e5;
+  border-radius: 0 0 10 10px;
 }
 
 /* organizer Ask */
+ 
+
 .org-h1 {
   font-family: Kanit;
   font-style: normal;
@@ -116,4 +120,97 @@ header {
   align-items: center;
   background: #e5e5e5;
   border-radius: 10px;
+
+}
+
+/*--------------------------- ASK -------------------------------*/
+
+.question-column {
+
+  background: #ffffff;
+  height: 464px;
+  width: auto;
+  overflow: auto;
+  border-radius: 10px;
+  border: none;
+}
+
+.container-fluid h1 {
+  text-align: center;
+  font-size: 28px;
+  line-height: 32px;
+  font-weight: bold;
+  color: #fff;
+}
+
+.container-fluid .todayTime {
+  text-align: center;
+  font-size: 12px;
+  line-height: 24px;
+
+}
+
+/*-------------------------ASK HISTORY ITEM ---------------------*/
+
+
+
+.container .question-time {
+  font-size: 0.7rem;
+  color: #777;
+  text-align: center;
+  margin-top: 10px;
+
+}
+
+.container .textbox {
+  display: grid;
+  height: 40px;
+  grid-template-columns: 100%;
+  margin-bottom: 20px;
+  justify-content: right;
+  justify-items: right;
+}
+
+.container .textbox .question-text {
+  padding: 9px 14px;
+  background-color: #474444;
+  color: #fff;
+  font-size: 14px;
+  border-radius: 14px 14px 0px 14px;
+}
+
+
+/*--------------------------------- ASK FORM -----------------------*/
+
+.box input {
+  position: auto;
+  margin-top: 30px;
+  display: inline-block;
+  font-size: 20px;
+  box-sizing: border-box;
+  margin-left: 10px;
+}
+
+.box input[type="text"] {
+  background: #ffffff;
+
+  border: none;
+  height: auto;
+  padding: 0 25px;
+  border-radius: 25px;
+
+}
+
+.box input[type="submit"] {
+  
+  border-radius: 25px;
+  border: none;
+  cursor: pointer;
+  background: #572A92;
+  color: #ffffff;
+
+}
+
+.box input[type="submit"]:hover {
+  background: rgb(138, 66, 231);
 }

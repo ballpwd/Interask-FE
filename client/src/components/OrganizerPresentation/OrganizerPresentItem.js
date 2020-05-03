@@ -19,7 +19,7 @@ const OrganizerPresentItem = ({ ask }) => {
             color="#e5e5e5"
             onClick={toggle}
             size="lg"
-            className="pre-box"
+            className="pre-box "
           >
             <div>{ask.text}</div>
           </Button>
@@ -33,7 +33,7 @@ const OrganizerPresentItem = ({ ask }) => {
           <br />
           <br />
           <br />
-          <h1 className="text-center">{ask.text}</h1>
+          <h2 className="text-center text-break">{ask.text}</h2>
           <br />
           <br />
           <br />

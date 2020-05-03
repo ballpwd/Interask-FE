@@ -2,12 +2,12 @@ import React from "react";
 import OrganizerRoomItem from "./OrganizerRoomItem";
 import { Link } from "react-router-dom";
 import { Row, Container, Col } from "reactstrap";
-import { PlusCircleIcon } from "@primer/octicons-v2-react";
+import plus from "../../assets/button.svg";
 
 const OrganizerRoomList = (props) => {
   const { roomList } = props;
   return (
-    <div className="pt-3 px-4">
+    <div className="pt-2 px-4">
       <h3 className="org-h3 text-center">Organizer ROOM</h3>
       <hr />
       <br />
@@ -21,9 +21,9 @@ const OrganizerRoomList = (props) => {
           ))}
           <div>
             <br />
-            <Col className="org-p">
-              <Link to="/createroom">
-                <PlusCircleIcon size="large" />
+            <Col className="org-p p-3">
+              <Link to="/createroom" style={{ color: "black" }}>
+                <img src={plus} width="46px" height="46px"></img>
                 <br />
                 <br />
                 CREATE ROOM

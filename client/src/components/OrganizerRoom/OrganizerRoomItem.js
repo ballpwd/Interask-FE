@@ -10,7 +10,7 @@ const OrganizerRoomItem = (props) => {
     <div>
       <Link to={`/organizer/ask/${_id}`}>
         <Button
-          className="room-box"
+          className="orgroom-box"
           size="lg"
           style={{
             backgroundColor: "#e5e5e5",

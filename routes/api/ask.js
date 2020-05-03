@@ -3,6 +3,8 @@ const router = express.Router();
 const Ask = require('../../models/Ask')
 const User = require('../../models/User')
 
+
+
 // @route  POST /api/ask
 // @desc   Create a ask
 router.post('/', async (req, res) => {
@@ -30,7 +32,7 @@ router.get('/', async (req, res) => {
     } catch (err) {
         console.error(err.message);
         res.status(500).send('Server Error');
-      }
+    }
 });
 
 // @route  GET /api/ask/:ask_id
@@ -88,7 +90,7 @@ router.get('/room/:room_id/:user_id', async (req, res) => {
     } catch (err) {
         console.error(err.message);
         res.status(500).send('Server Error');
-      }
+    }
 })
 
 

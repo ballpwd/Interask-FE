@@ -1,11 +1,13 @@
-import React, { useEffect, Fragment } from "react";
-import { Link } from "react-router-dom";
-import { connect } from "react-redux";
-import { getAskByRoomIdUserId, askUnload } from "../../actions/askActions";
-import { getRoomById, roomUnload } from "../../actions/roomActions";
-import AskHistory from "./AskHistory";
-import AskForm from "./AskForm";
-import { Container, Row, Col } from "reactstrap";
+import React, { useEffect, Fragment } from 'react';
+import { Link } from 'react-router-dom';
+import { connect } from 'react-redux';
+import { getAskByRoomIdUserId, askUnload } from '../../actions/askActions';
+import { getRoomById, roomUnload } from '../../actions/roomActions';
+import AskHistory from './AskHistory';
+import AskForm from './AskForm';
+import { Container, Row, Col } from 'reactstrap';
+import NavBar from '../Navbar/NavBar'
+
 
 const Ask = (props) => {
   const {
@@ -45,31 +47,43 @@ const Ask = (props) => {
   return loading ? (
     <h1>Loading</h1>
   ) : (
-    <Fragment>
-      <div className="ask-bg">
-        <Container fluid>
-          <h1 className="ask-h1 p-4">ASK</h1>
-        </Container>
-        <Container>
-          <Row>
-            <Col className="question-column mx-2">
-              <div className="p-3">
-                <h3 className="ask-h3 ">{room.roomName}</h3>
-                <div className="todayTime">{timeString}</div>
-              </div>
-              {askList && <AskHistory askList={askList} />}
-            </Col>
-          </Row>
-        </Container>
-        <Container>{room && <AskForm room={room} />}</Container>
-        <div className="mt-3 text-center">
-          <Link to="/" className="btn btn-primary">
-            Go to Home
-          </Link>
-        </div>{" "}
-      </div>
-    </Fragment>
-  );
+
+      <Fragment>
+        <div className='ask-section'>
+          <NavBar></NavBar>
+          <Container fluid className='topic'>
+            <h1>ASK</h1>
+          </Container>
+
+          <Container>
+            <Row >
+              <Col className='question-column mx-2'>
+                <h4 className='askRoomName'>{room.roomName}</h4>
+                <div className='todayTime'>Today : {timeString}</div>
+                <hr className='border' />
+
+                {askList && <AskHistory askList={askList} />}
+
+              </Col>
+            </Row>
+          </Container>
+
+          <Container>
+            {room && <AskForm room={room} />}
+          </Container>
+
+
+          <div className='mt-3'>
+            <Link to='/' className='btn btn-primary'>
+              Go to Home
+                </Link>
+          </div>
+        </div>
+      </Fragment>
+
+
+    );
+
 };
 
 const mapStateToProps = (state) => ({

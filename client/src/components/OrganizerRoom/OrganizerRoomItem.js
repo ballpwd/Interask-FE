@@ -1,13 +1,13 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import { Button } from "reactstrap";
-
+import { Col } from "reactstrap";
 const OrganizerRoomItem = (props) => {
   const {
     room: { _id, roomName },
   } = props;
   return (
-    <div>
+    <Col className='my-4'>
       <Link to={`/organizer/ask/${_id}`}>
         <Button
           className="orgroom-box"
@@ -18,13 +18,10 @@ const OrganizerRoomItem = (props) => {
             color: "black",
           }}
         >
-          <div>{roomName}</div>
+          {roomName}
         </Button>
       </Link>
-      <br />
-      <br />
-      <br />
-    </div>
+    </Col>
   );
 };
 

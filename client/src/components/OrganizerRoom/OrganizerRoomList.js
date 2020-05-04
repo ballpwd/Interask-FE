@@ -1,38 +1,55 @@
-import React from "react";
+import React, {useState, Fragment}from "react";
 import OrganizerRoomItem from "./OrganizerRoomItem";
-import { Link } from "react-router-dom";
-import { Row, Container, Col } from "reactstrap";
+import { Row, Container, Col, Button, Modal, ModalBody, ModalHeader } from "reactstrap";
 import plus from "../../assets/button.svg";
-
+import CreateRoom from './CreateRoom' ;
 const OrganizerRoomList = (props) => {
+  const [modal, setModal] = useState(false);
   const { roomList } = props;
+
+  const toggle = () => setModal(!modal);
+
+  const closeBtn = (
+    <button className="close" onClick={toggle}>
+      &times;
+    </button>
+  );
+  
   return (
-    <div className="pt-2 px-4">
-      <h3 className="org-h3 text-center">Organizer ROOM</h3>
-      <hr />
-      <br />
-      <Container className="text-center">
-        <Row xs="1" sm="2" md="3" lg="4" xl="5">
-          {Array.isArray(roomList)}
-          {roomList.map((room) => (
-            <Col>
-              <OrganizerRoomItem key={room._id} room={room} />
-            </Col>
-          ))}
-          <div>
-            <br />
-            <Col className="org-p p-3">
-              <Link to="/createroom" style={{ color: "black" }}>
-                <img src={plus} width="46px" height="46px"></img>
+    <Fragment>
+      <div className="pt-2 px-4">
+        <h3 className="org-h3 text-center">Organizer ROOM</h3>
+        <hr />
+        <Container className="text-center">
+          <Row xs="1" sm="2" md="3" lg="4" xl="5">
+            {Array.isArray(roomList)}
+            {roomList.map((room) => (
+                <OrganizerRoomItem key={room._id} room={room} />        
+            ))}
+            <Col className="p-3 my-4">
+              <div>
                 <br />
-                <br />
-                CREATE ROOM
-              </Link>
+                  <Button color="link" onClick={toggle} style={{ color: "black" }}>
+                    <img src={plus} width="46px" height="46px"></img>
+                    <br />
+                    <br />
+                    <p className='org-p'> CREATE ROOM</p>
+                  </Button>   
+              </div>
             </Col>
-          </div>
-        </Row>
-      </Container>
-    </div>
+          </Row>
+        </Container>
+      </div>
+
+      <Modal isOpen={modal} toggle={toggle} size='lg' centered >
+        <ModalHeader close={closeBtn} className='border-0 pb-0' cssModule={{'modal-title': 'w-100 text-center pt-5'}} >  
+          <p className='org-h3' >CREATE ROOM</p> 
+        </ModalHeader>
+        <ModalBody>
+          <div><CreateRoom toggle={toggle}/></div>
+        </ModalBody>
+      </Modal>
+    </Fragment>
   );
 };
 

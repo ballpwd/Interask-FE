@@ -41,7 +41,7 @@ import {
       case CREATE_ROOM:
         return {
           ...state,
-          roomList: [...state.posts,payload],
+          roomList: [...state.roomList,payload],
           loading: false 
         };
       case DELETE_ROOM:

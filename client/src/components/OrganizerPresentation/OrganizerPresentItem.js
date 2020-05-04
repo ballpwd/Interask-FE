@@ -19,7 +19,7 @@ const OrganizerPresentItem = ({ ask }) => {
             color="#e5e5e5"
             onClick={toggle}
             size="lg"
-            className="pre-box "
+            className="pre-box"
           >
             <div>{ask.text}</div>
           </Button>

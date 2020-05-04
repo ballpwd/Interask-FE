@@ -10,12 +10,10 @@ const AskForm = ({ room, addAsk }) => {
   const userId = "5e85403922192a21e87fbbaa";
 
   const handleSubmit = (e) => {
-    {
-      e.preventDefault();
-      const roomId = room._id;
-      addAsk({ userId, roomId, text, anonymous });
-      setText("");
-    }
+    e.preventDefault();
+    const roomId = room._id;
+    addAsk({ userId, roomId, text, anonymous });
+    setText("");
   };
 
   return (

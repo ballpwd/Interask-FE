@@ -1,12 +1,11 @@
 import React, { Fragment, useEffect } from "react";
 import { connect } from "react-redux";
-import { Link } from "react-router-dom";
 import {
   getRoomByOwnerId,
   orgRoomListUnload,
 } from "../../actions/orgRoomActions";
 import OrganizerRoomList from "./OrganizerRoomList";
-import { Container } from "reactstrap";
+import { Container, Row, Button } from "reactstrap";
 const OrganizerRoom = (props) => {
   //mockup user
   const user = {
@@ -34,27 +33,23 @@ const OrganizerRoom = (props) => {
     <h1>Loading</h1>
   ) : (
     <Fragment>
-      <Container fluid>
-        <h1 className="org-h1 text-center">Hi "{user.userName}"</h1>
-        <p className="text-danger text-center">
-          {" "}
-          Mockup Organizer Room for User ballpwd5{" "}
-        </p>
-      </Container>
-      <Container fluid>
-        <div>{<OrganizerRoomList roomList={roomList} />}</div>
-      </Container>
-
-      <div className="text-center mt-5">
-        <Link to="/" className="btn btn-dark org-btn">
-          MANAGE ROOM
-        </Link>
-      </div>
-      <div className="text-center mt-4">
-        <Link to="/" className="btn btn-light org-btn">
-          Go to Home
-        </Link>
-      </div>
+        <Container fluid>
+          <h1 className="org-h1 text-center">Hi "{user.userName}"</h1>
+          <p className="text-danger text-center">
+            {" "}
+            Mockup Organizer Room for User ballpwd5{" "}
+          </p>
+        </Container>
+        <Container>
+          <Row>
+            <div>{<OrganizerRoomList roomList={roomList} />}</div>
+          </Row>
+          <Row className="justify-content-center mt-5">
+            <Button to="/" className="btn btn-dark org-btn">
+                MANAGE ROOM
+            </Button>
+          </Row>
+        </Container>
     </Fragment>
   );
 };

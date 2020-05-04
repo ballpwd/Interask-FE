@@ -49,7 +49,7 @@ const Ask = (props) => {
   ) : (
 
       <Fragment>
-        <div className='ask-section'>
+        <div className='ask-section bg fullscreen'>
           <NavBar></NavBar>
           <Container fluid className='topic'>
             <h1>ASK</h1>

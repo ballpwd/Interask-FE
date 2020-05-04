@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 
 const Home = () => {
   return (
-    <div>
+    <div className='bg fullscreen'>
       <h1>Home Page</h1>
       <div>
         <div>

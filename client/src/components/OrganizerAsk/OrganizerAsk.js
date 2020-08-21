@@ -14,8 +14,8 @@ const OrganizerAsk = props =>{
         orgRoomUnload,
         getOrgAskByRoomId,
         orgAskListUnload,
-        orgRoom:{room},
-        orgAsk:{askList,loading},
+        orgRoom:{room,roomLoading},
+        orgAsk:{askList,askLoading},
         match 
     } = props ;
 
@@ -33,7 +33,7 @@ const OrganizerAsk = props =>{
     console.log(room)
     console.log(askList)
     
-    return loading ? (
+    return (roomLoading || askLoading) ? (
         <Loading></Loading> 
     ) : (
         <Fragment >

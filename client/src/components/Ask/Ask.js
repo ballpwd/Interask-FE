@@ -16,8 +16,8 @@ const Ask = (props) => {
     roomUnload,
     getAskByRoomIdUserId,
     askUnload,
-    ask: { askList, loading },
-    room: { room },
+    ask: { askList, askLoading },
+    room: { room, roomLoading },
     match,
   } = props;
 
@@ -47,7 +47,7 @@ const Ask = (props) => {
     };
   }, [getAskByRoomIdUserId, match.params.id, askUnload]);
 
-  return loading ? (
+  return (askLoading || roomLoading) ? (
     <Loading></Loading>
   ) : (
 

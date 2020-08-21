@@ -1,6 +1,5 @@
 import axios from 'axios';
 import { 
-    ASK_REQUEST,
     GET_ASKLIST,
     GET_ASK,
     ADD_ASK,
@@ -12,7 +11,6 @@ import {
 //Get all ask
 export const getAllAsk = () => async dispatch => {
     try {
-        dispatch({type: ASK_REQUEST});
         const res = await axios.get('/api/ask')
         dispatch({
             type: GET_ASKLIST,
@@ -29,9 +27,8 @@ export const getAllAsk = () => async dispatch => {
 //Get ask by ask_id
 export const getAskById = askId => async dispatch => {
     try {
-        dispatch({type: ASK_REQUEST});
         const res = await axios.get(`/api/ask/${askId}`)
-
+        
         dispatch({
             type: GET_ASK,
             payload: res.data
@@ -47,9 +44,8 @@ export const getAskById = askId => async dispatch => {
 //Get ask by room_id and user_id
 export const getAskByRoomIdUserId = (roomId,userId) => async dispatch => {
     try {
-        dispatch({type: ASK_REQUEST});
         const res = await axios.get(`/api/ask/room/${roomId}/${userId}`)
-    
+
         dispatch({
             type: GET_ASKLIST,
             payload: res.data
@@ -65,7 +61,6 @@ export const getAskByRoomIdUserId = (roomId,userId) => async dispatch => {
 // Add ask
 export const addAsk = formData => async dispatch => {
     try {
-        dispatch({type: ASK_REQUEST});
         const res = await axios.post('/api/ask', formData);
 
         dispatch({

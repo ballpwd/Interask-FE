@@ -1,20 +1,11 @@
 import React, { useState, Fragment } from "react";
 import OrganizerRoomItem from "./OrganizerRoomItem";
-import {
-  Row,
-  Container,
-  Col,
-  Button,
-  Modal,
-  ModalBody,
-  ModalHeader,
-} from "reactstrap";
+import {Row, Container, Col, Button, Modal, ModalBody, ModalHeader } from "reactstrap";
 import plus from "../../assets/button.svg";
 import CreateRoom from "./CreateRoom";
 const OrganizerRoomList = (props) => {
   const [modal, setModal] = useState(false);
   const { roomList, edit } = props;
-
   const toggle = () => setModal(!modal);
 
   const closeBtn = (

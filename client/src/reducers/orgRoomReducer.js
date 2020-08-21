@@ -1,5 +1,4 @@
 import {
-  ORG_ROOM_REQUEST,
   GET_ORG_ROOMLIST,
   GET_ORG_ROOM,
   CREATE_ROOM,
@@ -7,76 +6,69 @@ import {
   EDIT_ROOM,
   ORG_ROOM_ERROR,
   ORG_ROOM_UNLOADED,
-  ORG_ROOMLIST_UNLOADED,
-} from "../actions/types";
+  ORG_ROOMLIST_UNLOADED
+} from '../actions/types';
 
 const initialState = {
   roomList: [],
   room: null,
   error: {},
-  loading: true,
+  roomLoading: true 
 };
 
 export default function (state = initialState, action) {
   const { type, payload } = action;
   switch (type) {
-    case ORG_ROOM_REQUEST:
-      return {
-        ...state,
-        loading: true,
-      };
-
     case GET_ORG_ROOMLIST:
       return {
         ...state,
         roomList: payload,
-        loading: false,
-      };
+        roomLoading: false    
+      } ;
     case EDIT_ROOM:
       return {
         ...state,
-        room: payload,
         roomList: state.roomList.map((r) =>
           r._id === payload._id ? { ...r, roomName: payload.roomName } : r
         ),
-        loading: false,
+        roomLoading: false,
       };
     case GET_ORG_ROOM:
       return {
         ...state,
         room: payload,
-        loading: false,
-      };
+        roomLoading: false    
+      } ; 
     case CREATE_ROOM:
       return {
         ...state,
-        roomList: [...state.roomList, payload],
-        loading: false,
+        roomList: [...state.roomList,payload],
+        roomLoading: false 
       };
     case DELETE_ROOM:
       return {
         ...state,
-        roomList: state.roomList.filter((room) => room._id !== payload),
-        loading: false,
+        roomList: state.roomList.filter(room => room._id !== payload),
+        roomLoading: false
       };
     case ORG_ROOM_ERROR:
       return {
         ...state,
         error: payload,
-        loading: false,
+        roomLoading: false
       };
     case ORG_ROOM_UNLOADED:
       return {
         ...state,
         room: null,
-        loading: true,
+        roomLoading: true 
       };
     case ORG_ROOMLIST_UNLOADED:
       return {
         ...state,
         roomList: [],
-        loading: true,
-      };
+        roomLoading: true 
+      }; 
     default:
       return state;
   }

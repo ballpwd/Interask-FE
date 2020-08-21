@@ -1,6 +1,5 @@
 import axios from 'axios';
 import { 
-    ORG_ROOM_REQUEST,
     GET_ORG_ROOMLIST,
     GET_ORG_ROOM,
     CREATE_ROOM,
@@ -14,7 +13,7 @@ import {
 //Get all room
 export const getAllOrgRoom = () => async (dispatch) => {
   try {
-    dispatch({type: ORG_ROOM_REQUEST});
+
     const res = await axios.get('/api/room');
     dispatch({
       type: GET_ORG_ROOMLIST,
@@ -31,7 +30,7 @@ export const getAllOrgRoom = () => async (dispatch) => {
 //Get room by room_id (Organizer) 
 export const getOrgRoomById = roomId => async (dispatch) => {
   try {
-    dispatch({type: ORG_ROOM_REQUEST});
+
     const res = await axios.get(`/api/room/${roomId}`);
 
     dispatch({
@@ -49,7 +48,7 @@ export const getOrgRoomById = roomId => async (dispatch) => {
 //Get room by user_id(owner)
 export const getRoomByOwnerId = userId => async (dispatch) => {
   try {
-    dispatch({type: ORG_ROOM_REQUEST});
+
     const res = await axios.get(`/api/room/owner/${userId}`);
     console.log(res.data)
     dispatch({
@@ -67,7 +66,7 @@ export const getRoomByOwnerId = userId => async (dispatch) => {
 // Create room
 export const createRoom = formData => async (dispatch) => {
   try {
-    dispatch({type: ORG_ROOM_REQUEST});
+
     const res = await axios.post('/api/room', formData);
 
     dispatch({
@@ -85,7 +84,7 @@ export const createRoom = formData => async (dispatch) => {
 //Delete room
 export const deleteRoom = roomId => async (dispatch) => {
   try {
-    dispatch({type: ORG_ROOM_REQUEST});
+
     await axios.delete(`/api/room/${roomId}`);
 
     dispatch({
@@ -103,7 +102,7 @@ export const deleteRoom = roomId => async (dispatch) => {
 //Edit room name 
 export const editRoomName = (roomId, formData) => async (dispatch) => {
   try {
-    dispatch({type: ORG_ROOM_REQUEST});
+
     const res = await axios.put(`/api/room/editname/${roomId}`, formData);
 
     dispatch({

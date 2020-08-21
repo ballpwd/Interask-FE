@@ -1,6 +1,5 @@
 import axios from 'axios';
 import { 
-    AUTH_REQUEST,
     USER_LOADED,
     TOKEN_LOADED,
     AUTH_ERROR
@@ -9,7 +8,6 @@ import {
 // Load User
 export const loadUser = () => async dispatch => {
     try {
-      dispatch({type: AUTH_REQUEST});
       
       const res = await axios.get('/api/auth/current_user');
       
@@ -29,7 +27,6 @@ export const loadUser = () => async dispatch => {
 // Load Token
 export const loadToken = token => async dispatch => {
   try {
-    dispatch({type: AUTH_REQUEST});
     dispatch({
       type: TOKEN_LOADED,
       payload: token

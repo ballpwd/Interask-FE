@@ -1,6 +1,5 @@
 import axios from 'axios';
 import { 
-  ROOM_REQUEST,
   GET_ROOMLIST,
   GET_ROOM,
   JOIN_ROOM,
@@ -13,7 +12,6 @@ import {
 //Get all room
 export const getAllRoom = () => async (dispatch) => {
   try {
-    dispatch({type: ROOM_REQUEST});
     const res = await axios.get('/api/room');
     dispatch({
       type: GET_ROOMLIST,
@@ -30,7 +28,6 @@ export const getAllRoom = () => async (dispatch) => {
 //Get room by room_id (User) 
 export const getRoomById = roomId => async (dispatch) => {
   try {
-    dispatch({type: ROOM_REQUEST});
     const res = await axios.get(`/api/room/${roomId}`);
     dispatch({
       type: GET_ROOM,
@@ -47,7 +44,6 @@ export const getRoomById = roomId => async (dispatch) => {
 //Get room by user_id(user)
 export const getRoomByUserId = userId => async (dispatch) => {
   try {
-    dispatch({type: ROOM_REQUEST});
     const res = await axios.get(`/api/room/user/${userId}`);
     console.log(res.data)
     dispatch({
@@ -63,10 +59,9 @@ export const getRoomByUserId = userId => async (dispatch) => {
 };
 
 //Join room
-export const joinRoom = (roomId,userId)=> async (dispatch) => {
+export const joinRoom = (roomCode,userId)=> async (dispatch) => {
   try {
-    dispatch({type: ROOM_REQUEST});
-    const res = await axios.post(`/api/room/join/${roomId}`,userId);
+    const res = await axios.post(`/api/room/join/${roomCode}`,userId);
 
     dispatch({
       type: JOIN_ROOM,
@@ -83,7 +78,6 @@ export const joinRoom = (roomId,userId)=> async (dispatch) => {
 //Leave room
 export const leaveRoom = (roomId,userId) => async (dispatch) => {
   try {
-    dispatch({type: ROOM_REQUEST});
     await axios.delete(`/api/room/leave/${roomId}`,userId);
 
     dispatch({

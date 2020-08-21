@@ -5,12 +5,14 @@ const jwt = require('jsonwebtoken');
 const keys = require('../../config/keys')
 const authCheck = require('../../middleware/authCheck');
 const User = require('../../models/User')
+const storeRedirect = require('../../middleware/storeRedirect')
 
 // @route    Get api/auth/google
 // @desc     Authenticate user 
 // @access   Public
 router.get(
     '/google',
+    storeRedirect,
     passport.authenticate("google", { scope: ["profile", "email"] })
 );
 
@@ -28,8 +30,8 @@ router.get(
                 if(err){
                     if (err) throw err;
                 } else {
-                    // res.status(200).cookie('token', token, {httpOnly: true}).redirect("/")
-                    res.status(200).cookie('token', token).redirect("/")
+                    // res.status(200).cookie('token', token).redirect("/")
+                    res.status(200).cookie('token', token).redirect(req.session.redirectTo)
                 }
             });   
         } catch (error) {
@@ -51,10 +53,5 @@ router.get('/current_user',authCheck, async (req, res) => {
         res.status(500).send('Server Error');
       }
 });
-
-
-router.get('/google/redirect',passport.authenticate('google'),(req,res)=>{
-    res.redirect('/profile/');
-})
 
 module.exports = router;

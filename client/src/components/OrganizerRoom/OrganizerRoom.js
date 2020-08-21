@@ -20,7 +20,7 @@ const OrganizerRoom = (props) => {
   const {
     getRoomByOwnerId,
     orgRoomListUnload,
-    orgRoom: { roomList, loading },
+    orgRoom: { roomList, roomLoading },
   } = props;
 
   useEffect(() => {
@@ -32,7 +32,7 @@ const OrganizerRoom = (props) => {
 
   console.log(roomList);
 
-  return loading ? (
+  return roomLoading ? (
     <h1>Loading</h1>
   ) : (
     <Fragment>

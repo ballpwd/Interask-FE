@@ -1,6 +1,5 @@
 import Cookies from "js-cookie"
 import {
-    AUTH_REQUEST,
     USER_LOADED,
     TOKEN_LOADED,
     AUTH_ERROR
@@ -11,35 +10,30 @@ import {
       isAuthenticated: null,
       user: null,
       error: {},
-      loading: true
+      authLoading: true
     };
   
   export default function(state = initialState, action) {
     const { type, payload } = action;
     switch (type) {
-      case AUTH_REQUEST:
-        return {
-          ...state,
-          loading: true  
-        } ;
       case USER_LOADED:
         return {
           ...state,
           isAuthenticated: true,
           user: payload,
-          loading: false   
+          authLoading: false   
         } ;
         case TOKEN_LOADED:
         return {
           ...state,
           token: payload,
-          loading: false   
+          authLoading: false   
         } ;
       case AUTH_ERROR:
         return {
           ...state,
           error: payload,
-          loading: false 
+          authLoading: false 
         };
       default:
         return state;

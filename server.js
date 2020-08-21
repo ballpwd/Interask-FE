@@ -2,7 +2,7 @@ const express = require('express');
 const connectDB = require('./config/db');
 const app = express();
 const passport = require('passport');
-const cookieSession = require('cookie-session');
+const session = require('express-session')
 
 // Connect Database
 connectDB();
@@ -10,21 +10,20 @@ connectDB();
 // Init Middleware
 app.use(express.json());
 
+
+app.use(session({secret:'urlredirect', redirectTo: ''})) 
+
 //Passport
 
-// app.use(
-//     cookieSession({
-//       maxAge: 30 * 24 * 60 * 60 * 1000,
-//       keys: ['fwfeeadajksdkjasdkakwkfwe']
-//     })
-//   );
+
 app.use(passport.initialize());
-// app.use(passport.session());
+
 require("./config/passport");
 
 
 
 // Define Routes
+
 app.use('/api/user', require('./routes/api/user'));
 app.use('/api/auth', require('./routes/api/auth'));
 app.use('/api/room', require('./routes/api/room'));

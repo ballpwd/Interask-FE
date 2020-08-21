@@ -12,6 +12,7 @@ const CreateRoom = (props) => {
     e.preventDefault();
     createRoom({ userId, roomName });
     setRoomName("");
+    toggle()
   };
 
   return (

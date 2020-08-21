@@ -15,7 +15,7 @@ const Room = (props) => {
   const {
     getRoomByUserId,
     roomListUnload,
-    room: { roomList, loading },
+    room: { roomList, roomLoading },
   } = props;
 
   useEffect(() => {
@@ -27,7 +27,7 @@ const Room = (props) => {
 
   console.log(roomList);
 
-  return loading ? (
+  return roomLoading ? (
     <h1>Loading</h1>
   ) : (
     <Fragment>

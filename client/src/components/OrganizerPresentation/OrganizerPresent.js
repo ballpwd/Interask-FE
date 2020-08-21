@@ -14,8 +14,8 @@ const OrganizerPresent = ({
   orgRoomUnload,
   getOrgAskByRoomId,
   orgAskListUnload,
-  orgRoom: { room },
-  orgAsk: { askList, loading },
+  orgRoom: { room, roomLoading},
+  orgAsk: { askList, askLoading },
   match,
 }) => {
   useEffect(() => {
@@ -32,7 +32,7 @@ const OrganizerPresent = ({
     };
   }, [getOrgAskByRoomId, match.params.id, orgAskListUnload]);
 
-  return loading ? (
+  return (roomLoading || askLoading) ? (
     <h1>Loading</h1>
   ) : (
     <Fragment>

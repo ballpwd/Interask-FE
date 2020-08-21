@@ -31,7 +31,7 @@ const Room = (props) => {
     <h1>Loading</h1>
   ) : (
     <Fragment>
-      <div className="room-bg">
+      <div className="fullscreen room-bg">
         <Container fluid className="head-room">
           <div className="p-4">
             <h1 className="room-h1">Hi "{user.userName}"</h1>

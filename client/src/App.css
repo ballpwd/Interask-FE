@@ -11,7 +11,7 @@ body > #root {
   background: linear-gradient(300.81deg, #eeadb4 15.33%, #c1abdd 101.47%);
 }
 
-.fullscreen{
+.fullscreen {
   min-height: 100vh;
 }
 h1 {
@@ -94,7 +94,6 @@ header {
 }
 /* -------------------- organizer Room -------------------- */
 
-
 .orgroom-box {
   font-family: Kanit;
   font-style: normal;
@@ -106,7 +105,18 @@ header {
   background: #e5e5e5;
   border-radius: 0 0 10 10px;
   overflow: hidden;
-  text-overflow:ellipsis;
+  text-overflow: ellipsis;
+}
+.org-h6 {
+  font-family: Kanit;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 24px;
+  text-align: center;
+  align-items: center;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .createroom-input {
@@ -122,7 +132,6 @@ header {
   border-style: solid;
   border-width: 5px;
 }
-
 
 /* -------------------- organizer ASK -------------------- */
 
@@ -156,9 +165,6 @@ header {
   background: #e5e5e5;
   border-radius: 10px;
 }
-.bg-pre {
-  background: linear-gradient(300.81deg, #eeadb4 15.33%, #c1abdd 101.47%);
-}
 
 /* -------------------- ASK -------------------- */
 
@@ -172,7 +178,6 @@ header {
   overflow: auto;
   border-radius: 10px;
   margin-top: 10px;
-
 }
 
 .topic h1 {
@@ -184,7 +189,6 @@ header {
   line-height: 32px;
   color: #fff;
   margin-top: 20px;
-
 }
 
 .askRoomName {
@@ -202,7 +206,6 @@ header {
 
   font-size: 12px;
   line-height: 20px;
-
 }
 
 /* -------------------- ASK HISTORY ITEM -------------------- */
@@ -215,17 +218,16 @@ header {
   text-align: center;
 }
 .textbox {
-  display:grid;
+  display: grid;
   grid-template-columns: 80%;
   justify-content: end;
   justify-items: end;
-  
 }
 .textbox .question-text {
   font-family: Kanit;
   font-style: normal;
   font-weight: 300;
-  font-size: 14px;
+  font-size: 18px;
   line-height: 22px;
   padding: 9px 14px;
   background: #474444;
@@ -233,9 +235,7 @@ header {
   color: #fff;
 }
 
-
 /* -------------------- ASK FORM -------------------- */
-
 
 .askText {
   font-family: Kanit;
@@ -247,15 +247,12 @@ header {
   padding: 0 25px;
   border-radius: 5px;
   width: 100%;
-
-
 }
 
 .anonymous {
   font-family: Kanit;
   font-size: 14px;
   font-weight: 300;
-
 }
 
 .btnAdvance {
@@ -267,10 +264,10 @@ header {
   height: 46px;
   color: #ffffff;
 }
-.btnAdvance:hover {
-  background: rgb(75, 35, 128);
-}
 
+.btnAdvance:hover {
+  background: rgb(138, 66, 231);
+}
 /*------------------------- Room ---------------------*/
 .head-room {
   background: linear-gradient(300.81deg, #eeadb4 15.33%, #c1abdd 101.47%);
@@ -320,12 +317,6 @@ header {
 .room-bg {
   background-color: #fafafa;
   min-width: 300px;
-
-
-}
-
-.btnAdvance:hover {
-  background: rgb(138, 66, 231);
 }
 
 /* -------------------- Login (Home) -------------------- */
@@ -346,21 +337,18 @@ header {
   bottom: 0;
   right: 0;
   left: 0;
-
 }
-
 
 /*------------------ Login (Organization) ---------------*/
 
 .howto {
   font-family: Kanit;
   margin-top: 60px;
-  
 }
 
 /*------------------ NavBar ---------------*/
 
-.nav-item{
+.nav-item {
   font-family: Kanit;
   font-size: 1em;
 }

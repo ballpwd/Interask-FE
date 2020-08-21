@@ -1,4 +1,4 @@
-import React, { Fragment, useEffect } from "react";
+import React, { Fragment, useEffect, useState } from "react";
 import { connect } from "react-redux";
 import {
   getRoomByOwnerId,
@@ -13,6 +13,9 @@ const OrganizerRoom = (props) => {
     email: "ballpwd5@gmail.com",
     userName: "ballpwd5",
   };
+
+  const [edit, setEdit] = useState(false);
+  const manage = () => setEdit(!edit);
 
   const {
     getRoomByOwnerId,
@@ -33,23 +36,29 @@ const OrganizerRoom = (props) => {
     <h1>Loading</h1>
   ) : (
     <Fragment>
-        <Container fluid>
-          <h1 className="org-h1 text-center">Hi "{user.userName}"</h1>
-          <p className="text-danger text-center">
-            {" "}
-            Mockup Organizer Room for User ballpwd5{" "}
-          </p>
-        </Container>
-        <Container>
-          <Row>
-            <div>{<OrganizerRoomList roomList={roomList} />}</div>
-          </Row>
-          <Row className="justify-content-center mt-5">
-            <Button to="/" className="btn btn-dark org-btn">
-                MANAGE ROOM
+      <Container fluid>
+        <h1 className="org-h1 text-center">Hi "{user.userName}"</h1>
+        <p className="text-danger text-center">
+          {" "}
+          Mockup Organizer Room for User ballpwd5{" "}
+        </p>
+      </Container>
+      <Container>
+        <Row>
+          <div>{<OrganizerRoomList roomList={roomList} edit={edit} />}</div>
+        </Row>
+        <Row className="justify-content-center mt-2">
+          {!edit ? (
+            <Button onClick={manage} className="btn btn-dark org-btn">
+              MANAGE ROOM
             </Button>
-          </Row>
-        </Container>
+          ) : (
+            <Button onClick={manage} className="btn btn-dark org-btn">
+              COMPLETE
+            </Button>
+          )}
+        </Row>
+      </Container>
     </Fragment>
   );
 };

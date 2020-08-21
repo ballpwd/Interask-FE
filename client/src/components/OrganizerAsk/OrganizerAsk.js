@@ -5,6 +5,7 @@ import {getOrgRoomById,orgRoomUnload} from '../../actions/orgRoomActions' ;
 import {getOrgAskByRoomId,orgAskListUnload} from '../../actions/orgAskActions' ;
 import OrganizerAskList from './OrganizerAskList' ;
 import OrganizerAskAnalyze from './OrganizerAskAnalyze' ;
+import Loading from '../Loading/Loading';
 import { Container, Row, Col, Button } from 'reactstrap';
 const OrganizerAsk = props =>{
 
@@ -33,7 +34,7 @@ const OrganizerAsk = props =>{
     console.log(askList)
     
     return loading ? (
-        <h1>Loading</h1> 
+        <Loading></Loading> 
     ) : (
         <Fragment >
             <Container fluid>

@@ -9,10 +9,9 @@ const Login = () => {
         <Fragment>
             <div className='bg fullscreen'>
                 <Container >
-                    <Row className='justify-content-center align-items-center logo'>
+                    <Row className='justify-content-center align-items-center '>
                         <img src={logo} alt='Interask' className='img-fluid '></img>
                     </Row>
-
                     <Row className='justify-content-center align-items-center button'>
                         <a href="/api/auth/google"><img src={googlelogin} alt='Interask' className='img-fluid' style={{width:'340px'}} /></a>
                     </Row>

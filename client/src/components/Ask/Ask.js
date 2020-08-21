@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { getAskByRoomIdUserId, askUnload } from '../../actions/askActions';
 import { getRoomById, roomUnload } from '../../actions/roomActions';
+import Loading from '../Loading/Loading';
 import AskHistory from './AskHistory';
 import AskForm from './AskForm';
 import { Container, Row, Col } from 'reactstrap';
@@ -30,6 +31,8 @@ const Ask = (props) => {
   const dayName = days[dayIndex];
   const timeString = dayName + " " + day + "-" + month + "-" + year;
 
+  
+
   useEffect(() => {
     getRoomById(match.params.id);
     return () => {
@@ -45,7 +48,7 @@ const Ask = (props) => {
   }, [getAskByRoomIdUserId, match.params.id, askUnload]);
 
   return loading ? (
-    <h1>Loading</h1>
+    <Loading></Loading>
   ) : (
 
       <Fragment>
@@ -56,19 +59,16 @@ const Ask = (props) => {
           </Container>
 
           <Container>
-            <Row >
-              <Col className='question-column mx-2'>
+            <Row>
+              <Col className='ask-box mx-2'>
                 <h4 className='askRoomName'>{room.roomName}</h4>
                 <div className='todayTime'>Today : {timeString}</div>
-                <hr className='border' />
-
+                <hr className='border border-secondary'/>
                 {askList && <AskHistory askList={askList} />}
-
               </Col>
             </Row>
           </Container>
-
-          <Container>
+          <Container class ='ask-form'>
             {room && <AskForm room={room} />}
           </Container>
 

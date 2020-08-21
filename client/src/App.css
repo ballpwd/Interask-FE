@@ -1,6 +1,6 @@
 @import url("https://fonts.googleapis.com/css2?family=Kanit:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800&display=swap");
 
-body > #root {
+body>#root {
   min-height: 100vh;
 }
 
@@ -14,6 +14,7 @@ body > #root {
 .fullscreen {
   min-height: 100vh;
 }
+
 h1 {
   font-family: Kanit;
   font-style: normal;
@@ -92,6 +93,7 @@ header {
   font-size: 16x;
   line-height: 24px;
 }
+
 /* -------------------- organizer Room -------------------- */
 
 .orgroom-box {
@@ -166,18 +168,29 @@ header {
   border-radius: 10px;
 }
 
+.bg-pre {
+  background: linear-gradient(300.81deg, #eeadb4 15.33%, #c1abdd 101.47%);
+}
+
 /* -------------------- ASK -------------------- */
 
 /*.ask-section{
   background: linear-gradient(300.81deg, #f0a3ac 15.33%, #b493e0 101.47%);
 }*/
 
-.question-column {
+/*.question-column {
   background: #ffffff;
   height: 400px;
   overflow: auto;
   border-radius: 10px;
   margin-top: 10px;
+
+}*/
+
+.ask-box {
+  background: #ffffff;
+  border-radius: 10px;
+  margin-bottom: 10px;
 }
 
 .topic h1 {
@@ -197,15 +210,25 @@ header {
   font-size: 24px;
   line-height: 32px;
   text-align: center;
+  margin-top: 10px;
 }
 
 .todayTime {
   font-family: Kanit;
   font-style: normal;
   text-align: center;
-
   font-size: 12px;
   line-height: 20px;
+  font-weight: 500;
+
+}
+
+/* -------------------- ASK HISTORY ------------------------- */
+.ask-boxlist {
+  height: 300px;
+  scrollbar-3dlight-color: rgb(60, 255, 0);
+  overflow: auto;
+  border-color: #474444;
 }
 
 /* -------------------- ASK HISTORY ITEM -------------------- */
@@ -217,22 +240,25 @@ header {
   color: #777;
   text-align: center;
 }
+
 .textbox {
   display: grid;
   grid-template-columns: 80%;
   justify-content: end;
   justify-items: end;
 }
+
 .textbox .question-text {
   font-family: Kanit;
   font-style: normal;
   font-weight: 300;
-  font-size: 18px;
+  font-size: 14px;
   line-height: 22px;
   padding: 9px 14px;
   background: #474444;
   border-radius: 14px 14px 0px 14px;
   color: #fff;
+  margin-right: 20px;
 }
 
 /* -------------------- ASK FORM -------------------- */
@@ -249,10 +275,11 @@ header {
   width: 100%;
 }
 
+
 .anonymous {
   font-family: Kanit;
   font-size: 14px;
-  font-weight: 300;
+  font-weight: 400;
 }
 
 .btnAdvance {
@@ -275,6 +302,7 @@ header {
   min-width: auto;
   position: fixed;
 }
+
 .room-box {
   width: 300px;
   height: 100px;
@@ -306,6 +334,7 @@ header {
   font-family: Kanit;
   font-style: normal;
 }
+
 .room-h3 {
   text-align: center;
   font-size: 24px;
@@ -314,19 +343,30 @@ header {
   font-family: Kanit;
   font-style: normal;
 }
+
 .room-bg {
   background-color: #fafafa;
   min-width: 300px;
 }
 
 /* -------------------- Login (Home) -------------------- */
+.login-section {
+  position: relative;
+}
 
 .logo {
-  margin-top: 180px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -70%);
 }
 
 .button {
-  margin-top: 50px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+
 }
 
 .footer {
@@ -352,3 +392,149 @@ header {
   font-family: Kanit;
   font-size: 1em;
 }
+
+
+/*------------------ Not found --------------- */
+
+/*------------------ Loading -----------------*/
+
+.loader {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  padding-right: 20px;
+  width: 100%;
+  height: 10px;
+  text-align: center;
+}
+
+.loader span {
+  width: 20px;
+  height: 20px;
+  background: #fff;
+  display: inline-block;
+  margin-left: 20px;
+  border-radius: 50%;
+  animation: animate 2s linear infinite;
+  opacity: 0;
+}
+
+.loader span:nth-child(1) {
+  animation-delay: 0.8s;
+  background: #00c2ff;
+}
+
+.loader span:nth-child(2) {
+  animation-delay: 0.6s;
+  background: #ffe837;
+}
+
+.loader span:nth-child(3) {
+  animation-delay: 0.4s;
+  background: #ff1b78;
+}
+
+.loader span:nth-child(4) {
+  animation-delay: 0.2s;
+  background: #ba68c8;
+}
+
+.loader span:nth-child(5) {
+  animation-delay: 0s;
+  background: #f57c00;
+}
+
+@keyframes animate {
+  0% {
+    transform: translateX(-100px);
+    opacity: 0;
+
+  }
+
+  10% {
+    transform: translateX(-100px);
+    opacity: 0;
+  }
+
+  25% {
+    transform: translateX(0px);
+    opacity: 1;
+  }
+
+  50% {
+    transform: translateX(0px);
+    opacity: 1;
+  }
+
+  75% {
+    transform: translateX(0px);
+    opacity: 1;
+  }
+
+  90% {
+    transform: translateX(100px);
+    opacity: 0;
+  }
+
+  100% {
+    transform: translateX(100px);
+    opacity: 0;
+  }
+}
+
+.smoke {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  padding-left: 10px;
+  padding-bottom: 60px;
+  transform: translate(-50%, -50%);
+}
+
+.smoke span {
+  position: relative;
+  color: #474444;
+  font-family: kanit;
+  font-size: 20px;
+  font-weight: bold;
+  letter-spacing: 10px;
+  text-transform: uppercase;
+  animation: animate 3s linear infinite;
+}
+/*.smoke span:nth-child(1){
+  animation-delay: 0s;
+}
+.smoke span:nth-child(2){
+  animation-delay: 0.1s;
+}
+.smoke span:nth-child(3){
+  animation-delay: 0.2s;
+}
+.smoke span:nth-child(4){
+  animation-delay: 0.3s;
+}
+.smoke span:nth-child(5){
+  animation-delay: 0.4s;
+}
+.smoke span:nth-child(6){
+  animation-delay: 0.5s;
+}
+.smoke span:nth-child(7){
+  animation-delay: 0.6s;
+}*/
+
+/*@keyframes animate2{
+  0%{
+    filter: blur(0);
+  }
+  40%{
+    filter: blur(20px);
+  }
+  80%{
+    filter: blur(0px);
+  }
+  100%{
+    filter: blur(0px);
+  }
+
+}*/

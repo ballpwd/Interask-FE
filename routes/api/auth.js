@@ -52,4 +52,9 @@ router.get('/current_user',authCheck, async (req, res) => {
       }
 });
 
+
+router.get('/google/redirect',passport.authenticate('google'),(req,res)=>{
+    res.redirect('/profile/');
+})
+
 module.exports = router;

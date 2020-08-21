@@ -53,6 +53,11 @@ const Home = () => {
             login
           </a>
         </div>
+        <div>
+          <a href="/loading" className="btn btn-primary">
+            login
+          </a>
+        </div>
       </div>
     </div>
   );

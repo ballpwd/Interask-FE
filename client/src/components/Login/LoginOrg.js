@@ -7,12 +7,13 @@ import { Container, Row, Col, Button } from 'reactstrap';
 const LoginOrg = () => {
     return (
         <Fragment>
-            <Container >
-                <Row className='justify-content-center align-items-center logo'>
+            <div className='bg fullscreen'>
+            <Container className=''>
+                <Row className='justify-content-center align-items-center '>
                     <img src={logo} alt='Interask' className='img-fluid '></img>
                 </Row>
 
-                <Row className='justify-content-center align-items-center buttonOrg'>
+                <Row className='justify-content-center align-items-center '>
                     <a href="/api/auth/google"><img src={googlelogin} alt='Interask' className='img-fluid' style={{width:'350px' ,height:'87px'}} /></a>
                 </Row>
 
@@ -20,7 +21,7 @@ const LoginOrg = () => {
                 <Button className ='howto' color="dark" size="lg"  style={{width:'226px' , height:'55px'}} >How to</Button>
                 </Row>
             </Container>
-
+            </div>
         </Fragment >
     );
 };

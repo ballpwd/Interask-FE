@@ -8,10 +8,12 @@ import OrganizerPresent from "../OrganizerPresentation/OrganizerPresent";
 import NotFound from '../layout/NotFound';
 import Login from '../Login/Login';
 import LoginOrg from '../Login/LoginOrg';
+import Loading from '../Loading/Loading';
 
 const Routes = () => {
   return (
       <Switch>
+        <Route exact path="/loading" component={Loading} />
         <Route exact path="/home" component={Login} />
         <Route exact path="/ask/:id" component={Ask} />
         <Route exact path="/askpresent/:id" component={OrganizerPresent} />

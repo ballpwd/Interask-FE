@@ -42,6 +42,7 @@ const AskForm = ({ room, addAsk }) => {
                 value={anonymous}
                 onChange={() => setAnonymous(!anonymous)}
               />
+             
               <label
                 className="custom-control-label anonymous"
                 htmlFor="anonymousSwitch"

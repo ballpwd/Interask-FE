@@ -1,8 +1,15 @@
 import React from "react";
 import { Link } from "react-router-dom";
-
-
-const Home = () => {
+import auth from "../reducers/authReducer";
+import {logout} from "../actions/authActions" ;
+import { connect } from 'react-redux';
+const Home = (props) => {
+  const {
+    auth,
+    logout
+  } = props
+  
+  console.log(auth)
   return (
     <div className='bg fullscreen'>
       <h1>Home Page</h1>
@@ -58,9 +65,21 @@ const Home = () => {
             login
           </a>
         </div>
+        <div>
+          <button onClick={logout} >
+            logout
+          </button>
+        </div>
       </div>
     </div>
   );
 };
 
-export default Home;
+const mapStateToProps = (state) => ({
+  auth: state.auth
+});
+
+export default connect(mapStateToProps,{logout})(Home);
+
+
+

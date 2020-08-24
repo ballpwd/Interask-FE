@@ -19,7 +19,9 @@ const Login = () => {
                     <Row className='justify-content-center align-items-end footer'>
                         <p>Create your own room for <a href='/organizer'>FREE organization.com</a></p>
                     </Row>
-
+                    <a href='/' className="btn btn-primary">
+                        home
+                    </a>
                 </Container>
             </div>
         </Fragment >

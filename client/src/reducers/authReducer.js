@@ -1,13 +1,13 @@
-import Cookies from "js-cookie"
 import {
     USER_LOADED,
     TOKEN_LOADED,
-    AUTH_ERROR
+    AUTH_ERROR,
+    LOGOUT
   } from '../actions/types';
   
     const initialState = {
-      token: Cookies.get('token'),
-      isAuthenticated: null,
+      token: localStorage.getItem('token'),
+      isAuthenticated: false,
       user: null,
       error: {},
       authLoading: true
@@ -29,6 +29,14 @@ import {
           token: payload,
           authLoading: false   
         } ;
+      case LOGOUT:
+        return {
+          ...state,
+          token: null,
+          isAuthenticated: false,
+          user: null,
+          authLoading: false
+        };
       case AUTH_ERROR:
         return {
           ...state,

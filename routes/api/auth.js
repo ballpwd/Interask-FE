@@ -26,14 +26,15 @@ router.get(
                     id: req.user.id
                   }
             }
-            jwt.sign(payload, keys.jwtSecret, {expiresIn:'5 min'}, (err, token) => {
-                if(err){
+            jwt.sign(
+                payload,
+                keys.jwtSecret,
+                {expiresIn: 360000 },
+                (err, token) => {
                     if (err) throw err;
-                } else {
-                    // res.status(200).cookie('token', token).redirect("/")
-                    res.status(200).cookie('token', token).redirect(req.session.redirectTo)
-                }
-            });   
+                    // res.status(200).cookie('token', token).redirect(req.session.redirectTo)
+                    res.status(200).redirect(req.session.redirectTo+'?token='+token)
+                });   
         } catch (error) {
             console.error(err.message);
             res.status(500).send('Server error');

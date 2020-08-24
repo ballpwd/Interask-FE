@@ -32,3 +32,4 @@ export const ORG_ROOMLIST_UNLOADED = "ORG_ROOMLIST_UNLOADED";
 export const USER_LOADED = "USER_LOADED";
 export const AUTH_ERROR = "AUTH_ERROR";
 export const TOKEN_LOADED = "TOKEN_LOADED";
+export const LOGOUT = "LOGOUT";

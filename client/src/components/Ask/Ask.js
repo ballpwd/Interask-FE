@@ -9,7 +9,6 @@ import AskForm from './AskForm';
 import { Container, Row, Col } from 'reactstrap';
 import NavBar from '../Navbar/NavBar'
 
-
 const Ask = (props) => {
   const {
     getRoomById,
@@ -30,9 +29,7 @@ const Ask = (props) => {
   const dayIndex = d.getDay();
   const dayName = days[dayIndex];
   const timeString = dayName + " " + day + "-" + month + "-" + year;
-
   
-
   useEffect(() => {
     getRoomById(match.params.id);
     return () => {

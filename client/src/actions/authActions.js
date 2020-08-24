@@ -2,7 +2,8 @@ import axios from 'axios';
 import { 
     USER_LOADED,
     TOKEN_LOADED,
-    AUTH_ERROR
+    AUTH_ERROR,
+    LOGOUT
 } from './types';
 
 // Load User
@@ -37,4 +38,18 @@ export const loadToken = token => async dispatch => {
       payload: err
     });
   }
+};
+
+// Logout
+export const logout = () => async dispatch => {
+  try {
+    dispatch({ 
+      type: LOGOUT
+    });
+  }catch (err) {
+    dispatch({
+      type: AUTH_ERROR,
+      payload: err
+    });
+  }  
 };

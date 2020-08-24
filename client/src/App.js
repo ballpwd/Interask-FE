@@ -1,36 +1,37 @@
 import "./App.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 import React,{useEffect} from "react";
-import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+import {Route, Switch, useLocation} from "react-router-dom";
 import Routes from './components/routing/Routes';
 import Home from "./components/Home";
 import Login from './components/Login/Login';
-import Cookies from "js-cookie";
+import queryString from "query-string";
+
 //Redux
-import { Provider } from "react-redux";
 import store from "./store";
-import { loadToken,loadUser } from './actions/authActions';
+import {loadToken,loadUser } from './actions/authActions';
 import setAuthToken from './utils/setAuthToken';
 
 const App = () => {
+  const token = queryString.parse(useLocation().search).token
+  
   useEffect(() => {
-    const token = Cookies.get('token')
-    if(token){
-        store.dispatch(loadToken(token))
-        setAuthToken(token)
-        store.dispatch(loadUser());
+    if(token){   // check token from queryString
+      store.dispatch(loadToken(token))
+      setAuthToken(token)
+      store.dispatch(loadUser());
+    }else if (localStorage.token) {  // check token from localStorage
+      setAuthToken(localStorage.token);
+      store.dispatch(loadUser());
     }
+    
   }, []);
   
   return (
-    <Provider store={store}>
-      <Router>
-        <Switch>
-          <Route exact path="/" component={Home} />
-          <Route component={Routes} />
-        </Switch>
-      </Router>
-    </Provider>
+    <Switch>
+      <Route exact path="/" component={Home} />
+      <Route component={Routes} />
+    </Switch>
   );
 };
 

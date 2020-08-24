@@ -10,6 +10,7 @@ const EditRoom = (props) => {
     editRoomName,
     deleteRoom,
     room: { _id, roomName },
+    toggle
   } = props;
 
   const handleSubmit = (e) => {
@@ -40,6 +41,7 @@ const EditRoom = (props) => {
               type="submit"
               value="Submit"
               className="btn btn-dark org-btn"
+              onClick={toggle}
             >
               SAVE
             </Button>

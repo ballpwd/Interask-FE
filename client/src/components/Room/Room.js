@@ -1,44 +1,37 @@
 import React, { Fragment, useEffect } from "react";
 import { connect } from "react-redux";
 import { Link } from "react-router-dom";
-import { getRoomByUserId, roomListUnload } from "../../actions/roomActions";
+import { getRoomList, roomListUnload } from "../../actions/roomActions";
 import RoomList from "./RoomList";
 import { Container } from "reactstrap";
+import Loading from '../Loading/Loading';
 const Room = (props) => {
-  //mockup user
-  const user = {
-    _id: "5e85403922192a21e87fbbaa",
-    email: "ballpwd5@gmail.com",
-    userName: "ballpwd5",
-  };
 
   const {
-    getRoomByUserId,
+    getRoomList,
     roomListUnload,
     room: { roomList, roomLoading },
+    auth: { user }
   } = props;
-
+  
   useEffect(() => {
-    getRoomByUserId(user._id);
+    getRoomList();
+
     return () => {
       roomListUnload();
     };
-  }, [getRoomByUserId, roomListUnload, user._id]);
+  }, [getRoomList, roomListUnload]);
 
   console.log(roomList);
 
-  return roomLoading ? (
-    <h1>Loading</h1>
+  return (roomLoading)? (
+    <Loading></Loading>
   ) : (
     <Fragment>
       <div className="fullscreen room-bg">
         <Container fluid className="head-room">
           <div className="p-4">
             <h1 className="room-h1">Hi "{user.userName}"</h1>
-            {/* <p className="text-danger text-center">
-            {" "}
-            Mockup Room for User ballpwd5{" "}
-          </p> */}
             <br /> <h3 className="room-h3">SELECT ROOM</h3>
           </div>
         </Container>
@@ -49,7 +42,7 @@ const Room = (props) => {
             <br />
             <br />
           </div>
-          {<RoomList roomList={roomList} />}
+          {<RoomList roomList={roomList}/>}
 
           <div className="mt-5">
             <Link to="/" className="btn btn-primary">
@@ -64,8 +57,9 @@ const Room = (props) => {
 
 const mapStateToProps = (state) => ({
   room: state.room,
+  auth: state.auth
 });
 
-export default connect(mapStateToProps, { getRoomByUserId, roomListUnload })(
+export default connect(mapStateToProps, { getRoomList, roomListUnload })(
   Room
 );

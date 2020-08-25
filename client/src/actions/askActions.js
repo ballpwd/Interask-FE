@@ -9,42 +9,41 @@ import {
 } from './types';
 
 //Get all ask
-export const getAllAsk = () => async dispatch => {
-    try {
-        const res = await axios.get('/api/ask')
-        dispatch({
-            type: GET_ASKLIST,
-            payload: res.data
-        });
-    } catch (err) {
-        dispatch({
-            type: ASK_ERROR,
-            payload: err
-        });    
-    }
-};
+// export const getAllAsk = () => async dispatch => {
+//     try {
+//         const res = await axios.get('/api/ask')
+//         dispatch({
+//             type: GET_ASKLIST,
+//             payload: res.data
+//         });
+//     } catch (err) {
+//         dispatch({
+//             type: ASK_ERROR,
+//             payload: err
+//         });    
+//     }
+// };
 
 //Get ask by ask_id
-export const getAskById = askId => async dispatch => {
-    try {
-        const res = await axios.get(`/api/ask/${askId}`)
-        
-        dispatch({
-            type: GET_ASK,
-            payload: res.data
-        });
-    } catch (err) {
-        dispatch({
-            type: ASK_ERROR,
-            payload: err
-        });    
-    }
-};
+// export const getAskById = askId => async dispatch => {
+//     try {
+//         const res = await axios.get(`/api/ask/${askId}`)
+//         dispatch({
+//             type: GET_ASK,
+//             payload: res.data
+//         });
+//     } catch (err) {
+//         dispatch({
+//             type: ASK_ERROR,
+//             payload: err
+//         });    
+//     }
+// };
 
-//Get ask by room_id and user_id
-export const getAskByRoomIdUserId = (roomId,userId) => async dispatch => {
+//Get user asklist
+export const getUserAskList = (roomId) => async dispatch => {
     try {
-        const res = await axios.get(`/api/ask/room/${roomId}/${userId}`)
+        const res = await axios.get(`/api/ask/user/room/${roomId}`)
 
         dispatch({
             type: GET_ASKLIST,

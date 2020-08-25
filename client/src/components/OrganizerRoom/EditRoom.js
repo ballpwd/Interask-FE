@@ -5,7 +5,6 @@ import { Container, Row, Col, Button } from "reactstrap";
 
 const EditRoom = (props) => {
   const [roomNewName, setRoomNewName] = useState("");
-  const userId = "5e85403922192a21e87fbbaa";
   const {
     editRoomName,
     deleteRoom,
@@ -49,7 +48,7 @@ const EditRoom = (props) => {
           <Col xs="10" md="5" className="text-center mt-4">
             <Button
               type="button"
-              onClick={() => deleteRoom(_id, roomName)}
+              onClick={() => deleteRoom(_id)}
               className="btn btn-dark org-btn"
             >
               DELETE ROOM

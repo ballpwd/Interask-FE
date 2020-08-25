@@ -1,47 +1,35 @@
 import React, { Fragment, useEffect, useState } from "react";
 import { connect } from "react-redux";
-import {
-  getRoomByOwnerId,
-  orgRoomListUnload,
-} from "../../actions/orgRoomActions";
+import { getOrgRoomList, orgRoomListUnload } from "../../actions/orgRoomActions";
 import OrganizerRoomList from "./OrganizerRoomList";
 import { Container, Row, Button } from "reactstrap";
+import Loading from '../Loading/Loading';
+
 const OrganizerRoom = (props) => {
-  //mockup user
-  const user = {
-    _id: "5e85403922192a21e87fbbaa",
-    email: "ballpwd5@gmail.com",
-    userName: "ballpwd5",
-  };
 
   const [edit, setEdit] = useState(false);
   const manage = () => setEdit(!edit);
 
   const {
-    getRoomByOwnerId,
+    getOrgRoomList,
     orgRoomListUnload,
     orgRoom: { roomList, roomLoading },
+    auth: { user }
   } = props;
 
   useEffect(() => {
-    getRoomByOwnerId(user._id);
+    getOrgRoomList();
     return () => {
       orgRoomListUnload();
     };
-  }, [getRoomByOwnerId, user._id, orgRoomListUnload]);
-
-  console.log(roomList);
+  }, [getOrgRoomList, orgRoomListUnload]);
 
   return roomLoading ? (
-    <h1>Loading</h1>
+    <Loading></Loading>
   ) : (
     <Fragment>
       <Container fluid>
         <h1 className="org-h1 text-center">Hi "{user.userName}"</h1>
-        <p className="text-danger text-center">
-          {" "}
-          Mockup Organizer Room for User ballpwd5{" "}
-        </p>
       </Container>
       <Container>
         <Row>
@@ -65,9 +53,10 @@ const OrganizerRoom = (props) => {
 
 const mapStateToProps = (state) => ({
   orgRoom: state.orgRoom,
+  auth: state.auth
 });
 
 export default connect(mapStateToProps, {
-  getRoomByOwnerId,
+  getOrgRoomList,
   orgRoomListUnload,
 })(OrganizerRoom);

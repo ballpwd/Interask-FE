@@ -9,19 +9,20 @@ import NotFound from '../layout/NotFound';
 import Login from '../Login/Login';
 import LoginOrg from '../Login/LoginOrg';
 import Loading from '../Loading/Loading';
+import PrivateRoute from '../routing/PrivateRoute';
 
 const Routes = () => {
   return (
       <Switch>
         <Route exact path="/loading" component={Loading} />
-        <Route exact path="/home" component={Login} />
-        <Route exact path="/ask/:id" component={Ask} />
-        <Route exact path="/askpresent/:id" component={OrganizerPresent} />
-        <Route exact path="/room" component={Room} />
-        <Route exact path="/organizer/room" component={OrganizerRoom} />
-        <Route exact path="/organizer" component={LoginOrg} />
-        <Route exact path="/organizer/ask/:id" component={OrganizerAsk} />
-        <Route exact path="/organizer/present/:id" component={OrganizerPresent}/>
+        <Route exact path="/login" component={Login} />
+        <Route exact path="/organizer/login" component={LoginOrg} />
+        <PrivateRoute exact path="/ask/:id" component={Ask} />
+        <PrivateRoute exact path="/room" component={Room} />
+        <PrivateRoute exact path="/organizer/room" component={OrganizerRoom} />
+        <PrivateRoute exact path="/askpresent/:id" component={OrganizerPresent} />
+        <PrivateRoute exact path="/organizer/ask/:id" component={OrganizerAsk} />
+        <PrivateRoute exact path="/organizer/present/:id" component={OrganizerPresent}/>
         <Route component={NotFound} />
       </Switch>
   

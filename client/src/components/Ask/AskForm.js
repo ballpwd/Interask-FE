@@ -4,15 +4,18 @@ import { connect } from "react-redux";
 import { Row, Col } from "reactstrap";
 import sent from "../../assets/sent1.svg";
 
-const AskForm = ({ room, addAsk }) => {
+const AskForm = (props) => {
   const [text, setText] = useState("");
   const [anonymous, setAnonymous] = useState(false);
-  const userId = "5e85403922192a21e87fbbaa";
+  const{
+    room, 
+    addAsk
+  } = props
 
   const handleSubmit = (e) => {
     e.preventDefault();
     const roomId = room._id;
-    addAsk({ userId, roomId, text, anonymous });
+    addAsk({ roomId, text, anonymous });
     setText("");
   };
 

@@ -2,17 +2,18 @@ import React, {Fragment , useEffect} from 'react' ;
 import {connect} from 'react-redux';
 import { Link } from "react-router-dom";
 import {getOrgRoomById,orgRoomUnload} from '../../actions/orgRoomActions' ;
-import {getOrgAskByRoomId,orgAskListUnload} from '../../actions/orgAskActions' ;
+import {getOrgAskList,orgAskListUnload} from '../../actions/orgAskActions' ;
 import OrganizerAskList from './OrganizerAskList' ;
 import OrganizerAskAnalyze from './OrganizerAskAnalyze' ;
 import Loading from '../Loading/Loading';
 import { Container, Row, Col, Button } from 'reactstrap';
+
 const OrganizerAsk = props =>{
 
     const { 
         getOrgRoomById,
         orgRoomUnload,
-        getOrgAskByRoomId,
+        getOrgAskList,
         orgAskListUnload,
         orgRoom:{room,roomLoading},
         orgAsk:{askList,askLoading},
@@ -26,9 +27,9 @@ const OrganizerAsk = props =>{
     } ,[getOrgRoomById, match.params.id,orgRoomUnload])
    
     useEffect(() => {
-        getOrgAskByRoomId(match.params.id);
+        getOrgAskList(match.params.id);
         return () => { orgAskListUnload() }
-    } ,[getOrgAskByRoomId, match.params.id,orgAskListUnload])
+    } ,[getOrgAskList, match.params.id,orgAskListUnload])
     
     console.log(room)
     console.log(askList)
@@ -80,6 +81,6 @@ const mapStateToProps = state => ({
     orgAsk: state.orgAsk
 })
 
-export default connect(mapStateToProps,{getOrgRoomById,getOrgAskByRoomId,orgRoomUnload,orgAskListUnload})(OrganizerAsk) ;
+export default connect(mapStateToProps,{getOrgRoomById,getOrgAskList,orgRoomUnload,orgAskListUnload})(OrganizerAsk) ;
 
 

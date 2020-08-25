@@ -6,7 +6,9 @@ import plus from "../../assets/plus.svg";
 import JoinRoom from './JoinRoom' ;
 const RoomList = (props) => {
   const [modal, setModal] = useState(false);
-  const { roomList } = props;
+  const { 
+    roomList
+  } = props;
 
   const toggle = () => setModal(!modal);
 

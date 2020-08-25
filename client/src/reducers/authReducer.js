@@ -7,7 +7,7 @@ import {
   
     const initialState = {
       token: localStorage.getItem('token'),
-      isAuthenticated: false,
+      isAuthenticated: null,
       user: null,
       error: {},
       authLoading: true
@@ -26,6 +26,7 @@ import {
         case TOKEN_LOADED:
         return {
           ...state,
+          isAuthenticated: true,
           token: payload,
           authLoading: false   
         } ;
@@ -40,8 +41,9 @@ import {
       case AUTH_ERROR:
         return {
           ...state,
+          isAuthenticated: false,
           error: payload,
-          authLoading: false 
+          authLoading: false
         };
       default:
         return state;

@@ -1,10 +1,19 @@
-import React, { useEffect, Fragment } from 'react';
+import React, { Fragment } from 'react';
 import logo from '../../assets/logo.svg';
 import googlelogin from '../../assets/signin.svg';
-import { Container, Row, Col, Button } from 'reactstrap';
+import { Container, Row, Button } from 'reactstrap';
+import { connect } from 'react-redux';
+import { Redirect } from 'react-router-dom';
 
+const LoginOrg = (props) => {
+    const {
+        isAuthenticated
+    } = props
 
-const LoginOrg = () => {
+    if (isAuthenticated) {
+        return <Redirect to='/' />;
+    }
+
     return (
         <Fragment>
             <div className='bg fullscreen'>
@@ -26,5 +35,8 @@ const LoginOrg = () => {
     );
 };
 
+const mapStateToProps = (state) => ({
+    isAuthenticated: state.auth.isAuthenticated
+});
 
-export default LoginOrg;
+export default connect(mapStateToProps)(LoginOrg);

@@ -1,8 +1,8 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import auth from "../reducers/authReducer";
 import {logout} from "../actions/authActions" ;
 import { connect } from 'react-redux';
+
 const Home = (props) => {
   const {
     auth,
@@ -15,9 +15,14 @@ const Home = (props) => {
       <h1>Home Page</h1>
       <div>
         <div>
-         <a href='/home' className="btn btn-primary">
+         <a href='/login' className="btn btn-primary">
            Login Page
            </a>
+        </div>
+        <div>
+          <a href='/organizer/login' className="btn btn-primary">
+           OrganizerLogin Page
+          </a>
         </div>
         <div>
           <Link to="/room" className="btn btn-primary">

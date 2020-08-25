@@ -8,46 +8,44 @@ import {
 } from './types';
 
 //Get all ask (Organizer)
-export const getAllOrgAsk = () => async dispatch => {
+// export const getAllOrgAsk = () => async dispatch => {
+//     try {
+
+//         const res = await axios.get('/api/ask')
+//         dispatch({
+//             type: GET_ORG_ASKLIST,
+//             payload: res.data
+//         });
+//     } catch (err) {
+//         dispatch({
+//             type: ORG_ASK_ERROR,
+//             payload: err
+//         });    
+//     }
+// };
+
+// //Get ask by ask_id (Organizer)
+// export const getOrgAskById = askId => async dispatch => {
+//     try {
+
+//         const res = await axios.get(`/api/ask/${askId}`)
+
+//         dispatch({
+//             type: GET_ORG_ASK,
+//             payload: res.data
+//         });
+//     } catch (err) {
+//         dispatch({
+//             type: ORG_ASK_ERROR,
+//             payload: err
+//         });    
+//     }
+// };
+
+//Get organizer asklist
+export const getOrgAskList = (roomId) => async dispatch => {
     try {
-
-        const res = await axios.get('/api/ask')
-        dispatch({
-            type: GET_ORG_ASKLIST,
-            payload: res.data
-        });
-    } catch (err) {
-        dispatch({
-            type: ORG_ASK_ERROR,
-            payload: err
-        });    
-    }
-};
-
-//Get ask by ask_id (Organizer)
-export const getOrgAskById = askId => async dispatch => {
-    try {
-
-        const res = await axios.get(`/api/ask/${askId}`)
-
-        dispatch({
-            type: GET_ORG_ASK,
-            payload: res.data
-        });
-    } catch (err) {
-        dispatch({
-            type: ORG_ASK_ERROR,
-            payload: err
-        });    
-    }
-};
-
-//Get List ask by room_id (Organizer)
-export const getOrgAskByRoomId = roomId => async dispatch => {
-    try {
-
-        const res = await axios.get(`/api/ask/room/${roomId}`)
-    
+        const res = await axios.get(`/api/ask/owner/room/${roomId}`)
         dispatch({
             type: GET_ORG_ASKLIST,
             payload: res.data

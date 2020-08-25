@@ -1,5 +1,4 @@
-import React, { useEffect, Fragment } from 'react';
-import { Container, Row, Col } from 'reactstrap';
+import React, { Fragment } from 'react';
 
 const Loading = () => {
     return (

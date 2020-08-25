@@ -1,7 +1,7 @@
 import React, { useEffect, Fragment } from 'react';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
-import { getAskByRoomIdUserId, askUnload } from '../../actions/askActions';
+import { getUserAskList, askUnload } from '../../actions/askActions';
 import { getRoomById, roomUnload } from '../../actions/roomActions';
 import Loading from '../Loading/Loading';
 import AskHistory from './AskHistory';
@@ -9,11 +9,12 @@ import AskForm from './AskForm';
 import { Container, Row, Col } from 'reactstrap';
 import NavBar from '../Navbar/NavBar'
 
+
 const Ask = (props) => {
   const {
     getRoomById,
     roomUnload,
-    getAskByRoomIdUserId,
+    getUserAskList,
     askUnload,
     ask: { askList, askLoading },
     room: { room, roomLoading },
@@ -29,7 +30,9 @@ const Ask = (props) => {
   const dayIndex = d.getDay();
   const dayName = days[dayIndex];
   const timeString = dayName + " " + day + "-" + month + "-" + year;
+
   
+
   useEffect(() => {
     getRoomById(match.params.id);
     return () => {
@@ -38,11 +41,11 @@ const Ask = (props) => {
   }, [getRoomById, match.params.id, roomUnload]);
 
   useEffect(() => {
-    getAskByRoomIdUserId(match.params.id, "5e85403922192a21e87fbbaa");
+    getUserAskList(match.params.id);
     return () => {
       askUnload();
     };
-  }, [getAskByRoomIdUserId, match.params.id, askUnload]);
+  }, [getUserAskList, match.params.id, askUnload]);
 
   return (askLoading || roomLoading) ? (
     <Loading></Loading>
@@ -90,7 +93,7 @@ const mapStateToProps = (state) => ({
 
 export default connect(mapStateToProps, {
   getRoomById,
-  getAskByRoomIdUserId,
+  getUserAskList,
   roomUnload,
   askUnload,
 })(Ask);

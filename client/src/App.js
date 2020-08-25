@@ -20,11 +20,7 @@ const App = () => {
       store.dispatch(loadToken(token))
       setAuthToken(token)
       store.dispatch(loadUser());
-    }else if (localStorage.token) {  // check token from localStorage
-      setAuthToken(localStorage.token);
-      store.dispatch(loadUser());
     }
-    
   }, []);
   
   return (

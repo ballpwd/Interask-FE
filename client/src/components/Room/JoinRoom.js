@@ -5,12 +5,14 @@ import { Container ,Row ,Col ,Button } from "reactstrap";
 
 const JoinRoom = (props) => {
     const [roomCode, setRoomCode] = useState("");
-    const userId = "5e85403922192a21e87fbbaa";
-    const {joinRoom,toggle} = props ;
-
+    const {
+      joinRoom,
+      toggle
+    } = props ;
+    
     const handleSubmit = (e) => {
         e.preventDefault();
-        joinRoom(roomCode,{userId: userId});
+        joinRoom(roomCode);
         setRoomCode("");
         toggle()
     };

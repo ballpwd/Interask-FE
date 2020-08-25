@@ -11,21 +11,21 @@ import {
 } from './types';
 
 //Get all room
-export const getAllOrgRoom = () => async (dispatch) => {
-  try {
+// export const getAllOrgRoom = () => async (dispatch) => {
+//   try {
 
-    const res = await axios.get('/api/room');
-    dispatch({
-      type: GET_ORG_ROOMLIST,
-      payload: res.data,
-    });
-  } catch (err) {
-    dispatch({
-      type: ORG_ROOM_ERROR,
-      payload: err
-    });    
-  }
-};
+//     const res = await axios.get('/api/room');
+//     dispatch({
+//       type: GET_ORG_ROOMLIST,
+//       payload: res.data,
+//     });
+//   } catch (err) {
+//     dispatch({
+//       type: ORG_ROOM_ERROR,
+//       payload: err
+//     });    
+//   }
+// };
 
 //Get room by room_id (Organizer) 
 export const getOrgRoomById = roomId => async (dispatch) => {
@@ -45,12 +45,10 @@ export const getOrgRoomById = roomId => async (dispatch) => {
   }
 };
 
-//Get room by user_id(owner)
-export const getRoomByOwnerId = userId => async (dispatch) => {
+//Get owner roomlist
+export const getOrgRoomList =()=> async (dispatch) => {
   try {
-
-    const res = await axios.get(`/api/room/owner/${userId}`);
-    console.log(res.data)
+    const res = await axios.get(`/api/room/owner/list`);
     dispatch({
       type: GET_ORG_ROOMLIST,
       payload: res.data,
@@ -102,7 +100,6 @@ export const deleteRoom = roomId => async (dispatch) => {
 //Edit room name 
 export const editRoomName = (roomId, formData) => async (dispatch) => {
   try {
-
     const res = await axios.put(`/api/room/editname/${roomId}`, formData);
 
     dispatch({

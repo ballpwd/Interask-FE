@@ -2,17 +2,15 @@ import React, { useEffect, Fragment } from "react";
 import { Link } from "react-router-dom";
 import { connect } from "react-redux";
 import OrganizerPresentList from "./OrganizerPresentList";
-import {
-  getOrgAskByRoomId,
-  orgAskListUnload,
-} from "../../actions/orgAskActions";
+import {getOrgAskList, orgAskListUnload} from "../../actions/orgAskActions";
 import { getOrgRoomById, orgRoomUnload } from "../../actions/orgRoomActions";
 import { Container } from "reactstrap";
+import Loading from '../Loading/Loading';
 
 const OrganizerPresent = ({
   getOrgRoomById,
   orgRoomUnload,
-  getOrgAskByRoomId,
+  getOrgAskList,
   orgAskListUnload,
   orgRoom: { room, roomLoading},
   orgAsk: { askList, askLoading },
@@ -26,14 +24,14 @@ const OrganizerPresent = ({
   }, [getOrgRoomById, match.params.id, orgRoomUnload]);
 
   useEffect(() => {
-    getOrgAskByRoomId(match.params.id);
+    getOrgAskList(match.params.id);
     return () => {
       orgAskListUnload();
     };
-  }, [getOrgAskByRoomId, match.params.id, orgAskListUnload]);
+  }, [getOrgAskList, match.params.id, orgAskListUnload]);
 
   return (roomLoading || askLoading) ? (
-    <h1>Loading</h1>
+    <Loading></Loading> 
   ) : (
     <Fragment>
       <div className="fullscreen bg">
@@ -66,7 +64,7 @@ const mapStateToProps = (state) => ({
 
 export default connect(mapStateToProps, {
   getOrgRoomById,
-  getOrgAskByRoomId,
+  getOrgAskList,
   orgRoomUnload,
   orgAskListUnload,
 })(OrganizerPresent);

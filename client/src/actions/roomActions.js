@@ -10,25 +10,26 @@ import {
 } from './types';
 
 //Get all room
-export const getAllRoom = () => async (dispatch) => {
-  try {
-    const res = await axios.get('/api/room');
-    dispatch({
-      type: GET_ROOMLIST,
-      payload: res.data
-    });
-  } catch (err) {
-    dispatch({
-      type: ROOM_ERROR,
-      payload: err
-    });    
-  }
-};
+// export const getAllRoom = () => async (dispatch) => {
+//   try {
+//     const res = await axios.get('/api/room');
+//     dispatch({
+//       type: GET_ROOMLIST,
+//       payload: res.data
+//     });
+//   } catch (err) {
+//     dispatch({
+//       type: ROOM_ERROR,
+//       payload: err
+//     });    
+//   }
+// };
 
 //Get room by room_id (User) 
 export const getRoomById = roomId => async (dispatch) => {
   try {
     const res = await axios.get(`/api/room/${roomId}`);
+    console.log('room',res)
     dispatch({
       type: GET_ROOM,
       payload: res.data
@@ -41,11 +42,10 @@ export const getRoomById = roomId => async (dispatch) => {
   }
 };
 
-//Get room by user_id(user)
-export const getRoomByUserId = userId => async (dispatch) => {
+//Get user roomlist
+export const getRoomList =()=> async (dispatch) => {
   try {
-    const res = await axios.get(`/api/room/user/${userId}`);
-    console.log(res.data)
+    const res = await axios.get(`/api/room/user/list`);
     dispatch({
       type: GET_ROOMLIST,
       payload: res.data,
@@ -59,9 +59,9 @@ export const getRoomByUserId = userId => async (dispatch) => {
 };
 
 //Join room
-export const joinRoom = (roomCode,userId)=> async (dispatch) => {
+export const joinRoom = (roomCode)=> async (dispatch) => {
   try {
-    const res = await axios.post(`/api/room/join/${roomCode}`,userId);
+    const res = await axios.post(`/api/room/join/${roomCode}`);
 
     dispatch({
       type: JOIN_ROOM,

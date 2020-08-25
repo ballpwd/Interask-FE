@@ -9,9 +9,7 @@ import {
 // Load User
 export const loadUser = () => async dispatch => {
     try {
-      
       const res = await axios.get('/api/auth/current_user');
-      
       console.log(res.data)
       dispatch({
         type: USER_LOADED,

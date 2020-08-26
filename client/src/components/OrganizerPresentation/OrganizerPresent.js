@@ -6,6 +6,7 @@ import {getOrgAskList, orgAskListUnload} from "../../actions/orgAskActions";
 import { getOrgRoomById, orgRoomUnload } from "../../actions/orgRoomActions";
 import { Container } from "reactstrap";
 import Loading from '../Loading/Loading';
+import io from "socket.io-client"
 
 const OrganizerPresent = ({
   getOrgRoomById,
@@ -24,9 +25,21 @@ const OrganizerPresent = ({
   }, [getOrgRoomById, match.params.id, orgRoomUnload]);
 
   useEffect(() => {
+
+    let socket = io.connect("http://localhost:5000")
+
+    socket.emit('room', match.params.id)
+
+    socket.on('organizerAsk', (data) => {
+      if (data.status === 200) {
+          getOrgAskList(match.params.id);
+      }
+    })
+
     getOrgAskList(match.params.id);
+
     return () => {
-      orgAskListUnload();
+      orgAskListUnload(); socket.disconnect();
     };
   }, [getOrgAskList, match.params.id, orgAskListUnload]);
 

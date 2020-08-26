@@ -23,8 +23,13 @@ router.post('/', auth, async (req, res) => {
             text: text,
             anonymous: anonymous
           });
-
+        
         const ask = await newAsk.save()
+        console.log('---Request---',req.app)
+        req.app.io.sockets
+        .in(roomId)
+        .emit('organizerAsk', { status: 200 })
+
         res.json(ask);
     } catch (err) {
         console.error(err.message);

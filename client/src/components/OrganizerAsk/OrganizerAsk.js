@@ -7,6 +7,8 @@ import OrganizerAskList from './OrganizerAskList' ;
 import OrganizerAskAnalyze from './OrganizerAskAnalyze' ;
 import Loading from '../Loading/Loading';
 import { Container, Row, Col, Button } from 'reactstrap';
+// import socket from '../../utils/socket'
+import io from "socket.io-client"
 
 const OrganizerAsk = props =>{
 
@@ -27,8 +29,20 @@ const OrganizerAsk = props =>{
     } ,[getOrgRoomById, match.params.id,orgRoomUnload])
    
     useEffect(() => {
+        
+        let socket = io.connect("http://localhost:5000")
+        
+        socket.emit('room', match.params.id)
+
+        socket.on('organizerAsk', (data) => {
+            if (data.status === 200) {
+                getOrgAskList(match.params.id);
+            }
+          })
+
         getOrgAskList(match.params.id);
-        return () => { orgAskListUnload() }
+
+        return () => { orgAskListUnload(); socket.disconnect(); }
     } ,[getOrgAskList, match.params.id,orgAskListUnload])
     
     console.log(room)

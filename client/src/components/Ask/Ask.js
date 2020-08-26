@@ -1,7 +1,7 @@
 import React, { useEffect, Fragment } from 'react';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
-import { getUserAskList, askUnload } from '../../actions/askActions';
+import { getUserAskList, askListUnload } from '../../actions/askActions';
 import { getRoomById, roomUnload } from '../../actions/roomActions';
 import Loading from '../Loading/Loading';
 import AskHistory from './AskHistory';
@@ -15,7 +15,7 @@ const Ask = (props) => {
     getRoomById,
     roomUnload,
     getUserAskList,
-    askUnload,
+    askListUnload,
     ask: { askList, askLoading },
     room: { room, roomLoading },
     match,
@@ -43,9 +43,9 @@ const Ask = (props) => {
   useEffect(() => {
     getUserAskList(match.params.id);
     return () => {
-      askUnload();
+      askListUnload();
     };
-  }, [getUserAskList, match.params.id, askUnload]);
+  }, [getUserAskList, match.params.id, askListUnload]);
 
   return (askLoading || roomLoading) ? (
     <Loading></Loading>
@@ -95,5 +95,5 @@ export default connect(mapStateToProps, {
   getRoomById,
   getUserAskList,
   roomUnload,
-  askUnload,
+  askListUnload,
 })(Ask);

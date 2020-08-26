@@ -3,6 +3,8 @@ const connectDB = require('./config/db');
 const app = express();
 const passport = require('passport');
 const session = require('express-session')
+const {listen}  = require('socket.io')
+const handleSocket = require('./config/socket');
 
 // Connect Database
 connectDB();
@@ -35,4 +37,8 @@ app.use('/api/question', require('./routes/api/question'));
 
 
 const PORT = process.env.PORT || 5000;
-app.listen(PORT, () => console.log(`Server started on port ${PORT}`));
+const server = app.listen(PORT, () => console.log(`Server started on port ${PORT}`));
+
+const io = listen(server)
+app.io = io
+handleSocket(io)

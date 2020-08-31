@@ -30,9 +30,9 @@ import {
 //Get room by room_id (Organizer) 
 export const getOrgRoomById = roomId => async (dispatch) => {
   try {
-
+    console.log('room before action', roomId )
     const res = await axios.get(`/api/room/${roomId}`);
-
+    console.log('room at action', res.data )
     dispatch({
       type: GET_ORG_ROOM,
       payload: res.data,
@@ -116,6 +116,7 @@ export const editRoomName = (roomId, formData) => async (dispatch) => {
 
 //Organizer room Unload
 export const orgRoomUnload = () => async dispatch => {
+  console.log('room unload action')
   try {
       dispatch({type: ORG_ROOM_UNLOADED});
   } catch (err) {
@@ -128,6 +129,7 @@ export const orgRoomUnload = () => async dispatch => {
 
 //Organizer roomList Unload
 export const orgRoomListUnload = () => async dispatch => {
+  console.log('roomlist unload action')
   try {
       dispatch({type: ORG_ROOMLIST_UNLOADED});
   } catch (err) {

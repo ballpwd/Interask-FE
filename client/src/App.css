@@ -311,19 +311,27 @@ header {
   font-style: normal;
   text-align: center;
   align-items: center;
-
   box-shadow: #e493c980 0px 1px 0.4rem;
 }
 
 .btn-join {
   width: 300px;
   height: 100px;
-
   font-family: Kanit;
   font-style: normal;
   text-align: center;
   align-items: center;
 }
+
+.btn-leave {
+  width: 300px;
+  height: 100px;
+  font-family: Kanit;
+  font-style: normal;
+  text-align: center;
+  align-items: center;
+}
+
 
 .room-h1 {
   text-align: center;
@@ -348,6 +356,26 @@ header {
   background-color: #fafafa;
   min-width: 300px;
 }
+.leave-img{
+  padding-left: 20px;
+}
+.leave-white{
+  padding-left: 15px;
+}
+
+.plus-img{
+  padding-right: 10px;
+}
+
+.warn-leave {
+  font-family: Kanit;
+  font-style: normal;
+  font-weight: 700;
+  font-size: 30px;
+  line-height: 38px;
+  margin-top:20px;
+}
+
 
 /* -------------------- Login (Home) -------------------- */
 .login-section {
@@ -538,3 +566,94 @@ header {
   }
 
 }*/
+
+/* --------------------------- OrganizerMenu --------------------*/
+.orgmenu-box {
+  font-family: Kanit;
+  font-style: normal;
+  text-align: center;
+  align-items: center;
+  height: 250px;
+  width: 300px;
+  box-shadow: rgba(109, 99, 99, 0.502) 0px 1px 0.4rem;
+  background: #e5e5e5;
+  border-radius: 0 0 10 10px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.orgmenu-text {
+  font-family: Kanit;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 36px;
+}
+
+.orgmenu-room{
+  font-family: Kanit;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 36px;
+  line-height: 28px;
+  align-items: center;
+  text-align: center;
+  padding-top: 150px;
+}
+
+.orgmenu-row{
+  padding: 70px 0;
+  text-align: center;
+}
+
+.orgmenu-present{
+  align-content: center;
+  align-items: center;
+  justify-items: center;
+  justify-content: center;
+}
+
+/*-------------------------------- Room Menu ---------------------------------*/
+.room-box-ask {
+  width: 300px;
+  height: 100px;
+  font-family: Kanit;
+  font-size: 28px;
+  font-style: normal;
+  text-align: center;
+  align-items: center;
+  box-shadow: #e493c980 0px 1px 0.4rem;
+}
+
+.room-box-question {
+  width: 300px;
+  height: 100px;
+  font-family: Kanit;
+  font-size: 28px;
+  font-style: normal;
+  text-align: center;
+  align-items: center;
+  box-shadow: #e493c980 0px 1px 0.4rem;
+  margin-top: 30px;
+  border-width: 0 10px 0 0 solid;
+  border-color: #FF4A4A;
+}
+
+.room-box-feedback {
+  width: 300px;
+  height: 100px;
+  font-family: Kanit;
+  font-size: 28px;
+  font-style: normal;
+  text-align: center;
+  align-items: center;
+  box-shadow: #e493c980 0px 1px 0.4rem;
+  margin-top: 30px;
+
+}
+
+.room-img {
+  margin-right: 30px;
+}
+
+
+

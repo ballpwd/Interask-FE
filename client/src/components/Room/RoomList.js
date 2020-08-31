@@ -3,13 +3,16 @@ import RoomItem from "./RoomItem";
 import { Container, Button, Modal, ModalBody, ModalHeader } from "reactstrap";
 import { Link } from "react-router-dom";
 import plus from "../../assets/plus.svg";
+import leave_room from "../../assets/leave_room.svg";
 import JoinRoom from './JoinRoom' ;
 const RoomList = (props) => {
+
   const [modal, setModal] = useState(false);
   const { 
-    roomList
+    roomList,
+    edit
   } = props;
-
+  
   const toggle = () => setModal(!modal);
 
   const closeBtn = (
@@ -23,7 +26,7 @@ const RoomList = (props) => {
       <Container className="text-center">
         {Array.isArray(roomList)}
         {roomList.map((room) => (
-          <RoomItem key={room._id} room={room} />
+          <RoomItem key={room._id} room={room} edit={edit} />
         ))}
           <Button
             className="btn-join"
@@ -38,7 +41,7 @@ const RoomList = (props) => {
             size="md"
           >
             <div>
-              <img src={plus} width="38px" height="38px"></img> JOIN ROOM
+              <img src={plus} className="plus-img" width="38px" height="38px"></img> JOIN ROOM
             </div>
           </Button>
       </Container>

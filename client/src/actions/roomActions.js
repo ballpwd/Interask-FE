@@ -76,9 +76,9 @@ export const joinRoom = (roomCode)=> async (dispatch) => {
 };
 
 //Leave room
-export const leaveRoom = (roomId,userId) => async (dispatch) => {
+export const leaveRoom = (roomId) => async (dispatch) => {
   try {
-    await axios.delete(`/api/room/leave/${roomId}`,userId);
+    await axios.delete(`/api/room/leave/${roomId}`);
 
     dispatch({
       type: LEAVE_ROOM,

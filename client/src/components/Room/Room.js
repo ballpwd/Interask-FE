@@ -1,12 +1,16 @@
-import React, { Fragment, useEffect } from "react";
+import React, { Fragment, useEffect,useState } from "react";
 import { connect } from "react-redux";
 import { Link } from "react-router-dom";
 import { getRoomList, roomListUnload } from "../../actions/roomActions";
+import leave_room from "../../assets/leave-white.svg";
 import RoomList from "./RoomList";
-import { Container } from "reactstrap";
+import { Container, Button} from "reactstrap";
 import Loading from '../Loading/Loading';
+
 const Room = (props) => {
 
+  const [edit, setEdit] = useState(false);
+  const leave = () => setEdit(!edit);
   const {
     getRoomList,
     roomListUnload,
@@ -36,14 +40,49 @@ const Room = (props) => {
           </div>
         </Container>
         <Container fluid className="text-center">
+    
           <div className="p-5">
             <br />
             <br />
             <br />
             <br />
           </div>
-          {<RoomList roomList={roomList}/>}
+          {<RoomList roomList={roomList} edit={edit}/>}
+          <div className="p-4"></div>
 
+          {!edit ? (
+            <Button
+            className="btn-leave"
+            onClick={leave}
+            style={{
+              backgroundColor: "#C19AD8",
+              borderColor: "white",
+              color: "white",
+              borderRadius: "10px 10px 10px 10px",
+              fontSize: "24px",
+            }}
+            size="md"
+          >
+            <div >
+              <img src={leave_room} className="leave-white" width="38px" height="38px"></img> LEAVE ROOM
+            </div>
+          </Button>
+          ):(
+            <Button
+            className="btn-leave"
+            onClick={leave}
+            style={{
+              backgroundColor: "#4BB543",
+              borderColor: "white",
+              color: "white",
+              borderRadius: "10px 10px 10px 10px",
+              fontSize: "24px",
+            }}
+            size="md"
+          >
+            COMPLETE
+          </Button>
+          )}
           <div className="mt-5">
             <Link to="/" className="btn btn-primary">
               Go to Home

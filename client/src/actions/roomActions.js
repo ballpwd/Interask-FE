@@ -1,4 +1,5 @@
 import axios from 'axios';
+import { setAlert } from './alertActions';
 import { 
   GET_ROOMLIST,
   GET_ROOM,
@@ -67,11 +68,22 @@ export const joinRoom = (roomCode)=> async (dispatch) => {
       type: JOIN_ROOM,
       payload: res.data
     });
+
+    dispatch(setAlert('Room Joined', 'success'));
+
   } catch (err) {
+    
+    const errorMessage = err.response.data.msg ;
+
+    if (errorMessage) {
+      dispatch(setAlert(errorMessage, 'danger'));
+    }
+
     dispatch({
       type: ROOM_ERROR,
       payload: err
-    });    
+    });
+    
   }
 };
 
@@ -79,11 +91,14 @@ export const joinRoom = (roomCode)=> async (dispatch) => {
 export const leaveRoom = (roomId) => async (dispatch) => {
   try {
     await axios.delete(`/api/room/leave/${roomId}`);
-
+    
     dispatch({
       type: LEAVE_ROOM,
       payload: roomId
     });
+
+    dispatch(setAlert('Room left', 'success'));
+    
   } catch (err) {
     dispatch({
       type: ROOM_ERROR,

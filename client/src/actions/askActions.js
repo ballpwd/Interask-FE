@@ -1,4 +1,5 @@
 import axios from 'axios';
+import { setAlert } from './alertActions';
 import { 
     GET_ASKLIST,
     GET_ASK,
@@ -66,6 +67,9 @@ export const addAsk = formData => async dispatch => {
           type: ADD_ASK,
           payload: res.data
         });
+
+        // dispatch(setAlert('Ask Sent', 'success'));
+        
     } catch (err) {
         dispatch({
             type: ASK_ERROR,

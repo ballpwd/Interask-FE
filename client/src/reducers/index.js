@@ -5,6 +5,7 @@ import orgAsk from "./orgAskReducer";
 import orgRoom from "./orgRoomReducer";
 import orgFeedback from "./orgFeedbackReducer";
 import auth from "./authReducer";
+import alert from "./alertReducer";
 
 export default combineReducers({
   ask,
@@ -13,4 +14,5 @@ export default combineReducers({
   orgRoom,
   orgFeedback,
   auth,
+  alert
 });

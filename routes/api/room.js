@@ -142,13 +142,14 @@ router.delete('/:room_id', auth, async (req, res) => {
 router.post('/join/:room_code', auth, async (req, res) => {
   try {
 
-    const {room_code} = req.params           
+    const {room_code} = req.params
+      
     const user_id = req.user.id
 
     const room = await Room.findOne({code: room_code})
 
     if(!room){
-      return res.status(404).json({ msg: 'Room not found' });
+      return res.status(404).json({ msg: 'Invalid Room Code' });
     }
     if(room.user.includes(user_id)){
       return res.status(403).json({ msg: 'Already Joined' });

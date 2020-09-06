@@ -1,4 +1,5 @@
 import axios from 'axios';
+import { setAlert } from './alertActions';
 import { 
     GET_ORG_ROOMLIST,
     GET_ORG_ROOM,
@@ -71,6 +72,9 @@ export const createRoom = formData => async (dispatch) => {
       type: CREATE_ROOM,
       payload: res.data,
     });
+
+    dispatch(setAlert('Room Created', 'success'));
+
   } catch (err) {
     dispatch({
       type: ORG_ROOM_ERROR,
@@ -89,6 +93,9 @@ export const deleteRoom = roomId => async (dispatch) => {
       type: DELETE_ROOM,
       payload: roomId,
     });
+
+    dispatch(setAlert('Room Removed', 'success'));
+
   } catch (err) {
     dispatch({
       type: ORG_ROOM_ERROR,
@@ -106,6 +113,9 @@ export const editRoomName = (roomId, formData) => async (dispatch) => {
       type: EDIT_ROOM,
       payload: res.data,
     });
+
+    dispatch(setAlert('Room Edited', 'success'));
+
   } catch (err) {
     dispatch({
       type: ORG_ROOM_ERROR,

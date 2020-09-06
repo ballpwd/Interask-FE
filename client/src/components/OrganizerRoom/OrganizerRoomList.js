@@ -1,6 +1,14 @@
 import React, { useState, Fragment } from "react";
 import OrganizerRoomItem from "./OrganizerRoomItem";
-import {Row, Container, Col, Button, Modal, ModalBody, ModalHeader } from "reactstrap";
+import {
+  Row,
+  Container,
+  Col,
+  Button,
+  Modal,
+  ModalBody,
+  ModalHeader,
+} from "reactstrap";
 import plus from "../../assets/button.svg";
 import CreateRoom from "./CreateRoom";
 const OrganizerRoomList = (props) => {
@@ -17,29 +25,24 @@ const OrganizerRoomList = (props) => {
   return (
     <Fragment>
       <div className="pt-2 px-4">
-        <h3 className="org-h3 text-center">Organizer ROOM</h3>
-        <hr />
         <Container className="text-center">
-          <Row xs="1" sm="2" md="3" lg="4" xl="5">
+          <Row className="orgroom-row ">
             {Array.isArray(roomList)}
             {roomList.map((room) => (
-              <OrganizerRoomItem key={room._id} room={room} edit={edit} />
-            ))}
-            <Col className="p-3 my-4">
               <div>
-                <br />
-                <Button
-                  color="link"
-                  onClick={toggle}
-                  style={{ color: "black" }}
-                >
-                  <img src={plus} width="46px" height="46px"></img>
-                  <br />
-                  <br />
-                  <p className="org-p"> CREATE ROOM</p>
-                </Button>
+                <OrganizerRoomItem key={room._id} room={room} edit={edit} />
               </div>
-            </Col>
+            ))}
+            <div>
+              <br />
+              <br />
+              <Button color="link" onClick={toggle} style={{ color: "black" }}>
+                <img src={plus} width="46px" height="46px"></img>
+                <br />
+                <br />
+                <p className="org-p"> CREATE ROOM</p>
+              </Button>
+            </div>
           </Row>
         </Container>
       </div>

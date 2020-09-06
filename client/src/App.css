@@ -1,6 +1,6 @@
 @import url("https://fonts.googleapis.com/css2?family=Kanit:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800&display=swap");
 
-body>#root {
+body > #root {
   min-height: 100vh;
 }
 
@@ -134,6 +134,12 @@ header {
   border-style: solid;
   border-width: 5px;
 }
+.orgroom-row {
+  padding: 50px;
+  padding-right: initial;
+  text-align: center;
+  align-items: center;
+}
 
 /* -------------------- organizer ASK -------------------- */
 
@@ -220,7 +226,6 @@ header {
   font-size: 12px;
   line-height: 20px;
   font-weight: 500;
-
 }
 
 /* -------------------- ASK HISTORY ------------------------- */
@@ -274,7 +279,6 @@ header {
   border-radius: 5px;
   width: 100%;
 }
-
 
 .anonymous {
   font-family: Kanit;
@@ -332,7 +336,6 @@ header {
   align-items: center;
 }
 
-
 .room-h1 {
   text-align: center;
   font-size: 36px;
@@ -356,14 +359,14 @@ header {
   background-color: #fafafa;
   min-width: 300px;
 }
-.leave-img{
+.leave-img {
   padding-left: 20px;
 }
-.leave-white{
+.leave-white {
   padding-left: 15px;
 }
 
-.plus-img{
+.plus-img {
   padding-right: 10px;
 }
 
@@ -373,9 +376,8 @@ header {
   font-weight: 700;
   font-size: 30px;
   line-height: 38px;
-  margin-top:20px;
+  margin-top: 20px;
 }
-
 
 /* -------------------- Login (Home) -------------------- */
 .login-section {
@@ -394,7 +396,6 @@ header {
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-
 }
 
 .footer {
@@ -420,7 +421,6 @@ header {
   font-family: Kanit;
   font-size: 1em;
 }
-
 
 /*------------------ Not found --------------- */
 
@@ -476,7 +476,6 @@ header {
   0% {
     transform: translateX(-100px);
     opacity: 0;
-
   }
 
   10% {
@@ -589,7 +588,7 @@ header {
   font-size: 36px;
 }
 
-.orgmenu-room{
+.orgmenu-room {
   font-family: Kanit;
   font-style: normal;
   font-weight: bold;
@@ -600,12 +599,12 @@ header {
   padding-top: 150px;
 }
 
-.orgmenu-row{
+.orgmenu-row {
   padding: 70px 0;
   text-align: center;
 }
 
-.orgmenu-present{
+.orgmenu-present {
   align-content: center;
   align-items: center;
   justify-items: center;
@@ -635,7 +634,7 @@ header {
   box-shadow: #e493c980 0px 1px 0.4rem;
   margin-top: 30px;
   border-width: 0 10px 0 0 solid;
-  border-color: #FF4A4A;
+  border-color: #ff4a4a;
 }
 
 .room-box-feedback {
@@ -648,12 +647,8 @@ header {
   align-items: center;
   box-shadow: #e493c980 0px 1px 0.4rem;
   margin-top: 30px;
-
 }
 
 .room-img {
   margin-right: 30px;
 }
-
-
-

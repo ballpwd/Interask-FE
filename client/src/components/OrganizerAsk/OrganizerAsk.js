@@ -9,7 +9,7 @@ import Loading from '../Loading/Loading';
 import { Container, Row, Col, Button } from 'reactstrap';
 // import socket from '../../utils/socket'
 import io from "socket.io-client"
-
+import NavbarOrg from '../Navbar/NavbarOrg';
 const OrganizerAsk = props =>{
 
     const { 
@@ -52,8 +52,9 @@ const OrganizerAsk = props =>{
         <Loading></Loading> 
     ) : (
         <Fragment >
+            <NavbarOrg></NavbarOrg>
             <Container fluid>
-                <h1 className='org-h1 text-center'>
+                <h1 className='org-h1 text-center orgask-section'>
                     ASK
                 </h1>
             </Container>

@@ -88,6 +88,7 @@ const RoomMenu = (props) => {
             </Link>
           </Col>
           <Col>
+          <Link to={`/feedback/${room._id}`}>
                 <Button
                     className="room-box-feedback"
                     style={{
@@ -103,6 +104,7 @@ const RoomMenu = (props) => {
                 <img src={room_feedback} className="room-img"></img>
                 FEEDBACK
                 </Button>
+                </Link>
           </Col>
             <div className="mt-5">
             <Link to="/" className="btn btn-primary">

@@ -8,7 +8,7 @@ import { Link } from "react-router-dom";
 import ask from "../../assets/ask.svg";
 import question from "../../assets/question.svg";
 import feedback from "../../assets/feedback.svg";
-
+import NavbarOrg from '../Navbar/NavbarOrg';
 const OrganizerMenu = (props) => {
     const { 
       getOrgRoomById,
@@ -30,6 +30,7 @@ const OrganizerMenu = (props) => {
       <Loading></Loading>
     ) : (
       <Fragment>
+        <NavbarOrg></NavbarOrg>
         <Container className="orgmenu-room">
           <p>ROOM : {room.roomName}</p>
           <p>PIN : {room.code}</p>

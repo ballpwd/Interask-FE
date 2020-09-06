@@ -15,6 +15,7 @@ import OrganizerMenu from "../OrganizerMenu/OrganizerMenu";
 import RoomMenu from "../RoomMenu/RoomMenu";
 import Alert from "../layout/Alert";
 import OrganizerQuestion from "../OrganizerQuestion/OrganizerQuestion";
+import Feedback from "../Feedback/Feedback";
 
 const Routes = () => {
   return (
@@ -26,6 +27,7 @@ const Routes = () => {
         <PrivateRoute exact path="/ask/:id" component={Ask} />
         <PrivateRoute exact path="/room" component={Room} />
         <PrivateRoute exact path="/room/:id" component={RoomMenu} />
+        <PrivateRoute exact path="/feedback/:id" component={Feedback}/>
         <PrivateRoute exact path="/organizer/room" component={OrganizerRoom} />
         <PrivateRoute
           exact

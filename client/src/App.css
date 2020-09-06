@@ -141,7 +141,14 @@ header {
   align-items: center;
 }
 
+.orgroom-section{
+  margin-top: 50px;
+}
+
 /* -------------------- organizer ASK -------------------- */
+.orgask-section{
+  margin-top: 50px;
+}
 
 .org-box {
   background: #e5e5e5;
@@ -419,7 +426,32 @@ header {
 
 .nav-item {
   font-family: Kanit;
-  font-size: 1em;
+  font-size: 20px;
+  font-style: normal;
+  font-weight: normal;
+  padding: 10px;
+  display:flex;
+}
+
+/*------------------- NavBar Organization --------------*/
+.navorg-section{
+  background: linear-gradient(87.98deg, #88B1EF 12.77%, #BDAFF1 82%);
+}
+
+.navorg-item {
+  font-family: Kanit;
+  font-size: 15px;
+  font-style: normal;
+  font-weight: normal;
+  padding: 1px;
+}
+
+.nav-user{
+  font-family: Kanit;
+  font-size: 15px;
+  font-style: normal;
+  font-weight: normal;
+  color:red;
 }
 
 /*------------------ Not found --------------- */
@@ -566,7 +598,7 @@ header {
 
 }*/
 
-/* --------------------------- OrganizerMenu --------------------*/
+/* --------------------------- Organizer Menu --------------------*/
 .orgmenu-box {
   font-family: Kanit;
   font-style: normal;
@@ -596,7 +628,7 @@ header {
   line-height: 28px;
   align-items: center;
   text-align: center;
-  padding-top: 150px;
+  margin-top: 100px;
 }
 
 .orgmenu-row {
@@ -609,6 +641,10 @@ header {
   align-items: center;
   justify-items: center;
   justify-content: center;
+}
+/*-------------------------------- Organizer Feedback ---------------------------------*/
+.orgfeedback-section{
+    margin-top: 50px;
 }
 
 /*-------------------------------- Room Menu ---------------------------------*/
@@ -652,3 +688,21 @@ header {
 .room-img {
   margin-right: 30px;
 }
+
+/*--------------------- Feedback Form --------------------*/
+.askText {
+  font-family: Kanit;
+  font-weight: 300;
+  font-size: 18px;
+  background: #ffffff;
+  border: none;
+  height: 56px;
+  padding: 0 25px;
+  border-radius: 5px;
+  width: 100%;
+}
+
+
+
+
+

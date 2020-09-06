@@ -6,7 +6,12 @@ import {
 } from "../../actions/orgRoomActions";
 import OrganizerRoomList from "./OrganizerRoomList";
 import { Container, Row, Button } from "reactstrap";
+<<<<<<< Updated upstream
 import Loading from "../Loading/Loading";
+=======
+import Loading from '../Loading/Loading';
+import NavbarOrg from '../Navbar/NavbarOrg';
+>>>>>>> Stashed changes
 
 const OrganizerRoom = (props) => {
   const [edit, setEdit] = useState(false);
@@ -30,8 +35,9 @@ const OrganizerRoom = (props) => {
     <Loading></Loading>
   ) : (
     <Fragment>
+      <NavbarOrg></NavbarOrg>
       <Container fluid>
-        <h1 className="org-h1 text-center">Hi "{user.userName}"</h1>
+        <h1 className="org-h1 text-center orgroom-section">Hi "{user.userName}"</h1>
       </Container>
       <Container>
         <div className="pt-2 px-4">

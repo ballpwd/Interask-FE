@@ -10,6 +10,7 @@ import OrganizerFeedbackList from "./OrganizerFeedbackList";
 import Loading from "../Loading/Loading";
 import { Container, Row, Col, Button } from "reactstrap";
 import io from "socket.io-client";
+import NavbarOrg from '../Navbar/NavbarOrg';
 
 const OrganizerFeedback = (props) => {
   const {
@@ -55,8 +56,9 @@ const OrganizerFeedback = (props) => {
     <Loading></Loading>
   ) : (
     <Fragment>
+      <NavbarOrg></NavbarOrg>
       <Container fluid>
-        <h1 className="org-h1 text-center">Feedback</h1>
+        <h1 className="org-h1 text-center orgfeedback-section">Feedback</h1>
       </Container>
       <Container fluid>
         <Row className="justify-content-center align-items-center">

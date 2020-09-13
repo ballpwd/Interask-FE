@@ -2,23 +2,24 @@ import React, { Fragment, useEffect } from "react";
 import { connect } from "react-redux";
 import { getOrgRoomById, orgRoomUnload } from "../../actions/orgRoomActions";
 import {
-  getOrgFeedbackList,
-  orgFeedbackListUnload,
-} from "../../actions/orgFeedbackActions";
-import OrganizerFeedbackList from "./OrganizerFeedbackList";
-// import OrganizerFeedbackAnalyze from './OrganizerFeedbackAnalyze' ;
+  getOrgAnswerList,
+  orgAnswerListUnload,
+} from "../../actions/orgAnswerActions";
+import OrganizerAnswerList from "./OrganizerAnswerList";
+import OrganizerAnswerAnalyze from "./OrganizerAnswerAnalyze";
 import Loading from "../Loading/Loading";
 import { Container, Row, Col, Button } from "reactstrap";
 import io from "socket.io-client";
 
-const OrganizerFeedback = (props) => {
+const OrganizerAnswer = (props) => {
   const {
+    question,
     getOrgRoomById,
     orgRoomUnload,
-    getOrgFeedbackList,
-    orgFeedbackListUnload,
+    getOrgAnswerList,
+    orgAnswerListUnload,
     orgRoom: { room, roomLoading },
-    orgFeedback: { feedbackList, feedbackLoading },
+    orgAnswer: { answer, answerList, answerLoading },
     match,
   } = props;
 
@@ -34,29 +35,29 @@ const OrganizerFeedback = (props) => {
 
     socket.emit("room", match.params.roomid);
 
-    socket.on("organizerFeedback", (data) => {
+    socket.on("organizerAnswer", (data) => {
       if (data.status === 200) {
-        getOrgFeedbackList(match.params.roomid);
+        getOrgAnswerList(match.params.questionid);
       }
     });
 
-    getOrgFeedbackList(match.params.roomid);
+    getOrgAnswerList(match.params.questionid);
 
     return () => {
-      orgFeedbackListUnload();
+      orgAnswerListUnload();
       socket.disconnect();
     };
-  }, [getOrgFeedbackList, match.params.roomid, orgFeedbackListUnload]);
+  }, [getOrgAnswerList, match.params.questionid, orgAnswerListUnload]);
 
   console.log(room);
-  console.log(feedbackList);
+  console.log(answerList);
 
-  return roomLoading || feedbackLoading ? (
+  return roomLoading || answerLoading ? (
     <Loading></Loading>
   ) : (
     <Fragment>
       <Container fluid>
-        <h1 className="org-h1 text-center">Feedback</h1>
+        <h1 className="org-h1 text-center">Q&A</h1>
       </Container>
       <Container fluid>
         <Row className="justify-content-center align-items-center">
@@ -66,10 +67,10 @@ const OrganizerFeedback = (props) => {
               <br />
               ROOMID: {room._id}
             </h5>
-            {<OrganizerFeedbackList feedbackList={feedbackList} />}
+            {<OrganizerAnswerList answerList={answerList} answer={answer} />}
           </Col>
           <Col md="5" xs="12" className="mt-4">
-            {/* {<OrganizerFeedbackAnalyze feedbackList={feedbackList} />} */}
+            {<OrganizerAnswerAnalyze answerList={answerList} />}
             <Row>
               <Col md="12" xs="12" className="text-center mt-5">
                 <Button className="btn btn-dark org-btn">Export</Button>
@@ -84,12 +85,12 @@ const OrganizerFeedback = (props) => {
 
 const mapStateToProps = (state) => ({
   orgRoom: state.orgRoom,
-  orgFeedback: state.orgFeedback,
+  orgAnswer: state.orgAnswer,
 });
 
 export default connect(mapStateToProps, {
   getOrgRoomById,
-  getOrgFeedbackList,
+  getOrgAnswerList,
   orgRoomUnload,
-  orgFeedbackListUnload,
-})(OrganizerFeedback);
+  orgAnswerListUnload,
+})(OrganizerAnswer);

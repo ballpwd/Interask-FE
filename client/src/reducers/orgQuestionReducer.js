@@ -5,6 +5,8 @@ import {
   ORG_QUESTION_UNLOADED,
   ORG_QUESTIONLIST_UNLOADED,
   CREATE_QUESTION,
+  DELETE_QUESTION,
+  EDIT_QUESTION,
 } from "../actions/types";
 
 const initialState = {
@@ -52,6 +54,24 @@ export default function (state = initialState, action) {
         ...state,
         questionList: [],
         questionLoading: true,
+      };
+    case DELETE_QUESTION:
+      return {
+        ...state,
+        questionList: state.questionList.filter(
+          (question) => question._id !== payload
+        ),
+        questionLoading: false,
+      };
+    case EDIT_QUESTION:
+      return {
+        ...state,
+        questionList: state.questionList.map((q) =>
+          q._id === payload._id
+            ? { ...q, questionDetail: payload.questionDetail }
+            : q
+        ),
+        questionLoading: false,
       };
     default:
       return state;

@@ -1,27 +1,24 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import {logout} from "../actions/authActions" ;
-import { connect } from 'react-redux';
+import { logout } from "../actions/authActions";
+import { connect } from "react-redux";
 
 const Home = (props) => {
-  const {
-    auth,
-    logout
-  } = props
-  
-  console.log(auth)
+  const { auth, logout } = props;
+
+  console.log(auth);
   return (
-    <div className='bg fullscreen'>
+    <div className="bg fullscreen">
       <h1>Home Page</h1>
       <div>
         <div>
-         <a href='/login' className="btn btn-primary">
-           Login Page
-           </a>
+          <a href="/login" className="btn btn-primary">
+            Login Page
+          </a>
         </div>
         <div>
-          <a href='/organizer/login' className="btn btn-primary">
-           OrganizerLogin Page
+          <a href="/organizer/login" className="btn btn-primary">
+            OrganizerLogin Page
           </a>
         </div>
         <div>
@@ -35,9 +32,7 @@ const Home = (props) => {
           </Link>
         </div>
         <div>
-          <button onClick={logout} >
-            logout
-          </button>
+          <button onClick={logout}>logout</button>
         </div>
       </div>
     </div>
@@ -45,10 +40,7 @@ const Home = (props) => {
 };
 
 const mapStateToProps = (state) => ({
-  auth: state.auth
+  auth: state.auth,
 });
 
-export default connect(mapStateToProps,{logout})(Home);
-
-
-
+export default connect(mapStateToProps, { logout })(Home);

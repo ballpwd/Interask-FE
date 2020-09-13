@@ -31,7 +31,7 @@ router.post("/", auth, async (req, res) => {
 // @desc   Get all question
 // router.get('/', async (req, res) => {
 //     try {
-//         const question = await Question.find().populate('user', ['userName']);
+//         const question = await Question.find();
 //         res.json(question)
 //     } catch (err) {
 //         console.error(err.message);
@@ -118,75 +118,44 @@ router.get("/user/room/:room_id", auth, async (req, res) => {
 //@route    DELETE api/question/:question_id
 // @desc     Delete a question
 // @access   Private
-// router.delete("/:question_id", auth, async (req, res) => {
-//   try {
-//     const { question_id } = req.params;
-
-//     // Check for ObjectId format and question
-//     if (!req.params.question_id.match(/^[0-9a-fA-F]{24}$/)) {
-//       return res.status(404).json({ msg: "Question not found" });
-//     }
-
-//     const question = await Question.findById(question_id);
-
-//     if (!question) {
-//       return res.status(404).json({ msg: "Question not found" });
-//     }
-
-//     await question.remove();
-//     res.json({ msg: "Question removed" });
-//   } catch (err) {
-//     console.error(err.message);
-//     res.status(500).send("Server Error");
-//   }
-// });
-
-// // @route  POST /api/question/answer
-// // @desc   Create a answer
-// // @access   Private
-router.post("/answer", auth, async (req, res) => {
+router.delete("/:question_id", auth, async (req, res) => {
   try {
-    const user_id = req.user.id;
-    const { roomId, questionId, feedbackText } = req.body;
+    const { question_id } = req.params;
 
-    if (!roomId.match(/^[0-9a-fA-F]{24}$/)) {
-      return res.status(404).json({ msg: "Room not found" });
+    const question = await Question.findById(question_id);
+
+    if (!question) {
+      return res.status(404).json({ msg: "Question not found" });
     }
-    const answer = { user: user_id, text: feedbackText };
-    const question = await Question.findById(questionId);
-    question.answer.push(answer);
 
-    res.json(question);
+    await question.remove();
+    res.json({ msg: "Question removed" });
   } catch (err) {
     console.error(err.message);
     res.status(500).send("Server Error");
   }
 });
 
-// // @route  GET /api/question/answer/room/:room_id'
-// // @desc   Get answerList by Owner
-// // @access   Private
-// router.get("/owner/room/:room_id", auth, async (req, res) => {
-//   try {
-//     const { room_id } = req.params;
+// @route    PUT api/question/editquestion/:question_id
+// @desc     Edit a question
+// @access   Private
+router.put("/editquestion/:question_id", auth, async (req, res) => {
+  try {
+    const { question_id } = req.params;
 
-//     if (!req.params.room_id.match(/^[0-9a-fA-F]{24}$/)) {
-//       return res.status(404).json({ msg: "Room not found" });
-//     }
+    const question = await Question.findById(question_id);
 
-//     const question = await Question.find({ room: room_id }).populate("user", [
-//       "userName",
-//     ]);
+    if (!question) {
+      return res.status(404).json({ msg: "Question not found" });
+    }
 
-//     if (question.length < 1) {
-//       return res.status(404).json({ msg: "Question not found" });
-//     }
-
-//     res.json(question);
-//   } catch (err) {
-//     console.error(err.message);
-//     res.status(500).send("Server Error");
-//   }
-// });
+    question.questionDetail = req.body.questionDetail;
+    await question.save();
+    res.json(question);
+  } catch (err) {
+    console.error(err.message);
+    res.status(500).send("Server Error");
+  }
+});
 
 module.exports = router;

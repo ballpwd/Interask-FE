@@ -1,50 +1,49 @@
 import React, { useEffect, Fragment } from "react";
-import { Link } from "react-router-dom";
 import { connect } from "react-redux";
 import OrganizerPresentList from "./OrganizerPresentList";
-import {getOrgAskList, orgAskListUnload} from "../../actions/orgAskActions";
+import { getOrgAskList, orgAskListUnload } from "../../actions/orgAskActions";
 import { getOrgRoomById, orgRoomUnload } from "../../actions/orgRoomActions";
 import { Container } from "reactstrap";
-import Loading from '../Loading/Loading';
-import io from "socket.io-client"
+import Loading from "../Loading/Loading";
+import io from "socket.io-client";
 
 const OrganizerPresent = ({
   getOrgRoomById,
   orgRoomUnload,
   getOrgAskList,
   orgAskListUnload,
-  orgRoom: { room, roomLoading},
+  orgRoom: { room, roomLoading },
   orgAsk: { askList, askLoading },
   match,
 }) => {
   useEffect(() => {
-    getOrgRoomById(match.params.id);
+    getOrgRoomById(match.params.roomid);
     return () => {
       orgRoomUnload();
     };
-  }, [getOrgRoomById, match.params.id, orgRoomUnload]);
+  }, [getOrgRoomById, match.params.roomid, orgRoomUnload]);
 
   useEffect(() => {
+    let socket = io.connect("http://localhost:5000");
 
-    let socket = io.connect("http://localhost:5000")
+    socket.emit("room", match.params.roomid);
 
-    socket.emit('room', match.params.id)
-
-    socket.on('organizerAsk', (data) => {
+    socket.on("organizerAsk", (data) => {
       if (data.status === 200) {
-          getOrgAskList(match.params.id);
+        getOrgAskList(match.params.roomid);
       }
-    })
+    });
 
-    getOrgAskList(match.params.id);
+    getOrgAskList(match.params.roomid);
 
     return () => {
-      orgAskListUnload(); socket.disconnect();
+      orgAskListUnload();
+      socket.disconnect();
     };
-  }, [getOrgAskList, match.params.id, orgAskListUnload]);
+  }, [getOrgAskList, match.params.roomid, orgAskListUnload]);
 
-  return (roomLoading || askLoading) ? (
-    <Loading></Loading> 
+  return roomLoading || askLoading ? (
+    <Loading></Loading>
   ) : (
     <Fragment>
       <div className="fullscreen bg">
@@ -60,11 +59,6 @@ const OrganizerPresent = ({
 
           {<OrganizerPresentList askList={askList} />}
         </Container>
-        <div>
-          <Link to="/" className="btn btn-primary">
-            Go to Home
-          </Link>
-        </div>
       </div>
     </Fragment>
   );

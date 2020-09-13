@@ -1,4 +1,5 @@
 import axios from "axios";
+import { setAlert } from "./alertActions";
 import {
   CREATE_QUESTION,
   GET_ORG_QUESTIONLIST,
@@ -6,6 +7,8 @@ import {
   ORG_QUESTION_ERROR,
   ORG_QUESTION_UNLOADED,
   ORG_QUESTIONLIST_UNLOADED,
+  DELETE_QUESTION,
+  EDIT_QUESTION,
 } from "./types";
 
 //Get all question (Organizer)
@@ -107,6 +110,47 @@ export const orgQuestionUnload = () => async (dispatch) => {
 export const orgQuestionListUnload = () => async (dispatch) => {
   try {
     dispatch({ type: ORG_QUESTIONLIST_UNLOADED });
+  } catch (err) {
+    dispatch({
+      type: ORG_QUESTION_ERROR,
+      payload: err,
+    });
+  }
+};
+
+//Delete question
+export const deleteQuestion = (questionId) => async (dispatch) => {
+  try {
+    await axios.delete(`/api/question/${questionId}`);
+
+    dispatch({
+      type: DELETE_QUESTION,
+      payload: questionId,
+    });
+
+    dispatch(setAlert("Question Removed", "success"));
+  } catch (err) {
+    dispatch({
+      type: ORG_QUESTION_ERROR,
+      payload: err,
+    });
+  }
+};
+
+//Edit question
+export const editQuestion = (questionId, formData) => async (dispatch) => {
+  try {
+    const res = await axios.put(
+      `/api/question/editquestion/${questionId}`,
+      formData
+    );
+
+    dispatch({
+      type: EDIT_QUESTION,
+      payload: res.data,
+    });
+
+    dispatch(setAlert("Question Edited", "success"));
   } catch (err) {
     dispatch({
       type: ORG_QUESTION_ERROR,

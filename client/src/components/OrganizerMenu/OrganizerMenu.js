@@ -18,12 +18,12 @@ const OrganizerMenu = (props) => {
   } = props;
 
   useEffect(() => {
-    console.log(match.params.id);
-    getOrgRoomById(match.params.id);
+    console.log(match.params.roomid);
+    getOrgRoomById(match.params.roomid);
     return () => {
       orgRoomUnload();
     };
-  }, [getOrgRoomById, match.params.id, orgRoomUnload]);
+  }, [getOrgRoomById, match.params.roomid, orgRoomUnload]);
 
   console.log(roomLoading);
   console.log(room);
@@ -38,7 +38,7 @@ const OrganizerMenu = (props) => {
       <Container>
         <Row className="orgmenu-row">
           <Col className="my-4">
-            <Link to={`/organizer/ask/${room._id}`}>
+            <Link to={`/organizer/${room._id}/ask`}>
               <Button
                 className="orgmenu-box"
                 size="lg"
@@ -69,13 +69,13 @@ const OrganizerMenu = (props) => {
               </div>
             </Col>
             <Col className="text-center mt-5 ">
-              <Link to={`/askpresent/${room._id}`}>
+              <Link to={`/organizer/${room._id}/ask/present`}>
                 <Button className="btn btn-dark org-btn">Presentation</Button>
               </Link>
             </Col>
           </Col>
           <Col className="my-4">
-            <Link to={`/organizer/question/${room._id}`}>
+            <Link to={`/organizer/${room._id}/question`}>
               <Button
                 className="orgmenu-box"
                 size="lg"
@@ -85,14 +85,14 @@ const OrganizerMenu = (props) => {
                   color: "black",
                 }}
               >
-                <p className="orgmenu-text">QUESTION</p>
+                <p className="orgmenu-text">Q&A</p>
                 <img src={question} width="64px" height="64px"></img>
               </Button>
             </Link>
           </Col>
 
           <Col className="my-4">
-            <Link to={`/organizer/feedback/${room._id}`}>
+            <Link to={`/organizer/${room._id}/feedback`}>
               <Button
                 className="orgmenu-box"
                 size="lg"

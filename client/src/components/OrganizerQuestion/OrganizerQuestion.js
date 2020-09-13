@@ -1,5 +1,4 @@
-import React, { useEffect, Fragment } from "react";
-import { Link } from "react-router-dom";
+import React, { useEffect, Fragment, useState } from "react";
 import { connect } from "react-redux";
 import OrganizerQuestionList from "./OrganizerQuestionList";
 import {
@@ -11,40 +10,42 @@ import { Container } from "reactstrap";
 import Loading from "../Loading/Loading";
 import io from "socket.io-client";
 
-const OrganizerQuestion = ({
-  getOrgRoomById,
-  orgRoomUnload,
-  getOrgQuestionList,
-  orgQuestionListUnload,
-  orgRoom: { room, roomLoading },
-  orgQuestion: { questionList, questionLoading },
-  match,
-}) => {
+const OrganizerQuestion = (props) => {
+  const {
+    getOrgRoomById,
+    orgRoomUnload,
+    getOrgQuestionList,
+    orgQuestionListUnload,
+    orgRoom: { room, roomLoading },
+    orgQuestion: { questionList, questionLoading },
+    match,
+  } = props;
+
   useEffect(() => {
-    getOrgRoomById(match.params.id);
+    getOrgRoomById(match.params.roomid);
     return () => {
       orgRoomUnload();
     };
-  }, [getOrgRoomById, match.params.id, orgRoomUnload]);
+  }, [getOrgRoomById, match.params.roomid, orgRoomUnload]);
 
   useEffect(() => {
     let socket = io.connect("http://localhost:5000");
 
-    socket.emit("room", match.params.id);
+    socket.emit("room", match.params.roomid);
 
     socket.on("organizerQuestion", (data) => {
       if (data.status === 200) {
-        getOrgQuestionList(match.params.id);
+        getOrgQuestionList(match.params.roomid);
       }
     });
 
-    getOrgQuestionList(match.params.id);
+    getOrgQuestionList(match.params.roomid);
 
     return () => {
       orgQuestionListUnload();
       socket.disconnect();
     };
-  }, [getOrgQuestionList, match.params.id, orgQuestionListUnload]);
+  }, [getOrgQuestionList, match.params.roomid, orgQuestionListUnload]);
 
   return roomLoading || questionLoading ? (
     <Loading></Loading>

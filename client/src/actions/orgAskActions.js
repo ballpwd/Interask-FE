@@ -2,6 +2,7 @@ import axios from 'axios';
 import { 
     GET_ORG_ASKLIST,
     GET_ORG_ASK,
+    ASK_ISANSWER,
     ORG_ASK_ERROR,
     ORG_ASK_UNLOADED,
     ORG_ASKLIST_UNLOADED
@@ -57,6 +58,24 @@ export const getOrgAskList = (roomId) => async dispatch => {
         });    
     }
 };
+
+// ask isAnswer update
+export const askIsAnswerUpdate = (askId) => async (dispatch) => {
+    try {
+      const res = await axios.put(`/api/ask/isanswer/${askId}`);
+  
+      dispatch({
+        type: ASK_ISANSWER,
+        payload: res.data,
+      });
+  
+    } catch (err) {
+      dispatch({
+        type: ORG_ASK_ERROR,
+        payload: err
+      });    
+    }
+  };
 
 //Organizer ask Unload
 export const orgAskUnload = () => async dispatch => {

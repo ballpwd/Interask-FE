@@ -1,41 +1,8 @@
 const express = require('express');
 const router = express.Router();
 const Ask = require('../../models/Ask')
-const User = require('../../models/User')
+const Room = require('../../models/Room')
 const auth = require('../../middleware/authCheck');
-
-
-// @route  POST /api/ask
-// @desc   Create a ask
-// @access   Private
-router.post('/', auth, async (req, res) => {
-    try {
-        const user_id = req.user.id
-        const {roomId,text,anonymous} = req.body
-
-        if (!roomId.match(/^[0-9a-fA-F]{24}$/)) {
-            return res.status(404).json({ msg: 'Room not found' });
-        }
-        
-        const newAsk = new Ask({
-            user: user_id,
-            room: roomId,
-            text: text,
-            anonymous: anonymous
-          });
-        
-        const ask = await newAsk.save()
-        console.log('---Request---',req.app)
-        req.app.io.sockets
-        .in(roomId)
-        .emit('organizerAsk', { status: 200 })
-
-        res.json(ask);
-    } catch (err) {
-        console.error(err.message);
-        res.status(500).send('Server Error');
-    }
-});
 
 // @route  GET /api/ask
 // @desc   Get all ask
@@ -72,6 +39,52 @@ router.post('/', auth, async (req, res) => {
 //         res.status(500).send('Server Error');
 //       }
 // })
+
+// @route  POST /api/ask
+// @desc   Create a ask
+// @access   Private
+router.post('/', auth, async (req, res) => {
+    try {
+        const user_id = req.user.id
+        const {roomId,text,anonymous} = req.body
+
+
+        if (!roomId.match(/^[0-9a-fA-F]{24}$/)) {
+            return res.status(404).json({ msg: 'Room not found1' });
+        }
+        console.log('roomId',roomId)
+        const room = await Room.findById(roomId)
+        console.log('room',room)
+        if(!room){
+            return res.status(404).json({ msg: 'Room not found2' });
+        }
+        if(!room.askStatus){
+            return res.status(403).json({ msg: 'Ask Function is Closed' });
+        }
+        if(!room.user.some(id => id == user_id)){
+            return res.status(401).json({msg: 'User Unauthorized'})
+        }
+
+        const newAsk = new Ask({
+            user: user_id,
+            room: roomId,
+            text: text,
+            anonymous: anonymous
+          });
+        
+        const ask = await newAsk.save()
+        console.log('---Request---',req.app)
+        req.app.io.sockets
+        .in(roomId)
+        .emit('organizerAsk', { status: 200 })
+
+        res.json(ask);
+    } catch (err) {
+        console.error(err.message);
+        res.status(500).send('Server Error');
+    }
+});
+
 
 // @route  GET /api/ask/room/:room_id'
 // @desc   Get askList by Owner
@@ -123,6 +136,33 @@ router.get('/user/room/:room_id', auth, async (req, res) => {
     }
 })
 
+// @route  PUT /api/ask/isanswer/:ask_id
+// @desc   Set isAnswer Status 
+// @access   Private
+router.put('/isanswer/:ask_id', auth, async (req, res) => {
+    try {
+        
+        const {ask_id} = req.params
 
+        if (!ask_id.match(/^[0-9a-fA-F]{24}$/)) {
+            return res.status(404).json({ msg: 'Ask not found' });
+        }
+        
+        const ask = await Ask.findById(ask_id);
+        
+        if (!ask) {
+            return res.status(404).json({ msg: 'Ask not found' });
+        }
+
+        ask.isAnswer = true 
+
+        await ask.save();
+        res.json(ask);
+
+    } catch (err) {
+        console.error(err.message);
+        res.status(500).send('Server Error');
+    }
+});
 
 module.exports = router;

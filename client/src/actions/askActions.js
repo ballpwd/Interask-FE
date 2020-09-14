@@ -1,5 +1,7 @@
 import axios from 'axios';
 import { setAlert } from './alertActions';
+import Swal from 'sweetalert2'
+
 import { 
     GET_ASKLIST,
     GET_ASK,
@@ -67,14 +69,24 @@ export const addAsk = formData => async dispatch => {
           type: ADD_ASK,
           payload: res.data
         });
-
-        // dispatch(setAlert('Ask Sent', 'success'));
+        
+        //test Sweetalert2
+        Swal.fire({
+            title:'Message Send!',
+            icon:'success'
+        })
         
     } catch (err) {
         dispatch({
             type: ASK_ERROR,
             payload: err
         });    
+
+        //test Sweetalert2
+        Swal.fire({
+            title:'Something went wrong!',
+            icon:'error'
+        })
     }
 };
 

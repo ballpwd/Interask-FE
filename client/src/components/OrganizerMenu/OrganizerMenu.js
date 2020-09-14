@@ -1,7 +1,6 @@
 import React, { Fragment, useEffect, useState } from "react";
 import { connect } from "react-redux";
-import { getOrgRoomById, orgRoomUnload } from "../../actions/orgRoomActions";
-import {getOrgAskList,orgAskListUnload} from '../../actions/orgAskActions' ;
+import { getOrgRoomById, editAskStatus, orgRoomUnload } from "../../actions/orgRoomActions";
 import { Container, Row, Col, Button } from "reactstrap";
 import Loading from '../Loading/Loading';
 import { Link } from "react-router-dom";
@@ -13,17 +12,20 @@ const OrganizerMenu = (props) => {
     const { 
       getOrgRoomById,
       orgRoomUnload,
+      editAskStatus,
       orgRoom:{room,roomLoading},
       match 
   } = props ;
 
-  
+  const [askSwitch, setAskSwitch] = useState(true);
+
   useEffect(() => {
     console.log(match.params.id)
     getOrgRoomById(match.params.id) ;
     return () => { orgRoomUnload() }
 } ,[getOrgRoomById, match.params.id, orgRoomUnload])
-  
+
+    console.log(askSwitch)
     console.log(roomLoading)
     console.log(room)
     return (room == null || roomLoading) ? (
@@ -52,12 +54,16 @@ const OrganizerMenu = (props) => {
               <img src={ask} width="64px" height="64px"></img>
               </Button>
               </Link>
+
+
               <Col className="text-center mt-2">
                 <div className="custom-control custom-switch text-center ">
                   <input
                     type="checkbox"
                     className="custom-control-input"
                     id="controlAskSwitch"
+                    checked={room.askStatus}
+                    onChange={() => editAskStatus(room._id)}
                   />
                 
                   <label
@@ -68,6 +74,9 @@ const OrganizerMenu = (props) => {
                   </label>
                 </div>
               </Col>
+
+
+
               <Col className='text-center mt-5 '>
                 <Link to={`/askpresent/${room._id}`}>
                 <Button className="btn btn-dark org-btn">Presentation</Button>
@@ -133,4 +142,4 @@ const mapStateToProps = state => ({
   orgRoom: state.orgRoom,
 })
 
-export default connect(mapStateToProps,{getOrgRoomById,orgRoomUnload})(OrganizerMenu) ;
+export default connect(mapStateToProps,{getOrgRoomById,editAskStatus,orgRoomUnload})(OrganizerMenu) ;

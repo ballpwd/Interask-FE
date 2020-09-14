@@ -5,6 +5,7 @@ export const ADD_ASK = "ADD_ASK";
 export const ASK_ERROR = "ASK_ERROR";
 export const ASK_UNLOADED = "ASK_UNLOADED";
 export const ASKLIST_UNLOADED = "ASKLIST_UNLOADED";
+export const ASK_ISANSWER = "ASK_ISANSWER";
 //User ROOM
 export const GET_ROOMLIST = "GET_ROOMLIST";
 export const GET_ROOM = "GET_ROOM";
@@ -25,6 +26,7 @@ export const GET_ORG_ROOM = "GET_ORG_ROOM";
 export const CREATE_ROOM = "CREATE_ROOM";
 export const DELETE_ROOM = "DELETE_ROOM";
 export const EDIT_ROOM = "EDIT_ROOM";
+export const EDIT_ASK_STATUS = "EDIT_ASK_STATUS";
 export const ORG_ROOM_ERROR = "ORG_ROOM_ERROR";
 export const ORG_ROOM_UNLOADED = "ORG_ROOM_UNLOADED";
 export const ORG_ROOMLIST_UNLOADED = "ORG_ROOMLIST_UNLOADED";

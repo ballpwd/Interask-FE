@@ -27,10 +27,26 @@ const Routes = () => {
         <PrivateRoute exact path="/room/:id" component={RoomMenu} />
         <PrivateRoute exact path="/organizer/room" component={OrganizerRoom} />
         <PrivateRoute exact path="/organizer/room/:id" component={OrganizerMenu} />
-        <PrivateRoute exact path="/askpresent/:id" component={OrganizerPresent} />
         <PrivateRoute exact path="/organizer/ask/:id" component={OrganizerAsk} />
-        <PrivateRoute exact path="/organizer/present/:id" component={OrganizerPresent}/>
+        <PrivateRoute exact path="/askpresent/:id" component={OrganizerPresent} />
         <PrivateRoute exact path="/organizer/feedback/:id" component={OrganizerFeedback}/>
+
+
+        {/* <Route exact path="/login" component={Login} />
+        <Route exact path="/organizer/login" component={LoginOrg} />
+        <PrivateRoute exact path="/" component={Room} />
+        <PrivateRoute exact path="/:roomid" component={RoomMenu} />
+        <PrivateRoute exact path="/:roomid/ask" component={Ask} /> 
+         /:roomid/feedback     ///Feedback Page///
+         /:roodid/question     ///Question Page///
+        <PrivateRoute exact path="/organizer" component={OrganizerRoom} />
+        <PrivateRoute exact path="/organizer/:roomid" component={OrganizerMenu} />
+        <PrivateRoute exact path="/organizer/:roomid/ask" component={OrganizerAsk} />
+        <PrivateRoute exact path="/organizer/:roomid/ask/present" component={OrganizerPresent} />
+        <PrivateRoute exact path="/organizer/:roomid/feedback" component={OrganizerFeedback}/>
+        /organizer/:roomid/question     ///Org Question Page///
+        /organizer/:roomid/question/:questionid   ///Org Question Answer Page/// */}
+
 
         <Route component={NotFound} />
       </Switch>

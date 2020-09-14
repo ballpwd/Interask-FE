@@ -22,6 +22,10 @@ const AskSchema = new mongoose.Schema({
     anonymous:{
         type: Boolean,
         default: false
+    },
+    isAnswer:{
+        type: Boolean,
+        default: false
     }
     
 })

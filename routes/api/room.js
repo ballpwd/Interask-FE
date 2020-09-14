@@ -214,6 +214,39 @@ router.put('/editname/:room_id', auth, async (req, res) => {
       console.error(err.message);
       res.status(500).send('Server Error');
     }
-  });
+});
+
+// @route    PUT api/room/editstatus/ask/:room_id
+// @desc     Edit ask status
+// @access   Private
+router.put('/editstatus/ask/:room_id', auth, async (req, res) => {
+  try {
+    const user_id = req.user.id
+    const {room_id} = req.params
+
+    // Check for ObjectId format and room
+    if (!req.params.room_id.match(/^[0-9a-fA-F]{24}$/)) {
+      return res.status(404).json({ msg: 'Room not found' });
+    }
+
+    const room = await Room.findById(room_id);
+
+    if (!room) {
+      return res.status(404).json({ msg: 'Room not found' });
+    }
+    if(room.owner != user_id){
+      return res.status(401).json({msg: 'User Unauthorized'})
+    }
+
+    room.askStatus = !room.askStatus
+    await room.save();
+    res.json(room);
+
+  } catch (err) {
+    console.error(err.message);
+    res.status(500).send('Server Error');
+  }
+});
+
 
 module.exports = router;

@@ -21,7 +21,7 @@ const AskForm = (props) => {
 
   return (
     <div>
-      <form onSubmit={handleSubmit}>
+      <form onSubmit={handleSubmit} >
         <Row className="mt-2">
           <Col xs="12" className="p-2">
             <input
@@ -55,7 +55,7 @@ const AskForm = (props) => {
             </div>
           </Col>
           <Col xs="6" className="text-right mt-2">
-            <button type="submit" className="btnAdvance">
+            <button type="submit" className="btnAdvance" disabled={!room.askStatus}>
               <img src={sent}></img>
             </button>
           </Col>

@@ -1,4 +1,6 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
+import { connect } from "react-redux";
+import {askIsAnswerUpdate} from "../../actions/orgAskActions";
 import {
   Modal,
   ModalBody,
@@ -8,9 +10,8 @@ import {
   ModalFooter,
 } from "reactstrap";
 
-const OrganizerPresentItem = ({ ask }) => {
+const OrganizerPresentItem = ({ ask, askIsAnswerUpdate}) => {
   const [modal, setModal] = useState(false);
-
   const toggle = () => setModal(!modal);
 
   const closeBtn = (
@@ -18,12 +19,14 @@ const OrganizerPresentItem = ({ ask }) => {
       &times;
     </button>
   );
+  
   return (
     <div>
       <div className="container-fluid">
         <Card>
           <Button
-            color="#e5e5e5"
+            // color="#e5e5e5"
+            color={ask.isAnswer ? 'danger':'#e5e5e5'}
             onClick={toggle}
             size="lg"
             className="pre-box"
@@ -33,7 +36,7 @@ const OrganizerPresentItem = ({ ask }) => {
         </Card>
       </div>
       <br />
-      <Modal isOpen={modal} toggle={toggle} size="lg" centered>
+      <Modal isOpen={modal} toggle={toggle} size="lg" onClosed={() => askIsAnswerUpdate(ask._id)} centered> 
         <ModalHeader close={closeBtn} className="border-0 pb-0"></ModalHeader>
         <ModalBody>
           <h2 className="text-center text-break">{ask.text}</h2>
@@ -44,4 +47,5 @@ const OrganizerPresentItem = ({ ask }) => {
   );
 };
 
-export default OrganizerPresentItem;
+
+export default connect(null,{askIsAnswerUpdate})(OrganizerPresentItem);

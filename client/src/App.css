@@ -168,6 +168,16 @@ header {
   border-radius: 10px;
 }
 
+.pre-box-answer {
+  min-height: 80px;
+  font-family: Kanit;
+  font-style: normal;
+  text-align: center;
+  align-items: center;
+  background: #c21414;
+  border-radius: 10px;
+}
+
 .bg-pre {
   background: linear-gradient(300.81deg, #eeadb4 15.33%, #c1abdd 101.47%);
 }

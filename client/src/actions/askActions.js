@@ -77,16 +77,22 @@ export const addAsk = formData => async dispatch => {
         })
         
     } catch (err) {
+
+        const errorMessage = err.response.data.msg ;
+
+        if (errorMessage) {
+            // dispatch(setAlert(errorMessage, 'danger'));
+            Swal.fire({
+              title: `${errorMessage} !`,
+              icon:'error'
+            })
+          }
+
         dispatch({
             type: ASK_ERROR,
             payload: err
         });    
 
-        //test Sweetalert2
-        Swal.fire({
-            title:'Something went wrong!',
-            icon:'error'
-        })
     }
 };
 

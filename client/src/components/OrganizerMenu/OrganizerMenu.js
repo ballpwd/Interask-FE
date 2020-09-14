@@ -17,15 +17,12 @@ const OrganizerMenu = (props) => {
       match 
   } = props ;
 
-  const [askSwitch, setAskSwitch] = useState(true);
-
   useEffect(() => {
-    console.log(match.params.id)
-    getOrgRoomById(match.params.id) ;
+    console.log(match.params.roomid)
+    getOrgRoomById(match.params.roomid) ;
     return () => { orgRoomUnload() }
-} ,[getOrgRoomById, match.params.id, orgRoomUnload])
+} ,[getOrgRoomById, match.params.roomid, orgRoomUnload])
 
-    console.log(askSwitch)
     console.log(roomLoading)
     console.log(room)
     return (room == null || roomLoading) ? (

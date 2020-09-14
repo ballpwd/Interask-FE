@@ -14,7 +14,7 @@ const QuestionSchema = new mongoose.Schema({
     default: true,
   },
   date: {
-    type: String,
+    type: Date,
     default: Date.now,
   },
 });

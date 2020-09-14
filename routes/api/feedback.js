@@ -69,7 +69,7 @@ router.post("/", auth, async (req, res) => {
 //       }
 // })
 
-// // @route  GET /api/feedback/room/:room_id'
+// // @route  GET /api/feedback/owner/room/:room_id'
 // // @desc   Get feedbackList by Owner
 // // @access   Private
 router.get("/owner/room/:room_id", auth, async (req, res) => {

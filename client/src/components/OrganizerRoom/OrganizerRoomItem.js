@@ -19,7 +19,7 @@ const OrganizerRoomItem = (props) => {
     <Fragment>
       {!edit ? (
         <Col className="my-4">
-          <Link to={`/organizer/room/${room._id}`}>
+          <Link to={`/organizer/${room._id}`}>
             <Button
               className="orgroom-box"
               size="lg"

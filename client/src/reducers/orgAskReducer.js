@@ -1,6 +1,7 @@
 import {
   GET_ORG_ASKLIST,
   GET_ORG_ASK,
+  ASK_ISANSWER,
   ORG_ASK_ERROR,
   ORG_ASK_UNLOADED,
   ORG_ASKLIST_UNLOADED
@@ -23,11 +24,19 @@ switch (type) {
       askLoading: false   
     } ;
   case GET_ORG_ASK:
-      return {
+    return {
+      ...state,
+      ask: payload,
+      askLoading: false       
+    } ;
+  case ASK_ISANSWER:
+    return {
         ...state,
-        ask: payload,
-        askLoading: false       
-      } ;      
+        askList: state.askList.map((a) =>
+          a._id === payload._id ? { ...a, isAnswer: payload.isAnswer } : a
+        ),
+        askLoading: false,
+    };
   case ORG_ASK_ERROR:
     return {
       ...state,

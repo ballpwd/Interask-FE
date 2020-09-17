@@ -7,6 +7,8 @@ import {
     FEEDBACK_UNLOADED,
     FEEDBACKLIST_UNLOADED
 } from './types';
+import Swal from 'sweetalert2';
+
 
 //Get all ask
 // export const getAllAsk = () => async dispatch => {
@@ -65,7 +67,20 @@ export const addFeedback = formData => async dispatch => {
           type: ADD_FEEDBACK,
           payload: res.data
         });
+
+        Swal.fire({
+            title:'Feedback Send!',
+            icon:'success'
+        })
     } catch (err) {
+        const errorMessage = err.response.data.msg ;
+
+        if (errorMessage) {
+            Swal.fire({
+              title: `${errorMessage} !`,
+              icon:'error'
+            })
+          }
         dispatch({
             type: FEEDBACK_ERROR,
             payload: err

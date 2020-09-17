@@ -181,6 +181,16 @@ header {
   border-radius: 10px;
 }
 
+.pre-box-answer {
+  min-height: 80px;
+  font-family: Kanit;
+  font-style: normal;
+  text-align: center;
+  align-items: center;
+  background: #c21414;
+  border-radius: 10px;
+}
+
 .bg-pre {
   background: linear-gradient(300.81deg, #eeadb4 15.33%, #c1abdd 101.47%);
 }
@@ -426,7 +436,7 @@ header {
 
 .nav-item {
   font-family: Kanit;
-  font-size: 20px;
+  font-size: 15px;
   font-style: normal;
   font-weight: normal;
   padding: 10px;
@@ -683,6 +693,7 @@ header {
   align-items: center;
   box-shadow: #e493c980 0px 1px 0.4rem;
   margin-top: 30px;
+  
 }
 
 .room-img {
@@ -690,18 +701,72 @@ header {
 }
 
 /*--------------------- Feedback Form --------------------*/
-.askText {
-  font-family: Kanit;
-  font-weight: 300;
-  font-size: 18px;
-  background: #ffffff;
-  border: none;
-  height: 56px;
-  padding: 0 25px;
-  border-radius: 5px;
-  width: 100%;
-}
+.suggestion { 
+  border: none; 
+  height: 120px; 
+  padding: 0 25px; 
+  border-radius: 5px; 
+  width: 100%; 
+  border-color: #88B1EF; 
+  border-style: solid; 
+  border-width: 5px; 
+} 
+ 
+.submit-feedback{ 
+  width: 193px; 
+  height: 48px; 
+  font-family: Kanit; 
+  font-style: normal; 
+  font-weight: bold; 
+} 
+ 
 
+/*------------------------- Feedback -----------------------*/ 
+ 
+.feedback-section{ 
+  text-align: center; 
+
+} 
+
+.feedback-box { 
+ height: 450px; 
+ border-radius: 10px; 
+ border: solid; 
+ border-color: #88B1EF; 
+ background: #ffffff; 
+  
+} 
+
+.feedback-img{ 
+ width: 36px; 
+ height: 36px; 
+ margin-top: 20px; 
+} 
+
+.feedback-topic{ 
+ font-family: Kanit; 
+ font-weight: bold; 
+ font-size: 18px; 
+ text-align: center; 
+ padding-top: 20px; 
+} 
+
+.feedback-point{ 
+ font-family: Kanit; 
+ font-weight: 500; 
+ font-size: 16px; 
+ text-align: center; 
+} 
+
+.radio-feedback{ 
+ text-align: center; 
+ margin-top: 10px; 
+} 
+
+input[type=radio] { 
+ width: 20px; 
+ height: 20px; 
+} 
 
 
 

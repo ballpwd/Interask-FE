@@ -1,23 +1,25 @@
 import React, { Fragment, useEffect } from "react";
 import { connect } from "react-redux";
-import { Link } from "react-router-dom";
 import { getOrgRoomById, orgRoomUnload } from "../../actions/orgRoomActions";
-import { getOrgAskList, orgAskListUnload } from "../../actions/orgAskActions";
-import OrganizerAskList from "./OrganizerAskList";
-import OrganizerAskAnalyze from "./OrganizerAskAnalyze";
+import {
+  getOrgAnswerList,
+  orgAnswerListUnload,
+} from "../../actions/orgAnswerActions";
+import OrganizerAnswerList from "./OrganizerAnswerList";
+import OrganizerAnswerAnalyze from "./OrganizerAnswerAnalyze";
 import Loading from "../Loading/Loading";
 import { Container, Row, Col, Button } from "reactstrap";
-// import socket from '../../utils/socket'
 import io from "socket.io-client";
-import NavbarOrg from '../Navbar/NavbarOrg';
-const OrganizerAsk = (props) => {
+
+const OrganizerAnswer = (props) => {
   const {
+    question,
     getOrgRoomById,
     orgRoomUnload,
-    getOrgAskList,
-    orgAskListUnload,
+    getOrgAnswerList,
+    orgAnswerListUnload,
     orgRoom: { room, roomLoading },
-    orgAsk: { askList, askLoading },
+    orgAnswer: { answer, answerList, answerLoading },
     match,
   } = props;
 
@@ -33,30 +35,29 @@ const OrganizerAsk = (props) => {
 
     socket.emit("room", match.params.roomid);
 
-    socket.on("organizerAsk", (data) => {
+    socket.on("organizerAnswer", (data) => {
       if (data.status === 200) {
-        getOrgAskList(match.params.roomid);
+        getOrgAnswerList(match.params.questionid);
       }
     });
 
-    getOrgAskList(match.params.roomid);
+    getOrgAnswerList(match.params.questionid);
 
     return () => {
-      orgAskListUnload();
+      orgAnswerListUnload();
       socket.disconnect();
     };
-  }, [getOrgAskList, match.params.roomid, orgAskListUnload]);
+  }, [getOrgAnswerList, match.params.questionid, orgAnswerListUnload]);
 
   console.log(room);
-  console.log(askList);
+  console.log(answerList);
 
-  return roomLoading || askLoading ? (
+  return roomLoading || answerLoading ? (
     <Loading></Loading>
   ) : (
     <Fragment>
-      <NavbarOrg></NavbarOrg>
       <Container fluid>
-        <h1 className="org-h1 text-center">ASK</h1>
+        <h1 className="org-h1 text-center">Q&A</h1>
       </Container>
       <Container fluid>
         <Row className="justify-content-center align-items-center">
@@ -66,21 +67,13 @@ const OrganizerAsk = (props) => {
               <br />
               ROOMID: {room._id}
             </h5>
-            {<OrganizerAskList askList={askList} />}
+            {<OrganizerAnswerList answerList={answerList} answer={answer} />}
           </Col>
           <Col md="5" xs="12" className="mt-4">
-            {<OrganizerAskAnalyze askList={askList} />}
+            {<OrganizerAnswerAnalyze answerList={answerList} />}
             <Row>
-              <Col md="6" xs="12" className="text-center mt-5">
+              <Col md="12" xs="12" className="text-center mt-5">
                 <Button className="btn btn-dark org-btn">Export</Button>
-              </Col>
-              <Col md="6" xs="12" className="text-center mt-5">
-                <Link
-                  to={`/organizer/${room._id}/ask/present`}
-                  className="btn btn-dark org-btn"
-                >
-                  Presentaion
-                </Link>
               </Col>
             </Row>
           </Col>
@@ -92,12 +85,12 @@ const OrganizerAsk = (props) => {
 
 const mapStateToProps = (state) => ({
   orgRoom: state.orgRoom,
-  orgAsk: state.orgAsk,
+  orgAnswer: state.orgAnswer,
 });
 
 export default connect(mapStateToProps, {
   getOrgRoomById,
-  getOrgAskList,
+  getOrgAnswerList,
   orgRoomUnload,
-  orgAskListUnload,
-})(OrganizerAsk);
+  orgAnswerListUnload,
+})(OrganizerAnswer);

@@ -4,6 +4,8 @@ import {
   CREATE_ROOM,
   DELETE_ROOM,
   EDIT_ROOM,
+  EDIT_ASK_STATUS,
+  EDIT_FEEDBACK_STATUS,
   ORG_ROOM_ERROR,
   ORG_ROOM_UNLOADED,
   ORG_ROOMLIST_UNLOADED
@@ -32,7 +34,19 @@ export default function (state = initialState, action) {
           r._id === payload._id ? { ...r, roomName: payload.roomName } : r
         ),
         roomLoading: false,
+      };    
+    case EDIT_ASK_STATUS:
+      return {
+        ...state,
+        room: payload,
+        roomLoading: false,
       };
+      case EDIT_FEEDBACK_STATUS:
+      return {
+        ...state,
+        room: payload,
+        roomLoading: false,
+      };    
     case GET_ORG_ROOM:
       return {
         ...state,

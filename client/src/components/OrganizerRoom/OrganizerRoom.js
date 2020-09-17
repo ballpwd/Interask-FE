@@ -6,12 +6,8 @@ import {
 } from "../../actions/orgRoomActions";
 import OrganizerRoomList from "./OrganizerRoomList";
 import { Container, Row, Button } from "reactstrap";
-<<<<<<< Updated upstream
-import Loading from "../Loading/Loading";
-=======
 import Loading from '../Loading/Loading';
 import NavbarOrg from '../Navbar/NavbarOrg';
->>>>>>> Stashed changes
 
 const OrganizerRoom = (props) => {
   const [edit, setEdit] = useState(false);

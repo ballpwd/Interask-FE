@@ -9,7 +9,7 @@ const OrganizerFeedbackItem = (props) => {
     <div className="boxitem">
       <div className="org-p p-2 text-break">
         {emoticon}
-        {text} <br />- at {time.toUTCString()}
+        {text} <br />{time.toUTCString()}
       </div>
     </div>
   );

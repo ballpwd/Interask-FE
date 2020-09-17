@@ -1,5 +1,7 @@
 import axios from 'axios';
 import { setAlert } from './alertActions';
+import Swal from 'sweetalert2'
+
 import { 
   GET_ROOMLIST,
   GET_ROOM,
@@ -69,14 +71,23 @@ export const joinRoom = (roomCode)=> async (dispatch) => {
       payload: res.data
     });
 
-    dispatch(setAlert('Room Joined', 'success'));
+    Swal.fire({
+      title:'Room Joined !',
+      icon:'success'
+    })
+
+    // dispatch(setAlert('Room Joined', 'success'));
 
   } catch (err) {
     
     const errorMessage = err.response.data.msg ;
-
+    
     if (errorMessage) {
-      dispatch(setAlert(errorMessage, 'danger'));
+      // dispatch(setAlert(errorMessage, 'danger'));
+      Swal.fire({
+        title: `${errorMessage} !`,
+        icon:'error'
+      })
     }
 
     dispatch({
@@ -96,8 +107,12 @@ export const leaveRoom = (roomId) => async (dispatch) => {
       type: LEAVE_ROOM,
       payload: roomId
     });
-
-    dispatch(setAlert('Room left', 'success'));
+    
+    Swal.fire({
+      title:'Room left !',
+      icon:'success'
+    })
+    // dispatch(setAlert('Room left', 'success'));
     
   } catch (err) {
     dispatch({

@@ -24,30 +24,30 @@ const OrganizerFeedback = (props) => {
   } = props;
 
   useEffect(() => {
-    getOrgRoomById(match.params.id);
+    getOrgRoomById(match.params.roomid);
     return () => {
       orgRoomUnload();
     };
-  }, [getOrgRoomById, match.params.id, orgRoomUnload]);
+  }, [getOrgRoomById, match.params.roomid, orgRoomUnload]);
 
   useEffect(() => {
     let socket = io.connect("http://localhost:5000");
 
-    socket.emit("room", match.params.id);
+    socket.emit("room", match.params.roomid);
 
     socket.on("organizerFeedback", (data) => {
       if (data.status === 200) {
-        getOrgFeedbackList(match.params.id);
+        getOrgFeedbackList(match.params.roomid);
       }
     });
 
-    getOrgFeedbackList(match.params.id);
+    getOrgFeedbackList(match.params.roomid);
 
     return () => {
       orgFeedbackListUnload();
       socket.disconnect();
     };
-  }, [getOrgFeedbackList, match.params.id, orgFeedbackListUnload]);
+  }, [getOrgFeedbackList, match.params.roomid, orgFeedbackListUnload]);
 
   console.log(room);
   console.log(feedbackList);

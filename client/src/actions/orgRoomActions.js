@@ -1,11 +1,15 @@
 import axios from 'axios';
 import { setAlert } from './alertActions';
+import Swal from 'sweetalert2'
+
 import { 
     GET_ORG_ROOMLIST,
     GET_ORG_ROOM,
     CREATE_ROOM,
     DELETE_ROOM,
     EDIT_ROOM,
+    EDIT_ASK_STATUS,
+    EDIT_FEEDBACK_STATUS,
     ORG_ROOM_ERROR,
     ORG_ROOM_UNLOADED,
     ORG_ROOMLIST_UNLOADED
@@ -73,7 +77,12 @@ export const createRoom = formData => async (dispatch) => {
       payload: res.data,
     });
 
-    dispatch(setAlert('Room Created', 'success'));
+    Swal.fire({
+      title:'Room Created !',
+      icon:'success'
+    })
+
+    // dispatch(setAlert('Room Created', 'success'));
 
   } catch (err) {
     dispatch({
@@ -94,7 +103,11 @@ export const deleteRoom = roomId => async (dispatch) => {
       payload: roomId,
     });
 
-    dispatch(setAlert('Room Removed', 'success'));
+    Swal.fire({
+      title:'Room Removed !',
+      icon:'success'
+    })
+    // dispatch(setAlert('Room Removed', 'success'));
 
   } catch (err) {
     dispatch({
@@ -114,7 +127,47 @@ export const editRoomName = (roomId, formData) => async (dispatch) => {
       payload: res.data,
     });
 
-    dispatch(setAlert('Room Edited', 'success'));
+    Swal.fire({
+      title:'Room Edited !',
+      icon:'success'
+    })
+
+    // dispatch(setAlert('Room Edited', 'success'));
+
+  } catch (err) {
+    dispatch({
+      type: ORG_ROOM_ERROR,
+      payload: err
+    });    
+  }
+};
+
+//Edit ask status
+export const editAskStatus = (roomId) => async (dispatch) => {
+  try {
+    const res = await axios.put(`/api/room/editstatus/ask/${roomId}`);
+
+    dispatch({
+      type: EDIT_ASK_STATUS,
+      payload: res.data,
+    });
+
+  } catch (err) {
+    dispatch({
+      type: ORG_ROOM_ERROR,
+      payload: err
+    });    
+  }
+};
+
+export const editFeedbackStatus = (roomId) => async (dispatch) => {
+  try {
+    const res = await axios.put(`/api/room/editstatus/feedback/${roomId}`);
+
+    dispatch({
+      type: EDIT_FEEDBACK_STATUS,
+      payload: res.data,
+    });
 
   } catch (err) {
     dispatch({

@@ -29,22 +29,16 @@ const NavbarOrg = (props) => {
 
   return (
     <div>
-      <Navbar light expand="md" className='navorg-section'>
+      <Navbar light expand="md" className='navorg-section pt-0 pb-0'>
         <NavbarBrand href="/"><img src={Logo} style={{ width: '138px', height: '61px' }}></img></NavbarBrand>
         <NavbarToggler onClick={toggle} />
         <Collapse isOpen={isOpen} navbar>
           <Nav className="mr-auto" navbar>
             <NavItem>
-              <NavLink href="/components/" className='navorg-item'>Ask</NavLink>
+              <NavLink href="/room" className='nav-item'>ROOM</NavLink>
             </NavItem>
             <NavItem>
-              <NavLink href="/components/" className='navorg-item'>Feedback</NavLink>
-            </NavItem>
-            <NavItem>
-              <NavLink href="/components/" className='navorg-item'>Question</NavLink>
-            </NavItem>
-            <NavItem>
-              <NavLink href="/components/" className='navorg-item'>How to use</NavLink>
+              <NavLink href="/organizer/room" className='nav-item'>ORGANIZER ROOM</NavLink>
             </NavItem>
             </Nav>
             <Nav className="navbar-nav">

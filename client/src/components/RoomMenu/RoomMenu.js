@@ -32,17 +32,16 @@ const RoomMenu = (props) => {
   ) : (
     <Fragment>
       <div className="fullscreen room-bg">
-        <Container fluid className="text-center btn-room">
-          <Container fluid className="head-room">
-            <div className="p-4">
-              <h1 className="room-h1">Welcome To</h1>
-              <h3 className="room-h3">{room.roomName}</h3>
-              <h3 className="room-h3" style={{ marginTop: "20px" }}>
-                {user.userName}
-              </h3>
-            </div>
-          </Container>
+        <Container fluid className="head-room">
+          <div className="p-4">
+            <h1 className="room-h1">Welcome To</h1>
+            <h3 className="room-h3 text-break">{room.roomName}</h3>
+            <h3 className="room-h3 text-break">{user.userName}</h3>
+          </div>
+        </Container>
+        <Container fluid className="text-center">
           <div className="p-5">
+            <br />
             <br />
             <br />
             <br />
@@ -68,7 +67,7 @@ const RoomMenu = (props) => {
             </Link>
           </Col>
           <Col>
-            <Link to={`/${room._id}/ask`}>
+            <Link to={`/${room._id}/question`}>
               <Button
                 className="room-box-question"
                 style={{
@@ -87,29 +86,24 @@ const RoomMenu = (props) => {
             </Link>
           </Col>
           <Col>
-          <Link to={`/${room._id}/feedback`}>
-                <Button
-                    className="room-box-feedback"
-                    style={{
-                    backgroundColor: "white",
-                    borderColor: "#e493c980",
-                    color: "#7ADF7E",
-                    borderRadius: "10px 10px 10px 10px",
-                    fontSize: "24px",
-                    borderRight: "50px solid"
-                    }}
-                    size="md"
-                >
+            <Link to={`/${room._id}/feedback`}>
+              <Button
+                className="room-box-feedback"
+                style={{
+                  backgroundColor: "white",
+                  borderColor: "#e493c980",
+                  color: "#7ADF7E",
+                  borderRadius: "10px 10px 10px 10px",
+                  fontSize: "24px",
+                  borderRight: "50px solid",
+                }}
+                size="md"
+              >
                 <img src={room_feedback} className="room-img"></img>
                 FEEDBACK
-                </Button>
-                </Link>
-          </Col>
-          <div className="mt-5">
-            <Link to="/" className="btn btn-primary">
-              Go to Home
+              </Button>
             </Link>
-          </div>
+          </Col>
         </Container>
       </div>
     </Fragment>

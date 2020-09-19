@@ -57,7 +57,7 @@ const Ask = (props) => {
         <Container>
           <Row>
             <Col className="ask-box mx-2">
-              <h4 className="askRoomName">{room.roomName}</h4>
+              <h4 className="askRoomName text-break">{room.roomName}</h4>
               <div className="todayTime">Today : {timeString}</div>
               <hr className="border border-secondary" />
               {askList && <AskHistory askList={askList} />}

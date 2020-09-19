@@ -9,7 +9,7 @@ import Loading from "../Loading/Loading";
 import { Container, Row, Col, Button } from "reactstrap";
 // import socket from '../../utils/socket'
 import io from "socket.io-client";
-import NavbarOrg from '../Navbar/NavbarOrg';
+import NavbarOrg from "../Navbar/NavbarOrg";
 const OrganizerAsk = (props) => {
   const {
     getOrgRoomById,
@@ -64,7 +64,7 @@ const OrganizerAsk = (props) => {
             <h5 className="org-h5">
               ROOM: {room.roomName}
               <br />
-              ROOMID: {room._id}
+              PIN: {room.code}
             </h5>
             {<OrganizerAskList askList={askList} />}
           </Col>

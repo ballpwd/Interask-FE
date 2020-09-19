@@ -80,7 +80,7 @@ const OrganizerQuestionItem = (props) => {
           className="border-0 pb-0"
           cssModule={{ "modal-title": "w-100 text-center pt-5" }}
         >
-          <p className="org-h3">EDIT ROOM NAME</p>
+          <p className="org-h3">EDIT QUESTION</p>
         </ModalHeader>
         <ModalBody>
           <div>

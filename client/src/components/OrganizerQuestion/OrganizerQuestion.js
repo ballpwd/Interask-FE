@@ -58,7 +58,7 @@ const OrganizerQuestion = (props) => {
         <h5 className="org-h5 text-center">
           ROOM: {room.roomName}
           <br />
-          ROOMID: {room._id}
+          PIN: {room.code}
         </h5>
 
         {<OrganizerQuestionList questionList={questionList} room={room} />}

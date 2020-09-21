@@ -6,11 +6,13 @@ import {
   orgFeedbackListUnload,
 } from "../../actions/orgFeedbackActions";
 import OrganizerFeedbackList from "./OrganizerFeedbackList";
-// import OrganizerFeedbackAnalyze from './OrganizerFeedbackAnalyze' ;
+import OrganizerFeedbackAnalyze from './OrganizerFeedbackAnalyze' ;
 import Loading from "../Loading/Loading";
 import { Container, Row, Col, Button } from "reactstrap";
 import io from "socket.io-client";
 import NavbarOrg from '../Navbar/NavbarOrg';
+
+
 
 const OrganizerFeedback = (props) => {
   const {
@@ -71,7 +73,7 @@ const OrganizerFeedback = (props) => {
             {<OrganizerFeedbackList feedbackList={feedbackList} />}
           </Col>
           <Col md="5" xs="12" className="mt-4">
-            {/* {<OrganizerFeedbackAnalyze feedbackList={feedbackList} />} */}
+            {<OrganizerFeedbackAnalyze feedbackList={feedbackList} />}
             <Row>
               <Col md="12" xs="12" className="text-center mt-5">
                 <Button className="btn btn-dark org-btn">Export</Button>

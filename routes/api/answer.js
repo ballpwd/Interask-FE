@@ -69,7 +69,9 @@ router.get("/:question_id", async (req, res) => {
   try {
     const { question_id } = req.params;
 
-    const answer = await Answer.find({ question: question_id });
+    // const answer = await Answer.find({ question: question_id });
+    const answer = await Answer.find({ question: question_id }).populate("user", ["userName"]);
+    
 
     if (answer.length < 1) {
       return res.status(404).json({ msg: "Answer not found" });

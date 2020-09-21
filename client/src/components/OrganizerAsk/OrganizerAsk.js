@@ -7,9 +7,14 @@ import OrganizerAskList from "./OrganizerAskList";
 import OrganizerAskAnalyze from "./OrganizerAskAnalyze";
 import Loading from "../Loading/Loading";
 import { Container, Row, Col, Button } from "reactstrap";
-// import socket from '../../utils/socket'
+//socket
 import io from "socket.io-client";
+//Navbar
 import NavbarOrg from '../Navbar/NavbarOrg';
+//export
+import {exportAsk} from '../../utils/export';
+
+
 const OrganizerAsk = (props) => {
   const {
     getOrgRoomById,
@@ -72,7 +77,7 @@ const OrganizerAsk = (props) => {
             {<OrganizerAskAnalyze askList={askList} />}
             <Row>
               <Col md="6" xs="12" className="text-center mt-5">
-                <Button className="btn btn-dark org-btn">Export</Button>
+                <Button className="btn btn-dark org-btn" onClick={() => exportAsk(askList)}>Export</Button>
               </Col>
               <Col md="6" xs="12" className="text-center mt-5">
                 <Link

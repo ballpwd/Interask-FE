@@ -102,8 +102,8 @@ router.get("/user/room/:room_id", auth, async (req, res) => {
       return res.status(404).json({ msg: "Room not found" });
     }
 
-    const question = await Question.find({ room: room_id, user: user_id });
-
+    const question = await Question.find({ room: room_id});
+  
     if (question.length < 1) {
       return res.status(404).json({ msg: "Question not found" });
     }

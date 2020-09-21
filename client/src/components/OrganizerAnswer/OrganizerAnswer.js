@@ -69,34 +69,46 @@ const OrganizerAnswer = (props) => {
     <Loading></Loading>
   ) : (
     <Fragment>
-      <Container fluid>
-        <h1 className="org-h2 text-center text-break">
-          Question: {question.questionDetail}
-        </h1>
-      </Container>
-      <Container fluid>
-        <Row className="justify-content-center align-items-center">
-          <Col md="5" xs="12" className="mt-4">
-            <h5 className="org-h5 text-break">
-              ROOM: {room.roomName}
-              <br />
-              PIN: {room.code}
-              <br />
-            </h5>
+      <div className="fullscreen bg">
+        <Container fluid>
+          <h1 className="org-h2 text-center text-break org-section">
+            Question: {question.questionDetail}
+          </h1>
+        </Container>
+        <Container fluid>
+          <Row className="justify-content-center align-items-center">
+            <Col md="5" xs="12" className="mt-4">
+              <h5 className="org-h5 text-break">
+                ROOM: {room.roomName}
+                <br />
+                PIN: {room.code}
+                <br />
+              </h5>
 
-            {<OrganizerAnswerList answerList={answerList} answer={answer} />}
-          </Col>
+              {<OrganizerAnswerList answerList={answerList} answer={answer} />}
+            </Col>
 
-          <Col md="5" xs="12" className="mt-4">
-            {<OrganizerAnswerAnalyze answerList={answerList} />}
-            <Row>
-              <Col md="12" xs="12" className="text-center mt-5">
-                <Button className="btn btn-dark org-btn">Export</Button>
-              </Col>
-            </Row>
-          </Col>
-        </Row>
-      </Container>
+            <Col md="5" xs="12" className="mt-4">
+              {<OrganizerAnswerAnalyze answerList={answerList} />}
+              <Row>
+                <Col md="12" xs="12" className="text-center mt-5">
+                  <Button
+                    className="org-btn"
+                    style={{
+                      backgroundColor: "#FF8BA7",
+                      borderColor: "#121629",
+                      borderWidth: "2px",
+                      color: "#232946",
+                    }}
+                  >
+                    Export
+                  </Button>
+                </Col>
+              </Row>
+            </Col>
+          </Row>
+        </Container>
+      </div>
     </Fragment>
   );
 };

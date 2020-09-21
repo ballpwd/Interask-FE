@@ -33,11 +33,20 @@ const OrganizerQuestionList = (props) => {
         <Container fluid>
           <Row className="pt-4">
             <Col className="text-left mt-2">
-              <h4 className="org-h4"> Question </h4>
+              <h4 className="org-h3"> Question </h4>
             </Col>
             <Col className="text-right mt-2">
               {!edit ? (
-                <Button onClick={manage} className="btn btn-dark org-btn">
+                <Button
+                  onClick={manage}
+                  className="org-btn"
+                  style={{
+                    backgroundColor: "#FF8BA7",
+                    borderColor: "#121629",
+                    borderWidth: "2px",
+                    color: "#232946",
+                  }}
+                >
                   MANAGE QUESTION
                 </Button>
               ) : (
@@ -66,8 +75,8 @@ const OrganizerQuestionList = (props) => {
               onClick={toggle}
               size="lg"
               style={{
-                backgroundColor: "#c4c4c4",
-                borderColor: "white",
+                backgroundColor: "#EEBBC3",
+                borderColor: "#EEBBC3",
                 color: "black",
               }}
               className="pre-box pt-4"
@@ -86,7 +95,7 @@ const OrganizerQuestionList = (props) => {
           className="border-0 pb-0"
           cssModule={{ "modal-title": "w-100 text-center pt-5" }}
         >
-          <p className="org-h3">CREATE NEW QUESTION</p>
+          <p className="org-h4">CREATE NEW QUESTION</p>
         </ModalHeader>
         <ModalBody>
           <div>

@@ -48,7 +48,7 @@ const OrganizerPresent = ({
     <Fragment>
       <div className="fullscreen bg">
         <Container fluid>
-          <h1 className="org-h1 text-center">Ask Presentation</h1>
+          <h1 className="org-h1 text-center org-section">Ask Presentation</h1>
         </Container>
         <Container fluid>
           <h5 className="org-h5 text-center">

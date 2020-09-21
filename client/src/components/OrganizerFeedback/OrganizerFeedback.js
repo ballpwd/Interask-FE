@@ -6,13 +6,13 @@ import {
   orgFeedbackListUnload,
 } from "../../actions/orgFeedbackActions";
 import OrganizerFeedbackList from "./OrganizerFeedbackList";
-import OrganizerFeedbackAnalyze from './OrganizerFeedbackAnalyze' ;
+import OrganizerFeedbackAnalyze from "./OrganizerFeedbackAnalyze";
 import Loading from "../Loading/Loading";
 import { Container, Row, Col, Button } from "reactstrap";
 //socket
 import io from "socket.io-client";
 //Export
-import {exportFeedback} from '../../utils/export';
+import { exportFeedback } from "../../utils/export";
 
 const OrganizerFeedback = (props) => {
   const {
@@ -58,29 +58,42 @@ const OrganizerFeedback = (props) => {
     <Loading></Loading>
   ) : (
     <Fragment>
-      <Container fluid>
-        <h1 className="org-h1 text-center orgfeedback-section">Feedback</h1>
-      </Container>
-      <Container fluid>
-        <Row className="justify-content-center align-items-center">
-          <Col md="5" xs="12" className="mt-4">
-            <h5 className="org-h5">
-              ROOM: {room.roomName}
-              <br />
-              PIN: {room.code}
-            </h5>
-            {<OrganizerFeedbackList feedbackList={feedbackList} />}
-          </Col>
-          <Col md="5" xs="12" className="mt-4">
-            {<OrganizerFeedbackAnalyze feedbackList={feedbackList} />}
-            <Row>
-              <Col md="12" xs="12" className="text-center mt-5">
-                <Button className="btn btn-dark org-btn" onClick={()=> exportFeedback(feedbackList)}>Export</Button>
-              </Col>
-            </Row>
-          </Col>
-        </Row>
-      </Container>
+      <div className="fullscreen bg">
+        <Container fluid>
+          <h1 className="org-h1 text-center org-section">Feedback</h1>
+        </Container>
+        <Container fluid>
+          <Row className="justify-content-center align-items-center">
+            <Col md="5" xs="12" className="mt-4">
+              <h5 className="org-h5">
+                ROOM: {room.roomName}
+                <br />
+                PIN: {room.code}
+              </h5>
+              {<OrganizerFeedbackList feedbackList={feedbackList} />}
+            </Col>
+            <Col md="5" xs="12" className="mt-4">
+              {<OrganizerFeedbackAnalyze feedbackList={feedbackList} />}
+              <Row>
+                <Col md="12" xs="12" className="text-center mt-5">
+                  <Button
+                    className="org-btn"
+                    onClick={() => exportFeedback(feedbackList)}
+                    style={{
+                      backgroundColor: "#FF8BA7",
+                      borderColor: "#121629",
+                      borderWidth: "2px",
+                      color: "#232946",
+                    }}
+                  >
+                    Export
+                  </Button>
+                </Col>
+              </Row>
+            </Col>
+          </Row>
+        </Container>
+      </div>
     </Fragment>
   );
 };

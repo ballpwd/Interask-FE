@@ -78,6 +78,5 @@ export const AUTH_ERROR = "AUTH_ERROR";
 export const TOKEN_LOADED = "TOKEN_LOADED";
 export const LOGOUT = "LOGOUT";
 //Alert
-// export const SET_ALERT = "SET_ALERT";
-// export const REMOVE_ALERT = "REMOVE_ALERT";
-
+export const SET_ALERT = "SET_ALERT";
+export const REMOVE_ALERT = "REMOVE_ALERT";

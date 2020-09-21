@@ -66,7 +66,7 @@ const RoomItem = (props) => {
         >
           <img src={close} width="128px" height="128px"></img>
           <p className="warn-leave">DO YOU WANT TO LEAVE</p>
-          <p className="org-h3">"{room.roomName}" room ?</p>
+          <p className="org-h4 text-break">"{room.roomName}" room ?</p>
         </ModalHeader>
         <ModalBody>
           <div>

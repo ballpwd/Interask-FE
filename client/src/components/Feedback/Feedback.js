@@ -6,6 +6,7 @@ import { getUserFeedbackList, feedbackListUnload } from '../../actions/feedbackA
 import { Container, Button, Row, Col} from "reactstrap";
 import Loading from '../Loading/Loading';
 import FeedbackForm from "../Feedback/FeedbackForm";
+import NavBar from '../Navbar/NavBar';
 
 const Feedback = (props) => {
 

@@ -34,8 +34,8 @@ const OrganizerQuestionItem = (props) => {
                 color="#e5e5e5"
                 size="lg"
                 style={{
-                  backgroundColor: "#e5e5e5",
-                  borderColor: "#e5e5e5",
+                  backgroundColor: "#B8C1EC",
+                  borderColor: "#B8C1EC",
                   color: "black",
                 }}
                 className="pre-box"
@@ -80,7 +80,7 @@ const OrganizerQuestionItem = (props) => {
           className="border-0 pb-0"
           cssModule={{ "modal-title": "w-100 text-center pt-5" }}
         >
-          <p className="org-h3">EDIT QUESTION</p>
+          <p className="org-h4">EDIT QUESTION</p>
         </ModalHeader>
         <ModalBody>
           <div>

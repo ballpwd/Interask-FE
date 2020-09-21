@@ -51,18 +51,20 @@ const OrganizerQuestion = (props) => {
     <Loading></Loading>
   ) : (
     <Fragment>
-      <Container fluid>
-        <h1 className="org-h1 text-center">Q&A</h1>
-      </Container>
-      <Container fluid>
-        <h5 className="org-h5 text-center">
-          ROOM: {room.roomName}
-          <br />
-          PIN: {room.code}
-        </h5>
+      <div className="fullscreen bg">
+        <Container fluid>
+          <h1 className="org-h1 text-center">Q&A</h1>
+        </Container>
+        <Container fluid>
+          <h5 className="org-h5 text-center">
+            ROOM: {room.roomName}
+            <br />
+            PIN: {room.code}
+          </h5>
 
-        {<OrganizerQuestionList questionList={questionList} room={room} />}
-      </Container>
+          {<OrganizerQuestionList questionList={questionList} room={room} />}
+        </Container>
+      </div>
     </Fragment>
   );
 };

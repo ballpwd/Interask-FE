@@ -54,7 +54,7 @@ const OrganizerRoomList = (props) => {
           className="border-0 pb-0"
           cssModule={{ "modal-title": "w-100 text-center pt-5" }}
         >
-          <p className="org-h3">CREATE ROOM</p>
+          <p className="org-h4">CREATE ROOM</p>
         </ModalHeader>
         <ModalBody>
           <div>

@@ -9,9 +9,12 @@ import OrganizerFeedbackList from "./OrganizerFeedbackList";
 import OrganizerFeedbackAnalyze from './OrganizerFeedbackAnalyze' ;
 import Loading from "../Loading/Loading";
 import { Container, Row, Col, Button } from "reactstrap";
+//socket
 import io from "socket.io-client";
+//Navbar
 import NavbarOrg from "../Navbar/NavbarOrg";
-
+//Export
+import {exportFeedback} from '../../utils/export';
 
 
 const OrganizerFeedback = (props) => {
@@ -76,7 +79,7 @@ const OrganizerFeedback = (props) => {
             {<OrganizerFeedbackAnalyze feedbackList={feedbackList} />}
             <Row>
               <Col md="12" xs="12" className="text-center mt-5">
-                <Button className="btn btn-dark org-btn">Export</Button>
+                <Button className="btn btn-dark org-btn" onClick={()=> exportFeedback(feedbackList)}>Export</Button>
               </Col>
             </Row>
           </Col>

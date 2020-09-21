@@ -12,7 +12,6 @@
     "bootstrap": "^4.4.1",
     "chart.js": "^2.9.3",
     "chartjs-plugin-datalabels": "^0.7.0",
-    "chartjs-plugin-labels": "^1.1.0",
     "query-string": "^6.13.1",
     "react": "^16.13.1",
     "react-chartjs-2": "^2.10.0",
@@ -21,12 +20,10 @@
     "react-router-dom": "^5.1.2",
     "react-scripts": "3.4.1",
     "reactstrap": "^8.4.1",
-    "recharts": "^1.8.5",
     "redux": "^4.0.5",
     "redux-thunk": "^2.3.0",
     "socket.io-client": "^2.3.0",
     "sweetalert2": "^10.0.2",
-    "uuid": "^8.3.0",
     "xlsx": "^0.16.7"
   },
   "scripts": {

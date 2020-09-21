@@ -8,8 +8,7 @@ const FeedbackSchema = new mongoose.Schema({
     room:{
         type:mongoose.Schema.Types.ObjectId,
         ref: 'room'
-    }
-    ,
+    },
     emoticon:{
         type: String,
         required: true

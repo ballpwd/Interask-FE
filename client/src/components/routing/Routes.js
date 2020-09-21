@@ -15,14 +15,14 @@ import PrivateRoute from "../routing/PrivateRoute";
 import OrganizerFeedback from "../OrganizerFeedback/OrganizerFeedback";
 import OrganizerMenu from "../OrganizerMenu/OrganizerMenu";
 import RoomMenu from "../RoomMenu/RoomMenu";
-import Alert from "../layout/Alert";
+// import Alert from "../layout/Alert";
 import OrganizerQuestion from "../OrganizerQuestion/OrganizerQuestion";
 import OrganizerAnswer from "../OrganizerAnswer/OrganizerAnswer";
 
 const Routes = () => {
   return (
     <Fragment>
-      <Alert />
+      {/* <Alert /> */}
       <Switch>
         <Route exact path="/login" component={Login} />
         <Route exact path="/organizer/login" component={LoginOrg} />

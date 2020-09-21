@@ -8,7 +8,8 @@ body > #root {
   background: linear-gradient(300.81deg, #eeadb4 15.33%, #c1abdd 101.47%);
 } */
 .bg {
-  background: linear-gradient(300.81deg, #eeadb4 15.33%, #c1abdd 101.47%);
+  /*background: linear-gradient(300.81deg, #eeadb4 15.33%, #c1abdd 101.47%);*/
+  background: #232946;
 }
 
 .fullscreen {
@@ -43,6 +44,7 @@ header {
   font-weight: 700;
   font-size: 46px;
   line-height: 54px;
+  
 }
 
 .org-h2 {
@@ -59,6 +61,7 @@ header {
   font-weight: 700;
   font-size: 30px;
   line-height: 38px;
+  
 }
 
 .org-h4 {
@@ -83,6 +86,7 @@ header {
   font-weight: 400;
   font-size: 16px;
   line-height: 24px;
+  
 }
 
 .org-btn {
@@ -95,6 +99,23 @@ header {
 }
 
 /* -------------------- organizer Room -------------------- */
+.org-room {
+  font-family: Kanit;
+  font-style: normal;
+  font-weight: 700;
+  font-size: 36px;
+  line-height: 54px;
+  color: #fffffe;
+}
+
+.orgroom-p {
+  font-family: Kanit;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 24px;
+  color: #fffffe;
+}
 
 .orgroom-box {
   font-family: Kanit;
@@ -144,6 +165,8 @@ header {
 .orgroom-section {
   margin-top: 50px;
 }
+
+
 
 /* -------------------- organizer ASK -------------------- */
 .orgask-section {
@@ -211,9 +234,10 @@ header {
 }*/
 
 .ask-box {
-  background: #ffffff;
+  background: #fffffe;
   border-radius: 10px;
   margin-bottom: 10px;
+  border: 2px solid #121629;
 }
 
 .topic h1 {
@@ -223,7 +247,7 @@ header {
   font-size: 28px;
   text-align: center;
   line-height: 32px;
-  color: #fff;
+  color: #FFFFFE;;
   margin-top: 20px;
 }
 
@@ -234,6 +258,7 @@ header {
   line-height: 32px;
   text-align: center;
   margin-top: 10px;
+
 }
 
 .todayTime {
@@ -250,7 +275,6 @@ header {
   height: 300px;
   scrollbar-3dlight-color: rgb(60, 255, 0);
   overflow: auto;
-  border-color: #474444;
 }
 
 /* -------------------- ASK HISTORY ITEM -------------------- */
@@ -273,13 +297,13 @@ header {
 .textbox .question-text {
   font-family: Kanit;
   font-style: normal;
-  font-weight: 300;
+  font-weight: normal;
   font-size: 14px;
   line-height: 22px;
   padding: 9px 14px;
-  background: #474444;
+  background: #B8C1EC;
   border-radius: 14px 14px 0px 14px;
-  color: #fff;
+  color:#232946;
   margin-right: 20px;
 }
 
@@ -288,9 +312,9 @@ header {
 .askText {
   font-family: Kanit;
   font-weight: 300;
-  font-size: 18px;
-  background: #ffffff;
-  border: none;
+  font-size: 16px;
+  background: #fffffe;
+  border: 2px solid #121629;
   height: 56px;
   padding: 0 25px;
   border-radius: 5px;
@@ -301,6 +325,7 @@ header {
   font-family: Kanit;
   font-size: 14px;
   font-weight: 400;
+  color: #eebbc3;
 }
 
 .btnAdvance {
@@ -308,20 +333,20 @@ header {
   border: none;
   width: 120px;
   cursor: pointer;
-  background-color: rgb(75, 35, 128);
+  background-color:#EEBBC3;
   height: 46px;
   color: #ffffff;
+  border: 2px solid #121629;
 }
 
 .btnAdvance:hover {
-  background: rgb(138, 66, 231);
+  background:#b8c1ec;
 }
 /*------------------------- Room ---------------------*/
 .head-room {
   background: linear-gradient(300.81deg, #eeadb4 15.33%, #c1abdd 101.47%);
   border-radius: 0px 0px 20px 20px;
   min-width: auto;
-  position: fixed;
 }
 
 .room-box {
@@ -332,7 +357,7 @@ header {
   font-style: normal;
   text-align: center;
   align-items: center;
-  box-shadow: #e493c980 0px 1px 0.4rem;
+  /*box-shadow: #e493c980 0px 1px 0.4rem;*/
   overflow: hidden;
   text-overflow: ellipsis;
 }
@@ -447,6 +472,9 @@ header {
   font-weight: normal;
   padding: 10px;
   display: flex;
+}
+.nav-section {
+  background: linear-gradient(87.98deg, #88b1ef 12.77%, #bdaff1 82%);
 }
 
 /*------------------- NavBar Organization --------------*/
@@ -623,7 +651,6 @@ header {
   height: 250px;
   width: 300px;
   box-shadow: rgba(109, 99, 99, 0.502) 0px 1px 0.4rem;
-  background: #e5e5e5;
   border-radius: 0 0 10 10px;
   overflow: hidden;
   text-overflow: ellipsis;
@@ -645,6 +672,7 @@ header {
   align-items: center;
   text-align: center;
   margin-top: 100px;
+  color:#fffffe;
 }
 
 .orgmenu-row {
@@ -675,6 +703,10 @@ header {
  
 
 /*-------------------------------- Room Menu ---------------------------------*/
+.menu-row {
+  padding: 10px;
+  text-align: center;
+}
 .room-box-ask {
   width: 300px;
   height: 100px;
@@ -683,7 +715,8 @@ header {
   font-style: normal;
   text-align: center;
   align-items: center;
-  box-shadow: #e493c980 0px 1px 0.4rem;
+  border-width: 2px;
+  margin-top: 30px;
 }
 
 .room-box-question {
@@ -694,10 +727,8 @@ header {
   font-style: normal;
   text-align: center;
   align-items: center;
-  box-shadow: #e493c980 0px 1px 0.4rem;
   margin-top: 30px;
-  border-width: 0 10px 0 0 solid;
-  border-color: #ff4a4a;
+  border-width: 2px;
 }
 
 .room-box-feedback {
@@ -708,8 +739,8 @@ header {
   font-style: normal;
   text-align: center;
   align-items: center;
-  box-shadow: #e493c980 0px 1px 0.4rem;
   margin-top: 30px;
+  border-width: 2px;
 }
 
 .room-img {
@@ -717,58 +748,84 @@ header {
 }
 
 /*--------------------- Feedback Form --------------------*/
-.suggestion {
-  border: none;
-  height: 120px;
-  padding: 0 25px;
-  border-radius: 5px;
+.feedbackText {
+  font-family: Kanit;
+  font-weight: normal;
+  font-size: 16px;
+  height: 56px;
   width: 100%;
-  border-color: #88b1ef;
-  border-style: solid;
-  border-width: 5px;
 }
-
-.submit-feedback {
-  width: 193px;
-  height: 48px;
-  font-family: Kanit;
-  font-style: normal;
-  font-weight: bold;
-}
-
-/*------------------------- Feedback -----------------------*/
-
-.feedback-section {
-  text-align: center;
-}
-
-.feedback-box {
-  background: #ffffff;
+ 
+.suggestion { 
+  border: none; 
+  height: 120px; 
+  padding: 5px; 
+  border-radius: 5px; 
+  width: 100%;
+  color:#121629;
+  border: 2px solid #121629;
+  background-color: #d4d8f0;
+} 
+ 
+.submit-feedback{ 
+  width: 193px; 
+  height: 48px; 
+  font-family: Kanit; 
+  font-style: normal; 
+  font-weight: bold; 
+  background-color: #eebbc3;
   border-radius: 10px;
-  margin-bottom: auto;
-  border: solid;
-  border-color: #88b1ef;
+} 
+textarea[name=text] {
+  resize: none;
 }
 
-.feedback-img {
-  width: 36px;
-  height: 36px;
-  margin-top: 20px;
-}
+/*------------------------- Feedback -----------------------*/ 
+ 
+.feedback-section{ 
+  text-align: center; 
 
-.feedback-topic {
-  font-family: Kanit;
-  font-weight: bold;
-  font-size: 18px;
-  text-align: center;
-  padding-top: 10px;
-}
-.feedback-room {
-  font-family: Kanit;
-  font-size: 18px;
-  text-align: center;
-  padding-top: 20px;
-}
+} 
+
+.feedback-box { 
+ height: 450px; 
+ border-radius: 10px; 
+ border: solid; 
+ border: 2px solid #121629;
+ background: #fffffe; 
+  
+} 
+
+.feedback-img{ 
+ width: 36px; 
+ height: 36px; 
+ margin-top: 20px; 
+} 
+
+.feedback-topic{ 
+ font-family: Kanit; 
+ font-weight: bold; 
+ font-size: 18px; 
+ text-align: center; 
+ padding-top: 20px; 
+} 
+
+.feedback-point{ 
+ font-family: Kanit; 
+ font-weight: 500; 
+ font-size: 16px; 
+ text-align: center; 
+} 
+
+.radio-feedback{ 
+ text-align: center; 
+ margin-top: 10px; 
+} 
+
+input[type=radio] { 
+ width: 20px; 
+ height: 20px; 
+} 
 
 .feedback-point {
   font-family: Kanit;
@@ -812,4 +869,64 @@ input[type="radio"] {
   font-style: normal;
   text-align: center;
   align-items: center;
+}
+/*-------------------------------- Answer Form -----------------------------------*/
+.answerText {
+  font-family: Kanit;
+  font-weight: normal;
+  font-size: 16px;
+  height: 56px;
+  width: 100%;
+}
+.answer { 
+  border: none; 
+  height: 120px; 
+  padding: 5px; 
+  border-radius: 5px; 
+  width: 100%;
+  color:#121629;
+  border: 2px solid #121629;
+  background-color: #d4d8f0;
+} 
+
+.answer-box { 
+  height: auto;
+  border-radius: 10px; 
+  border: 2px solid #121629;
+  background: #ffffff; 
+  overflow: auto;
+ } 
+
+ .answer-room{ 
+  font-family: Kanit; 
+  font-weight: normal; 
+  font-size: 18px; 
+  text-align: center; 
+  padding-top: 20px; 
+ } 
+
+ .question-detail{ 
+  font-family: Kanit; 
+  font-weight: bold; 
+  font-size: 24px; 
+  text-align: center; 
+  padding: 5px;
+  color:#232946;
+} 
+
+.submit-answer{
+  width: 193px; 
+  height: 48px; 
+  font-family: Kanit; 
+  font-style: normal; 
+  font-weight: bold; 
+  
+}
+
+.question-card{
+  height: auto;
+  width: auto;
+  border-radius: 10px; 
+  background:#e5e5e5; 
+  margin-top: 15px;
 }

@@ -7,7 +7,7 @@ import Loading from "../Loading/Loading";
 import room_ask from "../../assets/room_ask.svg";
 import room_question from "../../assets/room_question.svg";
 import room_feedback from "../../assets/room_feedback.svg";
-
+import NavBar from '../Navbar/NavBar';
 const RoomMenu = (props) => {
   const [edit, setEdit] = useState(false);
   const leave = () => setEdit(!edit);
@@ -31,29 +31,24 @@ const RoomMenu = (props) => {
     <Loading></Loading>
   ) : (
     <Fragment>
-      <div className="fullscreen room-bg">
-        <Container fluid className="head-room">
+      <div className="fullscreen bg">
+      <NavBar></NavBar>
+        <Container fluid>
           <div className="p-4">
-            <h1 className="room-h1">Welcome To</h1>
-            <h3 className="room-h3 text-break">{room.roomName}</h3>
-            <h3 className="room-h3 text-break">{user.userName}</h3>
+            <h1 className="room-h1" style={{color:"#fffffe"}}>Welcome</h1>
+            <h3 className="room-h3 text-break" style={{color:"#eebbc3"}}>ROOM : {room.roomName}</h3>
+            <h3 className="room-h3 text-break" style={{color:"#eebbc3"}}>Hi, {user.userName}</h3>
           </div>
         </Container>
         <Container fluid className="text-center">
-          <div className="p-5">
-            <br />
-            <br />
-            <br />
-            <br />
-            <br />
-          </div>
+    
           <Col>
             <Link to={`/${room._id}/ask`}>
               <Button
                 className="room-box-ask"
                 style={{
                   backgroundColor: "white",
-                  borderColor: "#e493c980",
+                  borderColor: "#121629",
                   color: "#FF4A4A",
                   borderRadius: "10px 10px 10px 10px",
                   fontSize: "24px",
@@ -72,7 +67,7 @@ const RoomMenu = (props) => {
                 className="room-box-question"
                 style={{
                   backgroundColor: "white",
-                  borderColor: "#e493c980",
+                  borderColor: "#121629",
                   color: "#FEBE5F",
                   borderRadius: "10px 10px 10px 10px",
                   fontSize: "24px",
@@ -91,7 +86,7 @@ const RoomMenu = (props) => {
                 className="room-box-feedback"
                 style={{
                   backgroundColor: "white",
-                  borderColor: "#e493c980",
+                  borderColor: "#121629",
                   color: "#7ADF7E",
                   borderRadius: "10px 10px 10px 10px",
                   fontSize: "24px",
@@ -104,6 +99,7 @@ const RoomMenu = (props) => {
               </Button>
             </Link>
           </Col>
+        
         </Container>
       </div>
     </Fragment>

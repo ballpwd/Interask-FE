@@ -1,11 +1,11 @@
 import React, { Fragment, useEffect, useState } from "react";
 import { connect } from "react-redux";
 import { getRoomList, roomListUnload } from "../../actions/roomActions";
-import leave_room from "../../assets/leave-white.svg";
+import leave_room from "../../assets/leave.svg";
 import RoomList from "./RoomList";
 import { Container, Button } from "reactstrap";
 import Loading from "../Loading/Loading";
-
+import NavBar from '../Navbar/NavBar';
 const Room = (props) => {
   const [edit, setEdit] = useState(false);
   const leave = () => setEdit(!edit);
@@ -30,21 +30,15 @@ const Room = (props) => {
     <Loading></Loading>
   ) : (
     <Fragment>
-      <div className="fullscreen room-bg">
-        <Container fluid className="head-room">
+      <div className="fullscreen bg">
+      <NavBar></NavBar>
+        <Container fluid >
           <div className="p-4">
             <h1 className="room-h1 text-break">Hi "{user.userName}"</h1>
             <br /> <h3 className="room-h3">SELECT ROOM</h3>
           </div>
         </Container>
         <Container fluid className="text-center">
-          <div className="p-5">
-            <br />
-            <br />
-            <br />
-            <br />
-            <br />
-          </div>
           {<RoomList roomList={roomList} edit={edit} />}
           <div className="p-4"></div>
 
@@ -53,9 +47,9 @@ const Room = (props) => {
               className="btn-leave"
               onClick={leave}
               style={{
-                backgroundColor: "#C19AD8",
-                borderColor: "white",
-                color: "white",
+                backgroundColor: "#d4d8f0",
+                borderColor: "#121629",
+                color: "#232946",
                 borderRadius: "10px 10px 10px 10px",
                 fontSize: "24px",
               }}
@@ -77,7 +71,7 @@ const Room = (props) => {
               onClick={leave}
               style={{
                 backgroundColor: "#4BB543",
-                borderColor: "white",
+                borderColor: "#121629",
                 color: "white",
                 borderRadius: "10px 10px 10px 10px",
                 fontSize: "24px",

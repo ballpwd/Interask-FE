@@ -65,6 +65,13 @@ export const GET_ORG_ANSWER = "GET_ORG_ANSWER";
 export const ORG_ANSWER_ERROR = "ORG_ANSWER_ERROR";
 export const ORG_ANSWER_UNLOADED = "ORG_ANSWER_UNLOADED";
 export const ORG_ANSWERLIST_UNLOADED = "ORG_ANSWERLIST_UNLOADED";
+//Answer
+export const GET_ANSWERLIST = "GET_ANSWERLIST";
+export const GET_ANSWER = "GET_ANSWER";
+export const ADD_ANSWER = "ADD_ANSWER";
+export const ANSWER_ERROR = "ANSWER_ERROR";
+export const ANSWER_UNLOADED = "ANSWER_UNLOADED";
+export const ANSWERLIST_UNLOADED = "ANSWERLIST_UNLOADED";
 //Auth
 export const USER_LOADED = "USER_LOADED";
 export const AUTH_ERROR = "AUTH_ERROR";
@@ -73,3 +80,4 @@ export const LOGOUT = "LOGOUT";
 //Alert
 // export const SET_ALERT = "SET_ALERT";
 // export const REMOVE_ALERT = "REMOVE_ALERT";
+

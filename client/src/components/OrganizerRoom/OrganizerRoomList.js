@@ -9,7 +9,8 @@ import {
   ModalBody,
   ModalHeader,
 } from "reactstrap";
-import plus from "../../assets/button.svg";
+import plus from "../../assets/plus_white.svg";
+
 import CreateRoom from "./CreateRoom";
 const OrganizerRoomList = (props) => {
   const [modal, setModal] = useState(false);
@@ -40,7 +41,7 @@ const OrganizerRoomList = (props) => {
                 <img src={plus} width="46px" height="46px"></img>
                 <br />
                 <br />
-                <p className="org-p"> CREATE ROOM</p>
+                <p className="orgroom-p"> CREATE ROOM</p>
               </Button>
             </div>
           </Row>

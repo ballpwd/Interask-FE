@@ -6,7 +6,6 @@ import { getQuestionById, questionUnload } from "../../actions/questionAction";
 import { Container, Button, Row, Col} from "reactstrap";
 import Loading from '../Loading/Loading';
 import AnswerForm from "../Answer/AnswerForm";
-import NavBar from '../Navbar/NavBar';
 
 const Answer = (props) => {
 
@@ -43,7 +42,6 @@ const Answer = (props) => {
   ) : (
     <Fragment>
       <div className="fullscreen bg fullscreen">
-      <NavBar></NavBar>
       <Container fluid className='topic'>
             <h1>ANSWER</h1>
           </Container>

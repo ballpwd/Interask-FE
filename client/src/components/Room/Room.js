@@ -5,7 +5,6 @@ import leave_room from "../../assets/leave.svg";
 import RoomList from "./RoomList";
 import { Container, Button } from "reactstrap";
 import Loading from "../Loading/Loading";
-import NavBar from '../Navbar/NavBar';
 const Room = (props) => {
   const [edit, setEdit] = useState(false);
   const leave = () => setEdit(!edit);
@@ -31,7 +30,6 @@ const Room = (props) => {
   ) : (
     <Fragment>
       <div className="fullscreen bg">
-      <NavBar></NavBar>
         <Container fluid >
           <div className="p-4">
             <h1 className="room-h1 text-break">Hi "{user.userName}"</h1>

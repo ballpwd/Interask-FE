@@ -33,7 +33,6 @@ const Feedback = (props) => {
   ) : (
     <Fragment>
       <div className="fullscreen bg fullscreen">
-      <NavBar></NavBar>
       <Container fluid className='topic'>
             <h1>FEEDBACK</h1>
           </Container>

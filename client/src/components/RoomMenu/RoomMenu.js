@@ -7,7 +7,7 @@ import Loading from "../Loading/Loading";
 import room_ask from "../../assets/room_ask.svg";
 import room_question from "../../assets/room_question.svg";
 import room_feedback from "../../assets/room_feedback.svg";
-import NavBar from '../Navbar/NavBar';
+
 const RoomMenu = (props) => {
   const [edit, setEdit] = useState(false);
   const leave = () => setEdit(!edit);
@@ -32,12 +32,11 @@ const RoomMenu = (props) => {
   ) : (
     <Fragment>
       <div className="fullscreen bg">
-      <NavBar></NavBar>
         <Container fluid>
           <div className="p-4">
-            <h1 className="room-h1" style={{color:"#fffffe"}}>Welcome</h1>
-            <h3 className="room-h3 text-break" style={{color:"#eebbc3"}}>ROOM : {room.roomName}</h3>
-            <h3 className="room-h3 text-break" style={{color:"#eebbc3"}}>Hi, {user.userName}</h3>
+            <h1 className="room-h1" >Welcome</h1>
+            <h3 className="room-h3 text-break" >ROOM : {room.roomName}</h3>
+            <h3 className="room-h3 text-break" >Hi, {user.userName}</h3>
           </div>
         </Container>
         <Container fluid className="text-center">

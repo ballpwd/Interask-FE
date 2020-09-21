@@ -29,7 +29,7 @@ const RoomItem = (props) => {
             }}
             size="md"
           >
-            <div>{room.roomName}</div>
+            <div className="room-text">{room.roomName}</div>
           </Button>
         </Link>
       ) : (
@@ -44,7 +44,7 @@ const RoomItem = (props) => {
             fontSize: "24px",
           }}
         >
-          <div>
+          <div className="room-text">
             {room.roomName}
             <img
               src={leave_room}

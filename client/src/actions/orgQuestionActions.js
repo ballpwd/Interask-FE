@@ -29,21 +29,21 @@ import {
 // };
 
 //Get question by question_id (Organizer)
-// export const getOrgQuestionById = (questionId) => async (dispatch) => {
-//   try {
-//     const res = await axios.get(`/api/question/${questionId}`);
+export const getOrgQuestionById = (questionId) => async (dispatch) => {
+  try {
+    const res = await axios.get(`/api/question/${questionId}`);
 
-//     dispatch({
-//       type: GET_ORG_QUESTION,
-//       payload: res.data,
-//     });
-//   } catch (err) {
-//     dispatch({
-//       type: ORG_QUESTION_ERROR,
-//       payload: err,
-//     });
-//   }
-// };
+    dispatch({
+      type: GET_ORG_QUESTION,
+      payload: res.data,
+    });
+  } catch (err) {
+    dispatch({
+      type: ORG_QUESTION_ERROR,
+      payload: err,
+    });
+  }
+};
 
 // //Get owner questionList
 // export const getOrgQuestionList = () => async (dispatch) => {

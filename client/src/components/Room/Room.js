@@ -33,12 +33,13 @@ const Room = (props) => {
       <div className="fullscreen room-bg">
         <Container fluid className="head-room">
           <div className="p-4">
-            <h1 className="room-h1">Hi "{user.userName}"</h1>
+            <h1 className="room-h1 text-break">Hi "{user.userName}"</h1>
             <br /> <h3 className="room-h3">SELECT ROOM</h3>
           </div>
         </Container>
         <Container fluid className="text-center">
           <div className="p-5">
+            <br />
             <br />
             <br />
             <br />

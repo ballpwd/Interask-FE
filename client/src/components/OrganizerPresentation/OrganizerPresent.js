@@ -54,7 +54,7 @@ const OrganizerPresent = ({
           <h5 className="org-h5 text-center">
             ROOM: {room.roomName}
             <br />
-            ROOMID: {room._id}
+            PIN: {room.code}
           </h5>
 
           {<OrganizerPresentList askList={askList} />}

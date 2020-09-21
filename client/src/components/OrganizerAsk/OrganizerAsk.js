@@ -69,7 +69,7 @@ const OrganizerAsk = (props) => {
             <h5 className="org-h5">
               ROOM: {room.roomName}
               <br />
-              ROOMID: {room._id}
+              PIN: {room.code}
             </h5>
             {<OrganizerAskList askList={askList} />}
           </Col>

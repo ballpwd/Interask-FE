@@ -1,7 +1,7 @@
 const express = require("express");
 const router = express.Router();
 const Feedback = require("../../models/Feedback");
-const Room = require('../../models/Room')
+const Room = require("../../models/Room");
 const auth = require("../../middleware/authCheck");
 
 // @route  POST /api/feedback
@@ -11,27 +11,27 @@ router.post("/", auth, async (req, res) => {
   try {
     const user_id = req.user.id;
     const { roomId, text, emoticon } = req.body;
-    console.log('roomId',roomId)
-    console.log('text',text)
-    console.log('emoticon',emoticon)
-    if(!emoticon){
+    console.log("roomId", roomId);
+    console.log("text", text);
+    console.log("emoticon", emoticon);
+    if (!emoticon) {
       return res.status(404).json({ msg: "Give your rating" });
     }
 
     if (!roomId.match(/^[0-9a-fA-F]{24}$/)) {
       return res.status(404).json({ msg: "Room not found" });
     }
-    
-    const room = await Room.findById(roomId)
-    
-    if(!room){
-        return res.status(404).json({ msg: 'Room not found2' });
+
+    const room = await Room.findById(roomId);
+
+    if (!room) {
+      return res.status(404).json({ msg: "Room not found2" });
     }
-    if(!room.feedbackStatus){
-        return res.status(403).json({ msg: 'Feedback Function is Closed' });
+    if (!room.feedbackStatus) {
+      return res.status(403).json({ msg: "Feedback Function is Closed" });
     }
-    if(!room.user.some(id => id == user_id)){
-        return res.status(401).json({msg: 'User Unauthorized'})
+    if (!room.user.some((id) => id == user_id)) {
+      return res.status(401).json({ msg: "User Unauthorized" });
     }
     const newFeedback = new Feedback({
       user: user_id,
@@ -41,7 +41,7 @@ router.post("/", auth, async (req, res) => {
     });
 
     const feedback = await newFeedback.save();
-  
+
     req.app.io.sockets.in(roomId).emit("organizerFeedback", { status: 200 });
 
     res.json(feedback);

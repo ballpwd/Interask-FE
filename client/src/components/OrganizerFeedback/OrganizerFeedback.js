@@ -10,7 +10,7 @@ import OrganizerFeedbackAnalyze from './OrganizerFeedbackAnalyze' ;
 import Loading from "../Loading/Loading";
 import { Container, Row, Col, Button } from "reactstrap";
 import io from "socket.io-client";
-import NavbarOrg from '../Navbar/NavbarOrg';
+import NavbarOrg from "../Navbar/NavbarOrg";
 
 
 
@@ -68,7 +68,7 @@ const OrganizerFeedback = (props) => {
             <h5 className="org-h5">
               ROOM: {room.roomName}
               <br />
-              ROOMID: {room._id}
+              PIN: {room.code}
             </h5>
             {<OrganizerFeedbackList feedbackList={feedbackList} />}
           </Col>

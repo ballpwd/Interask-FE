@@ -141,12 +141,12 @@ header {
   align-items: center;
 }
 
-.orgroom-section{
+.orgroom-section {
   margin-top: 50px;
 }
 
 /* -------------------- organizer ASK -------------------- */
-.orgask-section{
+.orgask-section {
   margin-top: 50px;
 }
 
@@ -333,6 +333,12 @@ header {
   text-align: center;
   align-items: center;
   box-shadow: #e493c980 0px 1px 0.4rem;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.room-text {
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .btn-join {
@@ -440,12 +446,12 @@ header {
   font-style: normal;
   font-weight: normal;
   padding: 10px;
-  display:flex;
+  display: flex;
 }
 
 /*------------------- NavBar Organization --------------*/
-.navorg-section{
-  background: linear-gradient(87.98deg, #88B1EF 12.77%, #BDAFF1 82%);
+.navorg-section {
+  background: linear-gradient(87.98deg, #88b1ef 12.77%, #bdaff1 82%);
 }
 
 .navorg-item {
@@ -456,12 +462,12 @@ header {
   padding: 1px;
 }
 
-.nav-user{
+.nav-user {
   font-family: Kanit;
   font-size: 15px;
   font-style: normal;
   font-weight: normal;
-  color:red;
+  color: red;
 }
 
 /*------------------ Not found --------------- */
@@ -653,8 +659,8 @@ header {
   justify-content: center;
 }
 /*-------------------------------- Organizer Feedback ---------------------------------*/
-.orgfeedback-section{
-    margin-top: 50px;
+.orgfeedback-section {
+  margin-top: 50px;
 }
 .feedback-chart-img{ 
   width: 50px; 
@@ -699,7 +705,6 @@ header {
   align-items: center;
   box-shadow: #e493c980 0px 1px 0.4rem;
   margin-top: 30px;
-  
 }
 
 .room-img {
@@ -707,73 +712,99 @@ header {
 }
 
 /*--------------------- Feedback Form --------------------*/
-.suggestion { 
-  border: none; 
-  height: 120px; 
-  padding: 0 25px; 
-  border-radius: 5px; 
-  width: 100%; 
-  border-color: #88B1EF; 
-  border-style: solid; 
-  border-width: 5px; 
-} 
- 
-.submit-feedback{ 
-  width: 193px; 
-  height: 48px; 
-  font-family: Kanit; 
-  font-style: normal; 
-  font-weight: bold; 
-} 
- 
+.suggestion {
+  border: none;
+  height: 120px;
+  padding: 0 25px;
+  border-radius: 5px;
+  width: 100%;
+  border-color: #88b1ef;
+  border-style: solid;
+  border-width: 5px;
+}
 
-/*------------------------- Feedback -----------------------*/ 
- 
-.feedback-section{ 
-  text-align: center; 
+.submit-feedback {
+  width: 193px;
+  height: 48px;
+  font-family: Kanit;
+  font-style: normal;
+  font-weight: bold;
+}
 
-} 
+/*------------------------- Feedback -----------------------*/
 
-.feedback-box { 
- height: 450px; 
- border-radius: 10px; 
- border: solid; 
- border-color: #88B1EF; 
- background: #ffffff; 
-  
-} 
+.feedback-section {
+  text-align: center;
+}
 
-.feedback-img{ 
- width: 36px; 
- height: 36px; 
- margin-top: 20px; 
-} 
+.feedback-box {
+  background: #ffffff;
+  border-radius: 10px;
+  margin-bottom: auto;
+  border: solid;
+  border-color: #88b1ef;
+}
 
-.feedback-topic{ 
- font-family: Kanit; 
- font-weight: bold; 
- font-size: 18px; 
- text-align: center; 
- padding-top: 20px; 
-} 
+.feedback-img {
+  width: 36px;
+  height: 36px;
+  margin-top: 20px;
+}
 
-.feedback-point{ 
- font-family: Kanit; 
- font-weight: 500; 
- font-size: 16px; 
- text-align: center; 
-} 
+.feedback-topic {
+  font-family: Kanit;
+  font-weight: bold;
+  font-size: 18px;
+  text-align: center;
+  padding-top: 10px;
+}
+.feedback-room {
+  font-family: Kanit;
+  font-size: 18px;
+  text-align: center;
+  padding-top: 20px;
+}
 
-.radio-feedback{ 
- text-align: center; 
- margin-top: 10px; 
-} 
+.feedback-point {
+  font-family: Kanit;
+  font-weight: 500;
+  font-size: 16px;
+  text-align: center;
+}
 
-input[type=radio] { 
- width: 20px; 
- height: 20px; 
-} 
+.radio-feedback {
+  text-align: center;
+  margin-top: 10px;
+}
 
+input[type="radio"] {
+  width: 20px;
+  height: 20px;
+}
 
+/*------------------------- Question -----------------------*/
+.question-box {
+  background: #ffffff;
+  border-radius: 10px;
+  padding-bottom: 10px;
+  margin-bottom: auto;
+  height: auto;
+  max-height: 520px;
+}
 
+.question-boxlist {
+  height: auto;
+  scrollbar-3dlight-color: rgb(60, 255, 0);
+  overflow: auto;
+  border-color: #474444;
+}
 
+.question-boxitem {
+  width: 300px;
+  min-height: 100px;
+  font-family: Kanit;
+  font-size: 28px;
+  font-style: normal;
+  text-align: center;
+  align-items: center;
+}

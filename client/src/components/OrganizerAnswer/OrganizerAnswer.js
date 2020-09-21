@@ -5,21 +5,27 @@ import {
   getOrgAnswerList,
   orgAnswerListUnload,
 } from "../../actions/orgAnswerActions";
+import {
+  getOrgQuestionById,
+  orgQuestionUnload,
+} from "../../actions/orgQuestionActions";
 import OrganizerAnswerList from "./OrganizerAnswerList";
 import OrganizerAnswerAnalyze from "./OrganizerAnswerAnalyze";
 import Loading from "../Loading/Loading";
-import { Container, Row, Col, Button } from "reactstrap";
+import { Container, Row, Col, Button, Card } from "reactstrap";
 import io from "socket.io-client";
 
 const OrganizerAnswer = (props) => {
   const {
-    question,
     getOrgRoomById,
     orgRoomUnload,
+    getOrgQuestionById,
+    orgQuestionUnload,
     getOrgAnswerList,
     orgAnswerListUnload,
     orgRoom: { room, roomLoading },
     orgAnswer: { answer, answerList, answerLoading },
+    orgQuestion: { question, questionLoading },
     match,
   } = props;
 
@@ -29,6 +35,13 @@ const OrganizerAnswer = (props) => {
       orgRoomUnload();
     };
   }, [getOrgRoomById, match.params.roomid, orgRoomUnload]);
+
+  useEffect(() => {
+    getOrgQuestionById(match.params.questionid);
+    return () => {
+      orgQuestionUnload();
+    };
+  }, [getOrgQuestionById, match.params.questionid, orgQuestionUnload]);
 
   useEffect(() => {
     let socket = io.connect("http://localhost:5000");
@@ -52,23 +65,28 @@ const OrganizerAnswer = (props) => {
   console.log(room);
   console.log(answerList);
 
-  return roomLoading || answerLoading ? (
+  return roomLoading || questionLoading || answerLoading ? (
     <Loading></Loading>
   ) : (
     <Fragment>
       <Container fluid>
-        <h1 className="org-h1 text-center">Q&A</h1>
+        <h1 className="org-h2 text-center text-break">
+          Question: {question.questionDetail}
+        </h1>
       </Container>
       <Container fluid>
         <Row className="justify-content-center align-items-center">
           <Col md="5" xs="12" className="mt-4">
-            <h5 className="org-h5">
+            <h5 className="org-h5 text-break">
               ROOM: {room.roomName}
               <br />
-              ROOMID: {room._id}
+              PIN: {room.code}
+              <br />
             </h5>
+
             {<OrganizerAnswerList answerList={answerList} answer={answer} />}
           </Col>
+
           <Col md="5" xs="12" className="mt-4">
             {<OrganizerAnswerAnalyze answerList={answerList} />}
             <Row>
@@ -86,10 +104,13 @@ const OrganizerAnswer = (props) => {
 const mapStateToProps = (state) => ({
   orgRoom: state.orgRoom,
   orgAnswer: state.orgAnswer,
+  orgQuestion: state.orgQuestion,
 });
 
 export default connect(mapStateToProps, {
   getOrgRoomById,
+  getOrgQuestionById,
+  orgQuestionUnload,
   getOrgAnswerList,
   orgRoomUnload,
   orgAnswerListUnload,

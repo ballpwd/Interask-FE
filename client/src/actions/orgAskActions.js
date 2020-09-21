@@ -1,4 +1,5 @@
 import axios from 'axios';
+import apiUrl from '../utils/apiUrl' ;
 import { 
     GET_ORG_ASKLIST,
     GET_ORG_ASK,
@@ -46,7 +47,7 @@ import {
 //Get organizer asklist
 export const getOrgAskList = (roomId) => async dispatch => {
     try {
-        const res = await axios.get(`/api/ask/owner/room/${roomId}`)
+        const res = await axios.get(`${apiUrl}/api/ask/owner/room/${roomId}`)
         dispatch({
             type: GET_ORG_ASKLIST,
             payload: res.data
@@ -62,7 +63,7 @@ export const getOrgAskList = (roomId) => async dispatch => {
 // ask isAnswer update
 export const askIsAnswerUpdate = (askId) => async (dispatch) => {
     try {
-      const res = await axios.put(`/api/ask/isanswer/${askId}`);
+      const res = await axios.put(`${apiUrl}/api/ask/isanswer/${askId}`);
   
       dispatch({
         type: ASK_ISANSWER,

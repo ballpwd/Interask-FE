@@ -19,6 +19,7 @@ import {
 import { connect } from 'react-redux';
 import piclogout from '../../assets/leave-white.svg';
 
+
 const NavBar = (props) => {
   const [isOpen, setIsOpen] = useState(false);
   const toggle = () => setIsOpen(!isOpen);
@@ -26,7 +27,6 @@ const NavBar = (props) => {
     auth: { user },
     logout
   } = props;
-
   return (
     <div>
       <Navbar light expand="md"  className='navorg-section pt-0 pb-0'>

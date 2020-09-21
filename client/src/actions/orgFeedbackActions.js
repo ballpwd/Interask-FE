@@ -1,4 +1,5 @@
 import axios from "axios";
+import apiUrl from '../utils/apiUrl' ;
 import {
   GET_ORG_FEEDBACKLIST,
   GET_ORG_FEEDBACK,
@@ -45,7 +46,7 @@ import {
 //Get organizer feedbacklist
 export const getOrgFeedbackList = (roomId) => async (dispatch) => {
   try {
-    const res = await axios.get(`/api/feedback/owner/room/${roomId}`);
+    const res = await axios.get(`${apiUrl}/api/feedback/owner/room/${roomId}`);
     dispatch({
       type: GET_ORG_FEEDBACKLIST,
       payload: res.data,

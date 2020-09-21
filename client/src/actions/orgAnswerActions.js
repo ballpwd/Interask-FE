@@ -1,4 +1,5 @@
 import axios from "axios";
+import apiUrl from '../utils/apiUrl' ;
 import {
   GET_ORG_ANSWERLIST,
   GET_ORG_ANSWER,
@@ -61,7 +62,7 @@ import {
 //Get organizer answerlist
 export const getOrgAnswerList = (questionId) => async (dispatch) => {
   try {
-    const res = await axios.get(`/api/answer/${questionId}`);
+    const res = await axios.get(`${apiUrl}/api/answer/${questionId}`);
     dispatch({
       type: GET_ORG_ANSWERLIST,
       payload: res.data,

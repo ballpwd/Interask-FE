@@ -5,6 +5,11 @@ const passport = require("passport");
 const session = require("express-session");
 const { listen } = require("socket.io");
 const handleSocket = require("./config/socket");
+const  cors = require('cors')
+
+
+//Enable All CORS Requests
+app.use(cors())
 
 // Connect Database
 connectDB();

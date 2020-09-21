@@ -1,4 +1,5 @@
 import axios from 'axios';
+import apiUrl from '../utils/apiUrl' ;
 import { 
     GET_ANSWERLIST,
     GET_ANSWER,
@@ -45,7 +46,7 @@ import Swal from 'sweetalert2';
 //Get user answerlist
 export const getUserAnswerList = (questionId) => async dispatch => {
     try {
-        const res = await axios.get(`/api/answer/${questionId}`)
+        const res = await axios.get(`${apiUrl}/api/answer/${questionId}`)
 
         dispatch({
             type: GET_ANSWERLIST,
@@ -62,7 +63,7 @@ export const getUserAnswerList = (questionId) => async dispatch => {
 // Add answer
 export const addAnswer = formData => async dispatch => {
     try {
-        const res = await axios.post('/api/answer', formData);
+        const res = await axios.post(`${apiUrl}/api/answer`, formData);
         dispatch({
           type: ADD_ANSWER,
           payload: res.data

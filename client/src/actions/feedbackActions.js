@@ -1,4 +1,5 @@
 import axios from 'axios';
+import apiUrl from '../utils/apiUrl' ;
 import { 
     GET_FEEDBACKLIST,
     GET_FEEDBACK,
@@ -45,7 +46,7 @@ import Swal from 'sweetalert2';
 //Get user feedbacklist
 export const getUserFeedbackList = (roomId) => async dispatch => {
     try {
-        const res = await axios.get(`/api/feedback/user/room/${roomId}`)
+        const res = await axios.get(`${apiUrl}/api/feedback/user/room/${roomId}`)
 
         dispatch({
             type: GET_FEEDBACKLIST,
@@ -62,7 +63,7 @@ export const getUserFeedbackList = (roomId) => async dispatch => {
 // Add feedback
 export const addFeedback = formData => async dispatch => {
     try {
-        const res = await axios.post('/api/feedback', formData);
+        const res = await axios.post(`${apiUrl}/api/feedback`, formData);
         dispatch({
           type: ADD_FEEDBACK,
           payload: res.data

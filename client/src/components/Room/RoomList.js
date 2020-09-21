@@ -3,7 +3,7 @@ import RoomItem from "./RoomItem";
 import { Container, Button, Modal, ModalBody, ModalHeader } from "reactstrap";
 import { Link } from "react-router-dom";
 import plus from "../../assets/plus.svg";
-import leave_room from "../../assets/leave_room.svg";
+import leave_room from "../../assets/leave.svg";
 import JoinRoom from './JoinRoom' ;
 const RoomList = (props) => {
 
@@ -32,9 +32,9 @@ const RoomList = (props) => {
             className="btn-join"
             onClick={toggle}
             style={{
-              backgroundColor: "#C19AD8",
-              borderColor: "white",
-              color: "white",
+              backgroundColor: "#d4d8f0",
+              borderColor: "#121629",
+              color: "#232946",
               borderRadius: "10px 10px 10px 10px",
               fontSize: "24px",
             }}

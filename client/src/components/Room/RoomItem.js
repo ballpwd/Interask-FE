@@ -1,7 +1,7 @@
 import React, { Fragment, useState } from "react";
 import { Link } from "react-router-dom";
 import { Button, Modal, ModalBody, ModalHeader } from "reactstrap";
-import leave_room from "../../assets/leave_room.svg";
+import leave_room from "../../assets/leave.svg";
 import LeaveRoom from "../Room/LeaveRoom";
 import close from "../../assets/close.svg";
 
@@ -21,9 +21,10 @@ const RoomItem = (props) => {
           <Button
             className="room-box"
             style={{
-              backgroundColor: "white",
-              borderColor: "#e493c980",
-              color: "black",
+              backgroundColor: "#EEBBC3",
+              borderColor: "#121629",
+              borderWidth: "2px",
+              color: "#232946",
               borderRadius: "10px 10px 10px 10px",
               fontSize: "24px",
             }}
@@ -37,9 +38,10 @@ const RoomItem = (props) => {
           className="room-box"
           onClick={toggle}
           style={{
-            backgroundColor: "white",
-            borderColor: "#e493c980",
-            color: "black",
+            backgroundColor: "#fffffe",
+            borderColor: "#121629",
+            color: "#232946",
+            borderWidth: "2px",
             borderRadius: "10px 10px 10px 10px",
             fontSize: "24px",
           }}

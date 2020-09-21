@@ -2,8 +2,8 @@ import React, { Fragment } from "react";
 import { Route, Switch } from "react-router-dom";
 import Ask from "../Ask/Ask";
 import Room from "../Room/Room";
-import Feedback from "../Feedback/Feedback";
-import Question from "../Question/Question";
+// import Feedback from "../Feedback/Feedback";
+// import question from "../Question/Question";
 // import answer from "../Answer/Answer";
 import OrganizerRoom from "../OrganizerRoom/OrganizerRoom";
 import OrganizerAsk from "../OrganizerAsk/OrganizerAsk";
@@ -17,7 +17,10 @@ import OrganizerMenu from "../OrganizerMenu/OrganizerMenu";
 import RoomMenu from "../RoomMenu/RoomMenu";
 import Alert from "../layout/Alert";
 import OrganizerQuestion from "../OrganizerQuestion/OrganizerQuestion";
+import Feedback from "../Feedback/Feedback";
 import OrganizerAnswer from "../OrganizerAnswer/OrganizerAnswer";
+import Answer from "../Answer/Answer";
+import Question from "../Question/Question";
 
 const Routes = () => {
   return (
@@ -29,40 +32,17 @@ const Routes = () => {
         <PrivateRoute exact path="/room" component={Room} />
         <PrivateRoute exact path="/:roomid" component={RoomMenu} />
         <PrivateRoute exact path="/:roomid/ask" component={Ask} />
-        <PrivateRoute exact path="/:roomid/feedback" component={Feedback} />
+        <PrivateRoute exact path="/:id/feedback" component={Feedback}/>
+        { /*<PrivateRoute exact path="/:roomid/feedback" component={Feedback} />*/}
         <PrivateRoute exact path="/:roomid/question" component={Question} />
-        {/* <PrivateRoute exact path="/:roomid/answer/:questionid" component={Answer} /> */}
+        <PrivateRoute exact path="/:roomid/answer/:questionid" component={Answer} /> 
         <PrivateRoute exact path="/organizer/room" component={OrganizerRoom} />
-        <PrivateRoute
-          exact
-          path="/organizer/:roomid"
-          component={OrganizerMenu}
-        />
-        <PrivateRoute
-          exact
-          path="/organizer/:roomid/ask"
-          component={OrganizerAsk}
-        />
-        <PrivateRoute
-          exact
-          path="/organizer/:roomid/ask/present"
-          component={OrganizerPresent}
-        />
-        <PrivateRoute
-          exact
-          path="/organizer/:roomid/feedback"
-          component={OrganizerFeedback}
-        />
-        <PrivateRoute
-          exact
-          path="/organizer/:roomid/question"
-          component={OrganizerQuestion}
-        />
-        <PrivateRoute
-          exact
-          path="/organizer/:roomid/answer/:questionid"
-          component={OrganizerAnswer}
-        />
+        <PrivateRoute exact path="/organizer/:roomid" component={OrganizerMenu}/>
+        <PrivateRoute exact path="/organizer/:roomid/ask"component={OrganizerAsk}/>
+        <PrivateRoute exact path="/organizer/:roomid/ask/present" component={OrganizerPresent}/>
+        <PrivateRoute exact path="/organizer/:roomid/feedback" component={OrganizerFeedback}/>
+        <PrivateRoute exact path="/organizer/:roomid/question" component={OrganizerQuestion}/>
+        <PrivateRoute exact path="/organizer/:roomid/answer/:questionid" component={OrganizerAnswer}/>
         <Route component={NotFound} />
       </Switch>
     </Fragment>

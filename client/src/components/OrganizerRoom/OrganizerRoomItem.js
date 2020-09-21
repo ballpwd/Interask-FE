@@ -24,9 +24,10 @@ const OrganizerRoomItem = (props) => {
               className="orgroom-box"
               size="lg"
               style={{
-                backgroundColor: "#e5e5e5",
-                borderColor: "#e5e5e5",
-                color: "black",
+                backgroundColor: "#EEBBC3",
+                  borderColor: "#121629",
+                  borderWidth: "2px",
+                  color: "#232946",
               }}
             >
               {room.roomName}
@@ -40,9 +41,10 @@ const OrganizerRoomItem = (props) => {
             onClick={toggle}
             size="lg"
             style={{
-              backgroundColor: "#c4c4c4",
-              borderColor: "#c4c4c4",
-              color: "black",
+              backgroundColor: "#fffffe",
+              borderColor: "#121629",
+              borderWidth: "2px",
+              color: "#232946",
             }}
           >
             <br />

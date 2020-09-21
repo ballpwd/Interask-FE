@@ -73,3 +73,10 @@ export const LOGOUT = "LOGOUT";
 //Alert
 export const SET_ALERT = "SET_ALERT";
 export const REMOVE_ALERT = "REMOVE_ALERT";
+//Answer
+export const GET_ANSWERLIST = "GET_ANSWERLIST";
+export const GET_ANSWER = "GET_ANSWER";
+export const ADD_ANSWER = "ADD_ANSWER";
+export const ANSWER_ERROR = "ANSWER_ERROR";
+export const ANSWER_UNLOADED = "ANSWER_UNLOADED";
+export const ANSWERLIST_UNLOADED = "ANSWERLIST_UNLOADED";

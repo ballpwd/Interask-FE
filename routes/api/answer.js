@@ -13,6 +13,16 @@ router.post("/", auth, async (req, res) => {
     const user_id = req.user.id;
     const { roomId, questionId, text } = req.body;
 
+    if(!text){
+      return res.status(404).json({ msg: "Answer your question!" });
+    }
+    const room = await Room.findById(roomId)
+    if(!room){
+        return res.status(404).json({ msg: 'Room not found2' });
+    }
+    if(!room.user.some(id => id == user_id)){
+        return res.status(401).json({msg: 'User Unauthorized'})
+    }
     const newAnswer = new Answer({
       user: user_id,
       room: roomId,
@@ -21,9 +31,7 @@ router.post("/", auth, async (req, res) => {
     });
 
     const answer = await newAnswer.save();
-    console.log("---Request---", req.app);
     req.app.io.sockets.in(roomId).emit("Answer", { status: 200 });
-
     res.json(answer);
   } catch (err) {
     console.error(err.message);
@@ -69,7 +77,7 @@ router.get("/:question_id", async (req, res) => {
   try {
     const { question_id } = req.params;
 
-    const answer = await Answer.find({ question: question_id });
+    const answer = await Answer.find({ question: question_id }).populate("user", ["userName"]);
 
     if (answer.length < 1) {
       return res.status(404).json({ msg: "Answer not found" });

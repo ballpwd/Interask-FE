@@ -32,12 +32,15 @@ const OrganizerRoom = (props) => {
   ) : (
     <Fragment>
       <NavbarOrg></NavbarOrg>
-      <Container fluid>
-        <h1 className="org-h1 text-center orgroom-section">Hi "{user.userName}"</h1>
+      <div className="fullscreen bg">
+      <Container>
+        <div className="pt-5">
+        <h1 className="text-center org-room">Hi "{user.userName}"</h1>
+        </div>
       </Container>
       <Container>
         <div className="pt-2 px-4">
-          <h3 className="org-h3 text-center">Organizer ROOM</h3>
+          <h3 className="text-center org-room">Organizer ROOM</h3>
           <hr />
         </div>
         <Row>
@@ -45,16 +48,29 @@ const OrganizerRoom = (props) => {
         </Row>
         <Row className="justify-content-center mt-2">
           {!edit ? (
-            <Button onClick={manage} className="btn btn-dark org-btn">
+            <Button onClick={manage} className="org-btn" 
+              style={{
+                backgroundColor: "#FF8BA7",
+                borderColor: "#121629",
+                borderWidth: "2px",
+                color: "#232946",
+              }}>
               MANAGE ROOM
             </Button>
           ) : (
-            <Button onClick={manage} className="btn btn-dark org-btn">
+            <Button onClick={manage} className="org-btn"
+              style={{
+                backgroundColor: "#FF8BA7",
+                borderColor: "#121629",
+                borderWidth: "2px",
+                color: "#232946",
+              }}>
               COMPLETE
             </Button>
           )}
         </Row>
       </Container>
+      </div>
     </Fragment>
   );
 };

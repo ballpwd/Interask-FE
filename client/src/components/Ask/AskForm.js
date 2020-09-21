@@ -37,7 +37,7 @@ const AskForm = (props) => {
         </Row>
         <Row>
           <Col xs="6" className="text-left mt-2">
-            <div className="custom-control custom-switch text-left ">
+            <div className="custom-control custom-switch text-left  ">
               <input
                 type="checkbox"
                 className="custom-control-input"

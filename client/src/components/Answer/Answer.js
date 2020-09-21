@@ -2,44 +2,53 @@ import React, { Fragment, useEffect,useState } from "react";
 import { connect } from "react-redux";
 import { Link } from "react-router-dom";
 import { getRoomById, roomUnload } from "../../actions/roomActions";
-import { getUserFeedbackList, feedbackListUnload } from '../../actions/feedbackActions';
+import { getQuestionById, questionUnload } from "../../actions/questionAction";
 import { Container, Button, Row, Col} from "reactstrap";
 import Loading from '../Loading/Loading';
-import FeedbackForm from "../Feedback/FeedbackForm";
+import AnswerForm from "../Answer/AnswerForm";
 import NavBar from '../Navbar/NavBar';
 
-const Feedback = (props) => {
+const Answer = (props) => {
 
   const [edit, setEdit] = useState(false);
   const leave = () => setEdit(!edit);
   const {
-    getRoomList,
-    roomListUnload,
+    getQuestionById,
+    questionUnload,
     getRoomById,
     room : {room,roomLoading},
-    auth: { user },
+    question : {question,questionLoading},
     match
   } = props;
   
 
   useEffect(() => {
-    getRoomById(match.params.id);
+    getRoomById(match.params.roomid);
     return () => {
       roomUnload();
     };
   }, [getRoomById, match.params.id, roomUnload]);
 
-  return (room == null|| roomLoading)? (
+  useEffect(() => {
+    getQuestionById(match.params.questionid);
+    return () => {
+      questionUnload();
+    };
+  }, [getQuestionById, match.params.questionid, questionUnload]);
+
+
+
+  return ((room == null || roomLoading) || (question ==null || questionLoading))? (
     <Loading></Loading>
   ) : (
     <Fragment>
       <div className="fullscreen bg fullscreen">
       <NavBar></NavBar>
       <Container fluid className='topic'>
-            <h1>FEEDBACK</h1>
+            <h1>ANSWER</h1>
           </Container>
         <Container>
-            <FeedbackForm room={room}/>
+            <AnswerForm room={room} question={question}/>
         </Container>
      </div>
     </Fragment>
@@ -48,9 +57,9 @@ const Feedback = (props) => {
 
 const mapStateToProps = (state) => ({
   room: state.room,
-  auth: state.auth
+  question: state.question
 });
 
-export default connect(mapStateToProps, { getRoomById, roomUnload })(
-  Feedback
+export default connect(mapStateToProps, { getRoomById, roomUnload, getQuestionById, questionUnload})(
+  Answer
 );

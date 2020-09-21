@@ -30,6 +30,7 @@ const OrganizerMenu = (props) => {
       <Loading></Loading>
     ) : (
       <Fragment>
+        <div className="fullscreen bg">
         <NavbarOrg></NavbarOrg>
         <Container className="orgmenu-room">
           <p>ROOM : {room.roomName}</p>
@@ -44,9 +45,10 @@ const OrganizerMenu = (props) => {
                 className="orgmenu-box"
                 size="lg"
                 style={{
-                  backgroundColor: "#e5e5e5",
-                  borderColor: "#e5e5e5",
-                  color: "black",
+                  backgroundColor: "#EEBBC3",
+                  borderColor: "#121629",
+                  borderWidth: "2px",
+                  color: "#232946",
                 }}
               >
                 <p className="orgmenu-text">ASK</p>
@@ -73,12 +75,17 @@ const OrganizerMenu = (props) => {
                   </label>
                 </div>
               </Col>
-
-
-
               <Col className='text-center mt-5 '>
               <Link to={`/organizer/${room._id}/ask/present`}>
-                <Button className="btn btn-dark org-btn">Presentation</Button>
+                <Button className="org-btn"  
+                  style={{
+                  backgroundColor: "#FF8BA7",
+                  borderColor: "#121629",
+                  borderWidth: "2px",
+                  color: "#232946",
+                }}>
+                  Presentation
+                  </Button>
               </Link>
             </Col>
           </Col>
@@ -88,9 +95,10 @@ const OrganizerMenu = (props) => {
                 className="orgmenu-box"
                 size="lg"
                 style={{
-                  backgroundColor: "#e5e5e5",
-                  borderColor: "#e5e5e5",
-                  color: "black",
+                  backgroundColor: "#EEBBC3",
+                  borderColor: "#121629",
+                  borderWidth: "2px",
+                  color: "#232946",
                 }}
               >
                 <p className="orgmenu-text">Q&A</p>
@@ -105,9 +113,10 @@ const OrganizerMenu = (props) => {
                 className="orgmenu-box"
                 size="lg"
                 style={{
-                  backgroundColor: "#e5e5e5",
-                  borderColor: "#e5e5e5",
-                  color: "black",
+                  backgroundColor: "#EEBBC3",
+                  borderColor: "#121629",
+                  borderWidth: "2px",
+                  color: "#232946",
                 }}
               >
                 <p className="orgmenu-text">FEEDBACK</p>
@@ -135,6 +144,7 @@ const OrganizerMenu = (props) => {
           </Col>
         </Row>
       </Container>
+      </div>
     </Fragment>
   );
 };

@@ -19,7 +19,7 @@ import {
 import { connect } from 'react-redux';
 import piclogout from '../../assets/leave-white.svg';
 
-const NavbarOrg = (props) => {
+const NavBar = (props) => {
   const [isOpen, setIsOpen] = useState(false);
   const toggle = () => setIsOpen(!isOpen);
   const {
@@ -75,4 +75,4 @@ const mapStateToProps = (state) => ({
   auth: state.auth
 });
 
-export default connect(mapStateToProps,{logout})(NavbarOrg);
+export default connect(mapStateToProps,{logout})(NavBar);

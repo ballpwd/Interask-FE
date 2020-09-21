@@ -425,7 +425,7 @@ header {
   font-family: Kanit;
   font-size: 14px;
   font-weight: 400;
-  position: absolute;
+  position: fixed;
   bottom: 0;
   right: 0;
   left: 0;
@@ -662,6 +662,11 @@ header {
 .orgfeedback-section {
   margin-top: 50px;
 }
+.feedback-org-item-img{ 
+  width: 30px; 
+  height: 30px; 
+  margin-right: 15px; 
+ } 
 .feedback-chart-img{ 
   width: 50px; 
   height: 50px; 

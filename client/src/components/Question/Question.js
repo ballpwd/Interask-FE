@@ -8,7 +8,6 @@ import {
 import QuestionList from "./QuestionList";
 import { Container } from "reactstrap";
 import Loading from "../Loading/Loading";
-import NavBar from "../Navbar/NavBar";
 
 const Question = (props) => {
   const {
@@ -40,7 +39,6 @@ const Question = (props) => {
   ) : (
     <Fragment>
       <div className="fullscreen bg">
-        <NavBar></NavBar>
         <Container fluid className="topic">
           <h1>Q&A</h1>
         </Container>

@@ -7,7 +7,6 @@ import Loading from "../Loading/Loading";
 import AskHistory from "./AskHistory";
 import AskForm from "./AskForm";
 import { Container, Row, Col } from "reactstrap";
-import NavBar from "../Navbar/NavBar";
 
 const Ask = (props) => {
   const {
@@ -49,7 +48,6 @@ const Ask = (props) => {
   ) : (
     <Fragment>
       <div className="ask-section bg fullscreen">
-        <NavBar></NavBar>
         <Container fluid className="topic">
           <h1>ASK</h1>
         </Container>

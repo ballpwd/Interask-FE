@@ -7,7 +7,6 @@ import {
 import OrganizerRoomList from "./OrganizerRoomList";
 import { Container, Row, Button } from "reactstrap";
 import Loading from '../Loading/Loading';
-import NavbarOrg from '../Navbar/NavbarOrg';
 
 const OrganizerRoom = (props) => {
   const [edit, setEdit] = useState(false);
@@ -31,7 +30,6 @@ const OrganizerRoom = (props) => {
     <Loading></Loading>
   ) : (
     <Fragment>
-      <NavbarOrg></NavbarOrg>
       <Container fluid>
         <h1 className="org-h1 text-center orgroom-section">Hi "{user.userName}"</h1>
       </Container>

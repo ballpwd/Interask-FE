@@ -5,25 +5,13 @@ import Loading from '../Loading/Loading'
 
 const PrivateRoute = (props) => {
   const {
-    component: Component,
     auth: { isAuthenticated, authLoading, token },
-    path,
-    ...rest
   } = props
 
-  let redirectLogin = '/login'
-  if(path.indexOf('/organizer') > -1){
-    redirectLogin = '/organizer/login'
-  }
   return ((token !== null && authLoading)) ? (
     <Loading></Loading>
   ):(
-    <Route
-      {...rest}
-      render={props =>
-        isAuthenticated ? <Component {...props} /> : <Redirect to={redirectLogin} />
-      }
-    />
+    isAuthenticated ? <Redirect to='/room' /> : <Redirect to='/login' />
   )
 
 }

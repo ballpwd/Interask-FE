@@ -9,7 +9,6 @@ import {
 import { Container, Button, Row, Col } from "reactstrap";
 import Loading from "../Loading/Loading";
 import FeedbackForm from "../Feedback/FeedbackForm";
-import NavBar from "../Navbar/NavBar";
 
 const Feedback = (props) => {
   const [edit, setEdit] = useState(false);
@@ -35,7 +34,6 @@ const Feedback = (props) => {
   ) : (
     <Fragment>
       <div className="fullscreen bg fullscree">
-        <NavBar></NavBar>
         <Container fluid className="topic">
           <h1>FEEDBACK</h1>
         </Container>

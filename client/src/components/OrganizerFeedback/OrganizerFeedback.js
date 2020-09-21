@@ -11,11 +11,8 @@ import Loading from "../Loading/Loading";
 import { Container, Row, Col, Button } from "reactstrap";
 //socket
 import io from "socket.io-client";
-//Navbar
-import NavbarOrg from "../Navbar/NavbarOrg";
 //Export
 import {exportFeedback} from '../../utils/export';
-
 
 const OrganizerFeedback = (props) => {
   const {
@@ -61,7 +58,6 @@ const OrganizerFeedback = (props) => {
     <Loading></Loading>
   ) : (
     <Fragment>
-      <NavbarOrg></NavbarOrg>
       <Container fluid>
         <h1 className="org-h1 text-center orgfeedback-section">Feedback</h1>
       </Container>

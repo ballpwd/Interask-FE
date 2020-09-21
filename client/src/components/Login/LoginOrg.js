@@ -11,7 +11,7 @@ const LoginOrg = (props) => {
     } = props
 
     if (isAuthenticated) {
-        return <Redirect to='/' />;
+        return <Redirect to='/organizer/room' />;
     }
 
     return (
@@ -26,8 +26,11 @@ const LoginOrg = (props) => {
                     <a href="/api/auth/google"><img src={googlelogin} alt='Interask' className='img-fluid' style={{width:'350px' ,height:'87px'}} /></a>
                 </Row>
 
-                <Row className='justify-content-center align-items-end'>
+                <Row className='justify-content-center align-items-end '>
                 <Button className ='howto' color="dark" size="lg"  style={{width:'226px' , height:'55px'}} >How to</Button>
+                </Row>
+                <Row className='justify-content-center align-items-end footer'>
+                        <p>Swap to user <a href='/room'>ask.com</a></p>
                 </Row>
             </Container>
             </div>

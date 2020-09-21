@@ -9,8 +9,6 @@ import Loading from "../Loading/Loading";
 import { Container, Row, Col, Button } from "reactstrap";
 //socket
 import io from "socket.io-client";
-//Navbar
-import NavbarOrg from '../Navbar/NavbarOrg';
 //export
 import {exportAsk} from '../../utils/export';
 
@@ -59,7 +57,6 @@ const OrganizerAsk = (props) => {
     <Loading></Loading>
   ) : (
     <Fragment>
-      <NavbarOrg></NavbarOrg>
       <Container fluid>
         <h1 className="org-h1 text-center">ASK</h1>
       </Container>

@@ -11,13 +11,13 @@ const Login = (props) => {
     } = props
 
     if (isAuthenticated) {
-        return <Redirect to='/' />;
+        return <Redirect to='/room' />;
     }
 
     return (
         <Fragment>
             <div className='bg fullscreen'>
-                <Container >
+                <Container  >
                     <Row className='justify-content-center align-items-center '>
                         <img src={logo} alt='Interask' className='img-fluid '></img>
                     </Row>
@@ -26,7 +26,7 @@ const Login = (props) => {
                     </Row>
 
                     <Row className='justify-content-center align-items-end footer'>
-                        <p>Create your own room for <a href='/organizer'>FREE organization.com</a></p>
+                        <p>Create your own room for <a href='/organizer/room'>FREE organization.com</a></p>
                     </Row>
                 </Container>
             </div>

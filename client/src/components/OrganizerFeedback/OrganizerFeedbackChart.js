@@ -80,7 +80,8 @@ const OrganizerFeedbackChart = (props) => {
                 },
                 ticks: {
                     fontSize: 20,
-                    fontStyle: 'bold'
+                    fontStyle: 'bold',
+                    fontColor: '#ffffff'
                 }
             }],
             yAxes: [{
@@ -101,7 +102,7 @@ const OrganizerFeedbackChart = (props) => {
                 display: true,
                 anchor: 'end',
                 align: 'end',
-                color: 'black',
+                color: 'white',
                 font: {
                     size: 20,
                     weight: 'bold'

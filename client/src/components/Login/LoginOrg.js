@@ -4,6 +4,7 @@ import googlelogin from '../../assets/signin.svg';
 import { Container, Row, Button } from 'reactstrap';
 import { connect } from 'react-redux';
 import { Redirect } from 'react-router-dom';
+import apiUrl from '../../utils/apiUrl' ;
 
 const LoginOrg = (props) => {
     const {
@@ -23,7 +24,7 @@ const LoginOrg = (props) => {
                 </Row>
 
                 <Row className='justify-content-center align-items-center '>
-                    <a href="/api/auth/google"><img src={googlelogin} alt='Interask' className='img-fluid' style={{width:'350px' ,height:'87px'}} /></a>
+                    <a href={`${apiUrl}/api/auth/google`}><img src={googlelogin} alt='Interask' className='img-fluid' style={{width:'350px' ,height:'87px'}} /></a>
                 </Row>
 
                 <Row className='justify-content-center align-items-end '>

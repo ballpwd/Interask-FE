@@ -17,7 +17,7 @@ const Login = (props) => {
 
     return (
         <Fragment>
-            <div className='bg fullscreen'>
+            <div className='bg2 fullscreen'>
                 <Container  >
                     <Row className='justify-content-center align-items-center '>
                         <img src={logo} alt='Interask' className='img-fluid '></img>

@@ -73,7 +73,7 @@ const RoomMenu = (props) => {
                 size="md"
               >
                 <img src={room_question} className="room-img"></img>
-                Q&A
+                Question
               </Button>
             </Link>
           </Col>

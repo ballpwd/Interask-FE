@@ -19,7 +19,7 @@ const Question = (props) => {
     question: { questionList, questionLoading },
     match,
   } = props;
-  // console.log(auth)
+
   useEffect(() => {
     getRoomById(match.params.roomid);
     return () => {
@@ -40,7 +40,7 @@ const Question = (props) => {
     <Fragment>
       <div className="fullscreen bg">
         <Container fluid className="topic">
-          <h1>Q&A</h1>
+          <h1>Question</h1>
         </Container>
         <Container>
           <div>{<QuestionList questionList={questionList} room={room} />}</div>

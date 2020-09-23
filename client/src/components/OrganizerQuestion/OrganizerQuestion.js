@@ -54,7 +54,7 @@ const OrganizerQuestion = (props) => {
     <Fragment>
       <div className="fullscreen bg">
         <Container fluid>
-          <h1 className="org-h1 text-center">Q&A</h1>
+          <h1 className="org-h1 text-center">Question</h1>
         </Container>
         <Container fluid>
           <h5 className="org-h5 text-center">

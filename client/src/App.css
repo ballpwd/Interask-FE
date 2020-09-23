@@ -12,6 +12,10 @@ body > #root {
   background: #232946;
 }
 
+.bg2 {
+  background: linear-gradient(300.81deg, #eeadb4 15.33%, #c1abdd 101.47%);
+}
+
 .fullscreen {
   min-height: 100vh;
 }
@@ -447,7 +451,6 @@ header {
 
 .footer {
   font-family: Kanit;
-  color: white;
   font-size: 14px;
   font-weight: 400;
   position: fixed;
@@ -927,3 +930,5 @@ input[type="radio"] {
   background: #e5e5e5;
   margin-top: 15px;
 }
+
+

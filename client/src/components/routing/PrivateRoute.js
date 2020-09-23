@@ -6,7 +6,7 @@ import Loading from '../Loading/Loading'
 const PrivateRoute = (props) => {
   const {
     component: Component,
-    auth: { isAuthenticated, authLoading, token },
+    auth: { user,isAuthenticated, authLoading, token },
     path,
     ...rest
   } = props
@@ -16,12 +16,21 @@ const PrivateRoute = (props) => {
     redirectLogin = '/organizer/login'
   }
   return ((token !== null && authLoading)) ? (
-    <Loading></Loading>
+    <Loading/>
   ):(
     <Route
       {...rest}
       render={props =>
-        isAuthenticated ? <Component {...props} /> : <Redirect to={redirectLogin} />
+        isAuthenticated ? (
+          (user == null) ? (
+            <Loading/>
+          ):(
+            <Component {...props} />
+          )
+          
+        ) : (
+          <Redirect to={redirectLogin} />
+        )
       }
     />
   )

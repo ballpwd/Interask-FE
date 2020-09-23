@@ -13,7 +13,7 @@ const QuestionList = (props) => {
     <Fragment>
       <div>
         <Container className="question-boxlist question-box pt-2 text-center">
-          <p className="feedback-room text-break">ROOM {room.roomName}</p>
+          <p className="question-roomname text-break">ROOM : {room.roomName}</p>
           <div className="">
             <ScrollToBottom className={ROOT_CSS}>
               {Array.isArray(questionList)}

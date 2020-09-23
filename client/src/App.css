@@ -480,7 +480,7 @@ header {
 }
 .nav-item:hover {
   text-decoration: none;
-  color: black
+  color: black;
 }
 
 .nav-section {
@@ -809,7 +809,7 @@ textarea[name="text"] {
 .feedback-topic {
   font-family: Kanit;
   font-weight: bold;
-  font-size: 18px;
+  font-size: 22px;
   text-align: center;
   padding-top: 20px;
 }
@@ -849,6 +849,13 @@ input[type="radio"] {
 }
 
 /*------------------------- Question -----------------------*/
+.question-roomname {
+  font-family: Kanit;
+  font-weight: bold;
+  font-size: 22px;
+  text-align: center;
+  padding-top: 20px;
+}
 .question-box {
   background: #ffffff;
   border-radius: 10px;
@@ -931,5 +938,3 @@ input[type="radio"] {
   background: #e5e5e5;
   margin-top: 15px;
 }
-
-

@@ -40,7 +40,7 @@ const Question = (props) => {
     <Fragment>
       <div className="fullscreen bg">
         <Container fluid className="topic">
-          <h1>Question</h1>
+          <h1>Q&A</h1>
         </Container>
         <Container>
           <div>{<QuestionList questionList={questionList} room={room} />}</div>

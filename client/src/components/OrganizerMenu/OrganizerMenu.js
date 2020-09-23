@@ -107,7 +107,7 @@ const OrganizerMenu = (props) => {
                     color: "#232946",
                   }}
                 >
-                  <p className="orgmenu-text">QUESTION</p>
+                  <p className="orgmenu-text">Q&A</p>
                   <img src={question} width="64px" height="64px"></img>
                 </Button>
               </Link>

@@ -13,7 +13,8 @@ body > #root {
 }
 
 .bg2 {
-  background: linear-gradient(300.81deg, #eeadb4 15.33%, #c1abdd 101.47%);
+  /* background: linear-gradient(300.81deg, #eeadb4 15.33%, #c1abdd 101.47%); */
+  background: linear-gradient(87.98deg, #88b1ef 12.77%, #bdaff1 82%);
 }
 
 .fullscreen {

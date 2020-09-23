@@ -32,7 +32,7 @@ import {
     case ADD_ANSWER:
       return {
         ...state,
-        answerList: [...state.answerList,payload],
+        answer: payload,
         answerLoading: false 
       };
     case ANSWER_ERROR:

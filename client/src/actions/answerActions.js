@@ -11,45 +11,30 @@ import {
 import Swal from 'sweetalert2';
 
 
-//Get all ask
-// export const getAllAsk = () => async dispatch => {
+// //Get user answerlist
+// export const getUserAnswerList = (questionId) => async dispatch => {
 //     try {
-//         const res = await axios.get('/api/ask')
+//         const res = await axios.get(`${apiUrl}/api/answer/${questionId}`)
+
 //         dispatch({
-//             type: GET_FEEDBACKLIST,
+//             type: GET_ANSWERLIST,
 //             payload: res.data
-//         });
+//         });    
 //     } catch (err) {
 //         dispatch({
-//             type: FEEDBACK_ERROR,
+//             type: ANSWER_ERROR,
 //             payload: err
 //         });    
 //     }
 // };
 
-//Get ask by ask_id
-// export const getAskById = askId => async dispatch => {
-//     try {
-//         const res = await axios.get(`/api/feedback/${askId}`)
-//         dispatch({
-//             type: GET_ASK,
-//             payload: res.data
-//         });
-//     } catch (err) {
-//         dispatch({
-//             type: ASK_ERROR,
-//             payload: err
-//         });    
-//     }
-// };
-
-//Get user answerlist
-export const getUserAnswerList = (questionId) => async dispatch => {
+//Get user answer
+export const getUserAnswer = (questionId) => async dispatch => {
     try {
-        const res = await axios.get(`${apiUrl}/api/answer/${questionId}`)
+        const res = await axios.get(`${apiUrl}/api/answer/user/${questionId}`)
 
         dispatch({
-            type: GET_ANSWERLIST,
+            type: GET_ANSWER,
             payload: res.data
         });    
     } catch (err) {

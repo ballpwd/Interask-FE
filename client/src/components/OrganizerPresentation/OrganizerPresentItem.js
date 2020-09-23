@@ -20,16 +20,17 @@ const OrganizerPresentItem = ({ ask, askIsAnswerUpdate }) => {
     </button>
   );
 
+  const itemStyle = ask.isAnswer ? {color: '#fff',backgroundColor: "#dc3545"}: {color: '#212529',backgroundColor: "#ffffff"}
+
   return (
     <div>
       <div className="container-fluid">
         <Card>
           <Button
-            // color="#e5e5e5"
-            color={ask.isAnswer ? "danger" : "#e5e5e5"}
             onClick={toggle}
             size="lg"
             className="pre-box"
+            style={itemStyle}
           >
             <div>{ask.text}</div>
           </Button>

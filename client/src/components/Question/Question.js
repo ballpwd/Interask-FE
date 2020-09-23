@@ -19,7 +19,7 @@ const Question = (props) => {
     question: { questionList, questionLoading },
     match,
   } = props;
-
+  // console.log(auth)
   useEffect(() => {
     getRoomById(match.params.roomid);
     return () => {

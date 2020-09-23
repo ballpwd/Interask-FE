@@ -34,4 +34,18 @@ export const exportFeedback = feedbackList => {
     XLSX.writeFile(wb, `feedback-analyst.xlsx`)
 };
 
+export const exportAnswer = (answerList) => {
+    const newAnswer = answerList.map(answer => {
+        return {
+            question: answer.question.questionDetail,
+            name: answer.user.userName,
+            answer: answer.text,
+            date: answer.date
+          }
+    })  
 
+    let ws = XLSX.utils.json_to_sheet(newAnswer)
+    let wb = XLSX.utils.book_new()
+    XLSX.utils.book_append_sheet(wb, ws, 'Answer')
+    XLSX.writeFile(wb, `answer-analyst.xlsx`)
+};

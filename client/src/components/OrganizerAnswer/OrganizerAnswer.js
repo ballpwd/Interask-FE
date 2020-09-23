@@ -13,6 +13,7 @@ import OrganizerAnswerList from "./OrganizerAnswerList";
 import OrganizerAnswerAnalyze from "./OrganizerAnswerAnalyze";
 import Loading from "../Loading/Loading";
 import { Container, Row, Col, Button, Card } from "reactstrap";
+import { exportAnswer } from "../../utils/export";
 import apiUrl from '../../utils/apiUrl' ;
 import io from "socket.io-client";
 
@@ -95,6 +96,7 @@ const OrganizerAnswer = (props) => {
                 <Col md="12" xs="12" className="text-center mt-5">
                   <Button
                     className="org-btn"
+                    onClick={() => exportAnswer(answerList)}
                     style={{
                       backgroundColor: "#FF8BA7",
                       borderColor: "#121629",

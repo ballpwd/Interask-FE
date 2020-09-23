@@ -201,7 +201,6 @@ header {
   font-style: normal;
   text-align: center;
   align-items: center;
-  background: #e5e5e5;
   border-radius: 10px;
 }
 
@@ -603,7 +602,7 @@ header {
 
 .smoke span {
   position: relative;
-  color: #474444;
+  color: #ffffff;
   font-family: kanit;
   font-size: 20px;
   font-weight: bold;
@@ -778,9 +777,6 @@ header {
   height: 48px;
   font-family: Kanit;
   font-style: normal;
-  font-weight: bold;
-  background-color: #eebbc3;
-  border-radius: 10px;
 }
 textarea[name="text"] {
   resize: none;
@@ -869,7 +865,6 @@ input[type="radio"] {
   width: 300px;
   min-height: 100px;
   font-family: Kanit;
-  font-size: 28px;
   font-style: normal;
   text-align: center;
   align-items: center;
@@ -923,7 +918,6 @@ input[type="radio"] {
   height: 48px;
   font-family: Kanit;
   font-style: normal;
-  font-weight: bold;
 }
 
 .question-card {

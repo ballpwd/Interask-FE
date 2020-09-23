@@ -3,6 +3,7 @@ import ask from "./askReducer";
 import room from "./roomReducer";
 import question from "./questionReducer";
 import feedback from "./feedbackReducer";
+import answer from "./answerReducer";
 import orgAsk from "./orgAskReducer";
 import orgRoom from "./orgRoomReducer";
 import orgFeedback from "./orgFeedbackReducer";
@@ -16,6 +17,7 @@ export default combineReducers({
   room,
   question,
   feedback,
+  answer,
   orgAsk,
   orgRoom,
   orgFeedback,

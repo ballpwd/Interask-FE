@@ -32,7 +32,7 @@ import {
     case ADD_FEEDBACK:
       return {
         ...state,
-        feedbackList: [...state.feedbackList,payload],
+        feedback: payload,
         feedbackLoading: false 
       };
     case FEEDBACK_ERROR:

@@ -17,7 +17,7 @@ const OrganizerQuestionItem = (props) => {
 
   const [modal, setModal] = useState(false);
   const toggle = () => setModal(!modal);
-
+  
   const closeBtn = (
     <button className="close" onClick={toggle}>
       &times;

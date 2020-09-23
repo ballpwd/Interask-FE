@@ -13,6 +13,13 @@ const QuestionSchema = new mongoose.Schema({
     type: Boolean,
     default: true,
   },
+  answered :[
+    {
+      type:mongoose.Schema.Types.ObjectId,
+      ref: 'user',
+      default: []
+    }
+  ],
   date: {
     type: Date,
     default: Date.now,

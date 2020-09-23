@@ -2,10 +2,12 @@ import React, { Fragment, useEffect,useState } from "react";
 import { connect } from "react-redux";
 import { Link } from "react-router-dom";
 import { getRoomById, roomUnload } from "../../actions/roomActions";
+import {getUserAnswer, answerUnload} from "../../actions/answerActions";
 import { getQuestionById, questionUnload } from "../../actions/questionAction";
 import { Container, Button, Row, Col} from "reactstrap";
 import Loading from '../Loading/Loading';
 import AnswerForm from "../Answer/AnswerForm";
+import { Redirect } from 'react-router-dom';
 
 const Answer = (props) => {
 
@@ -14,7 +16,12 @@ const Answer = (props) => {
   const {
     getQuestionById,
     questionUnload,
+    getUserAnswer,
+    answerUnload,
     getRoomById,
+    roomUnload,
+    auth: {user},
+    answer : {answer, answerLoading},
     room : {room,roomLoading},
     question : {question,questionLoading},
     match
@@ -26,7 +33,7 @@ const Answer = (props) => {
     return () => {
       roomUnload();
     };
-  }, [getRoomById, match.params.id, roomUnload]);
+  }, [getRoomById, match.params.roomid, roomUnload]);
 
   useEffect(() => {
     getQuestionById(match.params.questionid);
@@ -35,12 +42,21 @@ const Answer = (props) => {
     };
   }, [getQuestionById, match.params.questionid, questionUnload]);
 
+  useEffect(() => {
+    getUserAnswer(match.params.questionid);
+    return () => {
+      roomUnload();
+    };
+  }, [getUserAnswer, match.params.questionid, answerUnload]);
 
+  if(answer != null){
+    return <Redirect to={`/${match.params.roomid}/question`} />;
+  }
 
-  return ((room == null || roomLoading) || (question ==null || questionLoading))? (
+  return ((room == null || roomLoading) || (question == null || questionLoading)) ? (
     <Loading></Loading>
   ) : (
-    <Fragment>
+      <Fragment>
       <div className="fullscreen bg fullscreen">
       <Container fluid className='topic'>
             <h1>ANSWER</h1>
@@ -50,14 +66,16 @@ const Answer = (props) => {
         </Container>
      </div>
     </Fragment>
-  );
+    )
 };
 
 const mapStateToProps = (state) => ({
   room: state.room,
-  question: state.question
+  auth: state.auth,
+  question: state.question,
+  answer: state.answer
 });
 
-export default connect(mapStateToProps, { getRoomById, roomUnload, getQuestionById, questionUnload})(
+export default connect(mapStateToProps, { getRoomById, roomUnload, getQuestionById, questionUnload, getUserAnswer, answerUnload})(
   Answer
 );

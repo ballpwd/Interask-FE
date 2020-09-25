@@ -18,14 +18,15 @@ const Login = (props) => {
     return (
         <Fragment>
             <div className='bg2 fullscreen'>
-                <Container  >
+                <Container>
+                <div className="center">
                     <Row className='justify-content-center align-items-center '>
                         <img src={logo} alt='Interask' className='img-fluid '></img>
                     </Row>
-                    <Row className='justify-content-center align-items-center button'>
+                    <Row className='justify-content-center align-items-center'>
                         <a href={`${apiUrl}/api/auth/google`}><img src={googlelogin} alt='Interask' className='img-fluid' style={{width:'340px'}} /></a>
                     </Row>
-
+                </div>
                     <Row className='justify-content-center align-items-end footer'>
                         <p>Create your own room for FREE<a href='/organizer/room'> Organizer</a></p>
                     </Row>

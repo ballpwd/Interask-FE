@@ -432,9 +432,6 @@ header {
 }
 
 /* -------------------- Login (Home) -------------------- */
-.login-section {
-  position: relative;
-}
 
 .logo {
   position: absolute;
@@ -460,11 +457,15 @@ header {
   left: 0;
 }
 
+.center{
+  padding: 200px 0;
+}
+
 /*------------------ Login (Organization) ---------------*/
 
 .howto {
   font-family: Kanit;
-  margin-top: 60px;
+  margin-top: 20px;
 }
 
 /*------------------ NavBar ---------------*/

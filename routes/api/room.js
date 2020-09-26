@@ -248,6 +248,9 @@ router.put('/editstatus/ask/:room_id', auth, async (req, res) => {
   }
 });
 
+// @route    PUT api/room/editstatus/feedback/:room_id
+// @desc     Edit feedback status
+// @access   Private
 router.put('/editstatus/feedback/:room_id', auth, async (req, res) => {
   try {
     const user_id = req.user.id

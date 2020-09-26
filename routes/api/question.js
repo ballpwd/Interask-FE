@@ -17,8 +17,8 @@ router.post("/", auth, async (req, res) => {
     });
 
     const question = await newQuestion.save();
-    console.log("---Request---", req.app);
-    req.app.io.sockets.in(roomId).emit("organizerQuestion", { status: 200 });
+
+    req.app.io.sockets.in(roomId).emit("question", { status: 200 });
 
     res.json(question);
   } catch (err) {
@@ -120,6 +120,9 @@ router.delete("/:question_id", auth, async (req, res) => {
     }
 
     await question.remove();
+
+    req.app.io.sockets.in(question.room).emit("question", { status: 200 });
+
     res.json({ msg: "Question removed" });
   } catch (err) {
     console.error(err.message);
@@ -142,11 +145,47 @@ router.put("/editquestion/:question_id", auth, async (req, res) => {
 
     question.questionDetail = req.body.questionDetail;
     await question.save();
+
+    req.app.io.sockets.in(question.room).emit("question", { status: 200 });
+
     res.json(question);
   } catch (err) {
     console.error(err.message);
     res.status(500).send("Server Error");
   }
 });
+
+// @route    PUT api/question/editstatus/:question_id
+// @desc     Edit feedback status
+// @access   Private
+router.put('/editstatus/:question_id', auth, async (req, res) => {
+  try {
+    const user_id = req.user.id
+    const { question_id } = req.params;
+    
+    // Check for ObjectId format and room
+    if (!req.params.question_id.match(/^[0-9a-fA-F]{24}$/)) {
+      return res.status(404).json({ msg: 'Question not found' });
+    }
+
+    const question = await Question.findById(question_id);
+
+    if (!question) {
+      return res.status(404).json({ msg: 'Question not found' });
+    }
+
+    question.questionStatus = !question.questionStatus
+    await question.save();
+
+    req.app.io.sockets.in(question.room).emit("question", { status: 200 });
+
+    res.json(question);
+
+  } catch (err) {
+    console.error(err.message);
+    res.status(500).send('Server Error');
+  }
+});
+
 
 module.exports = router;

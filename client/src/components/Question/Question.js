@@ -8,6 +8,8 @@ import {
 import QuestionList from "./QuestionList";
 import { Container } from "reactstrap";
 import Loading from "../Loading/Loading";
+import apiUrl from '../../utils/apiUrl' 
+import io from "socket.io-client";
 
 const Question = (props) => {
   const {
@@ -28,9 +30,21 @@ const Question = (props) => {
   }, [getRoomById, match.params.roomid, roomUnload]);
 
   useEffect(() => {
+    let socket = io.connect(apiUrl);
+
+    socket.emit("room", match.params.roomid);
+
+    socket.on("question", (data) => {
+      if (data.status === 200) {
+        getUserQuestionList(match.params.roomid);
+      }
+    });
+
+
     getUserQuestionList(match.params.roomid);
     return () => {
       questionListUnload();
+      socket.disconnect();
     };
   }, [getUserQuestionList, match.params.roomid, questionListUnload]);
 

@@ -8,8 +8,7 @@ import {
 import { getOrgRoomById, orgRoomUnload } from "../../actions/orgRoomActions";
 import { Container } from "reactstrap";
 import Loading from "../Loading/Loading";
-import apiUrl from '../../utils/apiUrl' 
-import io from "socket.io-client";
+
 
 const OrganizerQuestion = (props) => {
   const {
@@ -30,21 +29,9 @@ const OrganizerQuestion = (props) => {
   }, [getOrgRoomById, match.params.roomid, orgRoomUnload]);
 
   useEffect(() => {
-    let socket = io.connect(apiUrl);
-
-    socket.emit("room", match.params.roomid);
-
-    socket.on("organizerQuestion", (data) => {
-      if (data.status === 200) {
-        getOrgQuestionList(match.params.roomid);
-      }
-    });
-
     getOrgQuestionList(match.params.roomid);
-
     return () => {
       orgQuestionListUnload();
-      socket.disconnect();
     };
   }, [getOrgQuestionList, match.params.roomid, orgQuestionListUnload]);
 

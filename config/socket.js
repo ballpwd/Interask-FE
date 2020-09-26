@@ -10,6 +10,7 @@ const handleSocket = (io) => {
         socket.join(room)
         console.log('joinroom',room)
       })
+
     })
 
   }

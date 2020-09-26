@@ -881,6 +881,14 @@ input[type="radio"] {
   text-align: center;
   align-items: center;
 }
+
+/*------------------------- Organizer Question -----------------------*/
+.question-switch {
+  font-family: Kanit;
+  font-size: 14px;
+  font-weight: 400;
+  color: #eebbc3;
+}
 /*-------------------------------- Answer Form -----------------------------------*/
 .answerText {
   font-family: Kanit;

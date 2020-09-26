@@ -161,6 +161,7 @@ export const editAskStatus = (roomId) => async (dispatch) => {
   }
 };
 
+//Edit feedback status
 export const editFeedbackStatus = (roomId) => async (dispatch) => {
   try {
     const res = await axios.put(`${apiUrl}/api/room/editstatus/feedback/${roomId}`);

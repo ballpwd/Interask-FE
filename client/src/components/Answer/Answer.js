@@ -45,7 +45,7 @@ const Answer = (props) => {
   useEffect(() => {
     getUserAnswer(match.params.questionid);
     return () => {
-      roomUnload();
+      answerUnload();
     };
   }, [getUserAnswer, match.params.questionid, answerUnload]);
 

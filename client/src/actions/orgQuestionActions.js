@@ -10,6 +10,7 @@ import {
   ORG_QUESTIONLIST_UNLOADED,
   DELETE_QUESTION,
   EDIT_QUESTION,
+  EDIT_QUESTION_STATUS,
 } from "./types";
 
 //Get all question (Organizer)
@@ -95,29 +96,7 @@ export const getOrgQuestionList = (roomId) => async (dispatch) => {
   }
 };
 
-//Organizer question Unload
-export const orgQuestionUnload = () => async (dispatch) => {
-  try {
-    dispatch({ type: ORG_QUESTION_UNLOADED });
-  } catch (err) {
-    dispatch({
-      type: ORG_QUESTION_ERROR,
-      payload: err,
-    });
-  }
-};
 
-//Organizer questionList Unload
-export const orgQuestionListUnload = () => async (dispatch) => {
-  try {
-    dispatch({ type: ORG_QUESTIONLIST_UNLOADED });
-  } catch (err) {
-    dispatch({
-      type: ORG_QUESTION_ERROR,
-      payload: err,
-    });
-  }
-};
 
 //Delete question
 export const deleteQuestion = (questionId) => async (dispatch) => {
@@ -149,6 +128,48 @@ export const editQuestion = (questionId, formData) => async (dispatch) => {
     });
 
     // dispatch(setAlert("Question Edited", "success"));
+  } catch (err) {
+    dispatch({
+      type: ORG_QUESTION_ERROR,
+      payload: err,
+    });
+  }
+};
+
+//Edit question status
+export const editQuestionStatus = (questionId) => async (dispatch) => {
+  try {
+    const res = await axios.put(`${apiUrl}/api/question/editstatus/${questionId}`);
+
+    dispatch({
+      type: EDIT_QUESTION_STATUS,
+      payload: res.data,
+    });
+
+  } catch (err) {
+    dispatch({
+      type: ORG_QUESTION_ERROR,
+      payload: err
+    });    
+  }
+};
+
+//Organizer question Unload
+export const orgQuestionUnload = () => async (dispatch) => {
+  try {
+    dispatch({ type: ORG_QUESTION_UNLOADED });
+  } catch (err) {
+    dispatch({
+      type: ORG_QUESTION_ERROR,
+      payload: err,
+    });
+  }
+};
+
+//Organizer questionList Unload
+export const orgQuestionListUnload = () => async (dispatch) => {
+  try {
+    dispatch({ type: ORG_QUESTIONLIST_UNLOADED });
   } catch (err) {
     dispatch({
       type: ORG_QUESTION_ERROR,

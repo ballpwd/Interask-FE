@@ -18,11 +18,15 @@ const QuestionList = (props) => {
             <ScrollToBottom className={ROOT_CSS}>
               {Array.isArray(questionList)}
               {questionList.map((question) => (
-                <QuestionItem
-                  key={question._id}
-                  question={question}
-                  room={room}
-                />
+                question.questionStatus ? (
+                  <QuestionItem
+                    key={question._id}
+                    question={question}
+                    room={room}
+                  /> 
+                ):(
+                  null
+                )
               ))}
             </ScrollToBottom>
           </div>

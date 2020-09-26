@@ -1,4 +1,5 @@
 import React, { Fragment, useState } from "react";
+import { connect } from "react-redux";
 import { Link } from "react-router-dom";
 import {
   Button,
@@ -11,13 +12,16 @@ import {
 } from "reactstrap";
 import EditQuestion from "./EditQuestion";
 import editq from "../../assets/editq.svg";
+import { editQuestionStatus } from "../../actions/orgQuestionActions";
+
 
 const OrganizerQuestionItem = (props) => {
-  const { room, question, edit } = props;
+  const { room, question, edit, editQuestionStatus } = props;
 
   const [modal, setModal] = useState(false);
   const toggle = () => setModal(!modal);
   
+
   const closeBtn = (
     <button className="close" onClick={toggle}>
       &times;
@@ -74,6 +78,24 @@ const OrganizerQuestionItem = (props) => {
           </Card>
         </div>
       )}
+      <div className="custom-control custom-switch text-center ">
+                  <input
+                    type="checkbox"
+                    className="custom-control-input"
+                    id={`controlQuestionSwitch${question._id}`}
+                    checked={question.questionStatus}
+                    onChange={() => editQuestionStatus(question._id)}
+                  />
+
+                  <label
+                    className="custom-control-label question-switch"
+                    htmlFor={`controlQuestionSwitch${question._id}`}
+                  >
+                    Accepting answer
+                  </label>
+      </div>
+
+
       <Modal isOpen={modal} toggle={toggle} size="lg" centered>
         <ModalHeader
           close={closeBtn}
@@ -92,4 +114,4 @@ const OrganizerQuestionItem = (props) => {
   );
 };
 
-export default OrganizerQuestionItem;
+export default connect(null,{editQuestionStatus})(OrganizerQuestionItem);

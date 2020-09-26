@@ -7,6 +7,7 @@ import {
   CREATE_QUESTION,
   DELETE_QUESTION,
   EDIT_QUESTION,
+  EDIT_QUESTION_STATUS
 } from "../actions/types";
 
 const initialState = {
@@ -37,24 +38,6 @@ export default function (state = initialState, action) {
         question: payload,
         questionLoading: false,
       };
-    case ORG_QUESTION_ERROR:
-      return {
-        ...state,
-        error: payload,
-        questionLoading: false,
-      };
-    case ORG_QUESTION_UNLOADED:
-      return {
-        ...state,
-        question: null,
-        questionLoading: true,
-      };
-    case ORG_QUESTIONLIST_UNLOADED:
-      return {
-        ...state,
-        questionList: [],
-        questionLoading: true,
-      };
     case DELETE_QUESTION:
       return {
         ...state,
@@ -73,6 +56,34 @@ export default function (state = initialState, action) {
         ),
         questionLoading: false,
       };
+    case EDIT_QUESTION_STATUS:
+      return {
+        ...state,
+        questionList: state.questionList.map((q) =>
+          q._id === payload._id
+            ? { ...q, questionStatus: payload.questionStatus }
+            : q
+        ),
+        questionLoading: false,
+      };
+    case ORG_QUESTION_ERROR:
+      return {
+        ...state,
+        error: payload,
+        questionLoading: false,
+      };
+    case ORG_QUESTION_UNLOADED:
+      return {
+        ...state,
+        question: null,
+        questionLoading: true,
+      };
+    case ORG_QUESTIONLIST_UNLOADED:
+      return {
+        ...state,
+        questionList: [],
+        questionLoading: true,
+      };  
     default:
       return state;
   }

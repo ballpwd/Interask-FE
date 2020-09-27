@@ -96,24 +96,6 @@ const OrganizerMenu = (props) => {
               </Col>
             </Col>
             <Col className="my-4">
-              <Link to={`/organizer/${room._id}/question`}>
-                <Button
-                  className="orgmenu-box"
-                  size="lg"
-                  style={{
-                    backgroundColor: "#EEBBC3",
-                    borderColor: "#121629",
-                    borderWidth: "2px",
-                    color: "#232946",
-                  }}
-                >
-                  <p className="orgmenu-text">Q&A</p>
-                  <img src={question} width="64px" height="64px"></img>
-                </Button>
-              </Link>
-            </Col>
-
-            <Col className="my-4">
               <Link to={`/organizer/${room._id}/feedback`}>
                 <Button
                   className="orgmenu-box"
@@ -147,6 +129,23 @@ const OrganizerMenu = (props) => {
                   </label>
                 </div>
               </Col>
+            </Col>
+            <Col className="my-4">
+              <Link to={`/organizer/${room._id}/question`}>
+                <Button
+                  className="orgmenu-box"
+                  size="lg"
+                  style={{
+                    backgroundColor: "#EEBBC3",
+                    borderColor: "#121629",
+                    borderWidth: "2px",
+                    color: "#232946",
+                  }}
+                >
+                  <p className="orgmenu-text">Q&A</p>
+                  <img src={question} width="64px" height="64px"></img>
+                </Button>
+              </Link>
             </Col>
           </Row>
         </Container>

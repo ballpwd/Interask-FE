@@ -28,7 +28,9 @@ router.post("/", auth, async (req, res) => {
     if(!question){
       return res.status(404).json({ msg: 'Question not found' });
     }
-
+    if(!question.questionStatus){
+      return res.status(403).json({ msg: 'This Question is Closed' });
+  }
     if(question.answered.includes(user_id)){
       return res.status(403).json({ msg: 'Already answer' });
     }

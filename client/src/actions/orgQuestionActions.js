@@ -1,5 +1,6 @@
 import axios from "axios";
 import apiUrl from '../utils/apiUrl' ;
+import Swal from 'sweetalert2'
 // import { setAlert } from "./alertActions";
 import {
   CREATE_QUESTION,
@@ -72,6 +73,12 @@ export const createQuestion = (formData) => async (dispatch) => {
       type: CREATE_QUESTION,
       payload: res.data,
     });
+
+    Swal.fire({
+      title:'Question Created !',
+      icon:'success'
+    })
+
   } catch (err) {
     dispatch({
       type: ORG_QUESTION_ERROR,
@@ -108,6 +115,11 @@ export const deleteQuestion = (questionId) => async (dispatch) => {
       payload: questionId,
     });
 
+    Swal.fire({
+      title:'Question Removed !',
+      icon:'success'
+    })
+
     // dispatch(setAlert("Question Removed", "success"));
   } catch (err) {
     dispatch({
@@ -126,6 +138,11 @@ export const editQuestion = (questionId, formData) => async (dispatch) => {
       type: EDIT_QUESTION,
       payload: res.data,
     });
+
+    Swal.fire({
+      title:'Question Edited !',
+      icon:'success'
+    })
 
     // dispatch(setAlert("Question Edited", "success"));
   } catch (err) {

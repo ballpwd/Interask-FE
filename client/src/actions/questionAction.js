@@ -28,7 +28,7 @@ import {
 export const getQuestionById = (questionId) => async (dispatch) => {
   try {
     const res = await axios.get(`${apiUrl}/api/question/${questionId}`);
-    console.log("question", res);
+
     dispatch({
       type: GET_QUESTION,
       payload: res.data,

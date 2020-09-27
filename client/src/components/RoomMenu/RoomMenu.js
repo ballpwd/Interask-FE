@@ -59,25 +59,6 @@ const RoomMenu = (props) => {
             </Link>
           </Col>
           <Col>
-            <Link to={`/${room._id}/question`}>
-              <Button
-                className="room-box-question"
-                style={{
-                  backgroundColor: "white",
-                  borderColor: "#121629",
-                  color: "#FEBE5F",
-                  borderRadius: "10px 10px 10px 10px",
-                  fontSize: "24px",
-                  borderRight: "50px solid",
-                }}
-                size="md"
-              >
-                <img src={room_question} className="room-img"></img>
-                Q&A
-              </Button>
-            </Link>
-          </Col>
-          <Col>
             <Link to={`/${room._id}/feedback`}>
               <Button
                 className="room-box-feedback"
@@ -93,6 +74,25 @@ const RoomMenu = (props) => {
               >
                 <img src={room_feedback} className="room-img"></img>
                 FEEDBACK
+              </Button>
+            </Link>
+          </Col>
+          <Col>
+            <Link to={`/${room._id}/question`}>
+              <Button
+                className="room-box-question"
+                style={{
+                  backgroundColor: "white",
+                  borderColor: "#121629",
+                  color: "#FEBE5F",
+                  borderRadius: "10px 10px 10px 10px",
+                  fontSize: "24px",
+                  borderRight: "50px solid",
+                }}
+                size="md"
+              >
+                <img src={room_question} className="room-img"></img>
+                Q&A
               </Button>
             </Link>
           </Col>

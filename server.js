@@ -5,7 +5,7 @@ const passport = require("passport");
 const session = require("express-session");
 const { listen } = require("socket.io");
 const handleSocket = require("./config/socket");
-const  cors = require('cors')
+const cors = require('cors')
 
 
 //Enable All CORS Requests
@@ -40,6 +40,7 @@ const server = app.listen(PORT, () =>
   console.log(`Server started on port ${PORT}`)
 );
 
+// Socket Connect
 const io = listen(server);
 app.io = io;
 handleSocket(io);

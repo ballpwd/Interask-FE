@@ -6,7 +6,7 @@ import {
   orgRoomUnload,
   editFeedbackStatus,
 } from "../../actions/orgRoomActions";
-import { Container, Row, Col, Button } from "reactstrap";
+import { Container, Row, Col, Button, Modal, ModalBody, ModalHeader } from "reactstrap";
 import Loading from "../Loading/Loading";
 import { Link } from "react-router-dom";
 import ask from "../../assets/ask.svg";
@@ -24,6 +24,17 @@ const OrganizerMenu = (props) => {
     match,
   } = props;
 
+  //qr modal
+  const [modal, setModal] = useState(false);
+  const toggle = () => setModal(!modal);
+
+  const closeBtn = (
+    <button className="close" onClick={toggle}>
+      &times;
+    </button>
+  );
+  
+  //fetch room
   useEffect(() => {
     console.log(match.params.roomid);
     getOrgRoomById(match.params.roomid);
@@ -43,7 +54,6 @@ const OrganizerMenu = (props) => {
         <Container className="orgmenu-room">
           <p>ROOM : {room.roomName}</p>
           <p>PIN : {room.code}</p>
-          <QRCode value={`${window.location.origin}/room?join=${room.code}`} />
         </Container>
         <Container>
           <Row className="orgmenu-row">
@@ -151,8 +161,38 @@ const OrganizerMenu = (props) => {
               </Link>
             </Col>
           </Row>
+          <Row>
+            <Col className='text-center'>
+              <Button
+                    className="org-btn"
+                    onClick={toggle}
+                    style={{
+                      backgroundColor: "#FF8BA7",
+                      borderColor: "#121629",
+                      borderWidth: "2px",
+                      color: "#232946",
+                    }}
+                  >
+                    Show QR Code
+              </Button>
+            </Col>
+          </Row>
         </Container>
       </div>
+
+      <Modal isOpen={modal} toggle={toggle} size="lg" centered>
+        <ModalHeader
+          close={closeBtn}
+          className="border-0 pb-0"
+          cssModule={{ "modal-title": "w-100 text-center pt-5" }}
+        >
+          <p className="org-h4">Scan QR Code To Join</p>
+        </ModalHeader>
+        <ModalBody className='text-center'>
+          <QRCode size='256' value={`${window.location.origin}/room?join=${room.code}`} />
+        </ModalBody>
+      </Modal>
+      
     </Fragment>
   );
 };

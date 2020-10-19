@@ -3,7 +3,7 @@ import logo from '../../assets/org-logo.svg';
 import googlelogin from '../../assets/signin.svg';
 import { Container, Row, Button } from 'reactstrap';
 import { connect } from 'react-redux';
-import { Redirect, useLocation } from 'react-router-dom';
+import { Redirect, useLocation, Link } from 'react-router-dom';
 import queryString from "query-string";
 import apiUrl from '../../utils/apiUrl'
 
@@ -38,7 +38,7 @@ const LoginOrg = (props) => {
                 </Row>
             </div>
                 <Row className='justify-content-center align-items-end footer'>
-                        <p>Change to user login <a href='/login'> User</a></p>
+                    <p>Create your own room for FREE<Link to='/login'> Organizer</Link></p>
                 </Row>
             </Container>
             </div>

@@ -1,5 +1,5 @@
 const mongoose = require('mongoose')
-const shortid = require('shortid')
+const ShortId = require('mongoose-shortid-nodeps');
 
 const RoomSchema = new mongoose.Schema({
 
@@ -12,9 +12,7 @@ const RoomSchema = new mongoose.Schema({
         required: true
     },
     code:{
-        type: String,
-        default: shortid.generate,
-        unique: true
+        type: ShortId
     },
     askStatus:{
         type: Boolean,

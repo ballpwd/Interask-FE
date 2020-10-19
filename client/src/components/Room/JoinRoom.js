@@ -9,7 +9,7 @@ const JoinRoom = (props) => {
       joinRoom,
       toggle
     } = props ;
-    
+
     const handleSubmit = (e) => {
         e.preventDefault();
         joinRoom(roomCode);

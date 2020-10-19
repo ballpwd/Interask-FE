@@ -1,5 +1,5 @@
 import axios from 'axios';
-import apiUrl from '../utils/apiUrl' ;
+
 import { 
     USER_LOADED,
     TOKEN_LOADED,
@@ -10,7 +10,7 @@ import {
 // Load User
 export const loadUser = () => async dispatch => {
     try {
-      const res = await axios.get(`${apiUrl}/api/auth/current_user`);
+      const res = await axios.get(`/api/auth/current_user`);
       console.log(res.data)
       dispatch({
         type: USER_LOADED,

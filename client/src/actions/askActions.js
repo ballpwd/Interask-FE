@@ -1,5 +1,5 @@
 import axios from 'axios';
-import apiUrl from '../utils/apiUrl' ;
+
 // import { setAlert } from './alertActions';
 import Swal from 'sweetalert2';
 
@@ -47,7 +47,7 @@ import {
 //Get user asklist
 export const getUserAskList = (roomId) => async dispatch => {
     try {
-        const res = await axios.get(`${apiUrl}/api/ask/user/room/${roomId}`)
+        const res = await axios.get(`/api/ask/user/room/${roomId}`)
 
         dispatch({
             type: GET_ASKLIST,
@@ -64,7 +64,7 @@ export const getUserAskList = (roomId) => async dispatch => {
 // Add ask
 export const addAsk = formData => async dispatch => {
     try {
-        const res = await axios.post(`${apiUrl}/api/ask`, formData);
+        const res = await axios.post(`/api/ask`, formData);
 
         dispatch({
           type: ADD_ASK,

@@ -1,5 +1,5 @@
 import axios from "axios";
-import apiUrl from '../utils/apiUrl' ;
+
 import {
   GET_QUESTIONLIST,
   GET_QUESTION,
@@ -27,7 +27,7 @@ import {
 //Get question by question_id (User)
 export const getQuestionById = (questionId) => async (dispatch) => {
   try {
-    const res = await axios.get(`${apiUrl}/api/question/${questionId}`);
+    const res = await axios.get(`/api/question/${questionId}`);
 
     dispatch({
       type: GET_QUESTION,
@@ -44,7 +44,7 @@ export const getQuestionById = (questionId) => async (dispatch) => {
 //Get user questionlist
 export const getUserQuestionList = (roomId) => async (dispatch) => {
   try {
-    const res = await axios.get(`${apiUrl}/api/question/user/room/${roomId}`);
+    const res = await axios.get(`/api/question/user/room/${roomId}`);
     dispatch({
       type: GET_QUESTIONLIST,
       payload: res.data,

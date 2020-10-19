@@ -12,6 +12,7 @@ import { Link } from "react-router-dom";
 import ask from "../../assets/ask.svg";
 import question from "../../assets/question.svg";
 import feedback from "../../assets/feedback.svg";
+import QRCode from "qrcode.react";
 
 const OrganizerMenu = (props) => {
   const {
@@ -33,6 +34,7 @@ const OrganizerMenu = (props) => {
 
   console.log(roomLoading);
   console.log(room);
+
   return room == null || roomLoading ? (
     <Loading></Loading>
   ) : (
@@ -41,6 +43,7 @@ const OrganizerMenu = (props) => {
         <Container className="orgmenu-room">
           <p>ROOM : {room.roomName}</p>
           <p>PIN : {room.code}</p>
+          <QRCode value={`${window.location.origin}/room?join=${room.code}`} />
         </Container>
         <Container>
           <Row className="orgmenu-row">

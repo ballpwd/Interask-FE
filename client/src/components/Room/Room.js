@@ -1,23 +1,36 @@
 import React, { Fragment, useEffect, useState } from "react";
 import { connect } from "react-redux";
 import { getRoomList, roomListUnload } from "../../actions/roomActions";
+import { joinRoom } from "../../actions/roomActions";
 import leave_room from "../../assets/leave.svg";
 import RoomList from "./RoomList";
 import { Container, Button } from "reactstrap";
 import Loading from "../Loading/Loading";
+import queryString from "query-string";
+import {useLocation} from "react-router-dom";
 const Room = (props) => {
   const [edit, setEdit] = useState(false);
   const leave = () => setEdit(!edit);
   const {
     getRoomList,
     roomListUnload,
+    joinRoom,
     room: { roomList, roomLoading },
     auth: { user },
   } = props;
 
+  //join room from queryString
+  const join = queryString.parse(useLocation().search).join
+  useEffect(() => {
+    if(join){   // check join from queryString
+     console.log('join room - ',join)
+     joinRoom(join);
+    }
+  }, []);
+
+  // fetch roomlist 
   useEffect(() => {
     getRoomList();
-
     return () => {
       roomListUnload();
     };
@@ -90,4 +103,4 @@ const mapStateToProps = (state) => ({
   auth: state.auth,
 });
 
-export default connect(mapStateToProps, { getRoomList, roomListUnload })(Room);
+export default connect(mapStateToProps, { getRoomList, roomListUnload, joinRoom })(Room);

@@ -11,9 +11,9 @@ const PrivateRoute = (props) => {
     ...rest
   } = props
 
-  let redirectLogin = '/login'
+  let redirectLogin = `/login?redirect_uri=${window.location.pathname}${window.location.search}`
   if(path.indexOf('/organizer') > -1){
-    redirectLogin = '/organizer/login'
+    redirectLogin = `/organizer/login?redirect_uri=${window.location.pathname}${window.location.search}`
   }
   return ((token !== null && authLoading)) ? (
     <Loading/>

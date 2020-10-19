@@ -31,9 +31,14 @@ router.get(
                 keys.jwtSecret,
                 {expiresIn: 360000 },
                 (err, token) => {
-                    if (err) throw err;
-                    // res.status(200).cookie('token', token).redirect(req.session.redirectTo)
-                    res.status(200).redirect(req.session.redirectTo+'?token='+token)
+                    if (err) throw err;    
+                    const redirect = req.session.redirectTo
+                    if(redirect.includes('?')){
+                        res.status(200).redirect(redirect+'&token='+token)
+                    }else{
+                        res.status(200).redirect(redirect+'?token='+token)
+                    }
+                    
                 });   
         } catch (error) {
             console.error(err.message);

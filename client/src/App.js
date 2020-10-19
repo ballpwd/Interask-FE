@@ -15,7 +15,6 @@ import setAuthToken from './utils/setAuthToken';
 
 const App = () => {
   const token = queryString.parse(useLocation().search).token
-  
   useEffect(() => {
     if(token){   // check token from queryString
       store.dispatch(loadToken(token))

@@ -12,11 +12,12 @@ import {
   ROOM_UNLOADED,
   ROOMLIST_UNLOADED
 } from './types';
+import apiUrl from '../utils/apiUrl'
 
 //Get all room
 // export const getAllRoom = () => async (dispatch) => {
 //   try {
-//     const res = await axios.get('/api/room');
+//     const res = await axios.get('${apiUrl}/api/room');
 //     dispatch({
 //       type: GET_ROOMLIST,
 //       payload: res.data
@@ -32,7 +33,7 @@ import {
 //Get room by room_id (User) 
 export const getRoomById = roomId => async (dispatch) => {
   try {
-    const res = await axios.get(`/api/room/${roomId}`);
+    const res = await axios.get(`${apiUrl}/api/room/${roomId}`);
     console.log('room',res)
     dispatch({
       type: GET_ROOM,
@@ -49,7 +50,7 @@ export const getRoomById = roomId => async (dispatch) => {
 //Get user roomlist
 export const getRoomList =()=> async (dispatch) => {
   try {
-    const res = await axios.get(`/api/room/user/list`);
+    const res = await axios.get(`${apiUrl}/api/room/user/list`);
     dispatch({
       type: GET_ROOMLIST,
       payload: res.data,
@@ -65,7 +66,7 @@ export const getRoomList =()=> async (dispatch) => {
 //Join room
 export const joinRoom = (roomCode)=> async (dispatch) => {
   try {
-    const res = await axios.post(`/api/room/join/${roomCode}`);
+    const res = await axios.post(`${apiUrl}/api/room/join/${roomCode}`);
 
     dispatch({
       type: JOIN_ROOM,
@@ -102,7 +103,7 @@ export const joinRoom = (roomCode)=> async (dispatch) => {
 //Leave room
 export const leaveRoom = (roomId) => async (dispatch) => {
   try {
-    await axios.delete(`/api/room/leave/${roomId}`);
+    await axios.delete(`${apiUrl}/api/room/leave/${roomId}`);
     
     dispatch({
       type: LEAVE_ROOM,

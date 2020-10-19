@@ -5,6 +5,7 @@ import { Container, Row, Button } from 'reactstrap';
 import { connect } from 'react-redux';
 import { Redirect, useLocation } from 'react-router-dom';
 import queryString from "query-string";
+import apiUrl from '../../utils/apiUrl'
 
 const LoginOrg = (props) => {
     const {
@@ -30,7 +31,7 @@ const LoginOrg = (props) => {
                     <img src={logo} alt='Interask' className='img-fluid '></img>
                 </Row>
                 <Row className='justify-content-center align-items-center '>
-                    <a href={`/api/auth/google`}><img src={googlelogin} alt='Interask' className='img-fluid' style={{width:'350px' ,height:'87px'}} /></a>
+                    <a href={`${apiUrl}/api/auth/google?redirect_uri=${window.location.href}`}><img src={googlelogin} alt='Interask' className='img-fluid' style={{width:'350px' ,height:'87px'}} /></a>
                 </Row>
                 <Row className='justify-content-center align-items-end '>
                     <Button className ='howto' color="dark" size="sm"  style={{width:'200px' , height:'40px'}} >How to</Button>

@@ -8,12 +8,13 @@ import {
     ORG_ASK_UNLOADED,
     ORG_ASKLIST_UNLOADED
 } from './types';
+import apiUrl from '../utils/apiUrl'
 
 //Get all ask (Organizer)
 // export const getAllOrgAsk = () => async dispatch => {
 //     try {
 
-//         const res = await axios.get('/api/ask')
+//         const res = await axios.get('${apiUrl}/api/ask')
 //         dispatch({
 //             type: GET_ORG_ASKLIST,
 //             payload: res.data
@@ -30,7 +31,7 @@ import {
 // export const getOrgAskById = askId => async dispatch => {
 //     try {
 
-//         const res = await axios.get(`/api/ask/${askId}`)
+//         const res = await axios.get(`${apiUrl}/api/ask/${askId}`)
 
 //         dispatch({
 //             type: GET_ORG_ASK,
@@ -47,7 +48,7 @@ import {
 //Get organizer asklist
 export const getOrgAskList = (roomId) => async dispatch => {
     try {
-        const res = await axios.get(`/api/ask/owner/room/${roomId}`)
+        const res = await axios.get(`${apiUrl}/api/ask/owner/room/${roomId}`)
         dispatch({
             type: GET_ORG_ASKLIST,
             payload: res.data
@@ -63,7 +64,7 @@ export const getOrgAskList = (roomId) => async dispatch => {
 // ask isAnswer update
 export const askIsAnswerUpdate = (askId) => async (dispatch) => {
     try {
-      const res = await axios.put(`/api/ask/isanswer/${askId}`);
+      const res = await axios.put(`${apiUrl}/api/ask/isanswer/${askId}`);
   
       dispatch({
         type: ASK_ISANSWER,

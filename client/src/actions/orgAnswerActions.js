@@ -7,12 +7,13 @@ import {
   ORG_ANSWER_UNLOADED,
   ORG_ANSWERLIST_UNLOADED,
 } from "./types";
+import apiUrl from '../utils/apiUrl'
 
 //Get all answer (Organizer)
 // export const getAllOrgAnswer = () => async dispatch => {
 //     try {
 
-//         const res = await axios.get('/api/answer')
+//         const res = await axios.get('${apiUrl}/api/answer')
 //         dispatch({
 //             type: GET_ORG_ANSWERLIST,
 //             payload: res.data
@@ -28,7 +29,7 @@ import {
 //Get answer by answer_id (Organizer)
 // export const getOrgAnswerById = (answerId) => async (dispatch) => {
 //   try {
-//     const res = await axios.get(`/api/answer/${answerId}`);
+//     const res = await axios.get(`${apiUrl}/api/answer/${answerId}`);
 
 //     dispatch({
 //       type: GET_ORG_ANSWER,
@@ -45,7 +46,7 @@ import {
 // //Get answer by question_id (Organizer)
 // export const getOrgAnswerById = (questionId) => async (dispatch) => {
 //   try {
-//     const res = await axios.get(`/api/answer/${questionId}`);
+//     const res = await axios.get(`${apiUrl}/api/answer/${questionId}`);
 
 //     dispatch({
 //       type: GET_ORG_ANSWER,
@@ -62,7 +63,7 @@ import {
 //Get organizer answerlist
 export const getOrgAnswerList = (questionId) => async (dispatch) => {
   try {
-    const res = await axios.get(`/api/answer/${questionId}`);
+    const res = await axios.get(`${apiUrl}/api/answer/${questionId}`);
     dispatch({
       type: GET_ORG_ANSWERLIST,
       payload: res.data,

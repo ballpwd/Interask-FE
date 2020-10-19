@@ -11,11 +11,13 @@ import {
     ASK_UNLOADED,
     ASKLIST_UNLOADED
 } from './types';
+import apiUrl from '../utils/apiUrl'
+
 
 //Get all ask
 // export const getAllAsk = () => async dispatch => {
 //     try {
-//         const res = await axios.get('/api/ask')
+//         const res = await axios.get('${apiUrl}/api/ask')
 //         dispatch({
 //             type: GET_ASKLIST,
 //             payload: res.data
@@ -31,7 +33,7 @@ import {
 //Get ask by ask_id
 // export const getAskById = askId => async dispatch => {
 //     try {
-//         const res = await axios.get(`/api/ask/${askId}`)
+//         const res = await axios.get(`${apiUrl}/api/ask/${askId}`)
 //         dispatch({
 //             type: GET_ASK,
 //             payload: res.data
@@ -47,7 +49,7 @@ import {
 //Get user asklist
 export const getUserAskList = (roomId) => async dispatch => {
     try {
-        const res = await axios.get(`/api/ask/user/room/${roomId}`)
+        const res = await axios.get(`${apiUrl}/api/ask/user/room/${roomId}`)
 
         dispatch({
             type: GET_ASKLIST,
@@ -64,7 +66,7 @@ export const getUserAskList = (roomId) => async dispatch => {
 // Add ask
 export const addAsk = formData => async dispatch => {
     try {
-        const res = await axios.post(`/api/ask`, formData);
+        const res = await axios.post(`${apiUrl}/api/ask`, formData);
 
         dispatch({
           type: ADD_ASK,

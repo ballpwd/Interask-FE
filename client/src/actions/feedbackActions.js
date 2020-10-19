@@ -9,12 +9,12 @@ import {
     FEEDBACKLIST_UNLOADED
 } from './types';
 import Swal from 'sweetalert2';
-
+import apiUrl from '../utils/apiUrl'
 
 //Get all ask
 // export const getAllAsk = () => async dispatch => {
 //     try {
-//         const res = await axios.get('/api/ask')
+//         const res = await axios.get('${apiUrl}/api/ask')
 //         dispatch({
 //             type: GET_FEEDBACKLIST,
 //             payload: res.data
@@ -30,7 +30,7 @@ import Swal from 'sweetalert2';
 //Get ask by ask_id
 // export const getAskById = askId => async dispatch => {
 //     try {
-//         const res = await axios.get(`/api/feedback/${askId}`)
+//         const res = await axios.get(`${apiUrl}/api/feedback/${askId}`)
 //         dispatch({
 //             type: GET_ASK,
 //             payload: res.data
@@ -46,7 +46,7 @@ import Swal from 'sweetalert2';
 //Get user feedbacklist
 export const getUserFeedbackList = (roomId) => async dispatch => {
     try {
-        const res = await axios.get(`/api/feedback/user/room/${roomId}`)
+        const res = await axios.get(`${apiUrl}/api/feedback/user/room/${roomId}`)
 
         dispatch({
             type: GET_FEEDBACKLIST,
@@ -63,7 +63,7 @@ export const getUserFeedbackList = (roomId) => async dispatch => {
 // Add feedback
 export const addFeedback = formData => async dispatch => {
     try {
-        const res = await axios.post(`/api/feedback`, formData);
+        const res = await axios.post(`${apiUrl}/api/feedback`, formData);
         dispatch({
           type: ADD_FEEDBACK,
           payload: res.data

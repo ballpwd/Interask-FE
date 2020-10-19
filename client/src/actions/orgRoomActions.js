@@ -15,12 +15,13 @@ import {
     ORG_ROOM_UNLOADED,
     ORG_ROOMLIST_UNLOADED
 } from './types';
+import apiUrl from '../utils/apiUrl'
 
 //Get all room
 // export const getAllOrgRoom = () => async (dispatch) => {
 //   try {
 
-//     const res = await axios.get('/api/room');
+//     const res = await axios.get('${apiUrl}/api/room');
 //     dispatch({
 //       type: GET_ORG_ROOMLIST,
 //       payload: res.data,
@@ -37,7 +38,7 @@ import {
 export const getOrgRoomById = roomId => async (dispatch) => {
   try {
     console.log('room before action', roomId )
-    const res = await axios.get(`/api/room/${roomId}`);
+    const res = await axios.get(`${apiUrl}/api/room/${roomId}`);
     console.log('room at action', res.data )
     dispatch({
       type: GET_ORG_ROOM,
@@ -54,7 +55,7 @@ export const getOrgRoomById = roomId => async (dispatch) => {
 //Get owner roomlist
 export const getOrgRoomList =()=> async (dispatch) => {
   try {
-    const res = await axios.get(`/api/room/owner/list`);
+    const res = await axios.get(`${apiUrl}/api/room/owner/list`);
     dispatch({
       type: GET_ORG_ROOMLIST,
       payload: res.data,
@@ -71,7 +72,7 @@ export const getOrgRoomList =()=> async (dispatch) => {
 export const createRoom = formData => async (dispatch) => {
   try {
 
-    const res = await axios.post(`/api/room`, formData);
+    const res = await axios.post(`${apiUrl}/api/room`, formData);
 
     dispatch({
       type: CREATE_ROOM,
@@ -97,7 +98,7 @@ export const createRoom = formData => async (dispatch) => {
 export const deleteRoom = roomId => async (dispatch) => {
   try {
 
-    await axios.delete(`/api/room/${roomId}`);
+    await axios.delete(`${apiUrl}/api/room/${roomId}`);
 
     dispatch({
       type: DELETE_ROOM,
@@ -121,7 +122,7 @@ export const deleteRoom = roomId => async (dispatch) => {
 //Edit room name 
 export const editRoomName = (roomId, formData) => async (dispatch) => {
   try {
-    const res = await axios.put(`/api/room/editname/${roomId}`, formData);
+    const res = await axios.put(`${apiUrl}/api/room/editname/${roomId}`, formData);
 
     dispatch({
       type: EDIT_ROOM,
@@ -146,7 +147,7 @@ export const editRoomName = (roomId, formData) => async (dispatch) => {
 //Edit ask status
 export const editAskStatus = (roomId) => async (dispatch) => {
   try {
-    const res = await axios.put(`/api/room/editstatus/ask/${roomId}`);
+    const res = await axios.put(`${apiUrl}/api/room/editstatus/ask/${roomId}`);
 
     dispatch({
       type: EDIT_ASK_STATUS,
@@ -164,7 +165,7 @@ export const editAskStatus = (roomId) => async (dispatch) => {
 //Edit feedback status
 export const editFeedbackStatus = (roomId) => async (dispatch) => {
   try {
-    const res = await axios.put(`/api/room/editstatus/feedback/${roomId}`);
+    const res = await axios.put(`${apiUrl}/api/room/editstatus/feedback/${roomId}`);
 
     dispatch({
       type: EDIT_FEEDBACK_STATUS,

@@ -7,12 +7,13 @@ import {
   ORG_FEEDBACK_UNLOADED,
   ORG_FEEDBACKLIST_UNLOADED,
 } from "./types";
+import apiUrl from '../utils/apiUrl'
 
 //Get all feedback (Organizer)
 // export const getAllOrgFeedback = () => async dispatch => {
 //     try {
 
-//         const res = await axios.get('/api/feedback')
+//         const res = await axios.get('${apiUrl}/api/feedback')
 //         dispatch({
 //             type: GET_ORG_FEEDBACKLIST,
 //             payload: res.data
@@ -29,7 +30,7 @@ import {
 // export const getOrgFeedbackById = feedbackId => async dispatch => {
 //     try {
 
-//         const res = await axios.get(`/api/feedback/${feedbackId}`)
+//         const res = await axios.get(`${apiUrl}/api/feedback/${feedbackId}`)
 
 //         dispatch({
 //             type: GET_ORG_FEEDBACK,
@@ -46,7 +47,7 @@ import {
 //Get organizer feedbacklist
 export const getOrgFeedbackList = (roomId) => async (dispatch) => {
   try {
-    const res = await axios.get(`/api/feedback/owner/room/${roomId}`);
+    const res = await axios.get(`${apiUrl}/api/feedback/owner/room/${roomId}`);
     dispatch({
       type: GET_ORG_FEEDBACKLIST,
       payload: res.data,

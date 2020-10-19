@@ -6,11 +6,12 @@ import {
     AUTH_ERROR,
     LOGOUT
 } from './types';
+import apiUrl from '../utils/apiUrl'
 
 // Load User
 export const loadUser = () => async dispatch => {
     try {
-      const res = await axios.get(`/api/auth/current_user`);
+      const res = await axios.get(`${apiUrl}/api/auth/current_user`);
       console.log(res.data)
       dispatch({
         type: USER_LOADED,

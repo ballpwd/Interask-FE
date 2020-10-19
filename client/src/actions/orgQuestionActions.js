@@ -13,12 +13,13 @@ import {
   EDIT_QUESTION,
   EDIT_QUESTION_STATUS,
 } from "./types";
+import apiUrl from '../utils/apiUrl'
 
 //Get all question (Organizer)
 // export const getAllOrgQuestion = () => async dispatch => {
 //     try {
 
-//         const res = await axios.get('/api/question')
+//         const res = await axios.get('${apiUrl}/api/question')
 //         dispatch({
 //             type: GET_ORG_QUESTIONLIST,
 //             payload: res.data
@@ -34,7 +35,7 @@ import {
 //Get question by question_id (Organizer)
 export const getOrgQuestionById = (questionId) => async (dispatch) => {
   try {
-    const res = await axios.get(`/api/question/${questionId}`);
+    const res = await axios.get(`${apiUrl}/api/question/${questionId}`);
 
     dispatch({
       type: GET_ORG_QUESTION,
@@ -51,7 +52,7 @@ export const getOrgQuestionById = (questionId) => async (dispatch) => {
 // //Get owner questionList
 // export const getOrgQuestionList = () => async (dispatch) => {
 //   try {
-//     const res = await axios.get(`/api/question/owner/list`);
+//     const res = await axios.get(`${apiUrl}/api/question/owner/list`);
 //     dispatch({
 //       type: GET_ORG_QUESTIONLIST,
 //       payload: res.data,
@@ -67,7 +68,7 @@ export const getOrgQuestionById = (questionId) => async (dispatch) => {
 // Create question
 export const createQuestion = (formData) => async (dispatch) => {
   try {
-    const res = await axios.post(`/api/question`, formData);
+    const res = await axios.post(`${apiUrl}/api/question`, formData);
 
     dispatch({
       type: CREATE_QUESTION,
@@ -90,7 +91,7 @@ export const createQuestion = (formData) => async (dispatch) => {
 //Get organizer questionlist
 export const getOrgQuestionList = (roomId) => async (dispatch) => {
   try {
-    const res = await axios.get(`/api/question/owner/room/${roomId}`);
+    const res = await axios.get(`${apiUrl}/api/question/owner/room/${roomId}`);
     dispatch({
       type: GET_ORG_QUESTIONLIST,
       payload: res.data,
@@ -108,7 +109,7 @@ export const getOrgQuestionList = (roomId) => async (dispatch) => {
 //Delete question
 export const deleteQuestion = (questionId) => async (dispatch) => {
   try {
-    await axios.delete(`/api/question/${questionId}`);
+    await axios.delete(`${apiUrl}/api/question/${questionId}`);
 
     dispatch({
       type: DELETE_QUESTION,
@@ -132,7 +133,7 @@ export const deleteQuestion = (questionId) => async (dispatch) => {
 //Edit question
 export const editQuestion = (questionId, formData) => async (dispatch) => {
   try {
-    const res = await axios.put(`/api/question/editquestion/${questionId}`,formData);
+    const res = await axios.put(`${apiUrl}/api/question/editquestion/${questionId}`,formData);
 
     dispatch({
       type: EDIT_QUESTION,
@@ -156,7 +157,7 @@ export const editQuestion = (questionId, formData) => async (dispatch) => {
 //Edit question status
 export const editQuestionStatus = (questionId) => async (dispatch) => {
   try {
-    const res = await axios.put(`/api/question/editstatus/${questionId}`);
+    const res = await axios.put(`${apiUrl}/api/question/editstatus/${questionId}`);
 
     dispatch({
       type: EDIT_QUESTION_STATUS,

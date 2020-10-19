@@ -5,6 +5,7 @@ import { Container, Row } from 'reactstrap';
 import { connect } from 'react-redux';
 import { Redirect, useLocation } from 'react-router-dom';
 import queryString from "query-string";
+import apiUrl from '../../utils/apiUrl'
 
 const Login = (props) => {
     const {
@@ -13,7 +14,6 @@ const Login = (props) => {
 
     const redirect = queryString.parse(useLocation().search).redirect_uri
     console.log(queryString.parse(useLocation().search).redirect_uri)
-    // const token = queryString.parse(useLocation().search).token
 
     if (isAuthenticated) {
         if(redirect){
@@ -31,7 +31,7 @@ const Login = (props) => {
                         <img src={logo} alt='Interask' className='img-fluid '></img>
                     </Row>
                     <Row className='justify-content-center align-items-center'>
-                        <a href={`/api/auth/google`}><img src={googlelogin} alt='Interask' className='img-fluid' style={{width:'340px'}} /></a>
+                        <a href={`${apiUrl}/api/auth/google?redirect_uri=${window.location.href}`}><img src={googlelogin} alt='Interask' className='img-fluid' style={{width:'340px'}} /></a>
                     </Row>
                 </div>
                     <Row className='justify-content-center align-items-end footer'>

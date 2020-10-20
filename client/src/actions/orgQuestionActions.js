@@ -1,6 +1,6 @@
 import axios from "axios";
 
-import Swal from 'sweetalert2'
+import Swal from "sweetalert2";
 // import { setAlert } from "./alertActions";
 import {
   CREATE_QUESTION,
@@ -13,7 +13,7 @@ import {
   EDIT_QUESTION,
   EDIT_QUESTION_STATUS,
 } from "./types";
-import apiUrl from '../utils/apiUrl'
+import apiUrl from "../utils/apiUrl";
 
 //Get all question (Organizer)
 // export const getAllOrgQuestion = () => async dispatch => {
@@ -76,10 +76,9 @@ export const createQuestion = (formData) => async (dispatch) => {
     });
 
     Swal.fire({
-      title:'Question Created !',
-      icon:'success'
-    })
-
+      title: "Question Created !",
+      icon: "success",
+    });
   } catch (err) {
     dispatch({
       type: ORG_QUESTION_ERROR,
@@ -104,8 +103,6 @@ export const getOrgQuestionList = (roomId) => async (dispatch) => {
   }
 };
 
-
-
 //Delete question
 export const deleteQuestion = (questionId) => async (dispatch) => {
   try {
@@ -117,9 +114,9 @@ export const deleteQuestion = (questionId) => async (dispatch) => {
     });
 
     Swal.fire({
-      title:'Question Removed !',
-      icon:'success'
-    })
+      title: "Question Removed !",
+      icon: "success",
+    });
 
     // dispatch(setAlert("Question Removed", "success"));
   } catch (err) {
@@ -133,7 +130,10 @@ export const deleteQuestion = (questionId) => async (dispatch) => {
 //Edit question
 export const editQuestion = (questionId, formData) => async (dispatch) => {
   try {
-    const res = await axios.put(`${apiUrl}/api/question/editquestion/${questionId}`,formData);
+    const res = await axios.put(
+      `${apiUrl}/api/question/editquestion/${questionId}`,
+      formData
+    );
 
     dispatch({
       type: EDIT_QUESTION,
@@ -141,12 +141,21 @@ export const editQuestion = (questionId, formData) => async (dispatch) => {
     });
 
     Swal.fire({
-      title:'Question Edited !',
-      icon:'success'
-    })
+      title: "Question Edited !",
+      icon: "success",
+    });
 
     // dispatch(setAlert("Question Edited", "success"));
   } catch (err) {
+    const errorMessage = err.response.data.msg;
+
+    if (errorMessage) {
+      // dispatch(setAlert(errorMessage, 'danger'));
+      Swal.fire({
+        title: `${errorMessage} !`,
+        icon: "error",
+      });
+    }
     dispatch({
       type: ORG_QUESTION_ERROR,
       payload: err,
@@ -157,18 +166,19 @@ export const editQuestion = (questionId, formData) => async (dispatch) => {
 //Edit question status
 export const editQuestionStatus = (questionId) => async (dispatch) => {
   try {
-    const res = await axios.put(`${apiUrl}/api/question/editstatus/${questionId}`);
+    const res = await axios.put(
+      `${apiUrl}/api/question/editstatus/${questionId}`
+    );
 
     dispatch({
       type: EDIT_QUESTION_STATUS,
       payload: res.data,
     });
-
   } catch (err) {
     dispatch({
       type: ORG_QUESTION_ERROR,
-      payload: err
-    });    
+      payload: err,
+    });
   }
 };
 

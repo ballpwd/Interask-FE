@@ -142,6 +142,11 @@ router.put("/editquestion/:question_id", auth, async (req, res) => {
     if (!question) {
       return res.status(404).json({ msg: "Question not found" });
     }
+    if (!question.answered.length < 1) {
+      return res.status(403).json({
+        msg: "This question have answered. Can't change the question",
+      });
+    }
 
     question.questionDetail = req.body.questionDetail;
     await question.save();
@@ -158,34 +163,32 @@ router.put("/editquestion/:question_id", auth, async (req, res) => {
 // @route    PUT api/question/editstatus/:question_id
 // @desc     Edit feedback status
 // @access   Private
-router.put('/editstatus/:question_id', auth, async (req, res) => {
+router.put("/editstatus/:question_id", auth, async (req, res) => {
   try {
-    const user_id = req.user.id
+    const user_id = req.user.id;
     const { question_id } = req.params;
-    
+
     // Check for ObjectId format and room
     if (!req.params.question_id.match(/^[0-9a-fA-F]{24}$/)) {
-      return res.status(404).json({ msg: 'Question not found' });
+      return res.status(404).json({ msg: "Question not found" });
     }
 
     const question = await Question.findById(question_id);
 
     if (!question) {
-      return res.status(404).json({ msg: 'Question not found' });
+      return res.status(404).json({ msg: "Question not found" });
     }
 
-    question.questionStatus = !question.questionStatus
+    question.questionStatus = !question.questionStatus;
     await question.save();
 
     req.app.io.sockets.in(question.room).emit("question", { status: 200 });
 
     res.json(question);
-
   } catch (err) {
     console.error(err.message);
-    res.status(500).send('Server Error');
+    res.status(500).send("Server Error");
   }
 });
-
 
 module.exports = router;

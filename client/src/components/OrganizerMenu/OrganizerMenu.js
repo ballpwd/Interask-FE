@@ -6,7 +6,15 @@ import {
   orgRoomUnload,
   editFeedbackStatus,
 } from "../../actions/orgRoomActions";
-import { Container, Row, Col, Button, Modal, ModalBody, ModalHeader } from "reactstrap";
+import {
+  Container,
+  Row,
+  Col,
+  Button,
+  Modal,
+  ModalBody,
+  ModalHeader,
+} from "reactstrap";
 import Loading from "../Loading/Loading";
 import { Link } from "react-router-dom";
 import ask from "../../assets/ask.svg";
@@ -33,7 +41,7 @@ const OrganizerMenu = (props) => {
       &times;
     </button>
   );
-  
+
   //fetch room
   useEffect(() => {
     console.log(match.params.roomid);
@@ -162,18 +170,18 @@ const OrganizerMenu = (props) => {
             </Col>
           </Row>
           <Row>
-            <Col className='text-center'>
+            <Col className="text-center">
               <Button
-                    className="org-btn"
-                    onClick={toggle}
-                    style={{
-                      backgroundColor: "#FF8BA7",
-                      borderColor: "#121629",
-                      borderWidth: "2px",
-                      color: "#232946",
-                    }}
-                  >
-                    Show QR Code
+                className="org-btn"
+                onClick={toggle}
+                style={{
+                  backgroundColor: "#FF8BA7",
+                  borderColor: "#121629",
+                  borderWidth: "2px",
+                  color: "#232946",
+                }}
+              >
+                Show QR Code
               </Button>
             </Col>
           </Row>
@@ -188,11 +196,15 @@ const OrganizerMenu = (props) => {
         >
           <p className="org-h4">Scan QR Code To Join</p>
         </ModalHeader>
-        <ModalBody className='text-center'>
-          <QRCode size='256' value={`${window.location.origin}/room?join=${room.code}`} />
+        <ModalBody className="text-center">
+          <QRCode
+            size="256"
+            value={`${window.location.origin}/room?join=${room.code}`}
+          />
+
+          <p className="org-h4 pt-3"> PIN : {room.code} </p>
         </ModalBody>
       </Modal>
-      
     </Fragment>
   );
 };

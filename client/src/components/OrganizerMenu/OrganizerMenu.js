@@ -88,7 +88,7 @@ const OrganizerMenu = (props) => {
                     className="custom-control-label anonymous"
                     htmlFor="controlAskSwitch"
                   >
-                    ON-OFF FUNCTION
+                    ACCEPTING QUESTION
                   </label>
                 </div>
               </Col>
@@ -138,7 +138,7 @@ const OrganizerMenu = (props) => {
                     className="custom-control-label anonymous"
                     htmlFor="controlFeedbackSwitch"
                   >
-                    ON-OFF FUNCTION
+                    ACCEPTING FEEDBACK
                   </label>
                 </div>
               </Col>

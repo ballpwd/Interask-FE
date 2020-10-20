@@ -15,20 +15,25 @@ const QuestionList = (props) => {
         <Container className="question-boxlist question-box pt-2 text-center">
           <p className="question-roomname text-break">ROOM : {room.roomName}</p>
           <div className="">
-            <ScrollToBottom className={ROOT_CSS}>
-              {Array.isArray(questionList)}
-              {questionList.map((question) => (
-                question.questionStatus ? (
-                  <QuestionItem
-                    key={question._id}
-                    question={question}
-                    room={room}
-                  /> 
-                ):(
-                  null
-                )
-              ))}
-            </ScrollToBottom>
+            {questionList.length >= 1 ? (
+              <ScrollToBottom className={ROOT_CSS}>
+                {Array.isArray(questionList)}
+
+                {questionList.map((question) =>
+                  question.questionStatus ? (
+                    <QuestionItem
+                      key={question._id}
+                      question={question}
+                      room={room}
+                    />
+                  ) : null
+                )}
+              </ScrollToBottom>
+            ) : (
+              <ScrollToBottom className={ROOT_CSS}>
+                <p className="nulltext text-break">DON'T HAVE ANY QUESTION</p>
+              </ScrollToBottom>
+            )}
           </div>
         </Container>
       </div>

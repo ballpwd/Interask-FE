@@ -14,13 +14,11 @@ import EditQuestion from "./EditQuestion";
 import editq from "../../assets/editq.svg";
 import { editQuestionStatus } from "../../actions/orgQuestionActions";
 
-
 const OrganizerQuestionItem = (props) => {
   const { room, question, edit, editQuestionStatus } = props;
 
   const [modal, setModal] = useState(false);
   const toggle = () => setModal(!modal);
-  
 
   const closeBtn = (
     <button className="close" onClick={toggle}>
@@ -53,48 +51,73 @@ const OrganizerQuestionItem = (props) => {
         </div>
       ) : (
         <div className="container-fluid pt-3">
-          <Card>
-            <Button
-              onClick={toggle}
-              color="#e5e5e5"
-              size="lg"
-              style={{
-                backgroundColor: "#e5e5e5",
-                borderColor: "#e5e5e5",
-                color: "black",
-              }}
-              className="pre-box"
-            >
-              <div className="pt-2">
-                <Row>
-                  <Col></Col>
-                  <Col className="pt-2">{question.questionDetail}</Col>
-                  <Col className="text-right">
-                    <img src={editq} width="48px" height="48px"></img>
-                  </Col>
-                </Row>
-              </div>
-            </Button>
-          </Card>
+          {question.answered.length > 0 ? (
+            <Card>
+              <Button
+                color="#e5e5e5"
+                size="lg"
+                style={{
+                  backgroundColor: "#e5e5e5",
+                  borderColor: "#e5e5e5",
+                  color: "black",
+                }}
+                className="pre-box"
+                disabled
+              >
+                <div className="pt-2">
+                  <Row>
+                    <Col></Col>
+                    <Col className="pt-2">{question.questionDetail}</Col>
+                    <Col className="text-right">
+                      <img src={editq} width="48px" height="48px"></img>
+                    </Col>
+                  </Row>
+                </div>
+              </Button>
+            </Card>
+          ) : (
+            <Card>
+              <Button
+                onClick={toggle}
+                color="#e5e5e5"
+                size="lg"
+                style={{
+                  backgroundColor: "#bbb",
+                  borderColor: "#e5e5e5",
+                  color: "black",
+                }}
+                className="pre-box"
+              >
+                <div className="pt-2">
+                  <Row>
+                    <Col></Col>
+                    <Col className="pt-2">{question.questionDetail}</Col>
+                    <Col className="text-right">
+                      <img src={editq} width="48px" height="48px"></img>
+                    </Col>
+                  </Row>
+                </div>
+              </Button>
+            </Card>
+          )}
         </div>
       )}
       <div className="custom-control custom-switch text-center ">
-                  <input
-                    type="checkbox"
-                    className="custom-control-input"
-                    id={`controlQuestionSwitch${question._id}`}
-                    checked={question.questionStatus}
-                    onChange={() => editQuestionStatus(question._id)}
-                  />
+        <input
+          type="checkbox"
+          className="custom-control-input"
+          id={`controlQuestionSwitch${question._id}`}
+          checked={question.questionStatus}
+          onChange={() => editQuestionStatus(question._id)}
+        />
 
-                  <label
-                    className="custom-control-label question-switch"
-                    htmlFor={`controlQuestionSwitch${question._id}`}
-                  >
-                    Accepting answer
-                  </label>
+        <label
+          className="custom-control-label question-switch"
+          htmlFor={`controlQuestionSwitch${question._id}`}
+        >
+          ACCEPTING ANSWER
+        </label>
       </div>
-
 
       <Modal isOpen={modal} toggle={toggle} size="lg" centered>
         <ModalHeader
@@ -114,4 +137,4 @@ const OrganizerQuestionItem = (props) => {
   );
 };
 
-export default connect(null,{editQuestionStatus})(OrganizerQuestionItem);
+export default connect(null, { editQuestionStatus })(OrganizerQuestionItem);

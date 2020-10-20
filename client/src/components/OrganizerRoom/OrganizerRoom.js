@@ -41,38 +41,40 @@ const OrganizerRoom = (props) => {
             <h3 className="text-center org-room">Organizer ROOM</h3>
             <hr />
           </div>
-          <Row>
+          <Container>
             <div>{<OrganizerRoomList roomList={roomList} edit={edit} />}</div>
-          </Row>
-          <Row className="justify-content-center mt-2">
-            {!edit ? (
-              <Button
-                onClick={manage}
-                className="org-btn"
-                style={{
-                  backgroundColor: "#FF8BA7",
-                  borderColor: "#121629",
-                  borderWidth: "2px",
-                  color: "#232946",
-                }}
-              >
-                MANAGE ROOM
-              </Button>
-            ) : (
-              <Button
-                onClick={manage}
-                className="org-btn"
-                style={{
-                  backgroundColor: "#232946",
-                  borderColor: "#FF8BA7",
-                  borderWidth: "2px",
-                  color: "#FF8BA7",
-                }}
-              >
-                COMPLETE
-              </Button>
-            )}
-          </Row>
+          </Container>
+          {roomList.length >= 1 ? (
+            <Row className="justify-content-center mt-2">
+              {!edit ? (
+                <Button
+                  onClick={manage}
+                  className="org-btn"
+                  style={{
+                    backgroundColor: "#FF8BA7",
+                    borderColor: "#121629",
+                    borderWidth: "2px",
+                    color: "#232946",
+                  }}
+                >
+                  MANAGE ROOM
+                </Button>
+              ) : (
+                <Button
+                  onClick={manage}
+                  className="org-btn"
+                  style={{
+                    backgroundColor: "#232946",
+                    borderColor: "#FF8BA7",
+                    borderWidth: "2px",
+                    color: "#FF8BA7",
+                  }}
+                >
+                  COMPLETE
+                </Button>
+              )}
+            </Row>
+          ) : null}
         </Container>
       </div>
     </Fragment>

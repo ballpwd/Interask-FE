@@ -6,9 +6,8 @@ import {
   orgQuestionListUnload,
 } from "../../actions/orgQuestionActions";
 import { getOrgRoomById, orgRoomUnload } from "../../actions/orgRoomActions";
-import { Container } from "reactstrap";
+import { Container, Button, Row, Col } from "reactstrap";
 import Loading from "../Loading/Loading";
-
 
 const OrganizerQuestion = (props) => {
   const {
@@ -20,6 +19,9 @@ const OrganizerQuestion = (props) => {
     orgQuestion: { questionList, questionLoading },
     match,
   } = props;
+
+  const [edit, setEdit] = useState(false);
+  const manage = () => setEdit(!edit);
 
   useEffect(() => {
     getOrgRoomById(match.params.roomid);
@@ -41,7 +43,7 @@ const OrganizerQuestion = (props) => {
     <Fragment>
       <div className="fullscreen bg">
         <Container fluid>
-          <h1 className="org-h1 text-center">Q&A</h1>
+          <h1 className="org-h1 text-center org-section">Q&A</h1>
         </Container>
         <Container fluid>
           <h5 className="org-h5 text-center">
@@ -50,7 +52,44 @@ const OrganizerQuestion = (props) => {
             PIN: {room.code}
           </h5>
 
-          {<OrganizerQuestionList questionList={questionList} room={room} />}
+          <Container fluid>
+            <Row className="pt-4 px-4">
+              <Col className="text-left mt-2">
+                <h4 className="org-h3 "> Question </h4>
+              </Col>
+              {questionList.length >= 1 ? (
+                <Col className="text-right mt-2">
+                  {!edit ? (
+                    <Button
+                      onClick={manage}
+                      className="org-btn"
+                      style={{
+                        backgroundColor: "#FF8BA7",
+                        borderColor: "#121629",
+                        borderWidth: "2px",
+                        color: "#232946",
+                      }}
+                    >
+                      MANAGE QUESTION
+                    </Button>
+                  ) : (
+                    <Button onClick={manage} className="btn btn-light org-btn">
+                      COMPLETE
+                    </Button>
+                  )}
+                </Col>
+              ) : null}
+            </Row>
+            <hr />
+          </Container>
+
+          {
+            <OrganizerQuestionList
+              questionList={questionList}
+              room={room}
+              edit={edit}
+            />
+          }
         </Container>
       </div>
     </Fragment>

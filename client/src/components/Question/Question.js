@@ -8,7 +8,7 @@ import {
 import QuestionList from "./QuestionList";
 import { Container } from "reactstrap";
 import Loading from "../Loading/Loading";
-import apiUrl from '../../utils/apiUrl' 
+import apiUrl from "../../utils/apiUrl";
 import io from "socket.io-client";
 
 const Question = (props) => {
@@ -39,7 +39,6 @@ const Question = (props) => {
         getUserQuestionList(match.params.roomid);
       }
     });
-
 
     getUserQuestionList(match.params.roomid);
     return () => {

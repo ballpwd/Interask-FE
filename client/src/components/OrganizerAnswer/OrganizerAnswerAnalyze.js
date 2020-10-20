@@ -13,7 +13,7 @@ const OrganizerAnswerAnalyze = (props) => {
 
   return (
     <div>
-      <h2 className="org-h2 text-center"> Analyze</h2>
+      <h2 className="org-h2 text-center"> Summary</h2>
       {console.log(answerList)}
       <Row>
         <Col md="6" xs="12" className="mt-5">

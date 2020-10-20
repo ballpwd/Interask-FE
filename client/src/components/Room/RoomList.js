@@ -1,6 +1,13 @@
 import React, { useState, Fragment } from "react";
 import RoomItem from "./RoomItem";
-import { Container, Button, Modal, ModalBody, ModalHeader } from "reactstrap";
+import {
+  Container,
+  Button,
+  Modal,
+  ModalBody,
+  ModalHeader,
+  Row,
+} from "reactstrap";
 import { Link } from "react-router-dom";
 import plus from "../../assets/plus.svg";
 import leave_room from "../../assets/leave.svg";
@@ -20,10 +27,18 @@ const RoomList = (props) => {
   return (
     <div>
       <Container className="text-center">
-        {Array.isArray(roomList)}
-        {roomList.map((room) => (
-          <RoomItem key={room._id} room={room} edit={edit} />
-        ))}
+        {roomList.length >= 1 ? (
+          <div>
+            {Array.isArray(roomList)}
+            {roomList.map((room) => (
+              <RoomItem key={room._id} room={room} edit={edit} />
+            ))}
+          </div>
+        ) : (
+          <Row className="justify-content-center mt-2">
+            <p className="nulltextroom text-center"> PLEASE JOIN THE ROOM</p>
+          </Row>
+        )}
         <Button
           className="btn-join"
           onClick={toggle}

@@ -15,11 +15,8 @@ import CreateQuestion from "./CreateQuestion";
 
 const OrganizerQuestionList = (props) => {
   const [modal, setModal] = useState(false);
-  const { room, question, questionList } = props;
+  const { room, question, questionList, edit } = props;
   const toggle = () => setModal(!modal);
-
-  const [edit, setEdit] = useState(false);
-  const manage = () => setEdit(!edit);
 
   const closeBtn = (
     <button className="close" onClick={toggle}>
@@ -29,45 +26,26 @@ const OrganizerQuestionList = (props) => {
 
   return (
     <Fragment>
-      <div className=" px-4">
-        <Container fluid>
-          <Row className="pt-4">
-            <Col className="text-left mt-2">
-              <h4 className="org-h3"> Question </h4>
-            </Col>
-            <Col className="text-right mt-2">
-              {!edit ? (
-                <Button
-                  onClick={manage}
-                  className="org-btn"
-                  style={{
-                    backgroundColor: "#FF8BA7",
-                    borderColor: "#121629",
-                    borderWidth: "2px",
-                    color: "#232946",
-                  }}
-                >
-                  MANAGE QUESTION
-                </Button>
-              ) : (
-                <Button onClick={manage} className="btn btn-light org-btn">
-                  COMPLETE
-                </Button>
-              )}
-            </Col>
-          </Row>
-          <hr />
-        </Container>
-        {Array.isArray(questionList)}
-        {questionList.map((question) => (
-          <OrganizerQuestionItem
-            key={question._id}
-            question={question}
-            room={room}
-            edit={edit}
-          />
-        ))}
-      </div>
+      {questionList.length >= 1 ? (
+        <div className=" px-4">
+          {Array.isArray(questionList)}
+          {questionList.map((question) => (
+            <OrganizerQuestionItem
+              key={question._id}
+              question={question}
+              room={room}
+              edit={edit}
+            />
+          ))}
+        </div>
+      ) : (
+        <Row className="justify-content-center mt-2">
+          <p className="nulltextroomorg text-center">
+            {" "}
+            PLEASE CREATE YOUR QUESTION
+          </p>
+        </Row>
+      )}
       <div className=" pt-3 px-4">
         <Container fluid>
           <Card>
@@ -81,8 +59,8 @@ const OrganizerQuestionList = (props) => {
               }}
               className="pre-box pt-4"
             >
-              <p className="org-p">
-                CREATE NEW QUESTION{" "}
+              <p className="h5 text-center ">
+                CREATE THE QUESTION{" "}
                 <img src={plus} width="40px" height="40px"></img>
               </p>
             </Button>
@@ -95,7 +73,7 @@ const OrganizerQuestionList = (props) => {
           className="border-0 pb-0"
           cssModule={{ "modal-title": "w-100 text-center pt-5" }}
         >
-          <p className="org-h4">CREATE NEW QUESTION</p>
+          <p className="org-h4">CREATE THE QUESTION</p>
         </ModalHeader>
         <ModalBody>
           <div>

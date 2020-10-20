@@ -44,6 +44,33 @@ header {
   line-height: 54px;
 }
 
+.nulltext {
+  font-family: Kanit;
+  font-weight: bold;
+  font-size: 24px;
+  text-align: center;
+  padding-top: 20px;
+}
+
+.nulltextroomorg {
+  font-family: Kanit;
+  font-weight: medium;
+  font-size: 30px;
+  text-align: center;
+  padding-top: 20px;
+  color: #eebbc3;
+}
+
+.nulltextroom {
+  font-family: Kanit;
+  font-weight: medium;
+  font-size: 28px;
+  text-align: center;
+  padding-top: 15px;
+  padding-bottom: 10px;
+  color: #eebbc3;
+}
+
 .org-h1 {
   font-family: Kanit;
   font-style: normal;
@@ -457,7 +484,7 @@ header {
   left: 0;
 }
 
-.center{
+.center {
   padding: 200px 0;
 }
 

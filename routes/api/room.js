@@ -48,12 +48,12 @@ router.get('/:room_id', auth, async (req, res) => {
         if (!req.params.room_id.match(/^[0-9a-fA-F]{24}$/)) {
           return res.status(404).json({ msg: 'Room not found' });
         }
-        const room = await Room.findById(room_id)
+        const room = await Room.findById(room_id).populate("owner", ["userName"])
 
         if (!room) {
             return res.status(404).json({ msg: 'Room not found' });
         }
-        if ((room.owner != user_id) && (!room.user.includes(user_id))){
+        if ((room.owner._id != user_id) && (!room.user.includes(user_id))){
           return res.status(401).json({msg: 'User Unauthorized'})
         }
         res.json(room) 
@@ -92,7 +92,8 @@ router.get('/user/list', auth, async (req, res) => {
   try{
     const user_id = req.user.id
 
-    const room = await Room.find({user: user_id})
+    const room = await Room.find({user: user_id}).populate("user", ["userName"])
+    
       
     if (room.length < 1) {
       return res.status(404).json({ msg: 'Room not found' });

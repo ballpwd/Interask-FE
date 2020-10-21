@@ -48,13 +48,13 @@ const OrganizerFeedbackChart = (props) => {
             '#FF6384',
             '#36A2EB',
             '#FFCE56',
-            '#000000'
+            '#7ADF7E'
             ],
             hoverBackgroundColor: [
             '#FF6384',
             '#36A2EB',
             '#FFCE56',
-            '#000000'
+            '#7ADF7E'
             ]
             
         }]
@@ -64,7 +64,7 @@ const OrganizerFeedbackChart = (props) => {
         legend: {
             // labels: {
             //     fontColor: 'black'
-            // }
+            // },
             display: false
         },
         layout: {
@@ -80,7 +80,8 @@ const OrganizerFeedbackChart = (props) => {
                 ticks: {
                     fontSize: 20,
                     fontStyle: 'bold',
-                    fontColor: '#ffffff'
+                    fontColor: '#ffffff',
+                    fontFamily: 'Kanit'
                 }
             }],
             yAxes: [{
@@ -104,7 +105,8 @@ const OrganizerFeedbackChart = (props) => {
                 color: 'white',
                 font: {
                     size: 20,
-                    weight: 'bold'
+                    weight: 'bold',
+                    family: 'Kanit'
                 }
             }
         }

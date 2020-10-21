@@ -2,19 +2,26 @@ import React, { Fragment, useEffect, useState } from "react";
 import { connect } from "react-redux";
 import { Link } from "react-router-dom";
 import { getRoomById, roomUnload } from "../../actions/roomActions";
-import { Container, Button, Row, Col } from "reactstrap";
+import { Container, Button, Row, Col, Modal, ModalBody, ModalHeader } from "reactstrap";
 import Loading from "../Loading/Loading";
 import room_ask from "../../assets/room_ask.svg";
 import room_question from "../../assets/room_question.svg";
 import room_feedback from "../../assets/room_feedback.svg";
+import { leaveRoom } from "../../actions/roomActions";
+import leave_room from "../../assets/leave.svg";
+import LeaveRoom from "../Room/LeaveRoom";
+import close from "../../assets/close.svg";
+
+
 const RoomMenu = (props) => {
-  const [edit, setEdit] = useState(false);
-  const leave = () => setEdit(!edit);
+  const [modal, setModal] = useState(false);
+  const toggle = () => setModal(!modal);
+  
   const {
     getRoomList,
     roomListUnload,
     getRoomById,
-    room: { room, roomLoading },
+    room: { room, roomLoading,owner},
     auth: { user },
     match,
   } = props;
@@ -26,20 +33,27 @@ const RoomMenu = (props) => {
     };
   }, [getRoomById, match.params.roomid, roomUnload]);
 
+  const closeBtn = (
+    <button className="close" onClick={toggle}>
+      &times;
+    </button>
+  );
   return room == null || roomLoading ? (
     <Loading></Loading>
   ) : (
     <Fragment>
       <div className="fullscreen bg">
         <Container fluid>
-          <div className="p-4">
+          <div className="pt-4">
             <h1 className="room-h1">Welcome</h1>
+            <br/>
             <h3 className="room-h3 text-break">ROOM : {room.roomName}</h3>
-            <h3 className="room-h3 text-break">Hi, {user.userName}</h3>
+            {console.log(room)}
+           
           </div>
         </Container>
         <Container fluid className="text-center">
-          <Col>
+          <Row className="justify-content-center">
             <Link to={`/${room._id}/ask`}>
               <Button
                 className="room-box-ask"
@@ -57,8 +71,8 @@ const RoomMenu = (props) => {
                 ASK
               </Button>
             </Link>
-          </Col>
-          <Col>
+          </Row>
+          <Row className="justify-content-center" >
             <Link to={`/${room._id}/feedback`}>
               <Button
                 className="room-box-feedback"
@@ -76,8 +90,8 @@ const RoomMenu = (props) => {
                 FEEDBACK
               </Button>
             </Link>
-          </Col>
-          <Col>
+          </Row>
+          <Row className="justify-content-center">
             <Link to={`/${room._id}/question`}>
               <Button
                 className="room-box-question"
@@ -95,9 +109,55 @@ const RoomMenu = (props) => {
                 Q&A
               </Button>
             </Link>
-          </Col>
+          </Row> 
+          <Row className="justify-content-center pt-4 ">
+                <Button
+                  className="btn-leave"
+                  onClick={toggle}
+                  style={{
+                    backgroundColor: "#d4d8f0",
+                    borderColor: "#121629",
+                    color: "#232946",
+                    borderRadius: "10px 10px 10px 10px",
+                    fontSize: "24px",
+                  }}
+                  size="md"
+                >
+                  <div>
+                    <img
+                      src={leave_room}
+                      className="leave-white"
+                      width="38px"
+                      height="38px"
+                    ></img>{" "}
+                    LEAVE ROOM
+                  </div>
+                </Button>
+              )
+          </Row>
+          <Row className="justify-content-center p-3 ">
+            <p className="room-creator text-break">Created room by : {room.owner.userName}</p>
+          </Row>
+          
         </Container>
       </div>
+      <Modal isOpen={modal} toggle={toggle} size="lg" centered>
+            <ModalHeader
+              close={closeBtn}
+              className="border-0 pb-0 "
+              cssModule={{ "modal-title": "w-100 text-center pt-5" }}
+            >
+              <img src={close} width="128px" height="128px"></img>
+              <p className="warn-leave">DO YOU WANT TO LEAVE</p>
+              <p className="org-h4 text-break">"{room.roomName}" room ?</p>
+            </ModalHeader>
+            <ModalBody>
+              <div>
+                <LeaveRoom toggle={toggle} room={room} />
+              </div>
+            </ModalBody>
+          </Modal>
+          
     </Fragment>
   );
 };
@@ -107,4 +167,4 @@ const mapStateToProps = (state) => ({
   auth: state.auth,
 });
 
-export default connect(mapStateToProps, { getRoomById, roomUnload })(RoomMenu);
+export default connect(mapStateToProps, { getRoomById, roomUnload,leaveRoom })(RoomMenu);

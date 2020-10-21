@@ -26,10 +26,8 @@ const RoomList = (props) => {
 
   return (
     <div>
-      <Container className="text-center">
         {roomList.length >= 1 ? (
           <div>
-            {Array.isArray(roomList)}
             {roomList.map((room) => (
               <RoomItem key={room._id} room={room} edit={edit} />
             ))}
@@ -61,7 +59,6 @@ const RoomList = (props) => {
             JOIN ROOM
           </div>
         </Button>
-      </Container>
 
       <Modal isOpen={modal} toggle={toggle} size="lg" centered>
         <ModalHeader

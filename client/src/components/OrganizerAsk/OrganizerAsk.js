@@ -1,4 +1,4 @@
-import React, { Fragment, useEffect } from "react";
+import React, { Fragment, useEffect, useState } from "react";
 import { connect } from "react-redux";
 import { Link } from "react-router-dom";
 import { getOrgRoomById, orgRoomUnload } from "../../actions/orgRoomActions";
@@ -6,8 +6,11 @@ import { getOrgAskList, orgAskListUnload } from "../../actions/orgAskActions";
 import OrganizerAskList from "./OrganizerAskList";
 import OrganizerAskAnalyze from "./OrganizerAskAnalyze";
 import Loading from "../Loading/Loading";
-import { Container, Row, Col, Button } from "reactstrap";
+import { Container, Row, Col, Button, Dropdown, DropdownToggle, DropdownMenu, DropdownItem } from "reactstrap";
 import apiUrl from '../../utils/apiUrl' ;
+import DayPickerInput from 'react-day-picker/DayPickerInput';
+import 'react-day-picker/lib/style.css';
+
 //socket
 import io from "socket.io-client";
 //export
@@ -24,12 +27,19 @@ const OrganizerAsk = (props) => {
     match,
   } = props;
 
+  const [dropdownOpen, setDropdownOpen] = useState(false);
+  const toggle = () => setDropdownOpen(prevState => !prevState);
+
+  const [filterDate,setFilterDate] = useState([]);
+  const [dropdownDate,setDropdownDate] = useState('All');
+
   useEffect(() => {
     getOrgRoomById(match.params.roomid);
     return () => {
       orgRoomUnload();
     };
   }, [getOrgRoomById, match.params.roomid, orgRoomUnload]);
+
 
   useEffect(() => {
     let socket = io.connect(apiUrl);
@@ -49,9 +59,38 @@ const OrganizerAsk = (props) => {
       socket.disconnect();
     };
   }, [getOrgAskList, match.params.roomid, orgAskListUnload]);
+  
+  const groups = askList.reduce((groups, ask) => {
+    const date = ask.date.split('T')[0];
+    if (!groups[date]) {
+      groups[date] = [];
+    }
+    groups[date].push(ask);
+    return groups;
+  }, {});
 
-  console.log(room);
-  console.log(askList);
+  // Edit: to add it in the array format instead
+  const groupArrays = Object.keys(groups).map((date) => {
+    return {
+      date,
+      askList: groups[date]
+    };
+  });
+
+  useEffect(() => {
+    let filtered = askList ;
+    
+    if(dropdownDate !== "All"){
+        filtered = filtered.filter(item => {
+        return item.date.split('T')[0] === dropdownDate 
+      })
+    }
+
+    console.log(dropdownDate)
+    console.log(filtered)
+    setFilterDate(filtered)
+
+  }, [dropdownDate,askList]);
 
   return roomLoading || askLoading ? (
     <Loading></Loading>
@@ -64,20 +103,42 @@ const OrganizerAsk = (props) => {
         <Container fluid>
           <Row className="justify-content-center align-items-center">
             <Col md="5" xs="12" className="mt-4">
-              <h5 className="org-h5">
-                ROOM: {room.roomName}
-                <br />
-                PIN: {room.code}
-              </h5>
-              {<OrganizerAskList askList={askList} />}
+              <Row>
+                <Col>
+                  <h5 className="org-h5">
+                    ROOM: {room.roomName}
+                  <br />
+                    PIN: {room.code}
+                  </h5>
+                </Col>
+                <Col className="text-right" style={{marginTop: "15px"}}>
+                  <Dropdown isOpen={dropdownOpen} onSelect={(e)=> console.log(e.target.value)} toggle={toggle}>
+                  <DropdownToggle caret>
+                    Filter date {dropdownDate}
+                    </DropdownToggle>
+                    <DropdownMenu>
+                    <DropdownItem onClick={() => setDropdownDate('All')}>All</DropdownItem>
+                    {groupArrays.map((data)=>{
+                      return <DropdownItem onClick={() => setDropdownDate(data.date)}>{data.date}</DropdownItem>
+                      
+                    })}
+                  </DropdownMenu>
+              </Dropdown>
+                </Col>
+              </Row>
+              <Row>
+                <Col>
+                  {<OrganizerAskList askList={filterDate}  />}
+                </Col>
+              </Row>
             </Col>
             <Col md="5" xs="12" className="mt-4">
-              {<OrganizerAskAnalyze askList={askList} />}
+              {<OrganizerAskAnalyze askList={filterDate} />}
               <Row>
                 <Col md="6" xs="12" className="text-center mt-5">
                   <Button
                     className="org-btn"
-                    onClick={() => exportAsk(askList)}
+                    onClick={() => exportAsk(filterDate)}
                     style={{
                       backgroundColor: "#FF8BA7",
                       borderColor: "#121629",

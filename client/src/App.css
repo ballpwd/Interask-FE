@@ -391,6 +391,7 @@ header {
   /*box-shadow: #e493c980 0px 1px 0.4rem;*/
   overflow: hidden;
   text-overflow: ellipsis;
+  margin-top: 25px;
 }
 .room-text {
   overflow: hidden;
@@ -404,6 +405,7 @@ header {
   font-style: normal;
   text-align: center;
   align-items: center;
+  margin-top: 25px;
 }
 
 .btn-leave {
@@ -459,7 +461,6 @@ header {
 }
 
 /* -------------------- Login (Home) -------------------- */
-
 .logo {
   position: absolute;
   top: 50%;
@@ -478,10 +479,12 @@ header {
   font-family: Kanit;
   font-size: 14px;
   font-weight: 400;
-  position: fixed;
+  text-align: center;
+  margin-top: 25px;
+  /*position:fixed;
   bottom: 0;
   right: 0;
-  left: 0;
+  left: 0;*/
 }
 
 .center {
@@ -725,6 +728,14 @@ header {
   justify-content: center;
 }
 /*-------------------------------- Organizer Feedback ---------------------------------*/
+.dropdownDate{
+  font-family: Kanit;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 14px;
+  color: #fff;
+  text-align: center;
+}
 .org-section {
   padding-top: 50px;
 }
@@ -740,6 +751,15 @@ header {
 }
 
 /*-------------------------------- Room Menu ---------------------------------*/
+.room-creator{
+  font-family: Kanit;
+  font-style: normal;
+  font-weight: 700;
+  font-size: 16px;
+  color: #fff;
+  text-align: center;
+}
+
 .menu-row {
   padding: 10px;
   text-align: center;
@@ -753,7 +773,7 @@ header {
   text-align: center;
   align-items: center;
   border-width: 2px;
-  margin-top: 30px;
+  margin-top: 25px;
 }
 
 .room-box-question {
@@ -764,7 +784,7 @@ header {
   font-style: normal;
   text-align: center;
   align-items: center;
-  margin-top: 30px;
+  margin-top: 25px;
   border-width: 2px;
 }
 
@@ -776,7 +796,7 @@ header {
   font-style: normal;
   text-align: center;
   align-items: center;
-  margin-top: 30px;
+  margin-top: 25px;
   border-width: 2px;
 }
 

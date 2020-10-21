@@ -1,4 +1,4 @@
-import React, { Fragment, useEffect } from "react";
+import React, { Fragment, useEffect, useState } from "react";
 import { connect } from "react-redux";
 import { getOrgRoomById, orgRoomUnload } from "../../actions/orgRoomActions";
 import {
@@ -8,7 +8,7 @@ import {
 import OrganizerFeedbackList from "./OrganizerFeedbackList";
 import OrganizerFeedbackAnalyze from "./OrganizerFeedbackAnalyze";
 import Loading from "../Loading/Loading";
-import { Container, Row, Col, Button } from "reactstrap";
+import { Container, Row, Col, Button, Dropdown, DropdownToggle, DropdownMenu, DropdownItem  } from "reactstrap";
 import apiUrl from '../../utils/apiUrl' 
 //socket
 import io from "socket.io-client";
@@ -25,6 +25,12 @@ const OrganizerFeedback = (props) => {
     orgFeedback: { feedbackList, feedbackLoading },
     match,
   } = props;
+
+  const [dropdownOpen, setDropdownOpen] = useState(false);
+  const toggle = () => setDropdownOpen(prevState => !prevState);
+
+  const [filterDate,setFilterDate] = useState([]);
+  const [dropdownDate,setDropdownDate] = useState('All');
 
   useEffect(() => {
     getOrgRoomById(match.params.roomid);
@@ -52,8 +58,37 @@ const OrganizerFeedback = (props) => {
     };
   }, [getOrgFeedbackList, match.params.roomid, orgFeedbackListUnload]);
 
-  console.log(room);
-  console.log(feedbackList);
+  const groups = feedbackList.reduce((groups, feedback) => {
+    const date = feedback.date.split('T')[0];
+    if (!groups[date]) {
+      groups[date] = [];
+    }
+    groups[date].push(feedback);
+    return groups;
+  }, {});
+
+  // Edit: to add it in the array format instead
+  const groupArrays = Object.keys(groups).map((date) => {
+    return {
+      date,
+      feedbackList: groups[date]
+    };
+  });
+
+  useEffect(() => {
+    let filtered = feedbackList ;
+    
+    if(dropdownDate !== "All"){
+        filtered = filtered.filter(item => {
+        return item.date.split('T')[0] === dropdownDate 
+      })
+    }
+
+    console.log(dropdownDate)
+    console.log(filtered)
+    setFilterDate(filtered)
+
+  }, [dropdownDate,feedbackList]);
 
   return roomLoading || feedbackLoading ? (
     <Loading></Loading>
@@ -66,20 +101,41 @@ const OrganizerFeedback = (props) => {
         <Container fluid>
           <Row className="justify-content-center align-items-center">
             <Col md="5" xs="12" className="mt-4">
-              <h5 className="org-h5">
-                ROOM: {room.roomName}
-                <br />
-                PIN: {room.code}
-              </h5>
-              {<OrganizerFeedbackList feedbackList={feedbackList} />}
+              <Row>
+                <Col>
+                  <h5 className="org-h5">
+                    ROOM: {room.roomName}
+                    <br />
+                    PIN: {room.code}
+                  </h5>
+                </Col>
+                <Col className="text-right" style={{marginTop: "15px"}}>
+                  <Dropdown isOpen={dropdownOpen} toggle={toggle}>
+                    <DropdownToggle caret>
+                     Filter date : {dropdownDate}
+                    </DropdownToggle>
+                    <DropdownMenu>
+                      <DropdownItem onClick={() => setDropdownDate('All')}>All</DropdownItem>
+                        {groupArrays.map((data)=>{
+                          return <DropdownItem onClick={() => setDropdownDate(data.date)}>{data.date}</DropdownItem>
+                        })}
+                  </DropdownMenu>
+                  </Dropdown>
+                </Col> 
+              </Row>
+              <Row >
+                <Col>
+                  {<OrganizerFeedbackList feedbackList={filterDate} />}
+                </Col> 
+              </Row>
             </Col>
             <Col md="5" xs="12" className="mt-4">
-              {<OrganizerFeedbackAnalyze feedbackList={feedbackList} />}
+              {<OrganizerFeedbackAnalyze feedbackList={filterDate} />}
               <Row>
                 <Col md="12" xs="12" className="text-center mt-5">
                   <Button
                     className="org-btn"
-                    onClick={() => exportFeedback(feedbackList)}
+                    onClick={() => exportFeedback(filterDate)}
                     style={{
                       backgroundColor: "#FF8BA7",
                       borderColor: "#121629",

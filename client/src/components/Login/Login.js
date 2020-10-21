@@ -1,7 +1,7 @@
 import React, { Fragment } from 'react';
 import logo from '../../assets/logo.svg';
 import googlelogin from '../../assets/signin.svg';
-import { Container, Row } from 'reactstrap';
+import { Container, Row, Col } from 'reactstrap';
 import { connect } from 'react-redux';
 import { Redirect, useLocation, Link } from 'react-router-dom';
 import queryString from "query-string";
@@ -33,10 +33,13 @@ const Login = (props) => {
                     <Row className='justify-content-center align-items-center'>
                         <a href={`${apiUrl}/api/auth/google?redirect_uri=${window.location.href}`}><img src={googlelogin} alt='Interask' className='img-fluid' style={{width:'340px'}} /></a>
                     </Row>
-                </div>
-                    <Row className='justify-content-center align-items-end footer'>
+                    <Row>
+                        <Col className='footer'>
                         <p>Create your own room for FREE<Link to='/organizer/login'> Organizer</Link></p>
+                        </Col>
                     </Row>
+                </div>
+                   
                 </Container>
             </div>
         </Fragment >

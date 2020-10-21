@@ -74,10 +74,10 @@ export const addAsk = formData => async dispatch => {
         });
         
         //test Sweetalert2
-        Swal.fire({
+       /* Swal.fire({
             title:'Message Send!',
             icon:'success'
-        })
+        })*/
         
     } catch (err) {
 

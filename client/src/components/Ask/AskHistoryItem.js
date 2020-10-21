@@ -1,5 +1,5 @@
 import React, { Fragment } from "react";
-
+import tick from "../../assets/tick.svg";
 const AskHistoryItem = ({ ask: { text, date } }) => {
   const d = new Date(date);
   const day = d.getDate();
@@ -33,10 +33,11 @@ const AskHistoryItem = ({ ask: { text, date } }) => {
             <div className="question-time">
                 <p>{timeHistory}</p>
             </div>
-            <div className="textbox">
-                <p className='question-text text-break'>
-                    {text}</p>
-
+            <div>
+                <div className="textbox">
+                    <p className='question-text text-break'>
+                        {text}</p>
+                </div>
             </div>
           
         </Fragment>

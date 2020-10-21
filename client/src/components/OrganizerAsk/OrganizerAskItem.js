@@ -3,6 +3,7 @@ import React from 'react' ;
 const OrganizerAskItem = props =>{
     const {ask:{user:{userName},text,date,anonymous}} = props
     const time = new Date(date)
+    console.log(date)
     return(
         <div className='boxitem'>
             <div className='org-p p-2 text-break'> 

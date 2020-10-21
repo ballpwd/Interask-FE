@@ -5,7 +5,6 @@ const OrganizerPresentList = ({ askList }) => {
   return (
     <div className="pt-2 px-4">
       <h4 className="org-h3"> Question</h4>
-      <hr />
       {askList.length >= 1 ? (
         <div>
           {Array.isArray(askList)}

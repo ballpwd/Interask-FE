@@ -1,7 +1,9 @@
-import React from "react";
+import React,{useState}from "react";
+
 import OrganizerAskItem from "./OrganizerAskItem";
 
 const OrganizerAskList = ({ askList }) => {
+
   return (
     <div className="org-box">
       <div className="pt-4 px-3">

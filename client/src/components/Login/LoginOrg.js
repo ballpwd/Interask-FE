@@ -36,10 +36,10 @@ const LoginOrg = (props) => {
                 <Row className='justify-content-center align-items-end '>
                     <Button className ='howto' color="dark" size="sm"  style={{width:'200px' , height:'40px'}} >How to</Button>
                 </Row>
-            </div>
                 <Row className='justify-content-center align-items-end footer'>
-                    <p>Create your own room for FREE<Link to='/login'> Organizer</Link></p>
+                    <p>Create your own room for FREE<Link to='/login'> User</Link></p>
                 </Row>
+            </div>
             </Container>
             </div>
         </Fragment >

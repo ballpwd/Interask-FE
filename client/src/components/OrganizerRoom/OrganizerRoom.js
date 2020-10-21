@@ -39,7 +39,6 @@ const OrganizerRoom = (props) => {
         <Container>
           <div className="pt-2 px-4">
             <h3 className="text-center org-room">Organizer ROOM</h3>
-            <hr />
           </div>
           <Container>
             <div>{<OrganizerRoomList roomList={roomList} edit={edit} />}</div>

@@ -1,4 +1,5 @@
-import React, { useState } from "react";
+import React, { useState,Redirect } from "react";
+import { useHistory } from "react-router-dom";
 import { connect } from "react-redux";
 import { leaveRoom } from "../../actions/roomActions";
 import { Container, Row, Col, Button } from "reactstrap";
@@ -10,13 +11,19 @@ const LeaveRoom = (props) => {
     toggle
   } = props;
 
+  let history = useHistory();
+  const leaveroom = () =>{
+    leaveRoom(_id)
+    history.push('/room');
+  }
+
   return (
     <Container className="pb-5">
         <Row className="justify-content-center">
           <Col xs="10" md="5" className="text-center mt-4">
             <Button
               type="button"
-              onClick={() => leaveRoom(_id)}
+              onClick={leaveroom}
               className="btn btn-dark org-btn"
             >
               LEAVE ROOM

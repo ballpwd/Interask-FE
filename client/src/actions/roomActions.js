@@ -1,6 +1,4 @@
 import axios from 'axios';
-
-// import { setAlert } from './alertActions';
 import Swal from 'sweetalert2'
 
 import { 
@@ -14,27 +12,10 @@ import {
 } from './types';
 import apiUrl from '../utils/apiUrl'
 
-//Get all room
-// export const getAllRoom = () => async (dispatch) => {
-//   try {
-//     const res = await axios.get('${apiUrl}/api/room');
-//     dispatch({
-//       type: GET_ROOMLIST,
-//       payload: res.data
-//     });
-//   } catch (err) {
-//     dispatch({
-//       type: ROOM_ERROR,
-//       payload: err
-//     });    
-//   }
-// };
-
 //Get room by room_id (User) 
 export const getRoomById = roomId => async (dispatch) => {
   try {
-    const res = await axios.get(`${apiUrl}/api/room/${roomId}`);
-    console.log('room',res)
+    const res = await axios.get(`${apiUrl}/api/room/user/id/${roomId}`);
     dispatch({
       type: GET_ROOM,
       payload: res.data
@@ -78,14 +59,11 @@ export const joinRoom = (roomCode)=> async (dispatch) => {
       icon:'success'
     })
 
-    // dispatch(setAlert('Room Joined', 'success'));
-
   } catch (err) {
     
     const errorMessage = err.response.data.msg ;
     
     if (errorMessage) {
-      // dispatch(setAlert(errorMessage, 'danger'));
       Swal.fire({
         title: `${errorMessage} !`,
         icon:'error'
@@ -114,7 +92,6 @@ export const leaveRoom = (roomId) => async (dispatch) => {
       title:'Room left !',
       icon:'success'
     })
-    // dispatch(setAlert('Room left', 'success'));
     
   } catch (err) {
     dispatch({

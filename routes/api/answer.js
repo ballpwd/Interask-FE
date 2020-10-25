@@ -1,7 +1,7 @@
 const express = require("express");
 const router = express.Router();
 const Answer = require("../../models/Answer");
-const User = require("../../models/User");
+const Room = require("../../models/Room");
 const Question = require("../../models/Question");
 const auth = require("../../middleware/authCheck");
 const { model } = require("../../models/User");
@@ -13,16 +13,23 @@ router.post("/", auth, async (req, res) => {
   try {
     const user_id = req.user.id;
     const { roomId, questionId, text } = req.body;
-    if(!text){
-      return res.status(404).json({ msg: "Answer your question!" });
+
+    if (!roomId || !roomId.match(/^[0-9a-fA-F]{24}$/)) {
+      return res.status(404).json({ msg: 'Invalid RoomId' });
     }
+
     const room = await Room.findById(roomId)
+
     if(!room){
         return res.status(404).json({ msg: 'Room not found' });
     }
-    if(!room.user.some(id => id == user_id)){
+    if (!room.user.includes(user_id)){
       return res.status(401).json({msg: 'User Unauthorized'})
     }
+    if(!text){
+      return res.status(404).json({ msg: "Answer your question!" });
+    }
+   
     const question = await Question.findById(questionId)
 
     if(!question){
@@ -47,7 +54,8 @@ router.post("/", auth, async (req, res) => {
     question.answered.push(user_id)
 
     await question.save();
-    
+
+    //socket emit answer
     req.app.io.sockets.in(roomId).emit("organizerAnswer", { status: 200 });
     res.json(answer);
   } catch (err) {
@@ -56,24 +64,27 @@ router.post("/", auth, async (req, res) => {
   }
 });
 
-// @route  GET /api/answer
-// @desc   Get all answer
-// router.get('/', async (req, res) => {
-//     try {
-//         const answer = await Answer.find();
-//         res.json(answer)
-//     } catch (err) {
-//         console.error(err.message);
-//         res.status(500).send('Server Error');
-//     }
-// });
-
 // @route  GET /api/answer/user/:question_id
-// @desc   Get answer by user_id and question_id
+// @desc   Get answer (user)
 router.get("/user/:question_id", auth, async (req, res) => {
   try {
     const user_id = req.user.id;
     const { question_id } = req.params;
+
+    const question = await Question.findById(question_id)
+
+    if(!question){
+      return res.status(404).json({ msg: 'Question not found' });
+    }
+
+    const room = await Room.findById(question.room);
+
+    if (!room) {
+      return res.status(404).json({ msg: 'Room not found' });
+    }
+    if (!room.user.includes(user_id)){
+      return res.status(401).json({msg: 'User Unauthorized'})
+    }
 
     const answer = await Answer.findOne({user: user_id,question: question_id});
 
@@ -82,17 +93,34 @@ router.get("/user/:question_id", auth, async (req, res) => {
     }
 
     res.json(answer);
+
   } catch (err) {
     console.error(err.message);
     res.status(500).send("Server Error");
   }
 });
 
-// @route  GET /api/answer/:question_id
-// @desc   Get answerlist by question_id
-router.get("/:question_id", auth, async (req, res) => {
+// @route  GET /api/answer/owner/:question_id
+// @desc   Get answerlist (owner) 
+router.get("/owner/:question_id", auth, async (req, res) => {
   try {
+    const user_id = req.user.id;
     const { question_id } = req.params;
+
+    const question = await Question.findById(question_id)
+
+    if(!question){
+      return res.status(404).json({ msg: 'Question not found' });
+    }
+
+    const room = await Room.findById(question.room);
+
+    if (!room) {
+      return res.status(404).json({ msg: 'Room not found' });
+    }
+    if(room.owner != user_id){
+      return res.status(401).json({msg: 'User Unauthorized'})
+    }
 
     const answer = await Answer.find({ question: question_id }).populate("user", ["userName"]).populate("question", ["questionDetail"]);
 
@@ -101,62 +129,11 @@ router.get("/:question_id", auth, async (req, res) => {
     }
 
     res.json(answer);
+
   } catch (err) {
     console.error(err.message);
     res.status(500).send("Server Error");
   }
 });
-
-
-
-// // @route  GET /api/answer/owner/room/:room_id'
-// // @desc   Get answerList by Owner
-// // @access   Private
-// router.get("/owner/room/:room_id", auth, async (req, res) => {
-//   try {
-//     const { room_id } = req.params;
-
-//     if (!req.params.room_id.match(/^[0-9a-fA-F]{24}$/)) {
-//       return res.status(404).json({ msg: "Room not found" });
-//     }
-
-//     const answer = await Answer.find({ room: room_id });
-
-//     if (answer.length < 1) {
-//       return res.status(404).json({ msg: "Answer not found" });
-//     }
-
-//     res.json(answer);
-//   } catch (err) {
-//     console.error(err.message);
-//     res.status(500).send("Server Error");
-//   }
-// });
-
-// // @route  GET /api/answer/user/room/:room_id'
-// // @desc   Get answerList by User
-// // @access   Private
-// router.get("/user/room/:room_id", auth, async (req, res) => {
-//   try {
-//     const { room_id } = req.params;
-//     const user_id = req.user.id;
-//     console.log("room_id at 93", room_id);
-//     console.log("user_id at 93", user_id);
-//     if (!req.params.room_id.match(/^[0-9a-fA-F]{24}$/)) {
-//       return res.status(404).json({ msg: "Room not found" });
-//     }
-
-//     const answer = await Answer.find({ room: room_id, user: user_id });
-
-//     if (answer.length < 1) {
-//       return res.status(404).json({ msg: "Answer not found" });
-//     }
-
-//     res.json(answer);
-//   } catch (err) {
-//     console.error(err.message);
-//     res.status(500).send("Server Error");
-//   }
-// });
 
 module.exports = router;

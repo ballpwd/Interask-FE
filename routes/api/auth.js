@@ -3,7 +3,7 @@ const passport = require('passport');
 const router = express.Router();
 const jwt = require('jsonwebtoken');
 const keys = require('../../config/keys')
-const authCheck = require('../../middleware/authCheck');
+const auth = require('../../middleware/authCheck');
 const User = require('../../models/User')
 const storeRedirect = require('../../middleware/storeRedirect')
 
@@ -50,9 +50,13 @@ router.get(
 // @route    GET api/auth/current_user
 // @desc     Get user by token
 // @access   Private
-router.get('/current_user',authCheck, async (req, res) => {
+router.get('/current_user', auth, async (req, res) => {
     try {
-        const user = await User.findById(req.user.id)
+        const user_id = req.user.id
+        const user = await User.findById(user_id)
+        if(!user){
+            return res.status(404).json({ msg: 'User not found' });   
+        }
         res.json(user);
       } catch (err) {
         console.error(err.message);

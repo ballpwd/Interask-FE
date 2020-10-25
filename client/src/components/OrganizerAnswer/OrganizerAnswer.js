@@ -67,7 +67,7 @@ const OrganizerAnswer = (props) => {
   console.log(room);
   console.log(answerList);
 
-  return roomLoading || questionLoading || answerLoading ? (
+  return (((room == null || roomLoading) || (question == null || questionLoading)) || answerLoading) ? (
     <Loading></Loading>
   ) : (
     <Fragment>

@@ -2,7 +2,6 @@ import axios from 'axios';
 
 import { 
     GET_FEEDBACKLIST,
-    GET_FEEDBACK,
     ADD_FEEDBACK,
     FEEDBACK_ERROR,
     FEEDBACK_UNLOADED,
@@ -10,38 +9,6 @@ import {
 } from './types';
 import Swal from 'sweetalert2';
 import apiUrl from '../utils/apiUrl'
-
-//Get all ask
-// export const getAllAsk = () => async dispatch => {
-//     try {
-//         const res = await axios.get('${apiUrl}/api/ask')
-//         dispatch({
-//             type: GET_FEEDBACKLIST,
-//             payload: res.data
-//         });
-//     } catch (err) {
-//         dispatch({
-//             type: FEEDBACK_ERROR,
-//             payload: err
-//         });    
-//     }
-// };
-
-//Get ask by ask_id
-// export const getAskById = askId => async dispatch => {
-//     try {
-//         const res = await axios.get(`${apiUrl}/api/feedback/${askId}`)
-//         dispatch({
-//             type: GET_ASK,
-//             payload: res.data
-//         });
-//     } catch (err) {
-//         dispatch({
-//             type: ASK_ERROR,
-//             payload: err
-//         });    
-//     }
-// };
 
 //Get user feedbacklist
 export const getUserFeedbackList = (roomId) => async dispatch => {

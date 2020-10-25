@@ -90,7 +90,7 @@ const OrganizerFeedback = (props) => {
 
   }, [dropdownDate,feedbackList]);
 
-  return roomLoading || feedbackLoading ? (
+  return ((room == null || roomLoading) || feedbackLoading) ? (
     <Loading></Loading>
   ) : (
     <Fragment>

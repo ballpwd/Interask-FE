@@ -4,12 +4,27 @@ const User = require('../../models/User')
 
 // @route  POST /api/user
 // @desc   Create a user
+// @access   Public
 router.post('/', async (req, res) => {
+    const {email,userName} = req.body
+
+    if (!email) {
+        return res.status(404).json({ msg: 'Invalid email' });
+    }
+    if (!userName) {
+        return res.status(404).json({ msg: 'Invalid userName' });
+    }
+    const acc = await Room.findOne({email: email})
+    if(acc){
+        return res.status(403).json({ msg: 'Already have this email' });    
+    }
+
     try {
         const user = new User({
-            email: req.body.email,
-            userName: req.body.userName
+            email: email,
+            userName: userName
         });
+        
         await user.save()
         res.status(201).end()
     } catch (err) {
@@ -18,19 +33,5 @@ router.post('/', async (req, res) => {
       }
     
 });
-
-
-// @route  GET /api/user
-// @desc   Get all user
-router.get('/', async (req, res) => {
-    try {
-        const user = await User.find();
-        res.json(user)
-    } catch (err) {
-        console.error(err.message);
-        res.status(500).send('Server Error');
-      }
-});
-
 
 module.exports = router;

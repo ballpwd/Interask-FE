@@ -1,6 +1,4 @@
 import axios from 'axios';
-
-// import { setAlert } from './alertActions';
 import Swal from 'sweetalert2'
 
 import { 
@@ -17,29 +15,10 @@ import {
 } from './types';
 import apiUrl from '../utils/apiUrl'
 
-//Get all room
-// export const getAllOrgRoom = () => async (dispatch) => {
-//   try {
-
-//     const res = await axios.get('${apiUrl}/api/room');
-//     dispatch({
-//       type: GET_ORG_ROOMLIST,
-//       payload: res.data,
-//     });
-//   } catch (err) {
-//     dispatch({
-//       type: ORG_ROOM_ERROR,
-//       payload: err
-//     });    
-//   }
-// };
-
 //Get room by room_id (Organizer) 
 export const getOrgRoomById = roomId => async (dispatch) => {
   try {
-    console.log('room before action', roomId )
-    const res = await axios.get(`${apiUrl}/api/room/${roomId}`);
-    console.log('room at action', res.data )
+    const res = await axios.get(`${apiUrl}/api/room/owner/id/${roomId}`);
     dispatch({
       type: GET_ORG_ROOM,
       payload: res.data,
@@ -84,8 +63,6 @@ export const createRoom = formData => async (dispatch) => {
       icon:'success'
     })
 
-    // dispatch(setAlert('Room Created', 'success'));
-
   } catch (err) {
     dispatch({
       type: ORG_ROOM_ERROR,
@@ -109,7 +86,6 @@ export const deleteRoom = roomId => async (dispatch) => {
       title:'Room Removed !',
       icon:'success'
     })
-    // dispatch(setAlert('Room Removed', 'success'));
 
   } catch (err) {
     dispatch({
@@ -133,8 +109,6 @@ export const editRoomName = (roomId, formData) => async (dispatch) => {
       title:'Room Edited !',
       icon:'success'
     })
-
-    // dispatch(setAlert('Room Edited', 'success'));
 
   } catch (err) {
     dispatch({

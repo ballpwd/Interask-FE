@@ -37,7 +37,7 @@ const OrganizerQuestion = (props) => {
     };
   }, [getOrgQuestionList, match.params.roomid, orgQuestionListUnload]);
 
-  return roomLoading || questionLoading ? (
+  return ((room == null || roomLoading) || questionLoading) ? (
     <Loading></Loading>
   ) : (
     <Fragment>

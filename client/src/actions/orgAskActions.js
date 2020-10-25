@@ -2,48 +2,12 @@ import axios from 'axios';
 
 import { 
     GET_ORG_ASKLIST,
-    GET_ORG_ASK,
     ASK_ISANSWER,
     ORG_ASK_ERROR,
     ORG_ASK_UNLOADED,
     ORG_ASKLIST_UNLOADED
 } from './types';
 import apiUrl from '../utils/apiUrl'
-
-//Get all ask (Organizer)
-// export const getAllOrgAsk = () => async dispatch => {
-//     try {
-
-//         const res = await axios.get('${apiUrl}/api/ask')
-//         dispatch({
-//             type: GET_ORG_ASKLIST,
-//             payload: res.data
-//         });
-//     } catch (err) {
-//         dispatch({
-//             type: ORG_ASK_ERROR,
-//             payload: err
-//         });    
-//     }
-// };
-
-// //Get ask by ask_id (Organizer)
-// export const getOrgAskById = askId => async dispatch => {
-//     try {
-
-//         const res = await axios.get(`${apiUrl}/api/ask/${askId}`)
-
-//         dispatch({
-//             type: GET_ORG_ASK,
-//             payload: res.data
-//         });
-//     } catch (err) {
-//         dispatch({
-//             type: ORG_ASK_ERROR,
-//             payload: err
-//         });    
-//     }
-// };
 
 //Get organizer asklist
 export const getOrgAskList = (roomId) => async dispatch => {

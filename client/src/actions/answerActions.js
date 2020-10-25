@@ -10,23 +10,6 @@ import {
 import Swal from 'sweetalert2';
 import apiUrl from '../utils/apiUrl'
 
-// //Get user answerlist
-// export const getUserAnswerList = (questionId) => async dispatch => {
-//     try {
-//         const res = await axios.get(`${apiUrl}${apiUrl}/api/answer/${questionId}`)
-
-//         dispatch({
-//             type: GET_ANSWERLIST,
-//             payload: res.data
-//         });    
-//     } catch (err) {
-//         dispatch({
-//             type: ANSWER_ERROR,
-//             payload: err
-//         });    
-//     }
-// };
-
 //Get user answer
 export const getUserAnswer = (questionId) => async dispatch => {
     try {

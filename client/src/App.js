@@ -28,7 +28,6 @@ const App = () => {
       <Route exact path="/" component={HandleRedirect} />
       <Route exact path="/login" component={Login} />
       <Route exact path="/organizer/login" component={LoginOrg} />
-      {/* <Route exact path="/" component={Home} /> */}
       <Route component={Routes} />
     </Switch>
   );

@@ -92,7 +92,7 @@ const OrganizerAsk = (props) => {
 
   }, [dropdownDate,askList]);
 
-  return roomLoading || askLoading ? (
+  return ((room == null || roomLoading) || askLoading) ? (
     <Loading></Loading>
   ) : (
     <Fragment>

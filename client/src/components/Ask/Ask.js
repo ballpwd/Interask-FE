@@ -43,7 +43,7 @@ const Ask = (props) => {
     };
   }, [getUserAskList, match.params.roomid, askListUnload]);
 
-  return askLoading || roomLoading ? (
+  return (askLoading || (room == null || roomLoading)) ? (
     <Loading></Loading>
   ) : (
     <Fragment>

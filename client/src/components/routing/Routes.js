@@ -26,8 +26,6 @@ const Routes = () => {
       {/* <Alert /> */}
       <NavBar />
       <Switch>
-        {/* <Route exact path="/login" component={Login} />
-        <Route exact path="/organizer/login" component={LoginOrg} /> */}
         <PrivateRoute exact path="/room" component={Room} />
         <PrivateRoute exact path="/:roomid" component={RoomMenu} />
         <PrivateRoute exact path="/:roomid/ask" component={Ask} />

@@ -1,7 +1,6 @@
 import axios from "axios";
-
 import Swal from "sweetalert2";
-// import { setAlert } from "./alertActions";
+
 import {
   CREATE_QUESTION,
   GET_ORG_QUESTIONLIST,
@@ -15,27 +14,10 @@ import {
 } from "./types";
 import apiUrl from "../utils/apiUrl";
 
-//Get all question (Organizer)
-// export const getAllOrgQuestion = () => async dispatch => {
-//     try {
-
-//         const res = await axios.get('${apiUrl}/api/question')
-//         dispatch({
-//             type: GET_ORG_QUESTIONLIST,
-//             payload: res.data
-//         });
-//     } catch (err) {
-//         dispatch({
-//             type: ORG_QUESTION_ERROR,
-//             payload: err
-//         });
-//     }
-// };
-
 //Get question by question_id (Organizer)
 export const getOrgQuestionById = (questionId) => async (dispatch) => {
   try {
-    const res = await axios.get(`${apiUrl}/api/question/${questionId}`);
+    const res = await axios.get(`${apiUrl}/api/question/owner/id/${questionId}`);
 
     dispatch({
       type: GET_ORG_QUESTION,
@@ -48,22 +30,6 @@ export const getOrgQuestionById = (questionId) => async (dispatch) => {
     });
   }
 };
-
-// //Get owner questionList
-// export const getOrgQuestionList = () => async (dispatch) => {
-//   try {
-//     const res = await axios.get(`${apiUrl}/api/question/owner/list`);
-//     dispatch({
-//       type: GET_ORG_QUESTIONLIST,
-//       payload: res.data,
-//     });
-//   } catch (err) {
-//     dispatch({
-//       type: ORG_QUESTION_ERROR,
-//       payload: err,
-//     });
-//   }
-// };
 
 // Create question
 export const createQuestion = (formData) => async (dispatch) => {
@@ -118,7 +84,6 @@ export const deleteQuestion = (questionId) => async (dispatch) => {
       icon: "success",
     });
 
-    // dispatch(setAlert("Question Removed", "success"));
   } catch (err) {
     dispatch({
       type: ORG_QUESTION_ERROR,
@@ -145,12 +110,10 @@ export const editQuestion = (questionId, formData) => async (dispatch) => {
       icon: "success",
     });
 
-    // dispatch(setAlert("Question Edited", "success"));
   } catch (err) {
     const errorMessage = err.response.data.msg;
 
     if (errorMessage) {
-      // dispatch(setAlert(errorMessage, 'danger'));
       Swal.fire({
         title: `${errorMessage} !`,
         icon: "error",

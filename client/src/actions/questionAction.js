@@ -9,26 +9,10 @@ import {
 } from "./types";
 import apiUrl from '../utils/apiUrl'
 
-//Get all question
-// export const getAllQuestion = () => async (dispatch) => {
-//   try {
-//     const res = await axios.get('${apiUrl}/api/question');
-//     dispatch({
-//       type: GET_QUESTIONLIST,
-//       payload: res.data
-//     });
-//   } catch (err) {
-//     dispatch({
-//       type: QUESTION_ERROR,
-//       payload: err
-//     });
-//   }
-// };
-
 //Get question by question_id (User)
 export const getQuestionById = (questionId) => async (dispatch) => {
   try {
-    const res = await axios.get(`${apiUrl}/api/question/${questionId}`);
+    const res = await axios.get(`${apiUrl}/api/question/user/id/${questionId}`);
 
     dispatch({
       type: GET_QUESTION,

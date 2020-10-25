@@ -29,7 +29,7 @@ const Feedback = (props) => {
     };
   }, [getRoomById, match.params.id, roomUnload]);
 
-  return (room == null|| roomLoading)? (
+  return (room == null|| roomLoading) ? (
     <Loading></Loading>
   ) : (
     <Fragment>

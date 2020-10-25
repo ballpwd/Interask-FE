@@ -1,6 +1,4 @@
 import axios from 'axios';
-
-// import { setAlert } from './alertActions';
 import Swal from 'sweetalert2';
 
 import { 
@@ -12,39 +10,6 @@ import {
     ASKLIST_UNLOADED
 } from './types';
 import apiUrl from '../utils/apiUrl'
-
-
-//Get all ask
-// export const getAllAsk = () => async dispatch => {
-//     try {
-//         const res = await axios.get('${apiUrl}/api/ask')
-//         dispatch({
-//             type: GET_ASKLIST,
-//             payload: res.data
-//         });
-//     } catch (err) {
-//         dispatch({
-//             type: ASK_ERROR,
-//             payload: err
-//         });    
-//     }
-// };
-
-//Get ask by ask_id
-// export const getAskById = askId => async dispatch => {
-//     try {
-//         const res = await axios.get(`${apiUrl}/api/ask/${askId}`)
-//         dispatch({
-//             type: GET_ASK,
-//             payload: res.data
-//         });
-//     } catch (err) {
-//         dispatch({
-//             type: ASK_ERROR,
-//             payload: err
-//         });    
-//     }
-// };
 
 //Get user asklist
 export const getUserAskList = (roomId) => async dispatch => {
@@ -84,7 +49,6 @@ export const addAsk = formData => async dispatch => {
         const errorMessage = err.response.data.msg ;
 
         if (errorMessage) {
-            // dispatch(setAlert(errorMessage, 'danger'));
             Swal.fire({
               title: `${errorMessage} !`,
               icon:'error'

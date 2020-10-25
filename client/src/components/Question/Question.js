@@ -47,7 +47,7 @@ const Question = (props) => {
     };
   }, [getUserQuestionList, match.params.roomid, questionListUnload]);
 
-  return (room == null || roomLoading) ? (
+  return ((room == null || roomLoading) || questionLoading) ? (
     <Loading></Loading>
   ) : (
     <Fragment>

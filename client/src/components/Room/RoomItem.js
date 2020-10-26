@@ -17,6 +17,7 @@ const RoomItem = (props) => {
   return (
     <Fragment>
       <div>
+      {!edit ? (
         <Link to={`/${room._id}`}>
           <Button
             className="room-box"
@@ -33,7 +34,30 @@ const RoomItem = (props) => {
             <div className="room-text">{room.roomName}</div>
           </Button>
         </Link>
-      
+      ) : (
+        <Button
+          className="room-box"
+          onClick={toggle}
+          style={{
+            backgroundColor: "#fffffe",
+            borderColor: "#121629",
+            color: "#232946",
+            borderWidth: "2px",
+            borderRadius: "10px 10px 10px 10px",
+            fontSize: "24px",
+          }}
+        >
+          <div className="room-text">
+            {room.roomName}
+            <img
+              src={leave_room}
+              className="leave-img"
+              width="48px"
+              height="48px"
+            ></img>
+          </div>
+        </Button>
+      )}
         <Modal isOpen={modal} toggle={toggle} size="lg" centered>
           <ModalHeader
             close={closeBtn}

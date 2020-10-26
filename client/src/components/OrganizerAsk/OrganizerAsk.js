@@ -8,9 +8,7 @@ import OrganizerAskAnalyze from "./OrganizerAskAnalyze";
 import Loading from "../Loading/Loading";
 import { Container, Row, Col, Button, Dropdown, DropdownToggle, DropdownMenu, DropdownItem } from "reactstrap";
 import apiUrl from '../../utils/apiUrl' ;
-import DayPickerInput from 'react-day-picker/DayPickerInput';
-import 'react-day-picker/lib/style.css';
-
+import NotFound from "../layout/NotFound";
 //socket
 import io from "socket.io-client";
 //export
@@ -69,7 +67,6 @@ const OrganizerAsk = (props) => {
     return groups;
   }, {});
 
-  // Edit: to add it in the array format instead
   const groupArrays = Object.keys(groups).map((date) => {
     return {
       date,
@@ -93,7 +90,9 @@ const OrganizerAsk = (props) => {
   }, [dropdownDate,askList]);
 
   return ((room == null || roomLoading) || askLoading) ? (
-    <Loading></Loading>
+    <Fragment>
+      {(!roomLoading) && (room == null)? (<NotFound></NotFound>):(<Loading></Loading>) }
+    </Fragment>
   ) : (
     <Fragment>
       <div className="fullscreen bg">

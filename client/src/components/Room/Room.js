@@ -4,7 +4,7 @@ import { getRoomList, roomListUnload } from "../../actions/roomActions";
 import { joinRoom } from "../../actions/roomActions";
 import leave_room from "../../assets/leave.svg";
 import RoomList from "./RoomList";
-import { Container, Button, Row, Col } from "reactstrap";
+import { Container, Button, Col } from "reactstrap";
 import Loading from "../Loading/Loading";
 import queryString from "query-string";
 import {useLocation} from "react-router-dom";

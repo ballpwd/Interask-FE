@@ -8,6 +8,7 @@ import {
 import { getOrgRoomById, orgRoomUnload } from "../../actions/orgRoomActions";
 import { Container, Button, Row, Col } from "reactstrap";
 import Loading from "../Loading/Loading";
+import NotFound from "../layout/NotFound";
 
 const OrganizerQuestion = (props) => {
   const {
@@ -38,7 +39,9 @@ const OrganizerQuestion = (props) => {
   }, [getOrgQuestionList, match.params.roomid, orgQuestionListUnload]);
 
   return ((room == null || roomLoading) || questionLoading) ? (
-    <Loading></Loading>
+    <Fragment>
+      {(!roomLoading) && (room == null)? (<NotFound></NotFound>):(<Loading></Loading>) }
+    </Fragment>
   ) : (
     <Fragment>
       <div className="fullscreen bg">

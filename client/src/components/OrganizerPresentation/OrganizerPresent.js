@@ -7,6 +7,7 @@ import { Container } from "reactstrap";
 import Loading from "../Loading/Loading";
 import apiUrl from '../../utils/apiUrl' 
 import io from "socket.io-client";
+import NotFound from "../layout/NotFound";
 
 const OrganizerPresent = ({
   getOrgRoomById,
@@ -44,7 +45,9 @@ const OrganizerPresent = ({
   }, [getOrgAskList, match.params.roomid, orgAskListUnload]);
 
   return roomLoading || askLoading ? (
-    <Loading></Loading>
+    <Fragment>
+      {(!roomLoading) && (room == null)? (<NotFound></NotFound>):(<Loading></Loading>) }
+    </Fragment>
   ) : (
     <Fragment>
       <div className="fullscreen bg">

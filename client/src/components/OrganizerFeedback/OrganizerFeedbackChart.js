@@ -1,4 +1,4 @@
-import React, { Fragment } from "react";
+import React from "react";
 import { Row, Col } from 'reactstrap';
 import smile from '../../assets/4pts.svg';
 import normal from '../../assets/3pts.svg';
@@ -62,9 +62,6 @@ const OrganizerFeedbackChart = (props) => {
 
     const options = {
         legend: {
-            // labels: {
-            //     fontColor: 'black'
-            // },
             display: false
         },
         layout: {
@@ -94,9 +91,6 @@ const OrganizerFeedbackChart = (props) => {
                 },     
             }]
         },
-        // ticks: {
-        //     fontColor: '#666'
-        // },
         plugins: {
             datalabels: {
                 display: true,

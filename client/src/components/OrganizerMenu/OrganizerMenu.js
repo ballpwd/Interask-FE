@@ -21,6 +21,7 @@ import ask from "../../assets/ask.svg";
 import question from "../../assets/question.svg";
 import feedback from "../../assets/feedback.svg";
 import QRCode from "qrcode.react";
+import NotFound from "../layout/NotFound";
 
 const OrganizerMenu = (props) => {
   const {
@@ -44,7 +45,6 @@ const OrganizerMenu = (props) => {
 
   //fetch room
   useEffect(() => {
-    console.log(match.params.roomid);
     getOrgRoomById(match.params.roomid);
     return () => {
       orgRoomUnload();
@@ -55,7 +55,9 @@ const OrganizerMenu = (props) => {
   console.log(room);
 
   return room == null || roomLoading ? (
-    <Loading></Loading>
+    <Fragment>
+      {(!roomLoading) && (room == null)? (<NotFound></NotFound>):(<Loading></Loading>) }
+    </Fragment>
   ) : (
     <Fragment>
       <div className="fullscreen bg">

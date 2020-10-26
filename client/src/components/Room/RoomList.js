@@ -1,16 +1,13 @@
 import React, { useState, Fragment } from "react";
 import RoomItem from "./RoomItem";
 import {
-  Container,
   Button,
   Modal,
   ModalBody,
   ModalHeader,
   Row,
 } from "reactstrap";
-import { Link } from "react-router-dom";
 import plus from "../../assets/plus.svg";
-import leave_room from "../../assets/leave.svg";
 import JoinRoom from "./JoinRoom";
 const RoomList = (props) => {
   const [modal, setModal] = useState(false);

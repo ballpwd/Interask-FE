@@ -1,5 +1,4 @@
 import React, { useEffect, Fragment } from "react";
-import { Link } from "react-router-dom";
 import { connect } from "react-redux";
 import { getUserAskList, askListUnload } from "../../actions/askActions";
 import { getRoomById, roomUnload } from "../../actions/roomActions";
@@ -7,6 +6,7 @@ import Loading from "../Loading/Loading";
 import AskHistory from "./AskHistory";
 import AskForm from "./AskForm";
 import { Container, Row, Col } from "reactstrap";
+import NotFound from "../layout/NotFound";
 
 const Ask = (props) => {
   const {
@@ -44,7 +44,9 @@ const Ask = (props) => {
   }, [getUserAskList, match.params.roomid, askListUnload]);
 
   return (askLoading || (room == null || roomLoading)) ? (
-    <Loading></Loading>
+    <Fragment>
+      {(!roomLoading) && (room == null)? (<NotFound></NotFound>):(<Loading></Loading>) }
+    </Fragment>
   ) : (
     <Fragment>
       <div className="ask-section bg fullscreen">

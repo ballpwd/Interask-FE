@@ -16,6 +16,7 @@ import { Container, Row, Col, Button, Card } from "reactstrap";
 import { exportAnswer } from "../../utils/export";
 import apiUrl from '../../utils/apiUrl' ;
 import io from "socket.io-client";
+import NotFound from "../layout/NotFound";
 
 const OrganizerAnswer = (props) => {
   const {
@@ -68,7 +69,9 @@ const OrganizerAnswer = (props) => {
   console.log(answerList);
 
   return (((room == null || roomLoading) || (question == null || questionLoading)) || answerLoading) ? (
-    <Loading></Loading>
+    <Fragment>
+      {(!roomLoading) && (room == null) || (!questionLoading) && (question == null)  ? (<NotFound></NotFound>):(<Loading></Loading>) }
+    </Fragment>
   ) : (
     <Fragment>
       <div className="fullscreen bg">

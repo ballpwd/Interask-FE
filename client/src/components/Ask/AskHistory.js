@@ -1,4 +1,4 @@
-import React, { useEffect }  from "react";
+import React from "react";
 import { css } from 'glamor';
 import AskHistoryItem from "./AskHistoryItem";
 import ScrollToBottom from 'react-scroll-to-bottom';

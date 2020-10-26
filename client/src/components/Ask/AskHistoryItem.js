@@ -1,5 +1,4 @@
 import React, { Fragment } from "react";
-import tick from "../../assets/tick.svg";
 const AskHistoryItem = ({ ask: { text, date } }) => {
   const d = new Date(date);
   const day = d.getDate();

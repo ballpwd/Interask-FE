@@ -2,7 +2,7 @@ import React, { Fragment, useEffect, useState } from "react";
 import { connect } from "react-redux";
 import { Link } from "react-router-dom";
 import { getRoomById, roomUnload } from "../../actions/roomActions";
-import { Container, Button, Row, Col, Modal, ModalBody, ModalHeader } from "reactstrap";
+import { Container, Button, Row, Modal, ModalBody, ModalHeader } from "reactstrap";
 import Loading from "../Loading/Loading";
 import room_ask from "../../assets/room_ask.svg";
 import room_question from "../../assets/room_question.svg";
@@ -11,18 +11,16 @@ import { leaveRoom } from "../../actions/roomActions";
 import leave_room from "../../assets/leave.svg";
 import LeaveRoom from "../Room/LeaveRoom";
 import close from "../../assets/close.svg";
-
+import NotFound from "../layout/NotFound";
 
 const RoomMenu = (props) => {
   const [modal, setModal] = useState(false);
   const toggle = () => setModal(!modal);
   
   const {
-    getRoomList,
-    roomListUnload,
+    roomUnload,
     getRoomById,
-    room: { room, roomLoading,owner},
-    auth: { user },
+    room: { room, roomLoading},
     match,
   } = props;
 
@@ -38,8 +36,13 @@ const RoomMenu = (props) => {
       &times;
     </button>
   );
+    
+  
+
   return room == null || roomLoading ? (
-    <Loading></Loading>
+    <Fragment>
+      {(!roomLoading) && (room == null)? (<NotFound></NotFound>):(<Loading></Loading>) }
+    </Fragment>
   ) : (
     <Fragment>
       <div className="fullscreen bg">
@@ -160,11 +163,12 @@ const RoomMenu = (props) => {
           
     </Fragment>
   );
+
+
 };
 
 const mapStateToProps = (state) => ({
-  room: state.room,
-  auth: state.auth,
+  room: state.room
 });
 
 export default connect(mapStateToProps, { getRoomById, roomUnload,leaveRoom })(RoomMenu);

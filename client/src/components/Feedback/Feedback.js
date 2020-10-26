@@ -1,27 +1,20 @@
 import React, { Fragment, useEffect,useState } from "react";
 import { connect } from "react-redux";
-import { Link } from "react-router-dom";
 import { getRoomById, roomUnload } from "../../actions/roomActions";
-import { getUserFeedbackList, feedbackListUnload } from '../../actions/feedbackActions';
-import { Container, Button, Row, Col} from "reactstrap";
+import { Container} from "reactstrap";
 import Loading from '../Loading/Loading';
 import FeedbackForm from "../Feedback/FeedbackForm";
-import NavBar from '../Navbar/NavBar';
+import NotFound from "../layout/NotFound";
 
 const Feedback = (props) => {
 
-  const [edit, setEdit] = useState(false);
-  const leave = () => setEdit(!edit);
   const {
-    getRoomList,
-    roomListUnload,
+    roomUnload,
     getRoomById,
     room : {room,roomLoading},
-    auth: { user },
     match
   } = props;
   
-
   useEffect(() => {
     getRoomById(match.params.id);
     return () => {
@@ -30,7 +23,9 @@ const Feedback = (props) => {
   }, [getRoomById, match.params.id, roomUnload]);
 
   return (room == null|| roomLoading) ? (
-    <Loading></Loading>
+    <Fragment>
+      {(!roomLoading) && (room == null)? (<NotFound></NotFound>):(<Loading></Loading>) }
+    </Fragment>
   ) : (
     <Fragment>
       <div className="fullscreen bg fullscreen">
@@ -46,8 +41,7 @@ const Feedback = (props) => {
 };
 
 const mapStateToProps = (state) => ({
-  room: state.room,
-  auth: state.auth
+  room: state.room
 });
 
 export default connect(mapStateToProps, { getRoomById, roomUnload })(

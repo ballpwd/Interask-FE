@@ -7,7 +7,6 @@ import {
   ModalBody,
   ModalHeader,
   Row,
-  Col,
   Container,
 } from "reactstrap";
 import plus from "../../assets/button.svg";

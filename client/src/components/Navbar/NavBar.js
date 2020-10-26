@@ -9,11 +9,6 @@ import {
   NavbarBrand,
   Nav,
   NavItem,
-  NavLink,
-  UncontrolledDropdown,
-  DropdownToggle,
-  DropdownMenu,
-  DropdownItem,
   NavbarText,
   Button
 } from 'reactstrap';
@@ -53,17 +48,8 @@ const NavBar = (props) => {
                   </Button>
                 </NavItem>
               </Nav>):(
-              <Nav className="navbar-nav">
-                <NavItem className="">
-                  {/* <NavbarText className="nav-user" style={{color:"white"}}> Login </NavbarText> */}
-                </NavItem>
-                <NavItem>
-                  {/* <Button onClick={logout}>
-                    <img src={piclogout} width="15px" height="15px"></img>
-                  </Button> */}
-                </NavItem>
-            </Nav>
-            )}
+                null
+              )}
             
         </Collapse>
       </Navbar>

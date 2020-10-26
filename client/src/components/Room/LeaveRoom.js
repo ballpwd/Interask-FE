@@ -1,4 +1,4 @@
-import React, { useState,Redirect } from "react";
+import React from "react";
 import { useHistory } from "react-router-dom";
 import { connect } from "react-redux";
 import { leaveRoom } from "../../actions/roomActions";
@@ -7,7 +7,7 @@ import { Container, Row, Col, Button } from "reactstrap";
 const LeaveRoom = (props) => {
   const {
     leaveRoom,
-    room: { _id, roomName },
+    room: { _id},
     toggle
   } = props;
 

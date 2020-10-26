@@ -1,18 +1,16 @@
-import React, { Fragment, useEffect,useState } from "react";
+import React, { Fragment, useEffect } from "react";
 import { connect } from "react-redux";
-import { Link } from "react-router-dom";
 import { getRoomById, roomUnload } from "../../actions/roomActions";
 import {getUserAnswer, answerUnload} from "../../actions/answerActions";
 import { getQuestionById, questionUnload } from "../../actions/questionAction";
-import { Container, Button, Row, Col} from "reactstrap";
+import { Container} from "reactstrap";
 import Loading from '../Loading/Loading';
 import AnswerForm from "../Answer/AnswerForm";
 import { Redirect } from 'react-router-dom';
+import NotFound from "../layout/NotFound";
 
 const Answer = (props) => {
-
-  const [edit, setEdit] = useState(false);
-  const leave = () => setEdit(!edit);
+  
   const {
     getQuestionById,
     questionUnload,
@@ -20,8 +18,7 @@ const Answer = (props) => {
     answerUnload,
     getRoomById,
     roomUnload,
-    auth: {user},
-    answer : {answer, answerLoading},
+    answer : {answer},
     room : {room,roomLoading},
     question : {question,questionLoading},
     match
@@ -54,7 +51,9 @@ const Answer = (props) => {
   }
 
   return ((room == null || roomLoading) || (question == null || questionLoading)) ? (
-    <Loading></Loading>
+    <Fragment>
+      {(!roomLoading) && (room == null) || (!questionLoading) && (question == null)  ? (<NotFound></NotFound>):(<Loading></Loading>) }
+    </Fragment>
   ) : (
       <Fragment>
       <div className="fullscreen bg fullscreen">

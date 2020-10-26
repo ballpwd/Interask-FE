@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { addFeedback } from "../../actions/feedbackActions";
 import { connect } from "react-redux";
-import { Container, Row, Col, Input } from "reactstrap";
+import { Container, Row, Col } from "reactstrap";
 import smile from '../../assets/4pts.svg';
 import normal from '../../assets/3pts.svg';
 import confuse from '../../assets/2pts.svg';

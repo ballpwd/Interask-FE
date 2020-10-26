@@ -3,7 +3,6 @@ import OrganizerRoomItem from "./OrganizerRoomItem";
 import {
   Row,
   Container,
-  Col,
   Button,
   Modal,
   ModalBody,

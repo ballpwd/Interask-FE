@@ -550,6 +550,45 @@ header {
 }
 
 /*------------------ Not found --------------- */
+.content{
+  font-family: kanit;
+  text-align: center;
+  padding-top: 200px;
+}
+.content h1{
+  font-size: 18vw;
+  color: #fffffe;
+  line-height: 1em;
+  margin-bottom:20px;
+}
+.content h4{
+  position: relative;
+  font-size: 1.5em;
+  color: #232946;
+  padding: 10px 30px;
+  margin-bottom: 20px;
+  background: #fffffe;
+  display: inline;
+}
+.content p{
+  font-size: 1.2em;
+  margin-top: 35px;
+  color: #fffffe;
+}
+.buttons{
+  position: relative;
+  display: inline-block;
+  padding: 10px 25px;
+  background: #eeadb4;
+  text-decoration: none;
+  border-radius: 25px;
+  border-color: #121629;
+}
+.nf-buttons {
+  color: #232946;
+}
+
+
 
 /*------------------ Loading -----------------*/
 

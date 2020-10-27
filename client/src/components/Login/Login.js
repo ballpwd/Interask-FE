@@ -1,57 +1,105 @@
-import React, { Fragment } from 'react';
-import logo from '../../assets/logo.svg';
-import googlelogin from '../../assets/signin.svg';
-import { Container, Row, Col, Button } from 'reactstrap';
-import { connect } from 'react-redux';
-import { Redirect, useLocation, Link } from 'react-router-dom';
+import React, { Fragment, useState } from "react";
+import logo from "../../assets/logo.svg";
+import googlelogin from "../../assets/signin.svg";
+import {
+  Container,
+  Row,
+  Col,
+  Button,
+  Modal,
+  ModalHeader,
+  ModalBody,
+} from "reactstrap";
+import { connect } from "react-redux";
+import { Redirect, useLocation, Link } from "react-router-dom";
 import queryString from "query-string";
-import apiUrl from '../../utils/apiUrl'
+import apiUrl from "../../utils/apiUrl";
+import HowTo from "../Howto";
 
 const Login = (props) => {
-    const {
-        isAuthenticated
-    } = props
+  const [modal, setModal] = useState(false);
+  const toggle = () => setModal(!modal);
 
-    const redirect = queryString.parse(useLocation().search).redirect_uri
-    console.log(queryString.parse(useLocation().search).redirect_uri)
+  const { isAuthenticated } = props;
 
-    if (isAuthenticated) {
-        if(redirect){
-            return <Redirect to={redirect} />;
-        }
-        return <Redirect to='/room' />;
+  const redirect = queryString.parse(useLocation().search).redirect_uri;
+  console.log(queryString.parse(useLocation().search).redirect_uri);
+
+  if (isAuthenticated) {
+    if (redirect) {
+      return <Redirect to={redirect} />;
     }
-    
-    return (
-        <Fragment>
-            <div className='bg2 fullscreen'>
-                <Container>
-                <div className="center">
-                    <Row className='justify-content-center align-items-center '>
-                        <img src={logo} alt='Interask' className='img-fluid '></img>
-                    </Row>
-                    <Row className='justify-content-center align-items-center'>
-                        <a href={`${apiUrl}/api/auth/google?redirect_uri=${window.location.href}`}><img src={googlelogin} alt='Interask' className='img-fluid' style={{width:'340px'}} /></a>
-                    </Row>
-                    <Row className='justify-content-center align-items-end '>
-                        <Button className ='howto' color="dark" size="sm"  style={{width:'200px' , height:'40px'}} >How to</Button>
-                    </Row>
-                    <Row>
-                        <Col className='footer'>
-                        <p>Create your own room for FREE<Link to='/organizer/login'> Organizer</Link></p>
-                        </Col>
-                    </Row>
-                </div>
-                   
-                </Container>
-            </div>
-        </Fragment >
-        
-    );
+    return <Redirect to="/room" />;
+  }
+
+  const closeBtn = (
+    <button className="close" onClick={toggle}>
+      &times;
+    </button>
+  );
+
+  return (
+    <Fragment>
+      <div className="bg2 fullscreen">
+        <Container>
+          <div className="center">
+            <Row className="justify-content-center align-items-center ">
+              <img src={logo} alt="Interask" className="img-fluid "></img>
+            </Row>
+            <Row className="justify-content-center align-items-center">
+              <a
+                href={`${apiUrl}/api/auth/google?redirect_uri=${window.location.href}`}
+              >
+                <img
+                  src={googlelogin}
+                  alt="Interask"
+                  className="img-fluid"
+                  style={{ width: "340px" }}
+                />
+              </a>
+            </Row>
+            <Row className="justify-content-center align-items-end ">
+              <Button
+                className="howto"
+                color="dark"
+                size="sm"
+                style={{ width: "200px", height: "40px" }}
+                onClick={toggle}
+              >
+                How to use
+              </Button>
+            </Row>
+            <Row>
+              <Col className="footer">
+                <p>
+                  Create your own room for FREE
+                  <Link to="/organizer/login"> Organizer</Link>
+                </p>
+              </Col>
+            </Row>
+          </div>
+        </Container>
+      </div>
+      <Modal isOpen={modal} toggle={toggle} size="lg" centered>
+        <ModalHeader
+          close={closeBtn}
+          className="border-0 pb-0"
+          cssModule={{ "modal-title": "w-100 text-center pt-4" }}
+        >
+          <p className="org-h4">HOW TO USE INTERASK</p>
+        </ModalHeader>
+        <ModalBody>
+          <div>
+            <HowTo toggle={toggle} />
+          </div>
+        </ModalBody>
+      </Modal>
+    </Fragment>
+  );
 };
 
 const mapStateToProps = (state) => ({
-    isAuthenticated: state.auth.isAuthenticated
+  isAuthenticated: state.auth.isAuthenticated,
 });
 
 export default connect(mapStateToProps)(Login);

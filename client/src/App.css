@@ -35,6 +35,13 @@ h2 {
   font-weight: 600;
   font-size: 46px;
 }
+h5 {
+  font-family: Kanit;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 20px;
+  line-height: 28px;
+}
 
 header {
   font-family: Kanit;
@@ -424,7 +431,7 @@ header {
   font-style: normal;
   text-align: center;
   align-items: center;
-  margin-top:25px;
+  margin-top: 25px;
 }
 
 .room-h1 {
@@ -777,7 +784,7 @@ header {
   justify-content: center;
 }
 /*-------------------------------- Organizer Feedback ---------------------------------*/
-.dropdownDate{
+.dropdownDate {
   font-family: Kanit;
   font-style: normal;
   font-weight: 400;
@@ -800,7 +807,7 @@ header {
 }
 
 /*-------------------------------- Room Menu ---------------------------------*/
-.room-creator{
+.room-creator {
   font-family: Kanit;
   font-style: normal;
   font-weight: 700;

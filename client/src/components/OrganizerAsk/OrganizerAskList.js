@@ -10,20 +10,21 @@ const OrganizerAskList = (props) => {
     selectAllPresent,
     clearPresent,
     askList,
+    room
   } = props;
 
   const selectAll =()=> {
     const askId = askList.map((ask)=>{
       return ask._id
     })
-    selectAllPresent({askId})
+    selectAllPresent(askId,room._id)
   }
 
   const clearAll =()=> {
     const askId = askList.map((ask)=>{
       return ask._id
     })
-    clearPresent({askId})
+    clearPresent(askId,room._id)
   }
 
   return (

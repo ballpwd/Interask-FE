@@ -44,7 +44,7 @@ const OrganizerPresent = ({
     };
   }, [getPresentAskList, match.params.roomid, orgAskListUnload]);
 
-  return roomLoading || askLoading ? (
+  return ((room == null || roomLoading) || askLoading) ? (
     <Fragment>
       {(!roomLoading) && (room == null)? (<NotFound></NotFound>):(<Loading></Loading>) }
     </Fragment>

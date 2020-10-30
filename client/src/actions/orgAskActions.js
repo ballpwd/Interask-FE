@@ -65,9 +65,9 @@ export const setPresent = (askId) => async dispatch => {
 };
 
 //Select All Present
-export const selectAllPresent = (askId) => async dispatch => {
+export const selectAllPresent = (askId,roomId) => async dispatch => {
     try {
-        const res = await axios.put(`${apiUrl}/api/ask/present/all/select`, askId)
+        const res = await axios.put(`${apiUrl}/api/ask/present/all/select`, {askId,roomId})
 
         dispatch({
             type: ALL_PRESENT,
@@ -82,9 +82,9 @@ export const selectAllPresent = (askId) => async dispatch => {
 };
 
 //Clear All Present
-export const clearPresent = (askId) => async dispatch => {
+export const clearPresent = (askId,roomId) => async dispatch => {
     try {
-        const res = await axios.put(`${apiUrl}/api/ask/present/all/clear`, askId)
+        const res = await axios.put(`${apiUrl}/api/ask/present/all/clear`, {askId,roomId})
 
         dispatch({
             type: CLEAR_PRESENT,

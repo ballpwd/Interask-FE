@@ -211,20 +211,48 @@ router.put('/present/:ask_id', auth, async (req, res) => {
 router.put('/present/all/select', auth, async (req, res) => {
   try {
     const user_id = req.user.id
-    const {askId} = req.body;
-    // console.log(askId)
+    const {askId, roomId} = req.body;
+
+    if(
+      askId.some((a)=>{
+        return (!a.match(/^[0-9a-fA-F]{24}$/))
+      })
+    ){
+      return res.status(401).json({msg: 'Invalid AskId'})
+    }
+
+    const room = await Room.findById(roomId)
+
+    if (!room) {
+      return res.status(401).json({msg: 'Room not found'})
+    }
+    if(room.owner != user_id){
+      return res.status(401).json({msg: 'User Unauthorized'})
+    }
 
     const ask = await Ask.find().where('_id').in(askId).exec();
-    // console.log(ask)
-
+    
+    if (ask.length < 1) {
+      return res.status(404).json({ msg: "Ask not found" });
+    }
+    
+    if(
+      ask.some((a)=>{
+        console.log(a.room)
+        console.log(roomId)
+        return a.room != roomId
+      })
+    ){
+      return res.status(401).json({msg: 'User Unauthorized'})
+    }
+    
     ask.map((a)=>{
       a.present = true
       a.save();
     })
-    // console.log(ask)
 
     //socket emit ask 
-    req.app.io.sockets.in(ask[0].room).emit('organizerPresent', { status: 200 })   
+    req.app.io.sockets.in(roomId).emit('organizerPresent', { status: 200 })   
 
     res.json(ask);
     
@@ -240,20 +268,49 @@ router.put('/present/all/select', auth, async (req, res) => {
 router.put('/present/all/clear', auth, async (req, res) => {
   try {
     const user_id = req.user.id
-    const {askId} = req.body;
-    // console.log(askId)
+    const {askId, roomId} = req.body;
+
+    if(
+      askId.some((a)=>{
+        return (!a.match(/^[0-9a-fA-F]{24}$/))
+      })
+    ){
+      return res.status(401).json({msg: 'Invalid AskId'})
+    }
+
+    const room = await Room.findById(roomId)
+
+    if (!room) {
+      return res.status(401).json({msg: 'Room not found'})
+    }
+    if(room.owner != user_id){
+      return res.status(401).json({msg: 'User Unauthorized'})
+    }
 
     const ask = await Ask.find().where('_id').in(askId).exec();
-    // console.log(ask)
-
+    
+    if (ask.length < 1) {
+      return res.status(404).json({ msg: "Ask not found" });
+    }
+    
+    if(
+      ask.some((a)=>{
+        console.log(a.room)
+        console.log(roomId)
+        return a.room != roomId
+      })
+    ){
+      return res.status(401).json({msg: 'User Unauthorized'})
+    }
+    
     ask.map((a)=>{
       a.present = false
       a.save();
     })
-    // console.log(ask)
 
-    req.app.io.sockets.in(ask[0].room).emit('organizerPresent', { status: 200 })
-    
+    //socket emit ask 
+    req.app.io.sockets.in(roomId).emit('organizerPresent', { status: 200 })   
+
     res.json(ask);
 
   } catch (err) {

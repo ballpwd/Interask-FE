@@ -127,7 +127,7 @@ const OrganizerAsk = (props) => {
               </Row>
               <Row>
                 <Col>
-                  {<OrganizerAskList askList={filterDate}  />}
+                  {<OrganizerAskList askList={filterDate} room={room} />}
                 </Col>
               </Row>
             </Col>

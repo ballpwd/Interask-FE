@@ -73,9 +73,9 @@ router.get("/owner/room/:room_id", auth, async (req, res) => {
 
     const feedback = await Feedback.find({ room: room_id }).populate("user", ["userName",]);
 
-    if (feedback.length < 1) {
-      return res.status(404).json({ msg: "Feedback not found" });
-    }
+    // if (feedback.length < 1) {
+    //   return res.status(404).json({ msg: "Feedback not found" });
+    // }
 
     res.json(feedback);
 
@@ -108,9 +108,9 @@ router.get("/user/room/:room_id", auth, async (req, res) => {
 
     const feedback = await Feedback.find({ room: room_id, user: user_id });
 
-    if (feedback.length < 1) {
-      return res.status(404).json({ msg: "Feedback not found" });
-    }
+    // if (feedback.length < 1) {
+    //   return res.status(404).json({ msg: "Feedback not found" });
+    // }
 
     res.json(feedback);
     

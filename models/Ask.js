@@ -25,6 +25,10 @@ const AskSchema = new mongoose.Schema({
     isAnswer:{
         type: Boolean,
         default: false
+    },
+    present:{
+        type: Boolean,
+        default: false
     }
     
 })

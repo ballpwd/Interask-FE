@@ -138,9 +138,9 @@ router.get("/owner/room/:room_id", auth, async (req, res) => {
 
     const question = await Question.find({ room: room_id });
 
-    if (question.length < 1) {
-      return res.status(404).json({ msg: "Question not found" });
-    }
+    // if (question.length < 1) {
+    //   return res.status(404).json({ msg: "Question not found" });
+    // }
 
     res.json(question);
     
@@ -173,9 +173,9 @@ router.get("/user/room/:room_id", auth, async (req, res) => {
 
     const question = await Question.find({ room: room_id });
 
-    if (question.length < 1) {
-      return res.status(404).json({ msg: "Question not found" });
-    }
+    // if (question.length < 1) {
+    //   return res.status(404).json({ msg: "Question not found" });
+    // }
 
     res.json(question);
 

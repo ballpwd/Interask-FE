@@ -1,4 +1,5 @@
 import React from "react";
+import { Row, Col } from "reactstrap";
 
 const OrganizerAnswerItem = (props) => {
   const {
@@ -10,11 +11,15 @@ const OrganizerAnswerItem = (props) => {
   } = props;
   const time = new Date(date);
   return (
-    <div className="boxitem">
-      <div className="org-p p-2 text-break">
-        {text} <br />- Answer from: {userName} at {time.toUTCString()}
-      </div>
-    </div>
+    <Row className='justify-content-center align-items-center mx-3'>
+      <Col className='p-0'>
+          <div className='boxitem'>
+              <div className='org-p p-2 text-break'> 
+                {text} <br />- Answer from: {userName} at {time.toUTCString()}
+              </div>
+          </div>
+      </Col>
+    </Row> 
   );
 };
 

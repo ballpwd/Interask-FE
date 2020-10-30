@@ -1,7 +1,7 @@
 import React, { useEffect, Fragment } from "react";
 import { connect } from "react-redux";
 import OrganizerPresentList from "./OrganizerPresentList";
-import { getOrgAskList, orgAskListUnload } from "../../actions/orgAskActions";
+import { getPresentAskList, orgAskListUnload } from "../../actions/orgAskActions";
 import { getOrgRoomById, orgRoomUnload } from "../../actions/orgRoomActions";
 import { Container } from "reactstrap";
 import Loading from "../Loading/Loading";
@@ -12,7 +12,7 @@ import NotFound from "../layout/NotFound";
 const OrganizerPresent = ({
   getOrgRoomById,
   orgRoomUnload,
-  getOrgAskList,
+  getPresentAskList,
   orgAskListUnload,
   orgRoom: { room, roomLoading },
   orgAsk: { askList, askLoading },
@@ -30,19 +30,19 @@ const OrganizerPresent = ({
 
     socket.emit("room", match.params.roomid);
 
-    socket.on("organizerAsk", (data) => {
+    socket.on("organizerPresent", (data) => {
       if (data.status === 200) {
-        getOrgAskList(match.params.roomid);
+        getPresentAskList(match.params.roomid);
       }
     });
 
-    getOrgAskList(match.params.roomid);
+    getPresentAskList(match.params.roomid);
 
     return () => {
       orgAskListUnload();
       socket.disconnect();
     };
-  }, [getOrgAskList, match.params.roomid, orgAskListUnload]);
+  }, [getPresentAskList, match.params.roomid, orgAskListUnload]);
 
   return roomLoading || askLoading ? (
     <Fragment>
@@ -75,7 +75,7 @@ const mapStateToProps = (state) => ({
 
 export default connect(mapStateToProps, {
   getOrgRoomById,
-  getOrgAskList,
+  getPresentAskList,
   orgRoomUnload,
   orgAskListUnload,
 })(OrganizerPresent);

@@ -1,6 +1,11 @@
 @import url("https://fonts.googleapis.com/css2?family=Kanit:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800&display=swap");
 
 body > #root {
+  background: #232946;
+  min-height: 100vh;
+}
+
+body > #root > {
   min-height: 100vh;
 }
 
@@ -9,7 +14,7 @@ body > #root {
 } */
 .bg {
   /*background: linear-gradient(300.81deg, #eeadb4 15.33%, #c1abdd 101.47%);*/
-  background: #232946;
+  /* background: #232946; */
 }
 
 .bg2 {
@@ -18,7 +23,7 @@ body > #root {
 }
 
 .fullscreen {
-  min-height: 100vh;
+  /* min-height: 100vh; */
 }
 
 h1 {
@@ -216,19 +221,18 @@ header {
 .org-box {
   background: #fff;
   border-radius: 10px;
-  margin-bottom: 80px;
 }
 
 .org-boxlist {
-  height: 600px;
+  height: 550px;
   scrollbar-3dlight-color: aqua;
   overflow: auto;
 }
-
 .boxitem {
   background: #b8c1ec;
   border-radius: 10px;
-  margin: 10px 20px;
+  margin-top: 5px;
+  margin-bottom: 5px;
   box-shadow: rgba(0, 0, 0, 0.5) 0px 1px 0.4rem;
 }
 
@@ -1049,4 +1053,13 @@ input[type="radio"] {
   border-radius: 10px;
   background: #e5e5e5;
   margin-top: 15px;
+}
+
+/* -------------- Custom Checkbox --------------- */
+
+.checkbox-present .custom-control-label::before, 
+.checkbox-present .custom-control-label::after {
+  width: 1.4rem;
+  height: 1.4rem;
+  margin-left: auto ;
 }

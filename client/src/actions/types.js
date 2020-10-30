@@ -5,7 +5,6 @@ export const ADD_ASK = "ADD_ASK";
 export const ASK_ERROR = "ASK_ERROR";
 export const ASK_UNLOADED = "ASK_UNLOADED";
 export const ASKLIST_UNLOADED = "ASKLIST_UNLOADED";
-export const ASK_ISANSWER = "ASK_ISANSWER";
 //User ROOM
 export const GET_ROOMLIST = "GET_ROOMLIST";
 export const GET_ROOM = "GET_ROOM";
@@ -23,6 +22,11 @@ export const QUESTIONLIST_UNLOADED = "QUESTIONLIST_UNLOADED";
 //Organizer ASK
 export const GET_ORG_ASKLIST = "GET_ORG_ASKLIST";
 export const GET_ORG_ASK = "GET_ORG_ASK";
+export const ASK_ISANSWER = "ASK_ISANSWER";
+export const SET_PRESENT = "SET_PRESENT";
+export const ALL_PRESENT = "ALL_PRESENT";
+export const CLEAR_PRESENT = "CLEAR_PRESENT";
+export const GET_PRESENT_ARKLIST = "GET_PRESENT_ARKLIST";
 export const ORG_ASK_ERROR = "ORG_ASK_ERROR";
 export const ORG_ASK_UNLOADED = "ORG_ASK_UNLOADED";
 export const ORG_ASKLIST_UNLOADED = "ORG_ASKLIST_UNLOADED";

@@ -131,7 +131,7 @@ const OrganizerFeedback = (props) => {
                 </Col> 
               </Row>
             </Col>
-            <Col md="5" xs="12" className="mt-4">
+            <Col md="5" xs="12" className="my-4 py-4">
               {<OrganizerFeedbackAnalyze feedbackList={filterDate} />}
               <Row>
                 <Col md="12" xs="12" className="text-center mt-5">

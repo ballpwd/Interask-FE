@@ -45,7 +45,7 @@ const OrganizerQuestionList = (props) => {
           </p>
         </Row>
       )}
-      <div className=" pt-3 px-4">
+      <div className=" pt-3 px-4 pb-5">
         <Container fluid>
           <Card>
             <Button

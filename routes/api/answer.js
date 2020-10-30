@@ -65,7 +65,7 @@ router.post("/", auth, async (req, res) => {
 });
 
 // @route  GET /api/answer/user/:question_id
-// @desc   Get answer (user)
+// @desc   Get answerlist (user)
 router.get("/user/:question_id", auth, async (req, res) => {
   try {
     const user_id = req.user.id;
@@ -88,9 +88,9 @@ router.get("/user/:question_id", auth, async (req, res) => {
 
     const answer = await Answer.findOne({user: user_id,question: question_id});
 
-    if (!answer) {
-      return res.status(404).json({ msg: "Answer not found" });
-    }
+    // if (!answer) {
+    //   return res.status(404).json({ msg: "Answer not found" });
+    // }
 
     res.json(answer);
 
@@ -124,9 +124,9 @@ router.get("/owner/:question_id", auth, async (req, res) => {
 
     const answer = await Answer.find({ question: question_id }).populate("user", ["userName"]).populate("question", ["questionDetail"]);
 
-    if (answer.length < 1) {
-      return res.status(404).json({ msg: "Answer not found" });
-    }
+    // if (answer.length < 1) {
+    //   return res.status(404).json({ msg: "Answer not found" });
+    // }
 
     res.json(answer);
 

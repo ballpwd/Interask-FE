@@ -44,7 +44,7 @@ const OrganizerRoom = (props) => {
             <div>{<OrganizerRoomList roomList={roomList} edit={edit} />}</div>
           </Container>
           {roomList.length >= 1 ? (
-            <Row className="justify-content-center mt-2">
+            <Row className="justify-content-center mt-2 pb-5">
               {!edit ? (
                 <Button
                   onClick={manage}

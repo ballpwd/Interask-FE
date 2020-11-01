@@ -96,7 +96,7 @@ const OrganizerAnswer = (props) => {
             <Col md="5" xs="12" className="mt-4">
               {<OrganizerAnswerAnalyze answerList={answerList} />}
               <Row>
-                <Col md="12" xs="12" className="text-center mt-5">
+                <Col md="12" xs="12" className="text-center my-5 py-5">
                   <Button
                     className="org-btn"
                     onClick={() => exportAnswer(answerList)}

@@ -102,9 +102,9 @@ router.get('/owner/list', auth, async (req, res) => {
       const user_id = req.user.id
       const room = await Room.find({owner: user_id})
 
-      if (room.length < 1) {
-        return res.status(404).json({ msg: 'Room not found' });
-      }
+      // if (room.length < 1) {
+      //   return res.status(404).json({ msg: 'Room not found' });
+      // }
 
       res.json(room) 
 
@@ -122,9 +122,9 @@ router.get('/user/list', auth, async (req, res) => {
     const user_id = req.user.id
     const room = await Room.find({user: user_id})
       
-    if (room.length < 1) {
-      return res.status(404).json({ msg: 'Room not found' });
-    }
+    // if (room.length < 1) {
+    //   return res.status(404).json({ msg: 'Room not found' });
+    // }
 
     res.json(room) 
 

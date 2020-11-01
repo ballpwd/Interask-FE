@@ -10,7 +10,6 @@ import orgFeedback from "./orgFeedbackReducer";
 import orgQuestion from "./orgQuestionReducer";
 import orgAnswer from "./orgAnswerReducer";
 import auth from "./authReducer";
-import alert from "./alertReducer";
 
 export default combineReducers({
   ask,
@@ -23,6 +22,5 @@ export default combineReducers({
   orgFeedback,
   orgQuestion,
   orgAnswer,
-  auth,
-  alert,
+  auth
 });

@@ -4,7 +4,11 @@ import {
   ASK_ISANSWER,
   ORG_ASK_ERROR,
   ORG_ASK_UNLOADED,
-  ORG_ASKLIST_UNLOADED
+  ORG_ASKLIST_UNLOADED,
+  SET_PRESENT,
+  ALL_PRESENT,
+  CLEAR_PRESENT,
+  GET_PRESENT_ARKLIST
 } from '../actions/types';
 
 const initialState = {
@@ -18,6 +22,7 @@ export default function(state = initialState, action) {
 const { type, payload } = action;
 switch (type) {
   case GET_ORG_ASKLIST:
+  case GET_PRESENT_ARKLIST:
     return {
       ...state,
       askList: payload,
@@ -36,6 +41,29 @@ switch (type) {
           a._id === payload._id ? { ...a, isAnswer: payload.isAnswer } : a
         ),
         askLoading: false,
+    };     
+  case SET_PRESENT:
+    return {
+      ...state,
+      askList: state.askList.map((a) =>
+        a._id === payload._id ? { ...a, present: payload.present } : a
+      ),
+      askLoading: false,
+    };  
+  case ALL_PRESENT:
+  case CLEAR_PRESENT:
+    return {
+      ...state,
+      askList: state.askList.map(ask => {
+        let present
+        payload.forEach(data => {
+          if(ask._id === data._id){
+            present = data.present
+          }
+        })
+        return present === null ?  ask : { ...ask, present: present }
+      }),
+      askLoading: false 
     };
   case ORG_ASK_ERROR:
     return {

@@ -4,6 +4,7 @@ import googlelogin from "../../assets/signin.svg";
 import {
   Container,
   Row,
+  Col,
   Button,
   Modal,
   ModalHeader,
@@ -39,41 +40,46 @@ const LoginOrg = (props) => {
 
   return (
     <Fragment>
+
       <div className="bg2 fullscreen">
         <Container>
-          <div className="center">
-            <Row className="justify-content-center align-items-center ">
-              <img src={logo} alt="Interask" className="img-fluid "></img>
-            </Row>
-            <Row className="justify-content-center align-items-center ">
-              <a
-                href={`${apiUrl}/api/auth/google?redirect_uri=${window.location.href}`}
-              >
-                <img
-                  src={googlelogin}
-                  alt="Interask"
-                  className="img-fluid"
-                  style={{ width: "350px", height: "87px" }}
-                />
-              </a>
-            </Row>
-            <Row className="justify-content-center align-items-end ">
-              <Button
-                className="howto"
-                color="dark"
-                size="sm"
-                style={{ width: "200px", height: "40px" }}
-                onClick={toggle}
-              >
-                How to use
-              </Button>
-            </Row>
-            <Row className="justify-content-center align-items-end footer">
-              <p>
-                Join the room for FREE<Link to="/login"> User</Link>
-              </p>
-            </Row>
-          </div>
+          <Row className='vh-100 justify-content-center align-items-center'>
+            <Col>
+              <Row className="justify-content-center align-items-center">
+                <img src={logo} alt="Interask" className="img-fluid "></img>
+              </Row>
+              <Row className="justify-content-center align-items-center ">
+                <a
+                  href={`${apiUrl}/api/auth/google?redirect_uri=${window.location.href}`}
+                >
+                  <img
+                    src={googlelogin}
+                    alt="Interask"
+                    className="img-fluid"
+                    style={{ width: "340px" }}
+                  />
+                </a>
+              </Row>
+              <Row className="justify-content-center align-items-center ">
+                <Button
+                  className="howto"
+                  color="dark"
+                  size="sm"
+                  style={{ width: "200px", height: "40px" }}
+                  onClick={toggle}
+                >
+                  How to use
+                </Button>
+              </Row>
+              <Row>
+                <Col className="footer">
+                  <p>
+                    Join the room for FREE<Link to="/login"> User</Link>
+                  </p>
+                </Col>
+              </Row>
+            </Col>
+          </Row>
         </Container>
       </div>
 

@@ -42,44 +42,48 @@ const Login = (props) => {
     <Fragment>
       <div className="bg2 fullscreen">
         <Container>
-          <div className="center">
-            <Row className="justify-content-center align-items-center ">
-              <img src={logo} alt="Interask" className="img-fluid "></img>
-            </Row>
-            <Row className="justify-content-center align-items-center">
-              <a
-                href={`${apiUrl}/api/auth/google?redirect_uri=${window.location.href}`}
-              >
-                <img
-                  src={googlelogin}
-                  alt="Interask"
-                  className="img-fluid"
-                  style={{ width: "340px" }}
-                />
-              </a>
-            </Row>
-            <Row className="justify-content-center align-items-end ">
-              <Button
-                className="howto"
-                color="dark"
-                size="sm"
-                style={{ width: "200px", height: "40px" }}
-                onClick={toggle}
-              >
-                How to use
-              </Button>
-            </Row>
-            <Row>
-              <Col className="footer">
-                <p>
-                  Create your own room for FREE
-                  <Link to="/organizer/login"> Organizer</Link>
-                </p>
-              </Col>
-            </Row>
-          </div>
+          <Row className='vh-100 justify-content-center align-items-center'>
+            <Col>
+              <Row className="justify-content-center align-items-center">
+                <img src={logo} alt="Interask" className="img-fluid "></img>
+              </Row>
+              <Row className="justify-content-center align-items-center ">
+                <a
+                  href={`${apiUrl}/api/auth/google?redirect_uri=${window.location.href}`}
+                >
+                  <img
+                    src={googlelogin}
+                    alt="Interask"
+                    className="img-fluid"
+                    style={{ width: "340px" }}
+                  />
+                </a>
+              </Row>
+              <Row className="justify-content-center align-items-center ">
+                <Button
+                  className="howto"
+                  color="dark"
+                  size="sm"
+                  style={{ width: "200px", height: "40px" }}
+                  onClick={toggle}
+                >
+                  How to use
+                </Button>
+              </Row>
+              <Row>
+                <Col className="footer">
+                  <p>
+                    Create your own room for FREE
+                    <Link to="/organizer/login"> Organizer</Link>
+                  </p>
+                </Col>
+              </Row>
+            </Col>
+          </Row>
         </Container>
       </div>
+
+
       <Modal isOpen={modal} toggle={toggle} size="lg" centered>
         <ModalHeader
           close={closeBtn}
@@ -94,6 +98,7 @@ const Login = (props) => {
           </div>
         </ModalBody>
       </Modal>
+
     </Fragment>
   );
 };

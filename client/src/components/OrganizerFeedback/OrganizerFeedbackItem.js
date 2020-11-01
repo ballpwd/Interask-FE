@@ -3,7 +3,7 @@ import smile from '../../assets/4pts.svg';
 import normal from '../../assets/3pts.svg';
 import confuse from '../../assets/2pts.svg';
 import sleep from '../../assets/1pts.svg';
-
+import { Row, Col } from "reactstrap";
 
 const OrganizerFeedbackItem = (props) => {
   const {
@@ -27,13 +27,17 @@ const OrganizerFeedbackItem = (props) => {
   }
 
   return (
-    <div className="boxitem">
-      <div className="org-p p-2 text-break">
-        <img src={emoticonPic} className="feedback-org-item-img" ></img>
-        {text}
-        <br />{time.toUTCString()}
-      </div>
-    </div>
+    <Row className='justify-content-center align-items-center mx-3'>
+      <Col className='p-0'>
+          <div className='boxitem'>
+              <div className='org-p p-2 text-break'> 
+                <img src={emoticonPic} className="feedback-org-item-img" ></img>
+                {text}
+                <br />{time.toUTCString()}
+              </div>
+          </div>
+      </Col>
+    </Row> 
   );
 };
 

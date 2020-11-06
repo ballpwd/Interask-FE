@@ -47,12 +47,12 @@ const NavBar = (props) => {
             <NavItem>
               <Link to={"/room"} className="nav-item">
                 {" "}
-                ROOM{" "}
+                USER{" "}
               </Link>
             </NavItem>
             <NavItem>
               <Link to={"/organizer/room"} className="nav-item">
-                ORGANIZER ROOM
+                ORGANIZER
               </Link>
             </NavItem>
             <NavItem>

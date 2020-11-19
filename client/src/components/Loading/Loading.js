@@ -3,7 +3,7 @@ import React, { Fragment } from 'react';
 const Loading = () => {
     return (
         <Fragment>
-            <div className='bg fullscreen'></div>
+            <div className='bg fullscreen-loading'></div>
             <div className='smoke'>
                 <span>L</span>
                 <span>O</span>

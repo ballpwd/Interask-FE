@@ -200,7 +200,7 @@ const OrganizerMenu = (props) => {
         </ModalHeader>
         <ModalBody className="text-center">
           <QRCode
-            // size="256"
+            size="512"
             value={`${window.location.origin}/room?join=${room.code}`}
             className='qrcode'
           />

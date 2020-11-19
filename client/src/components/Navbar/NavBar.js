@@ -36,7 +36,7 @@ const NavBar = (props) => {
     </button>
   );
   return (
-    <div>
+    <div >
       <Navbar light expand="md" className="navorg-section pt-0 pb-0">
         <Link to={"/"}>
           <NavbarBrand>

@@ -234,8 +234,6 @@ router.put('/present/all/select', auth, async (req, res) => {
     
     if(
       ask.some((a)=>{
-        console.log(a.room)
-        console.log(roomId)
         return a.room != roomId
       })
     ){
@@ -291,8 +289,6 @@ router.put('/present/all/clear', auth, async (req, res) => {
     
     if(
       ask.some((a)=>{
-        console.log(a.room)
-        console.log(roomId)
         return a.room != roomId
       })
     ){

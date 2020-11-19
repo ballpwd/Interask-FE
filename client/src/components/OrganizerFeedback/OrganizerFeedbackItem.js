@@ -31,7 +31,7 @@ const OrganizerFeedbackItem = (props) => {
       <Col className='p-0'>
           <div className='boxitem'>
               <div className='org-p p-2 text-break'> 
-                <img src={emoticonPic} className="feedback-org-item-img" ></img>
+                <img src={emoticonPic} alt='emoticon' className="feedback-org-item-img" ></img>
                 {text}
                 <br />{time.toUTCString()}
               </div>

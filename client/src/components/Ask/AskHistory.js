@@ -9,8 +9,7 @@ const AskHistory = ({ askList }) => {
         height: 300
       });
     return (
-        <div class='ask-boxlist'>
-        {console.log(askList)}
+        <div className='ask-boxlist'>
         <ScrollToBottom className={ ROOT_CSS }>
             {askList && askList.map((ask) => (<AskHistoryItem key={ask._id} ask={ask} />))}
         </ScrollToBottom>

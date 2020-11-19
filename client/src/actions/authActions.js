@@ -12,7 +12,7 @@ import apiUrl from '../utils/apiUrl'
 export const loadUser = () => async dispatch => {
     try {
       const res = await axios.get(`${apiUrl}/api/auth/current_user`);
-      console.log(res.data)
+
       dispatch({
         type: USER_LOADED,
         payload: res.data

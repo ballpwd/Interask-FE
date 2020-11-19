@@ -84,8 +84,6 @@ const OrganizerFeedback = (props) => {
       })
     }
 
-    console.log(dropdownDate)
-    console.log(filtered)
     setFilterDate(filtered)
 
   }, [dropdownDate,feedbackList]);

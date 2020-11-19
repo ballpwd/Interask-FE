@@ -14,7 +14,7 @@ import { connect } from "react-redux";
 import { Redirect, useLocation, Link } from "react-router-dom";
 import queryString from "query-string";
 import apiUrl from "../../utils/apiUrl";
-import HowTo from "../Howto";
+import HowTo from "../layout/Howto";
 
 const Login = (props) => {
   const [modal, setModal] = useState(false);
@@ -23,7 +23,6 @@ const Login = (props) => {
   const { isAuthenticated } = props;
 
   const redirect = queryString.parse(useLocation().search).redirect_uri;
-  console.log(queryString.parse(useLocation().search).redirect_uri);
 
   if (isAuthenticated) {
     if (redirect) {

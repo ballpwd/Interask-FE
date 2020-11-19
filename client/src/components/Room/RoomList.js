@@ -1,4 +1,4 @@
-import React, { useState, Fragment } from "react";
+import React, { useState } from "react";
 import RoomItem from "./RoomItem";
 import {
   Button,
@@ -49,6 +49,7 @@ const RoomList = (props) => {
           <div>
             <img
               src={plus}
+              alt='join'
               className="plus-img"
               width="38px"
               height="38px"

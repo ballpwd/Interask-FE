@@ -3,7 +3,6 @@ import Swal from 'sweetalert2';
 
 import { 
     GET_ASKLIST,
-    GET_ASK,
     ADD_ASK,
     ASK_ERROR,
     ASK_UNLOADED,

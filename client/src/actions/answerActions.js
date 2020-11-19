@@ -1,6 +1,5 @@
 import axios from 'axios';
 import { 
-    GET_ANSWERLIST,
     GET_ANSWER,
     ADD_ANSWER,
     ANSWER_ERROR,

@@ -156,7 +156,7 @@ export const editFeedbackStatus = (roomId) => async (dispatch) => {
 
 //Organizer room Unload
 export const orgRoomUnload = () => async dispatch => {
-  console.log('room unload action')
+
   try {
       dispatch({type: ORG_ROOM_UNLOADED});
   } catch (err) {
@@ -169,7 +169,7 @@ export const orgRoomUnload = () => async dispatch => {
 
 //Organizer roomList Unload
 export const orgRoomListUnload = () => async dispatch => {
-  console.log('roomlist unload action')
+
   try {
       dispatch({type: ORG_ROOMLIST_UNLOADED});
   } catch (err) {

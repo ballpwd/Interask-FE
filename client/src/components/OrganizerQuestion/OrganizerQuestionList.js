@@ -60,7 +60,7 @@ const OrganizerQuestionList = (props) => {
             >
               <p className="h5 text-center ">
                 CREATE THE QUESTION{" "}
-                <img src={plus} width="40px" height="40px"></img>
+                <img src={plus} alt='create' width="40px" height="40px"></img>
               </p>
             </Button>
           </Card>

@@ -1,6 +1,6 @@
-import React,{useState}from "react";
+import React from "react";
 import { connect } from "react-redux";
-import { Container, Row, Col, Button } from "reactstrap";
+import { Row, Col, Button } from "reactstrap";
 import OrganizerAskItem from "./OrganizerAskItem";
 import { selectAllPresent, clearPresent } from "../../actions/orgAskActions";
 

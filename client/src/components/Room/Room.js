@@ -21,12 +21,12 @@ const Room = (props) => {
 
   //join room from queryString
   const join = queryString.parse(useLocation().search).join
+
   useEffect(() => {
     if(join){   // check join from queryString
-     console.log('join room - ',join)
      joinRoom(join);
     }
-  }, []);
+  }, [join, joinRoom]);
 
   // fetch roomlist 
   useEffect(() => {
@@ -35,8 +35,6 @@ const Room = (props) => {
       roomListUnload();
     };
   }, [getRoomList, roomListUnload]);
-
-  console.log(roomList);
 
   return roomLoading ? (
     <Loading></Loading>
@@ -70,6 +68,7 @@ const Room = (props) => {
                   <div>
                     <img
                       src={leave_room}
+                      alt='leave'
                       className="leave-white"
                       width="38px"
                       height="38px"

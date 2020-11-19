@@ -64,7 +64,7 @@ const Ask = (props) => {
             </Col>
           </Row>
         </Container>
-        <Container class="ask-form">
+        <Container className="ask-form">
           {room && <AskForm room={room} />}
         </Container>
       </div>

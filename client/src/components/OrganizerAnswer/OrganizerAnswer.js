@@ -12,7 +12,7 @@ import {
 import OrganizerAnswerList from "./OrganizerAnswerList";
 import OrganizerAnswerAnalyze from "./OrganizerAnswerAnalyze";
 import Loading from "../Loading/Loading";
-import { Container, Row, Col, Button, Card } from "reactstrap";
+import { Container, Row, Col, Button } from "reactstrap";
 import { exportAnswer } from "../../utils/export";
 import apiUrl from '../../utils/apiUrl' ;
 import io from "socket.io-client";
@@ -63,14 +63,11 @@ const OrganizerAnswer = (props) => {
       orgAnswerListUnload();
       socket.disconnect();
     };
-  }, [getOrgAnswerList, match.params.questionid, orgAnswerListUnload]);
-
-  console.log(room);
-  console.log(answerList);
+  }, [getOrgAnswerList, match.params.roomid, match.params.questionid, orgAnswerListUnload]);
 
   return (((room == null || roomLoading) || (question == null || questionLoading)) || answerLoading) ? (
     <Fragment>
-      {(!roomLoading) && (room == null) || (!questionLoading) && (question == null)  ? (<NotFound></NotFound>):(<Loading></Loading>) }
+      {((!roomLoading) && (room == null)) || ((!questionLoading) && (question == null))  ? (<NotFound></NotFound>):(<Loading></Loading>) }
     </Fragment>
   ) : (
     <Fragment>

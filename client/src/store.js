@@ -11,12 +11,14 @@ const store = createStore(
 );
 
 
-console.log(store.getState())
-// set up a store subscription listener to store the users token in localStorage
+// console.log(store.getState())
 
+// set up a store subscription listener to store the users token in localStorage
 store.subscribe(() => {
     let currentState = store.getState();
-    console.log(currentState)
+
+    // console.log(currentState)
+    
     const token = currentState.auth.token;
     setAuthToken(token);
   });

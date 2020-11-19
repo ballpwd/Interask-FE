@@ -51,9 +51,6 @@ const OrganizerMenu = (props) => {
     };
   }, [getOrgRoomById, match.params.roomid, orgRoomUnload]);
 
-  console.log(roomLoading);
-  console.log(room);
-
   return room == null || roomLoading ? (
     <Fragment>
       {(!roomLoading) && (room == null)? (<NotFound></NotFound>):(<Loading></Loading>) }
@@ -80,7 +77,7 @@ const OrganizerMenu = (props) => {
                   }}
                 >
                   <p className="orgmenu-text">ASK</p>
-                  <img src={ask} width="64px" height="64px"></img>
+                  <img src={ask} alt='ask' width="64px" height="64px"></img>
                 </Button>
               </Link>
 
@@ -131,7 +128,7 @@ const OrganizerMenu = (props) => {
                   }}
                 >
                   <p className="orgmenu-text">FEEDBACK</p>
-                  <img src={feedback} width="64px" height="64px"></img>
+                  <img src={feedback} alt='feedback' width="64px" height="64px"></img>
                 </Button>
               </Link>
               <Col className="text-center mt-2">
@@ -166,7 +163,7 @@ const OrganizerMenu = (props) => {
                   }}
                 >
                   <p className="orgmenu-text">Q&A</p>
-                  <img src={question} width="64px" height="64px"></img>
+                  <img src={question} alt='question' width="64px" height="64px"></img>
                 </Button>
               </Link>
             </Col>
@@ -204,7 +201,6 @@ const OrganizerMenu = (props) => {
             value={`${window.location.origin}/room?join=${room.code}`}
             className='qrcode'
           />
-
           <p className="org-h4 pt-3"> PIN : {room.code} </p>
         </ModalBody>
       </Modal>

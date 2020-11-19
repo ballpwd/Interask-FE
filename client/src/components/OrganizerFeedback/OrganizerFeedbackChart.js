@@ -16,7 +16,7 @@ const OrganizerFeedbackChart = (props) => {
         let rating2 = 0;
         let rating3 = 0;
         let rating4 = 0;
-        feedback.map(f => {
+        feedback.forEach(f => {
             if(f.emoticon === '1'){
                 rating1++
             }
@@ -113,16 +113,16 @@ const OrganizerFeedbackChart = (props) => {
             </Row>
             <Row>
                 <Col className="text-center">
-                    <img src={sleep} className="feedback-chart-img" ></img>
+                    <img src={sleep} alt='sleep' className="feedback-chart-img" ></img>
                 </Col>
                 <Col className="text-center">
-                    <img src={confuse} className="feedback-chart-img" ></img>
+                    <img src={confuse} alt='confuse' className="feedback-chart-img" ></img>
                 </Col>
                 <Col className="text-center">
-                    <img src={normal} className="feedback-chart-img" ></img>
+                    <img src={normal} alt='normal' className="feedback-chart-img" ></img>
                 </Col>
                 <Col className="text-center">
-                    <img src={smile} className="feedback-chart-img" ></img>
+                    <img src={smile} alt='smile' className="feedback-chart-img" ></img>
                 </Col>
             </Row>
         </div>

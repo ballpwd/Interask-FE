@@ -33,7 +33,7 @@ const FeedbackForm = (props) => {
         <p className="feedback-topic">ROOM : {room.roomName}</p>
         <Row className="feedback-section">
           <Col>
-          <img src={smile} className="feedback-img" ></img>
+          <img src={smile} alt='smile' className="feedback-img" ></img>
           <br/>
           <input type="radio" name="emoticon" id="feedbackRadio4" value="4" checked={emoticon === '4' }
           onChange={onRadioChange} className="radio-feedback" />
@@ -41,7 +41,7 @@ const FeedbackForm = (props) => {
           <p className="feedback-point">4 pts</p>
           </Col>
           <Col>
-          <img src={normal} className="feedback-img" ></img>
+          <img src={normal} alt='normal' className="feedback-img" ></img>
           <br/>
           <input type="radio" name="emoticon" id="feedbackRadio3" value="3" checked={emoticon === '3' }
           onChange={onRadioChange} className="radio-feedback"/>
@@ -49,7 +49,7 @@ const FeedbackForm = (props) => {
           <p className="feedback-point">3 pts</p>
           </Col>
           <Col>
-          <img src={confuse} className="feedback-img" ></img>
+          <img src={confuse} alt='confuse' className="feedback-img" ></img>
           <br/>
           <input type="radio" name="emoticon" id="feedbackRadio2" value="2" checked={emoticon === '2' }
           onChange={onRadioChange} className="radio-feedback" />
@@ -57,7 +57,7 @@ const FeedbackForm = (props) => {
           <p className="feedback-point">2 pts</p>
           </Col>
           <Col>
-          <img src={sleep} className="feedback-img"></img>
+          <img src={sleep} alt='sleep' className="feedback-img"></img>
           <br/>
           <input type="radio" name="emoticon" id="feedbackRadio1" value="1" checked={emoticon === '1' }
           onChange={onRadioChange} className="radio-feedback"/>
@@ -80,7 +80,7 @@ const FeedbackForm = (props) => {
         </Container>
         <Row>
           <Col className="text-center mt-2">
-            <button class="btn btn-primary submit-feedback" type="submit">
+            <button className="btn btn-primary submit-feedback" type="submit">
               SUBMIT
             </button>
           </Col>

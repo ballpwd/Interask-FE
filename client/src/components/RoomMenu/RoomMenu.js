@@ -51,8 +51,6 @@ const RoomMenu = (props) => {
             <h1 className="room-h1">Welcome</h1>
             <br/>
             <h3 className="room-h3 text-break">ROOM : {room.roomName}</h3>
-            {console.log(room)}
-           
           </div>
         </Container>
         <Container fluid className="text-center">
@@ -70,7 +68,7 @@ const RoomMenu = (props) => {
                 }}
                 size="md"
               >
-                <img src={room_ask} className="room-img"></img>
+                <img src={room_ask} alt='ask' className="room-img"></img>
                 ASK
               </Button>
             </Link>
@@ -89,7 +87,7 @@ const RoomMenu = (props) => {
                 }}
                 size="md"
               >
-                <img src={room_feedback} className="room-img"></img>
+                <img src={room_feedback} alt='feedback' className="room-img"></img>
                 FEEDBACK
               </Button>
             </Link>
@@ -108,7 +106,7 @@ const RoomMenu = (props) => {
                 }}
                 size="md"
               >
-                <img src={room_question} className="room-img"></img>
+                <img src={room_question} alt='question' className="room-img"></img>
                 Q&A
               </Button>
             </Link>
@@ -129,6 +127,7 @@ const RoomMenu = (props) => {
                   <div>
                     <img
                       src={leave_room}
+                      alt='leave'
                       className="leave-white"
                       width="38px"
                       height="38px"
@@ -150,7 +149,7 @@ const RoomMenu = (props) => {
               className="border-0 pb-0 "
               cssModule={{ "modal-title": "w-100 text-center pt-5" }}
             >
-              <img src={close} width="128px" height="128px"></img>
+              <img src={close} alt='close' width="128px" height="128px"></img>
               <p className="warn-leave">DO YOU WANT TO LEAVE</p>
               <p className="org-h4 text-break">"{room.roomName}" room ?</p>
             </ModalHeader>

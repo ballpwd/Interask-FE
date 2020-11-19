@@ -51,6 +51,7 @@ const RoomItem = (props) => {
             {room.roomName}
             <img
               src={leave_room}
+              alt='leave'
               className="leave-img"
               width="48px"
               height="48px"
@@ -64,7 +65,7 @@ const RoomItem = (props) => {
             className="border-0 pb-0 "
             cssModule={{ "modal-title": "w-100 text-center pt-5" }}
           >
-            <img src={close} width="128px" height="128px"></img>
+            <img src={close} alt='close' width="128px" height="128px"></img>
             <p className="warn-leave">DO YOU WANT TO LEAVE</p>
             <p className="org-h4 text-break">"{room.roomName}" room ?</p>
           </ModalHeader>

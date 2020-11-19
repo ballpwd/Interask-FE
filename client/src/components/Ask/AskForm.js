@@ -56,7 +56,7 @@ const AskForm = (props) => {
           </Col>
           <Col xs="6" className="text-right mt-2">
             <button type="submit" className="btnAdvance" disabled={!room.askStatus}>
-              <img src={sent}></img>
+              <img src={sent} alt='sent'></img>
             </button>
           </Col>
         </Row>

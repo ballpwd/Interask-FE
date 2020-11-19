@@ -21,7 +21,7 @@ const App = () => {
       setAuthToken(token)
       store.dispatch(loadUser());
     }
-  }, []);
+  }, [token]);
   
   return (
     <Switch>

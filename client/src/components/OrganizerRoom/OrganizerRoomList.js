@@ -47,7 +47,7 @@ const OrganizerRoomList = (props) => {
                   }}
                 >
                   <br />
-                  <img src={plus} width="46px" height="46px"></img>
+                  <img src={plus} alt='create' width="46px" height="46px"></img>
                   <br />
                   <br />
                   <p className="orgroom-p"> CREATE ROOM</p>
@@ -76,7 +76,7 @@ const OrganizerRoomList = (props) => {
                 }}
               >
                 <br />
-                <img src={plus} width="46px" height="46px"></img>
+                <img src={plus} alt='create' width="46px" height="46px"></img>
                 <br />
                 <br />
                 <p className="orgroom-p"> CREATE ROOM</p>

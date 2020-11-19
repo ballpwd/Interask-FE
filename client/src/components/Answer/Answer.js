@@ -52,7 +52,7 @@ const Answer = (props) => {
 
   return ((room == null || roomLoading) || (question == null || questionLoading)) ? (
     <Fragment>
-      {(!roomLoading) && (room == null) || (!questionLoading) && (question == null)  ? (<NotFound></NotFound>):(<Loading></Loading>) }
+      {((!roomLoading) && (room == null)) || ((!questionLoading) && (question == null))  ? (<NotFound></NotFound>):(<Loading></Loading>) }
     </Fragment>
   ) : (
       <Fragment>

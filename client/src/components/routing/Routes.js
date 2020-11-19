@@ -6,24 +6,20 @@ import OrganizerRoom from "../OrganizerRoom/OrganizerRoom";
 import OrganizerAsk from "../OrganizerAsk/OrganizerAsk";
 import OrganizerPresent from "../OrganizerPresentation/OrganizerPresent";
 import NotFound from "../layout/NotFound";
-// import Login from "../Login/Login";
-// import LoginOrg from "../Login/LoginOrg";
 import PrivateRoute from "../routing/PrivateRoute";
 import OrganizerFeedback from "../OrganizerFeedback/OrganizerFeedback";
 import OrganizerMenu from "../OrganizerMenu/OrganizerMenu";
 import RoomMenu from "../RoomMenu/RoomMenu";
-// import Alert from "../layout/Alert";
 import OrganizerQuestion from "../OrganizerQuestion/OrganizerQuestion";
 import Feedback from "../Feedback/Feedback";
 import OrganizerAnswer from "../OrganizerAnswer/OrganizerAnswer";
-import NavBar from "../Navbar/NavBar"
+import NavBar from "../layout/NavBar"
 import Answer from "../Answer/Answer";
 import Question from "../Question/Question";
 
 const Routes = () => {
   return (
     <Fragment>
-      {/* <Alert /> */}
       <NavBar />
       <Switch>
         <PrivateRoute exact path="/room" component={Room} />

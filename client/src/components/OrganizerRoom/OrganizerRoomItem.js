@@ -48,7 +48,7 @@ const OrganizerRoomItem = (props) => {
             }}
           >
             <br />
-            <img src={pencil} width="48px" height="48px"></img>
+            <img src={pencil} alt='edit' width="48px" height="48px"></img>
             <div className="org-h6 my-3">{room.roomName}</div>
           </Button>
         </Col>

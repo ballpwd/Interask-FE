@@ -83,8 +83,6 @@ const OrganizerAsk = (props) => {
       })
     }
 
-    console.log(dropdownDate)
-    console.log(filtered)
     setFilterDate(filtered)
 
   }, [dropdownDate,askList]);
@@ -111,7 +109,7 @@ const OrganizerAsk = (props) => {
                   </h5>
                 </Col>
                 <Col className="text-right" style={{marginTop: "15px"}}>
-                  <Dropdown isOpen={dropdownOpen} onSelect={(e)=> console.log(e.target.value)} toggle={toggle}>
+                  <Dropdown isOpen={dropdownOpen} toggle={toggle}>
                   <DropdownToggle caret>
                     Filter date {dropdownDate}
                     </DropdownToggle>

@@ -68,7 +68,7 @@ const OrganizerQuestionItem = (props) => {
                   <Col></Col>
                   <Col className="pt-2">{question.questionDetail}</Col>
                   <Col className="text-right">
-                    <img src={editq} width="48px" height="48px"></img>
+                    <img src={editq} alt='alt' width="48px" height="48px"></img>
                   </Col>
                 </Row>
               </div>

@@ -38,9 +38,11 @@ const NavBar = (props) => {
   return (
     <div>
       <Navbar light expand="md" className="navorg-section pt-0 pb-0">
-        <NavbarBrand href="/">
-          <img src={Logo} style={{ width: "138px", height: "61px" }}></img>
-        </NavbarBrand>
+        <Link to={"/"}>
+          <NavbarBrand>
+            <img src={Logo} style={{ width: "138px", height: "61px" }}></img>
+          </NavbarBrand>
+        </Link>
         <NavbarToggler onClick={toggle1} />
         <Collapse isOpen={isOpen} navbar>
           <Nav className="mr-auto" navbar>
@@ -78,6 +80,7 @@ const NavBar = (props) => {
           ) : null}
         </Collapse>
       </Navbar>
+
       <Modal isOpen={modal} toggle={toggle} size="lg" centered>
         <ModalHeader
           close={closeBtn}

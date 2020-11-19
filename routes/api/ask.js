@@ -75,10 +75,6 @@ router.get("/owner/room/:room_id", auth, async (req, res) => {
 
     const ask = await Ask.find({ room: room_id }).populate("user", ["userName"]);
 
-    // if (ask.length < 1) {
-    //   return res.status(404).json({ msg: "Ask not found" });
-    // }
-
     res.json(ask);
 
   } catch (err) {

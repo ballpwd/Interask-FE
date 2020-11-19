@@ -18,6 +18,10 @@ body > #root > {
   min-height: calc(100vh - 71px);
 }
 
+.fullscreen-loading {
+  min-height: 100vh;
+}
+
 h1 {
   font-family: Kanit;
   font-style: normal;
@@ -1054,4 +1058,11 @@ input[type="radio"] {
   width: 1.4rem;
   height: 1.4rem;
   margin-left: auto ;
+}
+
+
+/* -------------- QR Code --------------- */
+.qrcode{
+  height: 100px;
+  width: 100px;
 }

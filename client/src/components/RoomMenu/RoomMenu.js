@@ -135,7 +135,6 @@ const RoomMenu = (props) => {
                     LEAVE ROOM
                   </div>
                 </Button>
-              )
           </Row>
           <Row className="justify-content-center p-3 ">
             <p className="room-creator text-break">Created room by : {room.owner.userName}</p>

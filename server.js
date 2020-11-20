@@ -5,8 +5,8 @@ const passport = require("passport");
 const session = require("express-session");
 const { listen } = require("socket.io");
 const handleSocket = require("./config/socket");
-const  cors = require('cors')
-
+const cors = require('cors')
+const sessionSecret = require('./config/keys').sessionSecret;
 
 //Enable All CORS Requests
 app.use(cors())
@@ -17,7 +17,7 @@ connectDB();
 // Init Middleware
 app.use(express.json());
 
-app.use(session({ secret: "urlredirect", redirectTo: "" }));
+app.use(session({ secret: sessionSecret, redirectTo: "" }));
 
 //Passport
 
